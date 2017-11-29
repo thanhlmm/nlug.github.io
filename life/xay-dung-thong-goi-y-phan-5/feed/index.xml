@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: Xây dựng hệ thống “Gợi ý…” (Phần 5)</title>
+	<atom:link href="/life/xay-dung-thong-goi-y-phan-5/feed" rel="self" type="application/rss+xml" />
+	<link>/life/xay-dung-thong-goi-y-phan-5</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/life/xay-dung-thong-goi-y-phan-5#comment-18</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Wed, 21 Sep 2016 16:13:32 +0000</pubDate>
+		<guid isPermaLink="false">/?p=528#comment-18</guid>
+		<description><![CDATA[^_^]]></description>
+		<content:encoded><![CDATA[<p>^_^</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Thiện Lâm</title>
+		<link>/life/xay-dung-thong-goi-y-phan-5#comment-13</link>
+		<dc:creator><![CDATA[Thiện Lâm]]></dc:creator>
+		<pubDate>Mon, 19 Sep 2016 02:35:45 +0000</pubDate>
+		<guid isPermaLink="false">/?p=528#comment-13</guid>
+		<description><![CDATA[Đồng dâm dota 2 đây rồi]]></description>
+		<content:encoded><![CDATA[<p>Đồng dâm dota 2 đây rồi</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

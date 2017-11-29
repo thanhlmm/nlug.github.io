@@ -1,0 +1,509 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Hello Yarn and good bye NPM - Blog của CuThanh</title>
+		<link rel="canonical" href="/nodejs/hello-yarn-good-bye-npm" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/nodejs\/hello-yarn-good-bye-npm","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Hello Yarn and good bye NPM","datePublished":"2016-10-13T11:29:22+00:00","dateModified":"2016-10-14T12:42:51+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/10\/Yarn-796x398.jpg","width":796,"height":398}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Hello Yarn and good bye NPM</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-10-13T11:29:22+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p>Hello world <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Bài viết này mình sẽ giới thiệu một package manager mới thay thế cho <strong>NPM</strong> được cài mặc định với <strong>Nodejs</strong>.</p>
+<p>Nếu là một nodejs developer hẳn rằng các bác sẽ thấy nó thực sự mạnh ở… <strong>NPM</strong>. Vì sao? vì đa số cái khỉ gì cũng có trên đó cả, bạn cần xây dựng một api server?</p>
+<pre class="prettyprint">npm install --save express</pre>
+<p>Bạn cần xây dựng server socket?</p>
+<pre class="prettyprint">npm install --save socket.io</pre>
+<p>Muốn đưa ứng dụng local trên máy các bác ra demo cho khách hàng, show off với mấy thằng ku mà không cần phải tốn tiền, tốn công sức deploy lên Heroku, AWS,…</p>
+<pre class="prettyprint">npm install --save localtunnel</pre>
+<p>Hay bạn có vài đoạn code hữu ích muốn chia sẻ lên công đồng? Hãy đóng gói nó lại (package), viết document (nhớ để tên tác giả to vào để lấy điểm danh vọng) rồi gửi lên, xong!. Sau đó đi khoe, mày mắc phải vấn đề này phải không? Mày đang không biết xử lý sao trong trường hợp này đúng không? <code>npm install --save my-super-package</code>. Problem solve. Ngầu chưa??? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><amp-img class="aligncenter size-full wp-image-611 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/10/1c99in.jpg" alt="1c99in" width="620" height="294" srcset="/wp-content/uploads/2016/10/1c99in.jpg 620w, /wp-content/uploads/2016/10/1c99in-300x142.jpg 300w" sizes="(min-width: 620px) 620px, 100vw"></amp-img></p>
+<p>Một vài Package mà mình học hỏi được chế lại</p>
+<p>https://www.npmjs.com/~minhthanh</p>
+<p>Nói chung, điều khiến mình thích nhất ở <strong>nodejs</strong> đó là cộng đồng. Tất cả các package ở trên đều là đóng góp của cộng đồng. Việc của các bác là lấy về sài thôi. Nếu không có sực mạnh của cộng đồng thì thực sự, để có thế khiến cho <strong>nodejs</strong> “lên đỉnh” thì anh dev phải thực sự cực kì cực kì “cứng” và “bền bỉ” <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><amp-img class="aligncenter size-full wp-image-618 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/10/1_JEWX.png" alt="1_jewx" width="665" height="379" srcset="/wp-content/uploads/2016/10/1_JEWX.png 665w, /wp-content/uploads/2016/10/1_JEWX-300x171.png 300w" sizes="(min-width: 665px) 665px, 100vw"></amp-img></p>
+<p>Tuy nhiên có một vấn đề mắc phải khi dùng <strong>NPM</strong> là thời gian download khá lâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, và phải online để có thể sử dụng đuợc (offline cũng được những phải vẽ vời lằng nhằng lắm, khó quá bỏ qua <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>). Vì thế, <strong>Facebook</strong> xin trân trọng giới thiệu đến các bác <strong>Yarn</strong> <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, công cụ thay thế cho thằng <strong>NPM</strong></p>
+<h1>Về Yarn</h1>
+<p><amp-img class="aligncenter size-full wp-image-612 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/10/Yarn-796x398.jpg" alt="yarn-796x398" width="796" height="398" srcset="/wp-content/uploads/2016/10/Yarn-796x398.jpg 796w, /wp-content/uploads/2016/10/Yarn-796x398-300x150.jpg 300w, /wp-content/uploads/2016/10/Yarn-796x398-768x384.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Theo TheNextWeb thì <strong>Yarn</strong> là</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Facebook has launched Yarn, an open source JavaScript package manager that promises faster and more reliable installs than the massively popular npm. The company says its new creation is capable of reducing install times from several minutes to just seconds in some cases – depending on the size of the packages you’re working with, of course.<span class="su-quote-cite"><a href="http://thenextweb.com/dd/2016/10/12/facebook-launches-yarn-a-faster-npm-client/" target="_blank">TheNextWeb</a></span></div></div>
+<p>Bác facebook hứa hẹn là nó sẽ nhanh hơn, mãnh mẽ hơn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> nhiều nhiều so với thằng <strong>NPM</strong> sida, giảm dung luợng, hỗ trợ cài đặt offline,…</p>
+<p>Nói chung là nhiều lắm, em chỉ thấy cái quan trọng nhất là… Nhanh, dễ triển khai và tương thích ngược với <strong>NPM</strong></p>
+<p><amp-img class="aligncenter size-large wp-image-610 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/10/Screen-Shot-2016-10-13-at-11.18.15-AM-1024x611.png" alt="screen-shot-2016-10-13-at-11-18-15-am" width="700" height="418" srcset="/wp-content/uploads/2016/10/Screen-Shot-2016-10-13-at-11.18.15-AM-1024x611.png 1024w, /wp-content/uploads/2016/10/Screen-Shot-2016-10-13-at-11.18.15-AM-300x179.png 300w, /wp-content/uploads/2016/10/Screen-Shot-2016-10-13-at-11.18.15-AM-768x458.png 768w, /wp-content/uploads/2016/10/Screen-Shot-2016-10-13-at-11.18.15-AM.png 1163w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Hình so sánh tốc độ giữa NPM và yarn, <a href="https://yarnpkg.com/en/compare" target="_blank">xem thêm tại đây</a></em></p>
+<h1>Cài đặt</h1>
+<p>Cách nhanh nhất là cài thông qua npm</p>
+<p><code>npm install -g yarn</code></p>
+<p>Nó giống như việc dùng IE để download các browser khác vậy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h1>Sử dụng</h1>
+<p>Nếu chuyển từ NPM qua thì chỉ cần thay <code>npm</code> bằng <code>yarn</code> cho hầu hết câu lệnh. Hoặc tham khảo bảng chuyển đối sau</p>
+<table><thead><tr><th>npm</th>
+<th>Yarn</th>
+</tr></thead><tbody><tr><td><code>npm install</code></td>
+<td><code>yarn install</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn install --flat</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn install --har</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn install --no-lockfile</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn install --pure-lockfile</code></td>
+</tr><tr><td><code>npm install [package]</code></td>
+<td><strong><em>(N/A)</em></strong></td>
+</tr><tr><td><code>npm install --save [package]</code></td>
+<td><code>yarn add [package]</code></td>
+</tr><tr><td><code>npm install --save-dev [package]</code></td>
+<td><code>yarn add [package] --dev</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn add [package] --peer</code></td>
+</tr><tr><td><code>npm install --save-optional [package]</code></td>
+<td><code>yarn add [package] --optional</code></td>
+</tr><tr><td><code>npm install --save-exact [package]</code></td>
+<td><code>yarn add [package] --exact</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn add [package] --tilde</code></td>
+</tr><tr><td><code>npm install --global [package]</code></td>
+<td><code>yarn global add [package]</code></td>
+</tr><tr><td><code>npm uninstall [package]</code></td>
+<td><strong><em>(N/A)</em></strong></td>
+</tr><tr><td><code>npm uninstall --save [package]</code></td>
+<td><code>yarn remove [package]</code></td>
+</tr><tr><td><code>npm uninstall --save-dev [package]</code></td>
+<td><code>yarn remove [package]</code></td>
+</tr><tr><td><code>npm uninstall --save-optional [package]</code></td>
+<td><code>yarn remove [package]</code></td>
+</tr><tr><td><strong><em>(N/A)</em></strong></td>
+<td><code>yarn upgrade [package]</code></td>
+</tr></tbody></table><p> </p>
+<p>Và <strong>yarn</strong> sử dụng lại file <code>package.json</code> của <strong>NPM</strong> nên hoàn toàn chả phải chỉnh sửa lại cái khỉ gì cả. Nếu có <code>package.json</code> sẵn thì chỉ cần <code>yarn</code> hoặc <code>yarn install</code> là xong rồi. Ez!</p>
+<p>Ngoài việc sử dụng lại file <code>package.json</code> của <strong>NPM</strong> thì <strong>yarn</strong> có sử dụng thêm một file mới là <code>yarn.lock</code>. File này có nhiệm vụ lưu lại version của package lúc bạn cài đặt, sau này đem qua máy khác nó sẽ cài đặt lại đúng version của package lúc cài đặt. Tránh tình trạng chạy mượt ở máy dev, mang đi show off cho khách lại không! <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><strong>Yarn</strong> là công cụ quản lý thôi nhé các bác, thế nên nó sẽ lấy nguồn package từ <strong>NPM</strong>, không phải lo không có package mà sài đâu</p>
+<p>Nói chung sau, 30′ nghịch ngợm thì thấy nó nhanh hơn <strong>NPM</strong> khá nhiều, các bác nên chuyển qua đi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p> </p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/nodejs" rel="category tag">NodeJS</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/dev" rel="tag">dev</a>, <a href="/tag/facebook" rel="tag">facebook</a>, <a href="/tag/npm" rel="tag">npm</a>, <a href="/tag/package-manager" rel="tag">package manager</a>, <a href="/tag/thay-doi" rel="tag">thay đổi</a>, <a href="/tag/yarn" rel="tag">yarn</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/nodejs/hello-yarn-good-bye-npm#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=609&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

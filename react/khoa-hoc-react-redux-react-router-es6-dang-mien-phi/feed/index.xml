@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: Khóa học React &#8211; Redux &#8211; React-Router &#8211; ES6 đang miễn phí</title>
+	<atom:link href="/react/khoa-hoc-react-redux-react-router-es6-dang-mien-phi/feed" rel="self" type="application/rss+xml" />
+	<link>/react/khoa-hoc-react-redux-react-router-es6-dang-mien-phi</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+</channel>
+</rss>

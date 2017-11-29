@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: SEO Angular? Ez với prerender.io!</title>
+	<atom:link href="/server/seo-angular-ez/feed" rel="self" type="application/rss+xml" />
+	<link>/server/seo-angular-ez</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/server/seo-angular-ez#comment-49</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Sun, 27 Nov 2016 15:11:54 +0000</pubDate>
+		<guid isPermaLink="false">/?p=44#comment-49</guid>
+		<description><![CDATA[Hello,
+Bạn chỉ cần cài đặt pm2 bằng lệnh &lt;code&gt;npm install pm2 -g&lt;/code&gt;
+Sau đó khởi động app bằng lệnh &lt;code&gt;pm2 start app.js&lt;/code&gt; thay vì bình thường mình chạy lệnh &lt;code&gt;node app.js&lt;/code&gt; thôi! 
+Chi tiết &lt;a href=&quot;http://pm2.keymetrics.io&quot;/ rel=&quot;nofollow&quot;&gt;http://pm2.keymetrics.io&lt;/a&gt;]]></description>
+		<content:encoded><![CDATA[<p>Hello,<br />
+Bạn chỉ cần cài đặt pm2 bằng lệnh <code>npm install pm2 -g</code><br />
+Sau đó khởi động app bằng lệnh <code>pm2 start app.js</code> thay vì bình thường mình chạy lệnh <code>node app.js</code> thôi!<br />
+Chi tiết <a href="http://pm2.keymetrics.io/" rel="nofollow">http://pm2.keymetrics.io/</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Phong</title>
+		<link>/server/seo-angular-ez#comment-48</link>
+		<dc:creator><![CDATA[Phong]]></dc:creator>
+		<pubDate>Sat, 26 Nov 2016 15:19:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=44#comment-48</guid>
+		<description><![CDATA[Chào bạn,
+
+Rất cảm ơn về chia sẻ của bạn,
+Mình muốn sử dụng pm2 thì làm sao bạn có thể chỉ mình đc ko?
+
+Thân,
+Phong.]]></description>
+		<content:encoded><![CDATA[<p>Chào bạn,</p>
+<p>Rất cảm ơn về chia sẻ của bạn,<br />
+Mình muốn sử dụng pm2 thì làm sao bạn có thể chỉ mình đc ko?</p>
+<p>Thân,<br />
+Phong.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

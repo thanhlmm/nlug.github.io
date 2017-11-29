@@ -1,0 +1,498 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Express và Sails? Cái nào tốt hơn (Phần 2) - Blog của CuThanh</title>
+		<link rel="canonical" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-2" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/nodejs\/express-va-sails-cai-nao-tot-hon-phan-2","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Express v\u00e0 Sails? C\u00e1i n\u00e0o t\u1ed1t h\u01a1n (Ph\u1ea7n 2)","datePublished":"2016-07-20T10:10:45+00:00","dateModified":"2016-07-20T10:26:24+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/expressvssails.png","width":1517,"height":626}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Express và Sails? Cái nào tốt hơn (Phần 2)</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-20T10:10:45+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="289" src="/wp-content/uploads/2016/07/expressvssails-1024x423.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/expressvssails-1024x423.png 1024w, /wp-content/uploads/2016/07/expressvssails-300x124.png 300w, /wp-content/uploads/2016/07/expressvssails-768x317.png 768w, /wp-content/uploads/2016/07/expressvssails.png 1517w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Phần 1:<a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1"> Express và sails? Cài nào tốt hơn (Phần 1)</a></p>
+<p>Chào mừng các bạn tới với phần 2. Trong phần này mình sẽ so sánh về xây dựng một Web App chung trong một source code.</p>
+<h1>Webapp chung trong một bộ source code</h1>
+<p><em><a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1" target="_blank">Trong bài viết hôm trước</a>, mình đã chứng minh cho các bác thấy là <strong>Express</strong> thắng thế nếu các bác muốn xây dựng server và client tách biệt. Vậy nếu xây dựng cả 2 trong một bộ source code thì sao, tức là server của chúng ta không chỉ cung cấp api mà cả client file nữ</em>a.</p>
+<h2>Phương thức xây dựng</h2>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Cách 1</strong></span>: Ta sẽ serve file tĩnh (static) trong một folder (Y chang như <strong>nginx</strong> đấy các bác).</p>
+<p><amp-img class="aligncenter size-full wp-image-162 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/staticexpressnonginx.png" alt="staticexpressnonginx" width="555" height="450" srcset="/wp-content/uploads/2016/07/staticexpressnonginx.png 555w, /wp-content/uploads/2016/07/staticexpressnonginx-300x243.png 300w" sizes="(min-width: 555px) 555px, 100vw"></amp-img></p>
+<p>Cách này thì chả khác gì tách biệt so với mình nói trong phần 1 nhưng lại dùng <strong>Nodejs</strong> để serve static file. WTF, <strong>Nodejs</strong> đâu có sinh ra để làm việc đấy đâu, việc đấy là của Nginx, Apache,… cơ mà <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Nodejs có thể serve static file nhưng chắc chắn, chắc chắn không thể nào tối ưu bằng <strong>Nginx</strong> hay <strong>Apache</strong> được.</p>
+<p>Mời các bạn đọc bài phân tích ở đây <a href="http://kipalog.com/posts/Cai-thien-toc-do-load-trang-cua-Express---Dung-serve-static-file-bang-nodejs" target="_blank">http://kipalog.com/posts/Cai-thien-toc-do-load-trang-cua-Express—Dung-serve-static-file-bang-nodejs</a></p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Cách 2</strong></span>: Dùng template engines, nếu dùng theo cách này thì chúng ta sài nodejs giống như kiểu php cổ điển.</p>
+<ul><li>Lấy data từ DB</li>
+<li>Xử lý</li>
+<li>Gửi cho template</li>
+<li>Render template rồi gửi về cho trình duyệt</li>
+</ul><p>Đối với mình, <strong>Nodejs</strong> là dùng ngôn ngữ <strong>JavaScript</strong> và nó hoàn toàn có lợi thế rất rất lơn nếu sử lý data thông qua <strong>JSON</strong>.</p>
+<blockquote><p><b>JSON</b> (JavaScript Object Noattion) là 1 định dạng hoán vị dữ liệu nhanh. Chúng dễ dàng cho chúng ta đọc và viết. Dễ dàng cho thiết bị phân tích và phát sinh. Chúng là cơ sở dựa trên tập hợp của Ngôn Ngữ Lập Trình <a href="http://javascript.crockford.com/" target="_blank">JavaScript</a>, tiêu chuẩn <a href="http://www.ecma-international.org/publications/files/ecma-st/ECMA-262.pdf">ECMA-262 phiên bản 3 – tháng 12 năm 1999</a>. JSON là 1 định dạng kiểu text mà hoàn toàn độc lập với các ngôn ngữ hoàn chỉnh, thuộc họ hàng với các ngôn ngữ họ hàng C, gồm có C, C++, C#, Java, JavaScript, Perl, Python, và nhiều ngôn ngữ khác. Những đặc tính đó đã tạo nên JSON 1 ngôn ngữ hoán vị dữ liệu lý tưởng.</p></blockquote>
+<p>Vậy tại sao ta không xây dựng <strong>API server</strong>, xuất ra <strong>JSON</strong> không đẹp trai hơn là phải render ra html thả về ah <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Mình đã nói lên cả 2 cách và đã nêu ra nhược điểm của cả 2. Tuy nhiên nếu bác nào “Tao thích code như vậy đấy, còn ngon hơn của mày chán <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>” thì đọc tiếp nhé!</p>
+<h2>Express</h2>
+<p>Nếu muốn làm điều này ở <strong>Express</strong> thì các bác phải cài thêm middleware <code>express.static</code> (cái này có tích hợp sẵn trong core của Express). Vậy là có thể serve static file trong folder mà các bác cấu hình.</p>
+<p>Còn nếu muốn dùng template engines thì cài đặt về, thêm vào express rồi chạy. VD với template engines <code>pug</code> nhé(trước đây nó tên là <code>Jade</code>)</p>
+<pre class="prettyprint">npm install pug --save</pre>
+<p>Load nó vào <strong>express</strong></p>
+<pre class="prettyprint">app.set('view engine', 'pug');</pre>
+<p>Tạo file template mẫu <code>./view/index.pug</code></p>
+<pre class="prettyprint">html
+  head
+    title= title
+  body
+    h1= message</pre>
+<p>Render chạy thử xem sao nào <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<pre class="prettyprint">app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});</pre>
+<p><code>node app.js</code> xem thử đi nhé, em lười lắm <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Cũng không đến nỗi khó khăn, hay dài lắm ha.</p>
+<h2>Sails</h2>
+<p>Sails thì còn nhanh hơn nữa, nó cài đặt hết cả folder serve static file, cả template engines luôn (Mặc định là <code>EJX</code>).</p>
+<p>Muốn serve static file? Thả file vào trong folder <code>./assets</code></p>
+<p>Muốn sài template? Thả file template vào folder <code>./views</code></p>
+<p>Ez life huh? Sails cũng hỗ trợ <strong>grunt</strong> nên các bác cũng có thể cài đặt, thêm task nào đó,.. Tuy nhiên càng nhiều thì mỗi lần <code>sails lift</code> lại càng rùa bò thêm <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/76e3337135a7b852053b34aadd76ba6d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img> như trong <a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1" target="_blank">phần 1</a> mình đã nói.</p>
+<p>Nói đến Web app thì không thể thiếu một phần rất quan trọng đó là <strong>Socket</strong></p>
+<blockquote><p><strong>Socket</strong> là một giao thức kết nối giữa 2 thằng server và client. Kết nối này là xuyên suốt, kiểu như thằng này nói cái gì thì thằng kia nghe được vậy. Không như http là client gửi request thì server mới được trả response về. Kết nối socket là hai chiều.</p></blockquote>
+<p><amp-img class="aligncenter size-full wp-image-163 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/socketio.png" alt="socketio" width="1116" height="677" srcset="/wp-content/uploads/2016/07/socketio.png 1116w, /wp-content/uploads/2016/07/socketio-300x182.png 300w, /wp-content/uploads/2016/07/socketio-768x466.png 768w, /wp-content/uploads/2016/07/socketio-1024x621.png 1024w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Socket thì ứng dụng nhiều thứ lắm game nè, chat nè,.. nói chung là tất cả các thứ dùng realtime thì đều nên nghĩ tới tới socket đầu tiên hết. Và đối với <strong>Nodejs</strong> thì hãy nghĩ tới <a href="http://socket.io/" target="_blank">socket.io</a></p>
+<blockquote><p><i class="larger"><a href="http://socket.io/" target="_blank">Socket.IO</a> enables real-time bidirectional event-based communication.</i><br/><i>It works on every platform, browser or device, focusing equally on reliability and speed.</i></p></blockquote>
+<h3>Express</h3>
+<p>Đối với <strong>express</strong> thì cũng khá là lăng nhằng. Bạn cài đặt <strong>socket.io</strong>, load vào <strong>Express</strong>, config <strong>Express</strong>, config Client kết nối với <strong>socket.io</strong></p>
+<p>Chi tiết</p>
+<ul><li><a href="http://www.programwitherik.com/socket-io-tutorial-with-node-js-and-express/" target="_blank">http://www.programwitherik.com/socket-io-tutorial-with-node-js-and-express/</a></li>
+<li><a href="http://socket.io/docs/" target="_blank">http://socket.io/docs/</a></li>
+</ul><h3>Sails</h3>
+<p>Sails thì nó soạn sẵn cho các bác rồi, include <code>sails.io.js</code> vào client, đọc xíu document là quẩy thôi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p>Chi tiết <a href="http://sailsjs.org/documentation/concepts/realtime" target="_blank">http://sailsjs.org/documentation/concepts/realtime</a></p>
+<p>Qua đấy bạn thấy, nếu muốn xây dựng một webapp all-in-source thì sails là Number 1</p>
+<h1>Kết luận</h1>
+<p>Qua 2 bài viết, chắc các bạn cũng thấy <strong>Express</strong> và <strong>Sails</strong> khác nhau ở chỗ nào.</p>
+<p>Nếu muốn xây dựng server và client tách biệt thì hãy dùng <strong>Express</strong> viết api, đơn giản, nhanh gọn, nhẹ.</p>
+<p>Nếu muốn xây dựng web app chung vào một bộ source, phức tạp, yêu cầu nhiều chức năng như session, cookie, socket, template,… thì hãy nghĩ ngay tới <strong>sails</strong>.</p>
+<p>Tự nhận thấy loạt bài này chưa hay, chưa rõ ràng nhưng các bác thông cảm cho em <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, em sẽ cố găng cho các lần sau <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/nodejs" rel="category tag">NodeJS</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/express" rel="tag">express</a>, <a href="/tag/sails" rel="tag">sails</a>, <a href="/tag/socket-io" rel="tag">socket.io</a>, <a href="/tag/webapp" rel="tag">webapp</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-2#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=151&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

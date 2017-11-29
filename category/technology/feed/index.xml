@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Technology &#8211; Blog của CuThanh</title>
+	<atom:link href="/category/technology/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>Technology &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Graph &#8211; Em là ai?</title>
+		<link>/technology/graph-em-la-ai</link>
+		<comments>/technology/graph-em-la-ai#respond</comments>
+		<pubDate>Wed, 14 Dec 2016 10:20:30 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[dồ thị]]></category>
+		<category><![CDATA[Graph]]></category>
+		<category><![CDATA[neo4j]]></category>
+		<category><![CDATA[node]]></category>
+
+		<guid isPermaLink="false">/?p=696</guid>
+		<description><![CDATA[<p>Chào các mẹ , kì này thấy những kiến thức hồi năm nhất khá hay nền em tìm hiểu để viết bài cho các bác (thực ra là vì nó liên quan tới mấy cái em đang nghiên cứu, không cũng chia tay lâu rồi ). Graph là gì? Đầu tiên theo nghỉa tiếng việt Graph ...</p>
+<p>The post <a rel="nofollow" href="/technology/graph-em-la-ai">Graph &#8211; Em là ai?</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/technology/graph-em-la-ai/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">696</post-id>	</item>
+		<item>
+		<title>&#8220;Hack&#8221; hệ thống captcha của trường</title>
+		<link>/technology/hack-thong-captcha-cua-truong</link>
+		<comments>/technology/hack-thong-captcha-cua-truong#comments</comments>
+		<pubDate>Mon, 12 Sep 2016 15:39:40 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[bách khoa]]></category>
+		<category><![CDATA[bypass]]></category>
+		<category><![CDATA[captcha]]></category>
+		<category><![CDATA[hack]]></category>
+
+		<guid isPermaLink="false">/?p=568</guid>
+		<description><![CDATA[<p>Chào các thím, lâu rồi không viết bài tại em cũng chả biết viết gì cả  Hôm nay em sẽ viết bài để vuợt qua hệ thống captcha của truờng mình, cụ thể là để xem thời khoá biểu (mấy thằng còn lại cũng y chang) &#8220;Linh&#8221; : http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb Các bác thấy cái số 94 không, ...</p>
+<p>The post <a rel="nofollow" href="/technology/hack-thong-captcha-cua-truong">&#8220;Hack&#8221; hệ thống captcha của trường</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/technology/hack-thong-captcha-cua-truong/feed</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">568</post-id>	</item>
+		<item>
+		<title>Hướng dẫn Jailbreak iOS 9.2 &#8211; 9.3.3 trực tiếp trên điện thoại</title>
+		<link>/technology/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai</link>
+		<comments>/technology/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai#comments</comments>
+		<pubDate>Mon, 25 Jul 2016 03:35:17 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[cydia]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[ios 9.3]]></category>
+		<category><![CDATA[iphone lock]]></category>
+		<category><![CDATA[jailbreak]]></category>
+		<category><![CDATA[trực tiếp]]></category>
+
+		<guid isPermaLink="false">/?p=225</guid>
+		<description><![CDATA[<p>Hello, trong thời gian gần đây thì iFan cực kì vui sướng vì sau bao nhiều thời gian ngóng chờ thì cuối cùng câu hỏi &#8220;Liệu có thể Jailbreak iOS 9.3 được không&#8221; đã có câu trả lời. CÓ . Mình xin dịch lại bài hướng dẫn Jailbreak trực tiếp cho anh em tiện JB. Link ...</p>
+<p>The post <a rel="nofollow" href="/technology/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai">Hướng dẫn Jailbreak iOS 9.2 &#8211; 9.3.3 trực tiếp trên điện thoại</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/technology/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai/feed</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">225</post-id>	</item>
+	</channel>
+</rss>

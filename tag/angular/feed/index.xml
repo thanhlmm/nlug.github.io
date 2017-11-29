@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>angular &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/angular/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>angular &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Viết app Angular siêu tốc với Angular generator</title>
+		<link>/web-app/viet-app-angular-sieu-toc-voi-angular-generator</link>
+		<comments>/web-app/viet-app-angular-sieu-toc-voi-angular-generator#respond</comments>
+		<pubDate>Tue, 19 Jul 2016 02:36:35 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Web App]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[angular generator]]></category>
+		<category><![CDATA[bower]]></category>
+		<category><![CDATA[yeoman]]></category>
+
+		<guid isPermaLink="false">/?p=121</guid>
+		<description><![CDATA[<p>Các bác dev Angular thì bắt đầu như thế nào. Em thì hồi trước phải : Download Angular Thêm vào index.html Tạo file app.js, thêm vào index.html angular.module('myApp', ['bla', 'balo']); Download thêm các package, rồi lại inject vào Tạo file controller, view, service, filter  vân vân và mây mây  Cực quá ha các bác, vậy ...</p>
+<p>The post <a rel="nofollow" href="/web-app/viet-app-angular-sieu-toc-voi-angular-generator">Viết app Angular siêu tốc với Angular generator</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/web-app/viet-app-angular-sieu-toc-voi-angular-generator/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">121</post-id>	</item>
+		<item>
+		<title>Thêm thanh loading ở đầu trang như YouTube cho Angular</title>
+		<link>/web-app/thanh-loading-o-dau-trang-nhu-youtube</link>
+		<comments>/web-app/thanh-loading-o-dau-trang-nhu-youtube#respond</comments>
+		<pubDate>Sun, 17 Jul 2016 09:47:01 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Web App]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[Loading bar]]></category>
+		<category><![CDATA[YouTube]]></category>
+
+		<guid isPermaLink="false">/?p=67</guid>
+		<description><![CDATA[<p>He nhô&#8230;.  Bài viết này mình sẽ hướng dẫn các bác thêm thanh loading ở đầu trang giống YouTube. Giới Thiệu Hiện nay thì phong trao làm webapp đang lên cao, có rất rất nhiều công cụ hỗ trợ mình thêm các chức năng cool cool vào webapp. Một trong các cái mình thích nhất ...</p>
+<p>The post <a rel="nofollow" href="/web-app/thanh-loading-o-dau-trang-nhu-youtube">Thêm thanh loading ở đầu trang như YouTube cho Angular</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/web-app/thanh-loading-o-dau-trang-nhu-youtube/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">67</post-id>	</item>
+		<item>
+		<title>SEO Angular? Ez với prerender.io!</title>
+		<link>/server/seo-angular-ez</link>
+		<comments>/server/seo-angular-ez#comments</comments>
+		<pubDate>Sun, 17 Jul 2016 01:00:19 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Server]]></category>
+		<category><![CDATA[Web App]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[Prerender]]></category>
+		<category><![CDATA[SEO]]></category>
+
+		<guid isPermaLink="false">/?p=44</guid>
+		<description><![CDATA[<p>Vấn đề Hiện nay thì mặc dù thằng Google đã hỗ trợ Crawl Javascript nhưng theo mình thấy thì vẫn chưa ổn định mấy và Internet rộng lớn lắm, có mình mày hỗ trợ thì tao sống không nổi đâu. Vd như Crawler của Facebook. Các bạn truy cập https://developers.facebook.com/tools/debug/sharing/ Paste link website rồi ấn ...</p>
+<p>The post <a rel="nofollow" href="/server/seo-angular-ez">SEO Angular? Ez với prerender.io!</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/server/seo-angular-ez/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">44</post-id>	</item>
+	</channel>
+</rss>

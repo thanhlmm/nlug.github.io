@@ -1,0 +1,466 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Khởi nghiệp dưới góc nhìn lập trình viên - Blog của CuThanh</title>
+		<link rel="canonical" href="/startup/khoi-nghiep-duoi-goc-nhin-lap-trinh-vien" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/startup\/khoi-nghiep-duoi-goc-nhin-lap-trinh-vien","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Kh\u1edfi nghi\u1ec7p d\u01b0\u1edbi g\u00f3c nh\u00ecn l\u1eadp tr\u00ecnh vi\u00ean","datePublished":"2016-07-23T10:00:02+00:00","dateModified":"2016-07-23T10:05:18+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/startup.jpg","width":648,"height":402}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+			</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Khởi nghiệp dưới góc nhìn lập trình viên</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-23T10:00:02+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="648" height="402" src="/wp-content/uploads/2016/07/startup.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/startup.jpg 648w, /wp-content/uploads/2016/07/startup-300x186.jpg 300w" sizes="(min-width: 648px) 648px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<div class="_2cuy _3dgx _2vxa"><em><strong>Thực trạng của mình</strong></em>: Startup team làm thì đổ bể, <a href="/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui" target="_blank">InboxTui </a>một mình làm thì chả có bước tiến triển gì khả quan. Buồn. Ngẫm lại không biết mình thiếu những gì,… lang thang facebook như Chí Phèo, chửi cuộc sống, chửi máy tính, chửi Facebook, chửi cả bản thân <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img> thì đọc được bài viết này, mình chia sẻ lên đây để mọi người nếu ai cùng có ước muốn như mình, suy ngẫm một tí nên bước tiếp làm sao.</div>
+<div class="_2cuy _3dgx _2vxa">Toàn bộ bài viết được copy của tác giả <strong>Phan Nam Thắng</strong> FB <a href="https://www.facebook.com/phannamthang86" target="_blank">https://www.facebook.com/phannamthang86</a></div>
+<h1 class="_2cuy _3dgx _2vxa">Bài viết</h1>
+<div class="_2cuy _3dgx _2vxa">Chào mọi người. Mình là 1 lập trình viên kinh nghiệm gần chục năm, giỏi thì cũng chẳng giỏi, dốt thì cũng không dốt, nói chung cũng bình thường. Mình đã từng làm nhiều vị trí, từ coder đến phó phòng, đã từng ở EVN, Viettel, hiện tại đang làm cho Guu. Mình có tìm hiểu về startup nhưng cảm thấy nó không hợp. Mình xin được chia sẻ như sau: (Đây chỉ là ý kiến cá nhân)</div>
+<div class="_2cuy _3dgx _2vxa"></div>
+<h2 class="_2cuy _3dgx _2vxa"><span class="_5yi-">Mở đầu</span></h2>
+<div class="_2cuy _3dgx _2vxa">Startup, Từ khóa hot nhất hiện nay của các lập trình viên chuyên nghiệp. Các lập trình viên giỏi hoặc tự nhận là giỏi giờ toàn nghỉ rồi tự ra làm khởi nghiệp. Mình cũng từng là 1 trong số ấy, nhưng dự án khởi nghiệp của mình đổ bể ngay từ trứng nước do lười. :)) Bản thân mình nghĩ là khoảng 95% dự án startup đổ bể, 3% sống lay lắt, 1% sống tốt nhưng kiểu ẩn dật không ai biết, 1% thì nhìn có vẻ thành công nhưng bên trong như shit (Chút nữa, mình sẽ nói rõ hơn về đoạn này 🙂 )</div>
+<div class="_2cuy _3dgx _2vxa"><span class="_5yi-">Những khó khăn bạn sẽ gặp phải: (Mình nói ý chính thôi)</span></div>
+<ul class="_5a_q _5yj1" dir="ltr"><li class="_2cuy _509q _2vxa"><strong>Gia đình và tài chính</strong>: Nếu bạn độc thân hoặc may mắn có gia đình nhưng nhà bạn có nguồn thu khác ổn đinh. Không thì việc khởi nghiệp rất khó khăn. 1,2 năm đầu dự án sẽ chưa có nguồn thu và tương lai dự án cũng nói thật là chưa biết thế nào được. Startup thì cũng cần server, cần tiền để duy trì dự án.</li>
+<li class="_2cuy _509q _2vxa"><strong>Cộng sự</strong>: Việc tìm được 1 công sự tốt và tin tưởng nhau vô cùng khó, chả ai startup 1 mình được cả. Mình đã thấy nhiều trường hợp đổ bể vì cộng sự tồi và lười làm, nói hay nhưng không làm hoặc không chịu cố gắng</li>
+<li class="_2cuy _509q _2vxa"><strong>Công nghệ</strong>: Bạn đang là 1 lập trình viên giỏi vơ lề ở 1 công ty, gần như là 1 main chính của chính. Bạn nghĩ mình rất giỏi, bạn quyết định nghỉ việc để khởi nghiệp. Ô kìa, công nghệ bạn biết ở công ty cũ đã quá lỗi thời so với công nghệ hiện tại khoảng 10 năm. Startup xôi hỏng bỏng không vì trải nghiệm người dùng quá không tốt và quá mất thời gian để lập trình</li>
+<li class="_2cuy _509q _2vxa"><strong>Nhân viên</strong>: Startup thành công bước đầu, bạn bắt đầu tuyển nhân viên. Mẹ, nhân viên khó tìm vãi, thằng giỏi thì tuyển nó đòi lương cao, lương cao và hậu mãi nhiều. Bạn lại đi tìm thằng dốt hơn 1 chút, thằng dốt hơn thì đòi phải làm trưởng nhóm, em phải cầm đầu chục đứa, kiểu vậy. Bạn quyết định tìm thằng dốt hơn tí nữa… nuôi thằng này 2 năm chưa ra được sản phẩm.Nhân sự quyết định rất nhiều trong việc thành công hay thất bại. CTO chưa chắc biết quản lý con người.</li>
+</ul><h2 class="_2cuy _3dgx _2vxa"><span class="_5yi-">Bạn nhận ra những khó khăn trên, bạn quyết định giải quyết nó</span></h2>
+<ul class="_5a_q _5yj1" dir="ltr"><li class="_2cuy _509q _2vxa">Đi nghe chia sẻ khởi nghiệp: trên mạng có 1 đống các thể loại CEO, CTO đi chia sẻ về việc khởi nghiệp. Họ nói về thành công, khó khăn và kinh nghiệm. Nhưng mình tin là nghe không có tác dụng gì cả, chỉ khi bạn thực sự dấn thân mình vào đó thì mới hiểu là kinh nghiệm của người khác không có tác dụng gì với bạn.</li>
+<li class="_2cuy _509q _2vxa">Bạn quyết định không cần cộng sự vì không tìm được ai tin tưởng, tôi tin rằng dù bạn giỏi đến mấy thì dự án của bạn cũng hỏng</li>
+<li class="_2cuy _509q _2vxa">Học thêm công nghệ mới: Bạn tự học công nghệ mới để áp dụng cho startup. Vài hôm sau bạn nhận ra rằng công nghệ bạn vừa chọn nó lại cũ hơn với thị trường 5 năm</li>
+<li class="_2cuy _509q _2vxa">Tự làm từ a-&gt;z, bố giỏi cần gì nhân viên: Dự án chắc 5 năm mới xong :))</li>
+</ul><h2 class="_2cuy _3dgx _2vxa"><span class="_5yi-">Bạn vẫn tiếp tục đi tiếp</span></h2>
+<ul class="_5a_q _5yj1" dir="ltr"><li class="_2cuy _509q _2vxa">Startup thực sự là gian nan nếu bạn chỉ là 1 lập trình viên giỏi. Ngoài như thế, bạn còn cần phải có vốn hiểu biết kha khá về cuộc sống, về con người, về khách hàng. Nếu bạn không biết những điều đó, việc đổ bể của startup là điều gần như chắc chắn.</li>
+<li class="_2cuy _509q _2vxa">Nhanh nhạy, bạn phải đủ nhanh nhạy để nắm bắt thị trường,hãy dừng ngay 1 tính năng gì đó mà không mang lại hiệu quả.</li>
+<li class="_2cuy _509q _2vxa">Kỹ năng mềm, quan hệ tốt. Startup không giống như trong phim, bạn cần mối quan hệ thật tốt, chả có ông lập trình viên nào ru rú trên 1 cái máy tính, kỹ năng mềm gần như bằng không mà có thể dựng được 1 startup thành công</li>
+</ul><h2 class="_2cuy _3dgx _2vxa"><span class="_5yi-">Câu chuyện startup càng phức tạp khi nó cần kêu gọi nhà đầu tư</span></h2>
+<div class="_2cuy _3dgx _2vxa">Vì bạn phải chứng minh, ô, dự án của tao hót vê lồi, người dùng mày thấy không, hàng ngày có hàng chục nghìn người dùng .v.v. Mình đã từng phân tích 1 dự án starup khá hót là loz… . (Không phải ai cũng phân tích sâu như mình). Mình thực hiện cralwer toàn bộ người dùng, post và action của người dùng trên dự án này thì thật là choáng váng, 60% là ảo, là bót. Việc dựng 1 con bot để tự like, tự tạo BST mình tin là rất dễ dàng. Vậy startup thành công là lừa lọc nhà đầu tư?? – Đến đây thì mình chán cmnn. Loz… là kiểu 1% dự án nhìn có vẻ hot nhưng bên trong như shit (Như mình nói ở phần mở đầu)</div>
+<div class="_2cuy _3dgx _2vxa"></div>
+<h2 class="_2cuy _3dgx _2vxa"><span class="_5yi-">Có nhiều người thành công</span></h2>
+<div class="_2cuy _3dgx _2vxa">1% mình tin là luôn có 1 số lượng người thành công trong thầm lặng. Họ kêu gọi đầu tư thành công, có nhiều người dùng, công nghệ họ tốt, họ đã có doanh thu và không lừa lọc nhà đầu tư.</div>
+<div class="_2cuy _3dgx _2vxa"></div>
+<h2 class="_2cuy _3dgx _2vxa"><span class="_5yi-">Kết luận lại</span></h2>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Nếu bạn thấy mình không có tố chất lãnh đạo, kỹ năng mềm hầu như không có mà chỉ thuần chuyên môn giỏi, mình nghĩ bạn nên chỉ là 1 coder chuyên nghiệp, gia đình, con cái sẽ ổn định hơn là bạn quyết định startup. Coder chuyên nghiệp lương lậu cũng khá, chả phải lo gì, cứ code thôi. Đời chả sướng à.<span class="su-quote-cite"><a href="https://www.facebook.com/phannamthang86" target="_blank">Phan Nam Thắng</a></span></div></div>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/startup" rel="category tag">Startup</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/khoi-nghiep" rel="tag">Khởi nghiệp</a>, <a href="/tag/kinh-nghiem" rel="tag">kinh nghiệm</a>, <a href="/tag/lap-trinh-vien" rel="tag">lập trình viên</a>, <a href="/tag/startup" rel="tag">startup</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/startup/khoi-nghiep-duoi-goc-nhin-lap-trinh-vien#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=209&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

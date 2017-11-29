@@ -1,0 +1,572 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Cùng nhau học Scala. Phần 1: Tìm tài liệu và những bước cơ bản - Blog của CuThanh</title>
+		<link rel="canonical" href="/scala/cung-nhau-hoc-scala-phan-1-tim-tai-lieu-va-nhung-buoc-co-ban" />
+			<script custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" async></script>
+			<script custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js" async></script>
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/scala\/cung-nhau-hoc-scala-phan-1-tim-tai-lieu-va-nhung-buoc-co-ban","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"C\u00f9ng nhau h\u1ecdc Scala. Ph\u1ea7n 1: T\u00ecm t\u00e0i li\u1ec7u v\u00e0 nh\u1eefng b\u01b0\u1edbc c\u01a1 b\u1ea3n","datePublished":"2016-08-22T21:41:00+00:00","dateModified":"2016-08-23T14:20:58+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/08\/scala.gif","width":635,"height":282}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Cùng nhau học Scala. Phần 1: Tìm tài liệu và những bước cơ bản</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-08-22T21:41:00+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-anim width="635" height="282" src="http://cuthanh.com/wp-content/uploads/2016/08/scala.gif" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" sizes="(min-width: 635px) 635px, 100vw"></amp-anim>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Đầu tiên phải tìm tài liệu xem người ta nói nó làm sao đã. Mình tìm được những nguồn như sau:</p>
+<ul><li><a href="http://www.artima.com/pins1ed/" target="_blank">Programming in Scala</a> by Martin Odersky, Lex Spoon, and Bill Venners (Quyển này rất hay, mình đang theo nó)</li>
+<li><a href="https://hoaiptvn.blogspot.com/" target="_blank">Blog của bác Phạm Thanh Hoài</a> – (Nguồn duy nhất của Việt Nam mà mình thấy nó đầy đủ, Ok nhất)</li>
+<li>Ngoài ra có các bài lẻ tẻ các bác tự search google nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ul><p>Sách “Programming in Scala” rất hay, áp dụng cho các bác nào đã có cơ bản về lập trình rồi. Còn của bác Phạm Thanh Hoài thì dành cho bác nào gosu rồi, thật ra mình đọc còn nhiều khái niệm mơ hồ lắm với lại học lập trình nên học tiếng anh cho nó oai <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Update: Mình tìm được một video Youtube rất hay, cơ bản nói về Scala cho các bạn luôn nhé</p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"></p><div class="su-youtube su-responsive-media-yes"><amp-iframe width="600" height="400" src="https://www.youtube.com/embed/DzFt0YkZo8M" frameborder="0" allowfullscreen="" sandbox="allow-scripts allow-same-origin" sizes="(min-width: 600px) 600px, 100vw" class="amp-wp-enforced-sizes"><div placeholder="" class="amp-wp-iframe-placeholder"></div></amp-iframe></div>
+<h1>Những gì mình học được</h1>
+<h2>Chạy Scala kiểu Interpreter</h2>
+<p>Mở <a href="/tools/cmder-dem-unix-bash-len-windows" target="_blank">CMDER </a>lên, gõ <code>scala</code></p>
+<p><amp-img class="aligncenter size-full wp-image-549 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/08/scalainterpreter.jpg" alt="scalainterpreter" width="818" height="473" srcset="/wp-content/uploads/2016/08/scalainterpreter.jpg 818w, /wp-content/uploads/2016/08/scalainterpreter-300x173.jpg 300w, /wp-content/uploads/2016/08/scalainterpreter-768x444.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Cái này y chang với Nodejs luôn, EZ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Từ bài này mình sẽ chỉ làm việc trên đây thôi nhé, tìm hiểu những cái cơ bản nhất đã.</p>
+<h2>Các kiểu dữ liệu(Data Type) trong Scala</h2>
+<p><amp-img class="size-large aligncenter amp-wp-enforced-sizes" src="https://4.bp.blogspot.com/-g4wrIMW73xs/VsmI8Lfd1yI/AAAAAAAAYGE/1jRY6ZoOwZw/s640/scalaType.png" alt="" width="640" height="425" sizes="(min-width: 640px) 640px, 100vw"></amp-img></p>
+<p>Đấy là tất cả các kiểu dữ liệu trong Scala. Thằng ông tổ là <code>scala.Any</code>. Chỉ có thể chuyển kiểu dữ liệu theo chiều mũi tên nét đứt</p>
+<pre class="prettyprint">scala&gt; var songuyen:Int = 10000
+songuyen: Int = 10000
+
+scala&gt; var sokhongnguyen:Long = songuyen
+sokhongnguyen: Long = 10000
+
+scala&gt; var byte:Byte = songuyen
+&lt;console&gt;:12: error: type mismatch;
+ found   : Int
+ required: Byte
+       var byte:Byte = songuyen
+                       ^
+</pre>
+<p>Như ví dụ trên, <strong>Int</strong> có thể trở thành <strong>Long</strong> nhưng không convert nó thành <strong>Byte</strong> được đâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Scala là ngôn ngữ <strong>OOP</strong> nên tất cả đều là <strong>Object</strong> và có quan hệ tổ tiên, gốc gác với nhau  hết nhé.</p>
+<p>Mình xin liệt kê một vài thằng cơ bản hay sử dụng. Mấy thằng còn lại tạm thời “chừa nó ra” nha các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<div class="su-table">
+<table><tbody><tr><td>Kiểu(DataType)</td>
+<td>Mô tả</td>
+</tr><tr><td>Int</td>
+<td>Số nguyên. VD: 6969</td>
+</tr><tr><td>Char</td>
+<td>Một kí tự. VD: “C”</td>
+</tr><tr><td>String</td>
+<td>Một chuỗi kí tự. VD: “cuThanh xin chào các bác”</td>
+</tr><tr><td>Boolean</td>
+<td>Đúng sai. VD: true/false</td>
+</tr><tr><td>Unit</td>
+<td>Méo trả cái gì cả</td>
+</tr><tr><td>Null</td>
+<td>Giống với cái tên của nó</td>
+</tr></tbody></table></div>
+<p> </p>
+<h2>Biến, hàm (Variable, Function)</h2>
+<p>Định nghĩ biến theo công thức</p>
+<pre class="prettyprint">var cuthanh:String = "Soai ca" // Biến
+val contrai:Boolean = true // Hằng
+</pre>
+<p>Scala có một số từ khác với mấy cái em học</p>
+<p><strong>Cons</strong>(tant) trong JS sẽ được gọi là <strong>Val</strong>(ue) trong Scala và trong tiếng việt gọi là Hằng đấy các mẹ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Hằng thì không thay đổi giá trị được, vậy thôi!</p>
+<p>Ngoài ra, <strong>Scala</strong> không cần thêm “;” ở cuối câu lệnh nha, y chang JS <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h2>Tiếp theo sẽ là hàm</h2>
+<p>Phần này khá thú vị vì <strong>Scala</strong> cũng là <em>Function language</em></p>
+<p><strong>Function</strong> trong JS sẽ trở thành <strong>def</strong>(ine) trong <strong>Scala</strong>. Vì thế, định nghĩa 1 hàm sẽ là</p>
+<pre class="prettyprint">def tenham(thamso:DataType):Datatype = {
+    {câu lệnh}
+}</pre>
+<p>Thường thì bạn nên xác định kiểu dữ liệu trả về, không thì thằng <strong>Scala</strong> tự kiếm cho các bạn cũng được. Giống với Coffeescript, <strong>dòng lệnh cuối cùng cùng là dòng return luôn</strong> nhé (trong trường hợp các bác không sài từ khóa return trong hàm đấy).</p>
+<h3>Function có tham số(Parameters) không giới hạn</h3>
+<pre class="prettyprint">scala&gt; def inCacSoSau(daySo:Int*):Unit = for (i &lt;- daySo) println(i)
+inCacSoSau: (daySo: Int*)Unit
+
+scala&gt; inCacSoSau(1,2,3)
+1
+2
+3</pre>
+<h3>Gom nhóm các tham số (Parameters)</h3>
+<pre class="prettyprint">scala&gt; def inDaySauTruoc(daySo1:Int*)(daySo2:Int*) = {
+     | for (i &lt;- daySo2) println(i)
+     | for (i &lt;- daySo1) println(i)
+     | }
+inDaySauTruoc: (daySo1: Int*)(daySo2: Int*)Unit
+
+scala&gt; inDaySauTruoc(9)(6)
+6
+9</pre>
+<p>Bá chưa, mấy cái thằng em đã học chả thấy thằng nào có kiểu nhây như vậy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h3>Kiểu Output theo kiểu của Input</h3>
+<pre class="prettyprint">scala&gt; def anyThings[A](x: A):A = x
+anyThings: [A](x: A)A
+
+scala&gt; anyThings("Hello")
+res12: String = Hello
+
+scala&gt; anyThings(69)
+res13: Int = 69</pre>
+<p>Trong đây, A là kí tự thay thế thôi (chúng ta hiểu nó là AnyThing), các bác sử dụng B, C,… gì cũng được</p>
+<h3>Hàm lồng nhau (Nested Function)</h3>
+<pre class="prettyprint">scala&gt; def max3(a:Int, b:Int, c:Int):Int = {
+     | def max2(a:Int, b:Int):Int = if (a &gt; b) a else b
+     | max2(a,max2(b,c))
+     | }
+max3: (a: Int, b: Int, c: Int)Int
+
+scala&gt; max3 (6,9,10)
+res14: Int = 10
+
+scala&gt; max2(9,6)
+&lt;console&gt;:12: error: not found: value max2
+       max2(9,6)
+       ^</pre>
+<p>Imba chưa, bạn định nghĩa hàm <code>max2</code> ngay trong hàm <code>max3</code>. Tuy nhiên hàm <code>max2</code> chỉ được sự dụng trong cặp ngoặc <code>{}</code> mà nó được định nghĩa thôi nhé, không sài bên ngoài được. Hơi buồn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/79655ff22c4eb02aba73a3e2728e3b30.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Từ CoffeeScript, ES5 Chuyển sang ?</p>
+<p>Làm thử quả hàm callback nhé</p>
+<pre class="prettyprint">scala&gt; def step (n:Int, callback:(Int) =&gt; Unit) {
+     | println("Buoc "+n)
+     | callback(n+1)
+     | }
+step: (n: Int, callback: Int =&gt; Unit)Unit
+
+scala&gt; step (1, (a:Int) =&gt; println("Ham callback tiep theo"+a))
+Buoc 1
+Ham callback tiep theo2</pre>
+<p>Biến (variable) cũng có thể trở thành hàm</p>
+<pre class="prettyprint">scala&gt; var taoLaVar = (n:Int) =&gt; print("May vua nhap "+n)
+taoLaVar: Int =&gt; Unit = &lt;function1&gt;
+
+scala&gt; taoLaVar(69)
+May vua nhap 69</pre>
+<p>Giống JS, right?</p>
+<h1>Kết</h1>
+<p>Hôm nay đã biết sơ sơ, cơ bản về Scala rồi, nhìn chung theo mình thì đúng là quảng cáo. Thầy mình nói là “<em>có thể giải quyết vấn đề phức tạp chỉ với vài dòng code</em>“, mình thấy vẫn ngắn hơn CoffeeScript và cũng chưa súc tính, văn hoa bằng. Không biến tương lai có chứng minh là Scala ngon hơn không? Các bạn đón đọc nhé</p>
+<p>Scala có thay đổi một số từ khóa so với các ngôn ngữ mình đã học như</p>
+<p><code>val</code> trong <strong>Scala</strong> =&gt; <code>const</code> trong <strong>JS</strong></p>
+<p><code>def</code> trong <strong>Scala</strong> =&gt; <code>function</code> trong <strong>JS</strong></p>
+<p>Mình sẽ lập một bảng chuyển đổi và thêm vào dữ liệu nếu mình phát hiện ra cái mới tại đây</p>
+
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/scala" rel="category tag">Scala</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/bien" rel="tag">bien</a>, <a href="/tag/ebook" rel="tag">ebook</a>, <a href="/tag/function" rel="tag">function</a>, <a href="/tag/ham" rel="tag">ham</a>, <a href="/tag/scala" rel="tag">Scala</a>, <a href="/tag/tai-lieu" rel="tag">tai lieu</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/scala/cung-nhau-hoc-scala-phan-1-tim-tai-lieu-va-nhung-buoc-co-ban#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=548&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

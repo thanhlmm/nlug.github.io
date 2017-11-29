@@ -1,0 +1,481 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Giới thiệu dịch vụ chat với người lạ InboxTui - Blog của CuThanh</title>
+		<link rel="canonical" href="/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui" />
+			<script custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" async></script>
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/startup\/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Gi\u1edbi thi\u1ec7u d\u1ecbch v\u1ee5 chat v\u1edbi ng\u01b0\u1eddi l\u1ea1 InboxTui","datePublished":"2016-07-18T19:06:00+00:00","dateModified":"2016-07-21T23:04:41+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/header.png","width":1569,"height":761}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}.amp-wp-inline-014cc0e912c700f1e5e6d44cbcff15a0{border:none;overflow:hidden;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Giới thiệu dịch vụ chat với người lạ InboxTui</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-18T19:06:00+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="340" src="/wp-content/uploads/2016/07/header-1024x497.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/header-1024x497.png 1024w, /wp-content/uploads/2016/07/header-300x146.png 300w, /wp-content/uploads/2016/07/header-768x372.png 768w, /wp-content/uploads/2016/07/header.png 1569w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<h1>15 giây quảng cáo…</h1>
+<p>Bạn cô đơn? Mười mấy tuổi đầu rồi mà chưa có gấu? Vừa mới chia tay tình yêu đầu đời? Gặp khó khăn trong chuyện gia đình?,.. hãy tới với <strong>InboxTui</strong>. <strong>Inboxtui</strong> là dịch vụ giúp bạn chat với người lạ cực kì nhanh chóng. Chỉ cần bạn đang sử dụng Facebook là có thể sử dụng <strong>InboxTui</strong> để chat với người lạ, tìm một người để cho bạn dãi bày tâm sự hay là kiếm được một nửa của đời mình <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<amp-iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FInboxTui%2Fvideos%2F1779784485566371%2F&amp;show_text=1" height="419" frameborder="0" allowtransparency="" class="amp-wp-inline-014cc0e912c700f1e5e6d44cbcff15a0" sandbox="allow-scripts allow-same-origin" layout="fixed-height"><div placeholder="" class="amp-wp-iframe-placeholder"></div></amp-iframe>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Video giới thiệu InboxTui</em></p>
+<h1>Giới thiệu</h1>
+<p>Hehe đa cấp vậy thôi. Mình viết bài này là muốn giới thiệu tới các bác start-up chat với người lạ mà mình xây dựng – <strong>InboxTui</strong>. Đây là ứng dụng giựa trên API Messenger của Facebook, mình sử dụng nó để kết nối 2 người ngẫu nhiên nói chuyện với nhau thông qua Fanpage <a href="https://www.facebook.com/InboxTui/" target="_blank">InboxTui</a>. Mình có xây dựng theo giống như <strong>Chatible</strong> nhưng bỏ sung thêm nhiều tính năng mà <strong>Chatible</strong> thiếu như:</p>
+<ul><li>Cho phép gửi hình ảnh</li>
+<li>Chat với Bot trong lúc chờ đợi hoặc buồn quá chat với Bot cũng được <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></li>
+<li>Like 2 lần để kết thúc</li>
+<li>Tính năng “Khoảng khắc InboxTui” nữa</li>
+</ul><p><em>Thật sự là mong mọi người ủng hộ thay vì sử dụng <strong>Chatible </strong><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2295eb38bfeb56ab060aaf8e4bd2315.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Tại sao không thử một lần xem sản phẩm của người Việt, dành riêng cho người Việt cũng không sida đến nỗi như các bác tưởng tượng đâu <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</em></p>
+<h1>Hướng dẫn sử dụng</h1>
+<h2>Kết nối với InboxTui</h2>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Cách 1</strong></span>: Thông qua ứng dụng Messenger trên điện thoại.</p>
+<p><amp-img class="size-large wp-image-96 aligncenter amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/hinh-4-547x1024.png" alt="hinh-4" width="547" height="1024" srcset="/wp-content/uploads/2016/07/hinh-4-547x1024.png 547w, /wp-content/uploads/2016/07/hinh-4-160x300.png 160w, /wp-content/uploads/2016/07/hinh-4-768x1438.png 768w, /wp-content/uploads/2016/07/hinh-4.png 1022w" sizes="(min-width: 547px) 547px, 100vw"></amp-img></p>
+<p>Các bác search từ khóa “<em>InboxTui”</em> rồi ấn vào là được.</p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Cách 2</strong></span>: Thông qua fan page InboxTui – dành cho các bác đang sài facebook trên điện thoại.</p>
+<amp-iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FInboxTui&amp;tabs=timeline%2C%20messages&amp;width=500&amp;height=400&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=1113741398719049" width="500" height="400" frameborder="0" class="amp-wp-inline-014cc0e912c700f1e5e6d44cbcff15a0 amp-wp-enforced-sizes" sandbox="allow-scripts allow-same-origin" sizes="(min-width: 500px) 500px, 100vw"><div placeholder="" class="amp-wp-iframe-placeholder"></div></amp-iframe>
+<p> </p>
+<p>Các bác truy cập Fanpage của InboxTui <a href="https://www.facebook.com/InboxTui/" target="_blank">https://www.facebook.com/InboxTui/ </a>Like rồi Inbox nhé <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Cách 3</strong></span>: Thông qua website <a href="http://inboxtui.com/homepage" target="_blank">InboxTui</a></p>
+<p><amp-img class="aligncenter wp-image-99 size-full amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/show2.png" alt="show2" width="1226" height="731" srcset="/wp-content/uploads/2016/07/show2.png 1226w, /wp-content/uploads/2016/07/show2-300x179.png 300w, /wp-content/uploads/2016/07/show2-768x458.png 768w, /wp-content/uploads/2016/07/show2-1024x611.png 1024w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Hướng dẫn sử dụng ở trang chủ</em></p>
+<p>Truy cập vào trang chủ InboxTui <a href="http://inboxtui.com/" target="_blank">http://inboxtui.com</a> rồi click vào nút <strong>InboxTui</strong> là được (áp dụng cho cả điện thoại và máy tính <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>)</p>
+<p>Khi kết nối với <strong>InboxTui</strong> rồi thì bot sẽ hỏi bạn muốn chat với BOT hay là muốn tìm người tâm tình, có muốn làm nông dân hay không <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p><amp-img class="size-full wp-image-100 aligncenter amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/moment1.png" alt="moment1" width="737" height="714" srcset="/wp-content/uploads/2016/07/moment1.png 737w, /wp-content/uploads/2016/07/moment1-300x291.png 300w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Một đoạn chat với Bot được chia sẻ thông qua Khoảng khắc InboxTui</em></p>
+<h2>Kết thúc cuộc trò chuyện</h2>
+<p>Nếu muốn kết thúc đoạn hội thoại thì các bác ấn nút Like 2 lần (Hồi trước để Like là kết thúc nên khiến nhiều người “lạc” mất nhau <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>)</p>
+<p><amp-img class="size-full wp-image-101 aligncenter amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/Like2times.png" alt="Like2times" width="800" height="466" srcset="/wp-content/uploads/2016/07/Like2times.png 800w, /wp-content/uploads/2016/07/Like2times-300x175.png 300w, /wp-content/uploads/2016/07/Like2times-768x447.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<h1>Khoảng khắc InboxTui</h1>
+<p>Tính năng mà mình thích nhất mà mình xây dựng cho <strong>InboxTui</strong> là “Khoảng khắc InboxTui”</p>
+<p>Sau mỗi lần kết thúc cuộc trò chuyện, bot sẽ hỏi bạn có muốn chia sẻ đoạn hội thoại không. Nếu thấy đoạn hội thoại này khá vui, nhây nhớt, lầy, bựa,… thì các bác chia sẻ cho cộng đồng biết. Có khi nổi tiểng đấy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p><amp-img class="aligncenter wp-image-102 size-full amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/feedInboxtui.png" alt="feedInboxtui" width="1242" height="764" srcset="/wp-content/uploads/2016/07/feedInboxtui.png 1242w, /wp-content/uploads/2016/07/feedInboxtui-300x185.png 300w, /wp-content/uploads/2016/07/feedInboxtui-768x472.png 768w, /wp-content/uploads/2016/07/feedInboxtui-1024x630.png 1024w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Giao diện Khoảng khắc InboxTui</em></p>
+<p>Để xem những khoảng khắc mà thành viên InboxTui chia sẻ, các bác truy cập vào <a href="http://inboxtui.com/feed" target="_blank">http://inboxtui.com/feed </a></p>
+<h1>Tương lai</h1>
+<p>Trong tương lai mình sẽ cố gắng hoàn thiện <strong>InboxTui </strong>tốt hơn, thiết kế game vui vẻ để 2 người có thể chơi với nhau <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aa9d71a4e03ce5ef22cd34781a848aae.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img> Hay tìm người yêu theo một số tiêu chuẩn bla bla nào đấy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Lời cuối</h1>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Lời cuối thì mong các bạn hãy thử sử dụng một lần đi, thử sản phầm của người Việt một lần xem sao. Có thể không có nhiều người sử dụng như Chatible, không tìm thấy được những người thú vị như với Chatible nhưng nếu các bạn ủng hộ thì sẽ có ngày InboxTui sẽ không kém cạnh gì Chatible, sự ủng hộ của các bạn dù ít, dù nhiều cũng là một phần động lực rất rất lớn để mình có thể phát triển InboxTui – một người muốn làm một cái gì đó có ích cho cộng động, muốn khẳng định rằng người Việt hoàn toàn có thể làm những gì mình muốn và thậm chí là làm tốt hơn. Cảm ơn.<span class="su-quote-cite">Minh Thành</span></div></div>
+<p>Trang chủ <a href="http://inboxtui.com/homepage" target="_blank">http://inboxtui.com/homepage</a></p>
+<p>Fanpage <a href="https://www.facebook.com/InboxTui/" target="_blank">https://www.facebook.com/InboxTui/</a></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/startup" rel="category tag">Startup</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/chat-voi-nguoi-la" rel="tag">Chat với người lạ</a>, <a href="/tag/chatible" rel="tag">Chatible</a>, <a href="/tag/inboxtui" rel="tag">InboxTui</a>, <a href="/tag/messenger" rel="tag">Messenger</a>, <a href="/tag/nguoi-la" rel="tag">người lạ</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=94&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

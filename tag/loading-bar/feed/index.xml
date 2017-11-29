@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Loading bar &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/loading-bar/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>Loading bar &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Thêm thanh loading ở đầu trang như YouTube cho Angular</title>
+		<link>/web-app/thanh-loading-o-dau-trang-nhu-youtube</link>
+		<comments>/web-app/thanh-loading-o-dau-trang-nhu-youtube#respond</comments>
+		<pubDate>Sun, 17 Jul 2016 09:47:01 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Web App]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[Loading bar]]></category>
+		<category><![CDATA[YouTube]]></category>
+
+		<guid isPermaLink="false">/?p=67</guid>
+		<description><![CDATA[<p>He nhô&#8230;.  Bài viết này mình sẽ hướng dẫn các bác thêm thanh loading ở đầu trang giống YouTube. Giới Thiệu Hiện nay thì phong trao làm webapp đang lên cao, có rất rất nhiều công cụ hỗ trợ mình thêm các chức năng cool cool vào webapp. Một trong các cái mình thích nhất ...</p>
+<p>The post <a rel="nofollow" href="/web-app/thanh-loading-o-dau-trang-nhu-youtube">Thêm thanh loading ở đầu trang như YouTube cho Angular</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/web-app/thanh-loading-o-dau-trang-nhu-youtube/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">67</post-id>	</item>
+	</channel>
+</rss>

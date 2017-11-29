@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>hybrid &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/hybrid/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>hybrid &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>React Native &#8211; Sự thật đằng sau ánh hào quang</title>
+		<link>/react/react-native-su-dang-sau-anh-hao-quang</link>
+		<comments>/react/react-native-su-dang-sau-anh-hao-quang#comments</comments>
+		<pubDate>Wed, 23 Nov 2016 05:54:14 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[React]]></category>
+		<category><![CDATA[android]]></category>
+		<category><![CDATA[app]]></category>
+		<category><![CDATA[hybrid]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[lập trình]]></category>
+		<category><![CDATA[React Native]]></category>
+
+		<guid isPermaLink="false">/?p=673</guid>
+		<description><![CDATA[<p>Chào các bác lâu lắm rồi em không viết bài gì vì phải làm bài tập trên lớp với làm project bên ngoài nữa  Như tít, bài này mình sẽ nói về react-native nó thật sự có &#8220;ngon&#8221;, thon thả như Ngọc Trinh không ? Cùng tìm hiểu nhé! Tại sao chọn React Native Mình ...</p>
+<p>The post <a rel="nofollow" href="/react/react-native-su-dang-sau-anh-hao-quang">React Native &#8211; Sự thật đằng sau ánh hào quang</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/react/react-native-su-dang-sau-anh-hao-quang/feed</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">673</post-id>	</item>
+	</channel>
+</rss>

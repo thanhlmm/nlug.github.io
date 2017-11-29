@@ -1,0 +1,484 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>&quot;Hack&quot; hệ thống captcha của trường - Blog của CuThanh</title>
+		<link rel="canonical" href="/technology/hack-thong-captcha-cua-truong" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/technology\/hack-thong-captcha-cua-truong","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"&#8220;Hack&#8221; h\u1ec7 th\u1ed1ng captcha c\u1ee7a tr\u01b0\u1eddng","datePublished":"2016-09-12T22:39:40+00:00","dateModified":"2016-10-04T00:13:43+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/09\/email-password-hack.jpg","width":728,"height":380}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">&#8220;Hack&#8221; hệ thống captcha của trường</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-09-12T22:39:40+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="365" src="/wp-content/uploads/2016/09/email-password-hack.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/09/email-password-hack.jpg 728w, /wp-content/uploads/2016/09/email-password-hack-300x157.jpg 300w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Chào các thím, lâu rồi không viết bài tại em cũng chả biết viết gì cả <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4469a261d2724f2aa0ea4f8640469411.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Hôm nay em sẽ viết bài để vuợt qua hệ thống captcha của truờng mình, cụ thể là để xem thời khoá biểu (mấy thằng còn lại cũng y chang)</p>
+<p>“Linh” <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>: http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb</p>
+<p><amp-img class="aligncenter size-full wp-image-569 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/Screen-Shot-2016-09-12-at-9.06.57-PM.png" alt="Screen Shot 2016-09-12 at 9.06.57 PM" width="875" height="237" srcset="/wp-content/uploads/2016/09/Screen-Shot-2016-09-12-at-9.06.57-PM.png 875w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-12-at-9.06.57-PM-300x81.png 300w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-12-at-9.06.57-PM-768x208.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Các bác thấy cái số 94 không, nó đó, nó gọi là captcha đó <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></em></p>
+<p>Thuờng những cái hình captcha như vậy xuất hiện để chống bot request quá nhiều gây thiệt hại tài nguyên hệ thống. Thử tuởng tuợng các bác tạo trang đăng kí thành viên, không may trong quá trình sống các bác lại đắc tội với một số nguời, thế là nguời ta viết ra con bot vào đăng kí một lúc cả trăm acc khiến data của các bác như bãi rác thì sao? Thế là nguời ta nghĩ ra captcha tại vì bot thời bây giờ không biết trong hình vẽ cái gì, chỉ có mặt nguời thôi. Tuỳ nhiên càng phát triển thì tụi bot nó càng khôn, nên nó cũng có khả năng đọc xem trong hình nó ghi cái khỉ gì – ví dụ như <a href="/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay" target="_blank">Dịch vụ Vision của Microsoft mình đã giời thiệu truớc đây</a>. Vậy là nguời ta lại quyết định thêm một đống hoạ tiết lằng nhằng để cho máy nó không đọc đuợc, còn nguời dùng thì vừa type vừa… chửi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Truờng mình hồi truớc không có sử dụng captcha tuy nhiên sau một thời gian hình như do nhiều bạn viết bot để lấy điểm của tất cả sinh viên, ứng dụng xem điểm, thời khoá biểu,… khiến cho truờng ghét, bảo thằng dev “<em>tụi mày thêm tính năng captcha vào cho bố <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, hết tiền trả server rồi!</em>“. Thế là mấy cái app xem tkb, xem điểm ngỏm</p>
+<p>Đấy là mục đích mà nguời ta nghĩ ra captcha, cái này mọi người thấy rất thường xuyên nhưng theo mình thấy thì có ít nguời biết công dụng của nó quá, đành ra nó toàn bị chửi không (Đặc biệt là mẹ mình <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>) . Trong khảo sát nào đó mình nghe nói loading, và captcha là những thứ mà cư dân mạng ghét nhất.</p>
+<p>Mình thì cũng không ưa nó mấy, nên quyết định vuợt mặt qua captcha của truờng. Nói đơn giản là mình có thể lấy dữ liệu thời khoá biểu mà không cần phải nhập captcha nữa. Mình định sẽ viết con một con bot hay gì đó có thể lấy giữ liệu thời khoá biểu của sinh viên có MSSV xyz về, lấy thông tin đó để áp dụng vào app thời khoá biểu (để học React-Native luôn). Tuơng lai là vậy, vấn đề khó nhất bây giờ là vượt qua được thằng captcha này đã.</p>
+<h1>Cơ chế hoạt động của captcha</h1>
+<p>Đầu tiên, captcha là một hình ảnh, trong đó sẽ có một vài kĩ tự kèm thêm vài hoạ tiết cho khó đọc. Sẽ có một ô input bên cạnh để nguời dùng nhập vào chuỗi kí tự trong hình. Đúng thì qua, không đúng thì nhập lại đi nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p><amp-img class="aligncenter size-large wp-image-570 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/capcha-la-gi-1024x426.png" alt="capcha-la-gi" width="700" height="291" srcset="/wp-content/uploads/2016/09/capcha-la-gi-1024x426.png 1024w, /wp-content/uploads/2016/09/capcha-la-gi-300x125.png 300w, /wp-content/uploads/2016/09/capcha-la-gi-768x319.png 768w, /wp-content/uploads/2016/09/capcha-la-gi.png 1500w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Mình sẽ nói qua cơ chế hoạt động của captcha</p>
+<p><amp-img class="aligncenter size-large wp-image-571 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/captcha-1024x636.jpg" alt="captcha" width="700" height="435" srcset="/wp-content/uploads/2016/09/captcha-1024x636.jpg 1024w, /wp-content/uploads/2016/09/captcha-300x186.jpg 300w, /wp-content/uploads/2016/09/captcha-768x477.jpg 768w, /wp-content/uploads/2016/09/captcha.jpg 1134w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p> </p>
+<p><strong>Captcha</strong> là một file trên server, viết theo ngôn ngữ gì thì tùy sở thích của thằng dev theo châm ngôn</p>
+<div class="su-quote su-quote-style-default emoticons"><div class="su-quote-inner su-clearfix">Mình thích ngôn ngữ gì thì mình code cái đấy thôi!</div></div>
+<p>File <strong>captcha</strong> này có nhiệm vụ là sinh ra một chuỗi random cho các bác, đồng thời lưu lại chuỗi đấy trên server. Thuờng thì webserver đều có hỗ trợ session/cookie – thằng này có nhiệm vụ lưu lại thông tin của từng user truy cập theo nó muốn. Ví dụ như các bác đăng nhập thì webserver sẽ lưu lại thông tin của các bác, để mỗi lần request sau nó biết đó là các bác, đừng có bắt tao đăng nhập nữa, khổ vl <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Sau khi sinh ra đuợc một chuỗi random, file <strong>captcha</strong> đấy sẽ lưu lại <strong>captcha</strong> <strong>code</strong> trên session, đồng thời, nó sinh ra một bức hình trong đó có chứa các kí tự random (của mình là <em>ya27a</em>) trả về trình duyệt cho thằng user nhìn thấy.</p>
+<p>Tiếp theo user sẽ nhìn hình, nhập <strong>captcha</strong> đấy vào input, gửi về server kèm theo vài thông tin cần thiết cho request. Như trên hình em muốn xem thời khoá biểu thì sẽ phải gửi cả mssv của em nữa. Sau khi gửi về server, nó sẽ so sánh xem chuỗi captcha có giống nhau không, giống thì trả về thời khoá biểu, không thì các bác đi khám mắt đi nha<amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<h1>Làm sao để “hack”</h1>
+<p>Đâu tiên phải xem xét đến cơ chế trình duyệt tải về một trang web cho các bác nhé</p>
+<p><amp-img class="aligncenter size-full wp-image-572 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/request.jpg" alt="request" width="597" height="289" srcset="/wp-content/uploads/2016/09/request.jpg 597w, /wp-content/uploads/2016/09/request-300x145.jpg 300w" sizes="(min-width: 597px) 597px, 100vw"></amp-img></p>
+<p>Bất kì khi các bác truy cập một trang web nào, server đầu tiên sẽ gửi trả về file <code>html</code>. Tiếp theo, trình duyệt sẽ đọc nội dung trong file <code>html</code> đấy, nó thấy là “à trong đây mày con cần những file như <code>style.css</code>, <code>app.js</code>,.. nữa” thế là nó tiếp tục gửi request lên server để lấy những thằng còn thiếu về. Và đuơng nhiên sẽ lấy luôn bức hình <strong>captcha</strong> về cho các bác điền vào nữa chứ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p>Ví dụ link hình captcha của truờng mình: <a href="http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php?rand=1823730716" target="_blank">http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php?rand=1823730716</a></p>
+<p><amp-img class="alignnone size-large amp-wp-enforced-sizes" src="http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php" alt="" width="120" height="40" sizes="(min-width: 120px) 120px, 100vw"></amp-img> Demo trực tiếp luôn, mỗi lần các bác <code>F5</code> sẽ thấy một kĩ tự khác nhau.</p>
+<p>Trở lại với ví dụ thực tế, chúng ta đâu tiền sẽ request html cho url <a href="http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb" target="_blank">http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb</a>. Server trả về <code>html</code>, trình duyệt đọc, request tiếp những thành phần còn thiếu, xong!</p>
+<p>Thử tuởng tuợng chúng ta<strong> chặn không cho trình duyệt request tới file captcha</strong> thì sao nhỉ? File captcha sẽ không đuợc thực thi, lúc đó server sẽ không lưu mã captcha mới nữa, nó chỉ nhớ cái gần nhất thôi, lần sau các bác chỉ việc nhập mã captcha cũ mà vẫn có thể lấy nội dung về.</p>
+<p><amp-img class="aligncenter size-full wp-image-573 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/request2.jpg" alt="request2" width="600" height="306" srcset="/wp-content/uploads/2016/09/request2.jpg 600w, /wp-content/uploads/2016/09/request2-300x153.jpg 300w" sizes="(min-width: 600px) 600px, 100vw"></amp-img></p>
+<h1>Test thử trên trình duyệt nhé.</h1>
+<ul><li>Đầu tiên các bác truy cập vào <a href="http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb" target="_blank">http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb</a> ở tab 1</li>
+<li>Sau đó lấy link hình captcha, mở ở tab khác – gọi tạm là tab 2 (link là <a href="http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php?rand=1823730716" target="_blank">http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php?rand=1823730716</a>) cái số đằng sau các bác chưa cần quan tâm tới, nó liên quan tới cơ chế cache của trình duyệt.</li>
+<li>Lúc này các bác sẽ thấy một mã captcha mới, khác với tab 1.</li>
+<li>Bây giờ nhập mã captcha ở tab 2 vào tab 1. Nhập các các thông tin còn lại. <em>VD của em 1413559 đi</em>. Vẫn có kết quả thời khoá biểu trả về chứ? Nếu đuợc thì chắc các bác đã hiểu sơ sơ cơ chế của nó rồi đấy.</li>
+<li>Muốn hack đuợc thì chỉ cần chặn không cho load url captcha là <a href="http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php" target="_blank">http://aao.hcmut.edu.vn/image/data/Tra_cuu/phpcaptcha/captcha.php</a> À, nhớ truớc khi chặn các bác load 1 lần cuối cùng (chắc chắn là lần cuối cùng thấy nó xuất hiện nhé) lưu lại captcha đó.</li>
+<li>Sau đó mỗi lần yêu cầu nhập captcha các bác cữ nhập mã đã lưu ở trên là đuợc.</li>
+</ul><h1>Nhận xét</h1>
+<p>Chả tiện lợi hơn đuợc bao nhiêu, còn phải mò mẫm đủ thứ mới có thể chặn đuợc url captcha mà vẫn truy cập đuợc vào link xem thời khoá biểu (vì nó cùng domain mà <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>) Nói chung là mệt hơn, tự gõ captcha còn nhanh hơn.</p>
+<p>Đúng, nhưng nếu mình xây dựng một con bot sẽ hỗ trợ tự động request lên server và có thể vuợt qua đuợc captcha thì mình có thể lấy thời khoá biểu hàng loạt, trả về cho user. Việc bypass vụ nhập captcha khiến mình có thể dễ dàng xây dựng một con bot clawer. Như của mình sẽ xây dựng App xem thời khoá biểu trên điện thoại (dự định thôi). Đuơng nhiên là nguời dụng chỉ cần nhập mssv 1 lần và không phải nhập captcha rồi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h1>Làm sao để fix?</h1>
+<p>Việc code sơ hở như vậy mình thấy khá là nhiều do dev chưa nghĩ tới truờng hợp như vậy. Muốn fix? đơn giản thôi. <strong>Mỗi lần request tới url xem tkb (<a href="http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb" target="_blank">http://aao.hcmut.edu.vn/image/data/Tra_cuu/xem_tkb</a>) sẽ tự random ra mã captcha lưu lại trên server</strong>. Sau khi web load thì file captcha sẽ ghi đè lại giá trị captcha_code trên server. Nếu nguời dụng chặn file captcha thì server đã lưu một chuội random khác và xác xuất nguời dùng cũng random trúng là cực kì cực kì nhỏ.</p>
+<p>Mình không gọi cái này là hack nhưng rất nhiều nguời thuờng có khái niệm hack rất rộng: đoán pass facebook -&gt; hack, cheat game -&gt; hack, seed comment, like facebook -&gt; hack ,… <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Hack – gain unauthorized access to (data in a computer): hacking private information from computers.<span class="su-quote-cite">Từ điển trên MacOS</span></div></div>
+<p>Mình gọi là <strong>bypass</strong> – tìm một con đuờng khác mà vẫn giúp bạn về tới đích.</p>
+<h1>Nói thêm</h1>
+<p>Sắp tới có lẽ mình sẽ vừa học React-native để làm app xem thời khoá biểu nên sẽ viết bài về vấn đề này. Đương nhiên sẽ có phần viết bot để áp dụng những gì hôm nay chúng ta tìm hiểu để lấy thông data của truờng rồi. Cảm ơn các bạn đã đọc bài.</p>
+<p> </p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/technology" rel="category tag">Technology</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/bach-khoa" rel="tag">bách khoa</a>, <a href="/tag/bypass" rel="tag">bypass</a>, <a href="/tag/captcha" rel="tag">captcha</a>, <a href="/tag/hack" rel="tag">hack</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/technology/hack-thong-captcha-cua-truong#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=568&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

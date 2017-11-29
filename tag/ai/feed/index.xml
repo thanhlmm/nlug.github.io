@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>AI &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/ai/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>AI &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Giới thiệu Microsoft Cognitive Services &#8211; AI trong tầm tay</title>
+		<link>/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay</link>
+		<comments>/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay#respond</comments>
+		<pubDate>Fri, 22 Jul 2016 04:11:23 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Service]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[Bing]]></category>
+		<category><![CDATA[Machine Learning]]></category>
+		<category><![CDATA[Microsoft]]></category>
+		<category><![CDATA[nhận diện khuôn mặt]]></category>
+		<category><![CDATA[trí tuệ nhân tạo]]></category>
+
+		<guid isPermaLink="false">/?p=189</guid>
+		<description><![CDATA[<p>Bài viết này mình xin giới thiệu với các bạn Microsoft Cognitive Services Put intelligence APIs to work Microsoft Cognitive Services let you build apps with powerful algorithms using just a few lines of code. They work across devices and platforms such as iOS, Android, and Windows, keep improving, and are easy to set up. Đây ...</p>
+<p>The post <a rel="nofollow" href="/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay">Giới thiệu Microsoft Cognitive Services &#8211; AI trong tầm tay</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">189</post-id>	</item>
+	</channel>
+</rss>

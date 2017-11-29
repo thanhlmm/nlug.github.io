@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>big data &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/big-data/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>big data &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 5)</title>
+		<link>/life/xay-dung-thong-goi-y-phan-5</link>
+		<comments>/life/xay-dung-thong-goi-y-phan-5#comments</comments>
+		<pubDate>Thu, 18 Aug 2016 16:41:40 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[big data]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[thuật toán]]></category>
+		<category><![CDATA[tối ưu]]></category>
+		<category><![CDATA[xây dựng]]></category>
+
+		<guid isPermaLink="false">/?p=528</guid>
+		<description><![CDATA[<p>Hế looooooooooooo  Bài này là phần cuối trong series mình viết sẽ nói về thuật toán, kỹ thuật khi xây dựng một hệ thống gợi ý&#8230; Phần 1 Phần 2 Phần 3 Phần 4 Mẹ thằng WordPress sao update xong không thêm Feature Image được  Thuật toán Không biết các bạn nhận ra một điều ...</p>
+<p>The post <a rel="nofollow" href="/life/xay-dung-thong-goi-y-phan-5">Xây dựng hệ thống “Gợi ý…” (Phần 5)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/xay-dung-thong-goi-y-phan-5/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">528</post-id>	</item>
+	</channel>
+</rss>

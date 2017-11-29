@@ -1,0 +1,494 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 3) - Blog của CuThanh</title>
+		<link rel="canonical" href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/service\/dung-git-di-khong-hoi-han-suot-doi-day-phan-3","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"D\u00f9ng Git \u0111i kh\u00f4ng h\u1ed1i h\u1eadn su\u1ed1t \u0111\u1eddi \u0111\u1ea5y (Ph\u1ea7n 3)","datePublished":"2016-07-31T11:52:29+00:00","dateModified":"2016-08-11T09:01:14+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/Git-branch-Page-1-1.png","width":1110,"height":320}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-0786f4623984c46e15421e6979be740d{text-align:left;}.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Dùng Git đi không hối hận suốt đời đấy (Phần 3)</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-31T11:52:29+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Phần 1</strong></span>: <a href="/life/dung-git-di-khong-hoi-han-suot-doi-day" target="_blank">http://cuthanh.com/life/dung-git-di-khong-hoi-han-suot-doi-day</a></p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Phần 2</strong></span>: <a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2" target="_blank">http://cuthanh.com/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2</a></p>
+<p>Hôm nay mình sẽ nói về các khái niệm cơ bản của git</p>
+<h1>Repository</h1>
+<p>Một <strong>repository</strong> (còn hay gọi là <strong>repo</strong> cho nhanh) bao gồm tất cả cả những <strong>commit</strong>, <strong>branch</strong> nữa (mình sẽ giải thích bên dưới). Người ta chế vậy ra nghe cho nó màu.</p>
+<p>Vậy công thức của một repo</p>
+<h2 class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628">Repository = tất cả các commit + branch + thông tin về repo (thằng dev, tên project,…)</h2>
+<p>Và <strong>repo</strong> có 2 loại</p>
+<ul><li><strong>Remote repository:</strong> Cái này repo ở trên mây đấy</li>
+<li><strong>Local repository</strong>: Cái này là repo chỉ lưu ở máy của các bác thôi.</li>
+</ul><p>Cả local hay remote repo đều có thể kết nối với nhau. Như <em>Dropbox</em> hay <em>Google Drive</em> đấy. Thay đổi có thể đổng bộ với nhau.</p>
+<h1>Commit</h1>
+<p><strong>Commit</strong> là một mốc trạng thái của các file source code của các bác. Nếu các bác nhớ tới phần 1 thì nó tương tự như một folder trong thư mục backup của em. Vậy là một commit sẽ bao gồm</p>
+<ul><li>Thời gian commit.</li>
+<li>Ghi chú về commit đấy.</li>
+<li>“Tác giả” tạo ra cái commit này (Đây là lý do phải thiết lập Tên/Mail mà mĩnh đã nói ở <a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2" target="_blank">phần 2</a>)</li>
+<li>Thông tin về sự thay đổi của lần commit này so với lần commit trước</li>
+</ul><p>Các commit này, được đặt tên bởi 40 ký tự alphabet (mã md5 thì phải) không trùng nhau được băm từ thông tin commit. Bằng việc đặt tên cho commit, có thể chỉ định commit nào từ trong repository.</p>
+<p>Ví dụ: Lần commit đầu tiên file <code>hello.php</code> của các bác là</p>
+<pre class="prettyprint">&lt;?php
+echo 'Hello cuthanh.com';
+?&gt;</pre>
+<p>Bác thấy code này sida quá, vào thêm dòng nữa để <code>hello.php</code> trở thành</p>
+<pre class="prettyprint">&lt;?php
+echo 'Hello cuthanh.com';
+echo ' - blog sida nhất hệ mặt trời';
+?&gt;</pre>
+<p>Okey bây giờ các bác commit thì thông tin trong lần commit tiếp theo sẽ chỉ lưu dạng như vầy nè “<em>Thằng dev nó thêm <code>echo ' - blog sida nhất hệ mặt trời';</code> vào sau line 2</em>“” Đấy nó chỉ ghi lại những gì thay đổi thôi, không lưu toàn bộ đâu, tốn dung lượng méo làm được gì cả. <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Nhánh (Branch)</h1>
+<p>Tưởng tượng như vầy nhé các bác đang code tính năng <strong>login</strong> cho project của mình, tự nhiên nay vướng đống bug chả login qua facebook được mà méo hiểu tại sao. Thôi code tính năng <strong>search</strong> vậy. Các bác sẽ kệ mẹ file <code>login.php</code> đấy. Tạo file <code>search.php</code> rồi quẩy thôi. Nhẩy vào code mới biết nó cũng đầy bug như <strong>login</strong> vậy, mẹ tưởng dễ mà sao rốt tung lên thế! Quay lại code <code>login.php</code> tiếp cho dễ vậy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Bây giờ mở file <code>login.php</code> các bác lại phải hình dung xem bữa mình bỏ dở ở đâu <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4469a261d2724f2aa0ea4f8640469411.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, rồi các bác lại đẻ ra thêm cái bug mới vì hồi bữa code tính năng search chỉ dành cho thằng nào đã login rồi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Định mệnh, đáng sợ chưa. Nếu chưa dùng git mình chắc chắn các bác sẽ vướng phải vấn để như mình nêu ở trên.<br/><strong>Branch</strong> sinh ra để giải quyết vấn đề sida đấy.</p>
+<p>Ví dụ mình áp dụng branch vào giải quyết vấn đề trên nhé.</p>
+<p><amp-img class="aligncenter size-large wp-image-336 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/Git-branch-Page-1-1-1024x295.png" alt="Git branch - Page 1" width="700" height="202" srcset="/wp-content/uploads/2016/07/Git-branch-Page-1-1-1024x295.png 1024w, /wp-content/uploads/2016/07/Git-branch-Page-1-1-300x86.png 300w, /wp-content/uploads/2016/07/Git-branch-Page-1-1-768x221.png 768w, /wp-content/uploads/2016/07/Git-branch-Page-1-1.png 1110w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Sẽ luôn có một nhánh chính gọi là <strong>master</strong> nhé. Nếu các bác muốn code tính năng <strong>Login</strong>? Tạo một branch từ nhánh chính <strong>master</strong> tên là <strong>login</strong> chẳng hạn. Bây giờ các bác cứ code và commit bình thương thôi.</p>
+<ul><li><strong>Cục tròn tròn</strong> biểu diễn mỗi commit</li>
+<li><strong>Màu vàng</strong> nghĩa là code chưa chạy thật sự ổn định, hoặc đang còn code dở</li>
+<li><strong>Màu xang</strong> nghĩa là tính năng bạn đang code ổn định rồi đấy.</li>
+</ul><p>Giả dụ bạn code <strong>login</strong> ở cục L2 rồi nhé.</p>
+<p>Bây giờ đang code ở branch <strong>login</strong> đúng không, buồn quá, nhảy qua code tính năng <strong>search</strong> nhé. Trở về branch chính (<strong>master</strong>) nào. Bây giờ bạn đang ở cục M3. Tạo branch <strong>search</strong> từ <strong>master</strong>. Giờ đây bạn đang nằm ở cục S1.</p>
+<p>Mẹ thằng <strong>search</strong> này code cũng khó vl, thôi trở về <strong>login</strong> tiếp vậy. Các bác sẽ nhảy lại vào cục L2 code tiếp, commit… tới được cục L3.</p>
+<p>Okey bây giờ gần xong <strong>login</strong> rồi. Thiếu thằng <strong>search</strong> nữa, quay lại S1 “<em>chịch</em>” nó thôi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Bla… Bla…. Xong! Được cục S2. Bây giờ tính năng <strong>search</strong>, <strong>login</strong> đã hoàn thành. Nó vẫn đang là tách rời nhau, chứ chưa có login rồi mới được search đâu. Bây giờ các bác phải trộn (<strong>Merge</strong>) branch <strong>search</strong> vào vao branch <strong>login</strong>. Sửa lại xíu xíu, thêm xíu xíu code là xong, được cục L4.</p>
+<p>Bây giờ tính năng <strong>Login, Search</strong> ngon lành rồi đấy. Trộn (<strong>Merge</strong>) nó vào nhánh chính (<strong>master</strong>) thôi.</p>
+<p>Problem slove! <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Trộn (merge)</h1>
+<p>Trong quá trình phá triện code nêu trên. Có thể 2 tính năng login, search đều liên quan tới file <code>config.php</code> chẳng hạn. Mỗi tính năng lại sửa ở file <code>config.php</code> mỗi chỗ khác nhau. Bây giờ merge sẽ trộn tất cả thay đổi của 2 tính năng thành một file thống nhất.</p>
+<p>Ví dụ:</p>
+<p>Ở branch <strong>login</strong>, bạn sửa file <code>config.php</code> ở<strong> line 15.</strong></p>
+<p>Branch <strong>search</strong>, bạn sửa ở <strong>line 18.</strong></p>
+<p>Sau khi <strong>merge</strong> sẽ có được file <code>config.php</code> bao gồm thay đổi ở cả line 15 và line 18. Bá đạo chưa <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p>Ủa. nếu cả 2 tính năng đều sửa ở line 69 thì sao. Thì 69 chứ sao, mỗi thằng một đầu <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Em đùa đấy, nếu tính huống trên sảy ra, sẽ sảy ra tính trạng xung đột gọi là <strong>Conflict</strong>.</p>
+<h1>Conflict</h1>
+<p><amp-img class="aligncenter size-full wp-image-340 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/meme-merge.jpg" alt="meme-merge" width="400" height="293" srcset="/wp-content/uploads/2016/07/meme-merge.jpg 400w, /wp-content/uploads/2016/07/meme-merge-300x220.jpg 300w" sizes="(min-width: 400px) 400px, 100vw"></amp-img></p>
+<p>Git không thể có đủ trí lực như siêu nhân của các bác nên nó không thể tự quyết định nên giữ lại của <strong>branch</strong> nào, vứt đi của thằng nào hay là giữ lại cả 2. Vì vậy các bác phải tự mình giải quyết xung đột ấy một mình đi, chả có bố con thằng nào giúp đâu. <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Code ngu lỗi tại ai?<span class="su-quote-cite">Minh Thành</span></div></div>
+<p><amp-img class="aligncenter size-full wp-image-341 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/conflict.png" alt="conflict" width="906" height="489" srcset="/wp-content/uploads/2016/07/conflict.png 906w, /wp-content/uploads/2016/07/conflict-300x162.png 300w, /wp-content/uploads/2016/07/conflict-768x415.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Lỗi confilct. Bố không tự merge được. Mày vào mà sửa lại đi</em></p>
+<h1 class="amp-wp-inline-0786f4623984c46e15421e6979be740d">Kết</h1>
+<p class="amp-wp-inline-0786f4623984c46e15421e6979be740d"><em>Okey vậy là xong phần 3 – Các khái niệm cơ bản. Phần sau mình sẽ giới thiệu các lệnh thao tác với các khái niệm mà mình đã nêu trong bài viết này. Cảm ơn các bạn đã ghé thăm. Nếu hay nhớ share cho mọi người để nó còn máu mà viết tiếp nhé.</em></p>
+<p><strong>Phần 4</strong>: <a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-4">http://cuthanh.com/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-4</a></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/service" rel="category tag">Service</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/commit" rel="tag">commit</a>, <a href="/tag/conflict" rel="tag">conflict</a>, <a href="/tag/git" rel="tag">git</a>, <a href="/tag/khai-niem" rel="tag">khái niệm</a>, <a href="/tag/merge" rel="tag">merge</a>, <a href="/tag/repository" rel="tag">repository</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=333&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<title>Xây dựng hệ thống “Gợi ý…” (Phần 5) - Blog của CuThanh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="pingback" href="/xmlrpc.php" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- W3TC-include-js-head -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="/life/xay-dung-thong-goi-y-phan-5" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Xây dựng hệ thống “Gợi ý…” (Phần 5) - Blog của CuThanh" />
+<meta property="og:description" content="Hế looooooooooooo  Bài này là phần cuối trong series mình viết sẽ nói về thuật toán, kỹ thuật khi xây dựng một hệ thống gợi ý&#8230; Phần 1 Phần 2 Phần 3 Phần 4 Mẹ thằng WordPress sao update xong không thêm Feature Image được  Thuật toán Không biết các bạn nhận ra một điều ..." />
+<meta property="og:url" content="http://cuthanh.com/life/xay-dung-thong-goi-y-phan-5" />
+<meta property="og:site_name" content="Blog của CuThanh" />
+<meta property="article:author" content="https://www.facebook.com/hojjlamthenlug" />
+<meta property="article:tag" content="big data" />
+<meta property="article:tag" content="gợi ý" />
+<meta property="article:tag" content="thuật toán" />
+<meta property="article:tag" content="tối ưu" />
+<meta property="article:tag" content="xây dựng" />
+<meta property="article:section" content="Life" />
+<meta property="article:published_time" content="2016-08-18T23:41:40+00:00" />
+<meta property="article:modified_time" content="2016-08-20T15:39:36+00:00" />
+<meta property="og:updated_time" content="2016-08-20T15:39:36+00:00" />
+<meta property="og:image" content="http://cuthanh.com/wp-content/uploads/2016/08/scott.jpg" />
+<meta property="og:image:width" content="960" />
+<meta property="og:image:height" content="640" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Hế looooooooooooo  Bài này là phần cuối trong series mình viết sẽ nói về thuật toán, kỹ thuật khi xây dựng một hệ thống gợi ý&#8230; Phần 1 Phần 2 Phần 3 Phần 4 Mẹ thằng WordPress sao update xong không thêm Feature Image được  Thuật toán Không biết các bạn nhận ra một điều ..." />
+<meta name="twitter:title" content="Xây dựng hệ thống “Gợi ý…” (Phần 5) - Blog của CuThanh" />
+<meta name="twitter:image" content="http://cuthanh.com/wp-content/uploads/2016/08/scott.jpg" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Blog của CuThanh &raquo;" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Blog của CuThanh &raquo;" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Blog của CuThanh &raquo; Xây dựng hệ thống “Gợi ý…” (Phần 5) Dòng phản hồi" href="/life/xay-dung-thong-goi-y-phan-5/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/cuthanh.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='dw-reaction-style-css'  href='/wp-content/plugins/dw-reactions/assets/css/style.css?ver=120004042016' type='text/css' media='all' />
+<link rel='stylesheet' id='estilo-css'  href='/wp-content/plugins/simple-code-highlighter/estilo.css?ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='readable-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C700&#038;subset=latin%2Cvietnamese&#038;ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='/wp-content/themes/readable/assets/stylesheets/main.css?ver=1.0.0' type='text/css' media='all' />
+<style id='main-inline-css' type='text/css'>
+
+/******************
+Primary theme color
+*******************/
+
+.social__container, .search__container, .search-panel .search-panel__text, .navigation > li.current-menu-item > a, .navigation > li:hover > a, .navigation > li.current-menu-ancestor > a, .widget-contact__title, .navigation .sub-menu > li > a:hover, .error .primary-color {
+	color: #05668d}
+
+.social .social__dropdown, ::selection, .navbar-toggle {
+	background: #05668d}
+
+.wpcf7-submit, .navigation > li > a:after, .btn-primary {
+	background: linear-gradient(to bottom, #05668d, #055c7f)
+}
+
+blockquote, .wpcf7-submit, .btn-primary, .navbar-toggle {
+	border-color: #05668d}
+
+.search__container:hover, .social__container:hover {
+	color: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a {
+		background: #05668d	}
+}
+
+.wpcf7-submit:hover, .btn-primary:hover, .social .social__dropdown li a:hover {
+	background: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a:hover {
+		background: #055c7f	}
+}
+
+.wpcf7-submit:hover, .navigation .sub-menu > li > a, .navigation .sub-menu, .btn-primary:hover, .social .social__dropdown li .social__container {
+	border-color: #055c7f}
+
+/******************
+Text color
+*******************/
+
+blockquote, .post-content, .post-content--narrow, .post-content--narrow span, body .su-tabs-style-default .su-tabs-pane {
+	color: #40454a}
+
+/******************
+Link color
+*******************/
+
+a, .menu li a, .pptwj .pptwj-tabs-wrap .tab-links li a.selected, .pptwj .pptwj-tabs-wrap .tab-links li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected {
+	color: #028090}
+
+.widget_tag_cloud a, .tags a {
+	border-color: #028090}
+
+a:hover, .menu li a:hover {
+	color: #027382}
+
+.widget_tag_cloud a:hover, .tags a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected:after, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover:after {
+	background-color: #028090}
+
+/******************
+Headings dark
+*******************/
+h1, h1 a, .h1 a, .h2, h2, h2 a, .h2 a, h4, h4 a, .h4 a, h5, h5 a, .h5 a, .zem_rp_title {
+	color: #2f343b}
+
+/******************
+Headings light
+*******************/
+h3, h3 a, .h3 a, h6, h6 a, .h6 a, .wp_rp_excerpt {
+	color: #9a9a90}
+
+/******************
+Navbar background
+*******************/
+.header {
+	background-color: #ffffff}
+
+/******************
+Footer background
+*******************/
+.footer, .copyrights {
+	background-color: #ffffff}
+
+/******************
+Navbar text color
+*******************/
+
+.navigation > li > a {
+	color: #9a9a90}
+
+/******************
+Navbar dropdown text color
+*******************/
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a, .navigation .sub-menu > li > a:hover {
+		color: #f3f4f4	}
+}
+
+/* WP Customizer end */
+
+/* User Custom CSS */
+
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=4.5' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var dw_reaction = {"ajax":"http:\/\/cuthanh.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/dw-reactions/assets/js/script.js?ver=120004042016'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.3" />
+<link rel='shortlink' href='/?p=528' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Flife%2Fxay-dung-thong-goi-y-phan-5" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Flife%2Fxay-dung-thong-goi-y-phan-5&#038;format=xml" />
+			<meta property="fb:pages" content="1230424850325628" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>			<link rel="shortcut icon" href="/wp-content/uploads/2016/07/logo-icon.ico">
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/uploads/2016/07/blurred-home-bg.jpg"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+<link rel="amphtml" href="/life/xay-dung-thong-goi-y-phan-5/amp" /><link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" sizes="32x32" />
+<link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-180x180.png" />
+<meta name="msapplication-TileImage" content="http://cuthanh.com/wp-content/uploads/2016/07/cropped-logo-icon-lg-270x270.png" />
+
+<!-- BEGIN GADWP v4.9.5 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79981031-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hentry .aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+.post-content>p {
+	text-align: justify;
+	text-indent: 1em;
+}			</style>
+			<!-- W3TC-include-css -->
+</head>
+
+<body class="post-template-default single single-post postid-528 single-format-standard custom-background">
+<!-- W3TC-include-js-body-start -->
+
+	<!-- Search - Open panel -->
+	<div class="search-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="/">
+						<input type="text" class="search-panel__form  js--search-panel-text" name="s" placeholder="Begin typing for search">
+						<p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-content-container"><!-- ends in the footer.php -->
+		<!-- header -->
+		<header class="header  push-down-45">
+			<div class="container">
+				<div class="logo  pull-left">
+					<a href="/">
+													<img src="/wp-content/uploads/2016/07/logo-1.png" alt="Blog của CuThanh" />
+											</a>
+				</div>
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="navbar  navbar-default" role="navigation">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+						<ul id="menu-my-menu" class="navigation"><li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="/">Trang chủ</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-710"><a href="/category/technology">Technology</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-711"><a href="/category/react">React</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139"><a href="/category/server">Server</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-140"><a href="/category/nodejs">NodeJS</a></li>
+<li id="menu-item-141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141"><a href="/category/startup">Startup</a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="/about">About</a></li>
+</ul>					</div><!-- /.navbar-collapse -->
+				</nav>
+				<div class="hidden-xs  hidden-sm">
+					<a href="#" class="search__container  js--toggle-search-mode"> <span class="glyphicon  glyphicon-search"></span>  </a>
+										<div class="social">
+						<a href="#" class="social__container  js--blank-link"><span class="glyphicon  glyphicon-heart"></span></a>
+						<ul class="social__dropdown">
+														<li>
+								<a href="http://nlug27@gmail.com/" target="_blank" class="social__container"> <span class="zocial-email"></span></a>
+							</li>
+														<li>
+								<a href="https://www.facebook.com/hojjlamthenlug" target="_blank" class="social__container"> <span class="zocial-facebook"></span></a>
+							</li>
+													</ul>
+					</div>
+									</div>
+			</div>
+		</header>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" role="main">
+
+			
+				<!-- Post with featured image -->
+				<article class="boxed push-down-45 post-528 post type-post status-publish format-standard has-post-thumbnail hentry category-life tag-big-data tag-goi-y tag-thuat-toan tag-toi-uu tag-xay-dung">
+
+					<div class="meta">
+
+			<a href="/life/xay-dung-thong-goi-y-phan-5" class="link--no-border"><img width="960" height="493" src="/wp-content/uploads/2016/08/scott-960x493.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" /></a>
+	
+	
+			<div class="meta__container  clearfix">
+				<div class="meta__info">
+					<span class="meta__author">
+						<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=30&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=60&amp;d=mm&amp;r=g 2x' class='avatar avatar-30 photo' height='30' width='30' />						<a href="/author/nlug">Minh Thành</a> in <a href="/category/life" rel="category tag">Life</a>
+					</span>
+					<time datetime="2016-08-18T23:41:40+00:00" class="meta__date"><a href="/2016/08/18"><span class="glyphicon  glyphicon-calendar"></span> &nbsp; 18/08/2016</a></time>
+				</div>
+				<div class="meta__comments">
+					<a href="/life/xay-dung-thong-goi-y-phan-5#comments"><span class="glyphicon  glyphicon-comment"></span>  &nbsp; 2 Comments</a>
+				</div>
+			</div>
+
+			
+</div>
+
+
+					<!-- Start of the blogpost -->
+					<div class="row">
+						<div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2">
+
+							<!-- Start of the content -->
+							<div class="post-content">
+								<h1 class="post-content__title">
+									<a href="/life/xay-dung-thong-goi-y-phan-5">Xây dựng hệ thống “Gợi ý…” (Phần 5)</a>
+								</h1>
+								<p>Hế looooooooooooo <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" /></p>
+<p>Bài này là phần cuối trong series mình viết sẽ nói về thuật toán, kỹ thuật khi xây dựng một hệ thống gợi ý&#8230;</p>
+<ul>
+<li><a href="/nodejs/xay-dung-he-thong-goi-y-phan-1">Phần 1</a></li>
+<li><a href="/nodejs/xay-dung-thong-goi-y-phan-2" target="_blank">Phần 2</a></li>
+<li><a href="/nodejs/xay-dung-thong-goi-y-phan-3" target="_blank">Phần 3</a></li>
+<li><a href="/nodejs/xay-dung-thong-goi-y-phan-4" target="_blank">Phần 4</a></li>
+</ul>
+<p><img class="aligncenter size-full wp-image-530" src="/wp-content/uploads/2016/08/scott.jpg" alt="scott" width="960" height="640" srcset="/wp-content/uploads/2016/08/scott.jpg 960w, /wp-content/uploads/2016/08/scott-300x200.jpg 300w, /wp-content/uploads/2016/08/scott-768x512.jpg 768w" sizes="(max-width: 960px) 100vw, 960px" /></p>
+<p style="text-align: center;"><em>Mẹ thằng WordPress sao update xong không thêm Feature Image được <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" border="0" hspace="5" /></em></p>
+<h1>Thuật toán</h1>
+<p>Không biết các bạn nhận ra một điều gì đấy khác biệt giữa 2 thuật toán mà mình đề suất hôm nọ hay không. Còn mình thì phát hiện ra&#8230; cả 2 là 1.</p>
+<p>Không tin ư?</p>
+<p>Trở lại VD hôm bữa nhé</p>
+<p><em><code>U1 = {mystique, sói}</code></em></p>
+<p><em><code>U2 = {mystique, sói, scott}</code></em></p>
+<p><em><code>U3 = {sói, scott}</code></em></p>
+<p>Có 3 Xmen với sở thích nêu trên, mình sẽ tìm gợi ý cho <code>U1</code> nhé</p>
+<p>Độ giống nhau của</p>
+<ul>
+<li><code>U1 và U2 là 2/3</code></li>
+<li><code>U1 và U3 là 1/3</code></li>
+</ul>
+<p><span style="text-decoration: underline;">Theo thuật toán 1:</span></p>
+<p><code>U2</code> sẽ gợi ý <code>Scott</code> cho <code>U1</code> với số điểm là <code>2/3</code></p>
+<p><code>U3</code> sẽ gợi ý <code>Scott</code> cho <code>U2</code> với số điểm là <code>1/3</code></p>
+<p>Vậy tổng điểm <code>Scott</code> nhận được là <code>1</code></p>
+<p><span style="text-decoration: underline;">Theo thuật toán 2:</span></p>
+<p>Minh nhắc lại công thức xíu</p>
+<blockquote><p><strong>Mức độ Thanh niên X nào đây có thích Thanh niên K</strong> nào không theo công thức</p>
+<p><code>P(X, K) = Z / M</code></p>
+<p>Trong đó <code>P(X, K)</code> là công thức tính mức điểm Thanh niên X có thích Thanh niên K. <strong><code>Z</code></strong> là <strong>tổng điểm giống nhau của X với tất cả mọi người trong đội X-Men cũng “thả tim” thằng K</strong>. <strong><code>M</code></strong> là <strong>tổng số người thích K trong đội X-Men</strong>. Và tất nhiên, giá trị của <code>P(X, K)</code> cũng chạy từ 0 tới 1.</p></blockquote>
+<p>Ta tính được</p>
+<p><code>Z = 2/3 + 1/3 = 1</code></p>
+<p><code>M = 1 + 1 = 2</code></p>
+<p>Vậy <code>P(U1, Scott) = 1/2</code></p>
+<p>So sánh hai kết quả nhé. Giống nhau số 1 <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a729827d07c2862258711bdba931e289.png" alt="" border="0" hspace="5" />. Thần kìa chưa !!! Mình không đùa đâu, nó giống nhau ở số 1 đấy! Thuật toán 1 khác với thuật toán 2 chỉ ở chỗ &#8220;Chia cho tổng số người thích K trong đội X-Men&#8221;, điều này dẫn tới số điểm của công thức 2 sẽ chỉ chạy từ 0 đến 1. Và 2 công thức là hoàn toàn gần giống nhau, tức là ánh xạ 1 &#8211; 1 theo 1 hàm tăng.</p>
+<p>Vì vậy cả 2 công thức đều cho kết quả, thứ tự giống nhau. Tuy nhiên mình sẽ sử dụng thuật toán 1 của mình. Tại sao? tại vì thuật toán có lưu lại số điểm giống nhau của U1 với tất cả Xmen, thuật toán 2 chỉ lưu lại điểm gợi ý thôi. Điều đấy có ý nghĩa gì? Đơn giản bởi vì: Nếu bạn và một người lạ mà bạn không biết, cả hai có chỉ số giống nhau khá cao, chúng ta dễ dàng kết luận được 1 điều: Bạn và người lạ đấy có thể &#8220;yêu&#8221; nhau!</p>
+<h1>Tối ưu</h1>
+<p>Theo như tài liệu mình đọc, và cũng như một bạn góp ý ở Kipalog thì mỗi khi Xmen cập nhật một hành động gì đấy thì update lại tất cả các thông số giống nhau, điểm gợi ý vào Data. Mình vẫn chưa hiểu tại sao lại làm như vậy, không thấy nó tốn thời gian hơn hả nhỉ? Phải tính lại tất cả, xong lưu ngược lài vào DB. Thử nghĩ chúng ta có cả trăm Xmen thì tính tới bao giờ? Data phình chứa cả đống số khó hiểu?  Theo mình thì khi nào cần gợi ý rồi mới tính cho nó nhẹ nhàng. Mình không nói cái nào tốt hơn nhé, mỗi cái sẽ có ưu điểm riêng mà mình chưa tìm thấy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" />. Các bạn tìm giúp mình xem cái nào ngon hơn nhé <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" border="0" hspace="5" />.</p>
+<p>Nói tiếp tới Big Data,  nếu cả trăm, cả ngàn Xmen thì tính tới bao giờ? Thuật toán tuy đơn giản, nhưng phải chạy vòng vèo trong vòng lặp, array nến chắc chắn sẽ lâu đấy. Tác giả bài viết mình tham khảo có gợi ý là:</p>
+<p>Chúng ta chỉ cần tìm gợi ý trong một tập Xmen lân cận thôi. Hoặc một tập mà bạn cảm thấy tối ưu nhất. Đương nhiên, cách tìm được tập tối ưu thì các bạn tự vắt óc suy nghĩ đi nhé <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" />.</p>
+<p>Ngoài ra còn áp dụng các kĩ thuật cache và sử dụng ngôn ngữ khác, theo mình biết Nodejs không tối ưu trong việc tính toán, Golang có thể tốt hơn <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" border="0" hspace="5" />.</p>
+<p>&nbsp;</p>
+<h1>Kết</h1>
+<p>Công thức suyên suốt series <strong>Xây dựng hệ thống &#8220;gợi ý&#8230;&#8221;</strong> này chỉ là cực kì đơn giản, nhưng nó giúp bạn đặt nền móng về ý tưởng sử dụng toán tập hợp, cách xây dựng một dự án mà theo kinh nghiệm cá nhân mình xây dựng được đưa lên, mong có chút nào giúp ích cho các bạn không chỉ về việc build một Suggest System mà cả cách hoàn thành một sản phẩm.</p>
+<p>Từ trên, các bạn có thể mở rộng ra để tối ưu thuật toán của mình và có thể áp dụng được những mô hình khác nhau. Như ảnh hưởng của giới tính, nơi sinh, cung hoàng đạo <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" border="0" hspace="5" /> chẳng hạn.</p>
+<p>Là một lập trình viên, theo mình nghĩ nếu muốn nâng đến tầm &#8220;siêu phàm&#8221; thì thuật toán và tầm nhìn là tầng cao nhất, gọi đấy là một ngành khoa học chứ không chỉ đơn thuần là code. Nhìn Google, Facebook xem, nếu không có thuật toán sắp xếp kết quả tìm kiếm, sắp xếp New Feed, gợi ý kết bạn thì nó có thể còn người sử dụng đến bây giờ không. Nhìn xem người người đổ xô đi làm SEO mong sao thuật toán nó chấm cho mình điểm cao cao <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" border="0" hspace="5" /></p>
+<p>Cảm ơn các bạn đã chịu khó đọc bài viết của mình. Chào thân ái và quyết thắng <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" border="0" hspace="5" /></p>
+		<div class="dw-reactions dw-reactions-post-528" data-type="vote" data-nonce="fe51f46582" data-post="528">
+											<div class="dw-reactions-button">
+					<span class="dw-reactions-main-button">Like</span>
+					<div class="dw-reactions-box">
+						<span class="dw-reaction dw-reaction-like"><strong>Like</strong></span>
+						<span class="dw-reaction dw-reaction-love"><strong>Love</strong></span>
+						<span class="dw-reaction dw-reaction-haha"><strong>Haha</strong></span>
+						<span class="dw-reaction dw-reaction-wow"><strong>Wow</strong></span>
+						<span class="dw-reaction dw-reaction-sad"><strong>Sad</strong></span>
+						<span class="dw-reaction dw-reaction-angry"><strong>Angry</strong></span>
+					</div>
+				</div>
+														<div class="dw-reactions-count">
+									</div>
+					</div>
+		
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Có liên quan</em></h3>
+</div>
+															</div>
+							<!-- End of the content -->
+
+							<div class="row">
+								<div class="col-xs-12  col-sm-3">
+									<!-- Start of comments button -->
+									<div class="post-comments">
+										<a class="btn  btn-primary" href="/life/xay-dung-thong-goi-y-phan-5#comments">2 Comments</a>
+									</div>
+									<!-- End of comments button -->
+								</div>
+								<div class="col-xs-12  col-sm-9">
+									<!-- Start of social icons -->
+									<div class="social-icons">
+																			</div>
+									<!-- End of social icons -->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12  push-down-60  col-sm-6">
+									<!-- Start of post author -->
+									<div class="post-author">
+										<h6>Written By</h6>
+										<hr>
+										<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=90&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=180&amp;d=mm&amp;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' />										<h5>
+											<a href="/author/nlug">Minh Thành</a>
+										</h5>
+										<div class="post-author__text">
+											<p>Tác giả bận chơi Dota 2 rồi lười viết cái dòng này lắm</p>
+										</div>
+									</div>
+									<!-- End of post author -->
+								</div>
+
+																<div class="col-xs-12  col-sm-6  push-down-60">
+
+									<!-- Start of post tags -->
+									<div class="tags">
+										<h6>Tags</h6>
+										<hr>
+										<a href="/tag/big-data" rel="tag">big data</a><a href="/tag/goi-y" rel="tag">gợi ý</a><a href="/tag/thuat-toan" rel="tag">thuật toán</a><a href="/tag/toi-uu" rel="tag">tối ưu</a><a href="/tag/xay-dung" rel="tag">xây dựng</a>									</div>
+
+									<!-- End of post tags -->
+								</div>
+								
+							</div>
+
+							<!-- comments start -->
+							
+<div class="comments  push-down-30" id="comments">
+	<h6>Comments</h6>
+	<hr>
+
+	<section class="comments-container">
+		
+						<h3 class="push-down-30">
+				2 Comments			</h3>
+			
+			
+	<div id="comment-13" class="comment even thread-even depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://2.gravatar.com/avatar/e5180c694048708ac1432806a9a7e47f?s=74&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/e5180c694048708ac1432806a9a7e47f?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					Thiện Lâm				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-09-19T09:35:45+00:00">
+					 	19/09/2016 at 9:35 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/life/xay-dung-thong-goi-y-phan-5?replytocom=13#respond' onclick='return addComment.moveForm( "comment-13", "13", "respond", "528" )' aria-label='Phản hồi đến Thiện Lâm'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Đồng dâm dota 2 đây rồi</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-18" class="comment byuser comment-author-nlug bypostauthor odd alt depth-2 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-09-21T23:13:32+00:00">
+					 	21/09/2016 at 11:13 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/life/xay-dung-thong-goi-y-phan-5?replytocom=18#respond' onclick='return addComment.moveForm( "comment-18", "18", "respond", "528" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>^_^</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+					<hr />
+					<h3 class="push-down-25">
+						Leave a Comment					</h3>
+
+
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/life/xay-dung-thong-goi-y-phan-5#respond" style="display:none;">Hủy</a></small></h3>			<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="push-down-15"><label for="message">Message <span class="warning">*</span></label><textarea class="form-control form-control--contact form-control--big" id="comment" name="comment" rows="7" aria-required="true" placeholder="Your Comment goes here." required></textarea></p><p class="push-down-15"><label for="author">Name <span class="warning">*</span><input class="form-control  form-control--contact" id="author" name="author" type="text" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="email">Email <span class="warning">*</span><input class="form-control  form-control--contact" id="email" name="email" type="email" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="url">Website <span class="warning">*</span><input class="form-control  form-control--contact" id="url" name="url" type="text" value="" size="30" /></label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submitWPComment" class="submit" value="Send now" /> <input type='hidden' name='comment_post_ID' value='528' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c27cfb2a0e" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="225"/></p>			</form>
+			</div><!-- #respond -->
+		</section>
+</div>							<!-- comments end -->
+
+							
+						</div>
+					</div>
+				</article>
+
+			
+	</div>
+
+	
+	</div>
+</div>
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+									</div>
+			</div>
+		</footer>
+		<footer class="copyrights">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12  col-sm-6">
+						Readable WP theme &copy; Copyright 2014					</div>
+					<div class="col-xs-12  col-sm-6">
+						<div class="copyrights--right">
+							Made by <a href="http://www.proteusthemes.com/">ProteusThemes</a>						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div><!-- /.page-content-container -->
+
+<script type='text/javascript' src='/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201748'></script>
+<script type='text/javascript' src='/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ReadableVars = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/readable/assets/js/built.js?ver=1.0.0'></script>
+<script type='text/javascript' src='/wp-includes/js/comment-reply.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201748.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.5',blog:'114130900',post:'528',tz:'7',srv:'cuthanh.com'} ]);
+	_stq.push([ 'clickTrackerInit', '114130900', '528' ]);
+</script>
+<!-- W3TC-include-js-body-end -->
+</body>
+</html>

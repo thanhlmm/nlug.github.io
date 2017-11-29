@@ -1,0 +1,501 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Session, mày sống được bao lâu? - Blog của CuThanh</title>
+		<link rel="canonical" href="/server/session-may-song-duoc-bao-lau" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/server\/session-may-song-duoc-bao-lau","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Session, m\u00e0y s\u1ed1ng \u0111\u01b0\u1ee3c bao l\u00e2u?","datePublished":"2016-09-29T23:28:31+00:00","dateModified":"2016-09-29T23:47:06+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/09\/maxresdefault.jpg","width":1920,"height":1080}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Session, mày sống được bao lâu?</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-09-29T23:28:31+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="394" src="/wp-content/uploads/2016/09/maxresdefault-1024x576.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/09/maxresdefault-1024x576.jpg 1024w, /wp-content/uploads/2016/09/maxresdefault-300x169.jpg 300w, /wp-content/uploads/2016/09/maxresdefault-768x432.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Chào các mẹ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>,</p>
+<p>Như bữa trước đã nói trong bài <a href="/technology/hack-thong-captcha-cua-truong" target="_blank">“hack” hệ thống captcha của truờng</a>, ta có thể bypass được việc nhập captcha do lỗi của nguời lập trình liên quan đến Session.</p>
+<p>Mình cũng đã viết một con bot nhỏ nhỏ để lấy data thời khoá biểu về. Mọi việc diễn ra khá trơn tru mà không cần đến dầu nhớt <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, tuy nhiên, sau khi ngủ một giấc, chạy lại thì con bot méo get được data. WTF??? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> Chả lẽ hôm qua chạy đuợc mà hôm nay không chạy được ah</p>
+<p><amp-img class="aligncenter size-full wp-image-596 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/it-ran-last.jpg" alt="it-ran-last" width="600" height="397" srcset="/wp-content/uploads/2016/09/it-ran-last.jpg 600w, /wp-content/uploads/2016/09/it-ran-last-300x199.jpg 300w" sizes="(min-width: 600px) 600px, 100vw"></amp-img></p>
+<p>Ah, vậy đơn giản</p>
+<p><amp-img class="aligncenter size-full wp-image-595 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/problem-1.jpeg" alt="problem" width="500" height="381" srcset="/wp-content/uploads/2016/09/problem-1.jpeg 500w, /wp-content/uploads/2016/09/problem-1-300x229.jpeg 300w" sizes="(min-width: 500px) 500px, 100vw"></amp-img></p>
+<p>Em thử rồi, không đuợc đâu các bác ạ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Sau một hồi mày mò StackOverFlow thì em cũng biết được nguyên nhân của vấn đề đó là <strong>Thời gian sống của session</strong>.</p>
+<p>Nghĩa là sao? Nghĩa là data mà thằng Session lưu cho từng user sẽ chỉ tồn tại trong một khoảng thời gian và sau đó sẽ bị bác gom phế liệu (<strong>garbage collection</strong>) thu dọn đi bán ve chai. Tuỳ vào từng ngôn ngữ khác nhau mà Session sẽ có khoảng thời gian sống mặc định khác nhau. Như trường mình dùng PHP thì mình nghĩ chắc để mặc định là 24 phút, cũng chả có nhiều thằng quan tâm đến cái này mấy đâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<pre class="prettyprint">; After this number of seconds, stored data will be seen as 'garbage' and
+; cleaned up by the garbage collection process.
+session.gc_maxlifetime = 1440</pre>
+<p>Các bác có thể thay thế giá trị ấy trong file <code>php.ini</code> để Session của mình có thể sống thọ hơn đuợc một tí.</p>
+<h1>Thử nghiệm</h1>
+<p>Tuy nhiên đấy chưa phải là tất cả? Mình có thử một đoạn test Session như sau</p>
+<p>File <code>setSession.php</code></p>
+<pre class="prettyprint">&lt;?php
+session_start();
+$t = time();
+$_SESSION['cuthanh'] = $t;
+echo "Session cuthanh set with value: ".$t;
+?&gt;</pre>
+<p>File <code>getSession.php</code></p>
+<pre class="prettyprint">&lt;?php
+session_start();
+if (isset($_SESSION['cuthanh'])) {
+    echo "We got session cuthanh contains value :".$_SESSION['cuthanh']." at ".time();
+} else {
+    echo "Sorry, all sessions gone!";
+}
+?&gt;</pre>
+<p>Khá đơn giản nên em không giải thích gì thêm nha. Okey bây giờ test thử nhé</p>
+<ul><li>Chạy thử file <code>setSession.php</code></li>
+<li>Chạy file <code>getSession.php</code> để xem đã nhận Session chưa</li>
+<li>Okey, bây giờ ra Find Match trận Dota hoặc làm tập JAV ngắn ngắn (nói chung làm sao trên 24 phút là được)</li>
+<li>…</li>
+<li>Bây giờ load thử lại <code>getSession.php</code> xem sao nhé.</li>
+</ul><p>Theo các bác thì kết quả ra sao? “<em>Sorry, all sessions gone!</em>” hả? Nếu đúng như vậy thì các bác đi mua vé số, lô đề, chơi Dota thì pick PA hoặc OM đi nhé. Tại vì chỉ có 1% cơ hội các bác ra đuợc kết quá như vậy thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><amp-img class="aligncenter size-large amp-wp-enforced-sizes" src="https://i.ytimg.com/vi/h5I5UYxajnQ/maxresdefault.jpg" alt="" width="1920" height="1080" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Ủa, sao nãy bảo thời gian sống của nó được có 24 phút thôi mà. Nếu các bác đọc kĩ trong chỗ setting <code>php.ini</code> mà mình nói hồi nãy sẽ có dòng</p>
+<pre class="prettyprint">After this number of seconds, stored data will be seen as 'garbage' and cleaned up by garbage collection proccess</pre>
+<p>Nghĩa là, sau chừng ấy thời gian, Session sẽ được coi như là phế liệu và sẽ bác thu gom phế liệu dọn dẹp.</p>
+<div class="su-quote su-quote-style-default"><div class="su-quote-inner su-clearfix">Vấn đề ở đây là bác thu gom phế liệu bận đi bar rồi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img><amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img><amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> nên lâu lâu rảnh rỗi mới qua nhà các bác lấy phế liệu thôi nhé.</div></div>
+<p>Và tỉ lệ này theo mặc định là 1% nhé. Trong <code>php.ini</code> có đề cập đến vấn đề này như sau</p>
+<pre class="prettyprint">; Define the probability that the 'garbage collection' process is started
+; on every session initialization.
+; The probability is calculated by using gc_probability/gc_divisor,
+; e.g. 1/100 means there is a 1% chance that the GC process starts
+; on each request.
+
+session.gc_probability = 1
+session.gc_divisor     = 100</pre>
+<p>Đây chính là lý do mà, sau khi xem tập JAV vào lại <code>getSession.php</code> chỉ có 1% cơ hội là Session sẽ chết, còn lại 99% là nó vẫn còn sống. Vì vậy nếu các bác muốn bác phế liệu chăm chỉ thu gom, không đi quẩy bar bủng các kiểu nữa thì chỉ cần<strong> chỉnh lại 2 thông số trên</strong>.</p>
+<p>Ngoài ra thì các bác có thể <strong>lưu Session ở một folder riêng</strong> không cho bác ve chai nhìn ngó tới. Cách này cũng khá đơn giản, lại không phải chỉnh lại <code>php.ini</code> nên các bác tự search Google hay StackOverFlow đi nha</p>
+<h1>Tại sao hôm nay mình lại nói đến vấn đề này?</h1>
+<p>Tại vì khi code con bot lấy giữ liệu thời khoá biểu của truờng mình thì vấp phải vấn đề thời gian sống của Session khiến cho con bot của mình hôm qua chạy mà hôm nay nó nghỉ. Cho dù mình có chỉnh lại <em>System Time</em> nhưng nó vẫn đình công.</p>
+<p>Và với lượng truy cập của hơn 5k sinh viên bách khoa thì 1% cũng khiến cho Session không thế sống quá thọ đuợc</p>
+<p><amp-img class="aligncenter size-large wp-image-597 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-1024x642.png" alt="screen-shot-2016-09-29-at-11-26-01-pm" width="700" height="439" srcset="/wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-1024x642.png 1024w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-300x188.png 300w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-768x482.png 768w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM.png 1290w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Quả hình để cho các bác khỏi nói em chém gió <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></em></p>
+<h1>Làm sao để vuợt qua được</h1>
+<p>Thì nó chết thì kiếm con khác thôi. Ez, huh? Nghĩa là nếu Session cũ của mình chết, mình sẽ xin lại con session mới. Nếu làm như vậy thì cứ sau 24 phút thì mình lại phải “mồi” lại captcha một lần. Mà captcha lại phải nguời nhập, cũng chả khá hơn bao nhiêu nhỉ? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Theo các bạn, hướng đi nào để mình có thể tiếp tục viết app xem thời khoá biểu đây? Comment bên duới nhé.</p>
+<p>Mình đã có cách riêng của mình rồi những chưa chắc là tốt ưu nhất, có gì mình sẽ chia sẻ ở bài viết sau nhé. Thân ái!</p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/server" rel="category tag">Server</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/garbage-collection" rel="tag">garbage collection</a>, <a href="/tag/php" rel="tag">php</a>, <a href="/tag/session" rel="tag">Session</a>, <a href="/tag/thoi-gian-song" rel="tag">thời gian sống</a>, <a href="/tag/thu-gom-rac" rel="tag">thu gom rác</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/server/session-may-song-duoc-bao-lau#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=591&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

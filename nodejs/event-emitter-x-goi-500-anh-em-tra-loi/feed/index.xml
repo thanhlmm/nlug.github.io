@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: Event Emitter &#8211; X gọi, 500 anh em trả lời</title>
+	<atom:link href="/nodejs/event-emitter-x-goi-500-anh-em-tra-loi/feed" rel="self" type="application/rss+xml" />
+	<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+	<item>
+		<title>Bởi: Dao Duc Hoang</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comment-2455</link>
+		<dc:creator><![CDATA[Dao Duc Hoang]]></dc:creator>
+		<pubDate>Sun, 24 Sep 2017 04:28:11 +0000</pubDate>
+		<guid isPermaLink="false">/?p=651#comment-2455</guid>
+		<description><![CDATA[Viết hay lắm cám ơn bạn nhe]]></description>
+		<content:encoded><![CDATA[<p>Viết hay lắm cám ơn bạn nhe</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comment-1429</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Thu, 18 May 2017 01:24:26 +0000</pubDate>
+		<guid isPermaLink="false">/?p=651#comment-1429</guid>
+		<description><![CDATA[thanks bác :D]]></description>
+		<content:encoded><![CDATA[<p>thanks bác 😀</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: trung khong</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comment-1426</link>
+		<dc:creator><![CDATA[trung khong]]></dc:creator>
+		<pubDate>Wed, 17 May 2017 11:21:43 +0000</pubDate>
+		<guid isPermaLink="false">/?p=651#comment-1426</guid>
+		<description><![CDATA[Bài viết hay , dễ hiểu. Cảm ơn cu Thanh :D]]></description>
+		<content:encoded><![CDATA[<p>Bài viết hay , dễ hiểu. Cảm ơn cu Thanh 😀</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Bách Văn Khoa</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comment-42</link>
+		<dc:creator><![CDATA[Bách Văn Khoa]]></dc:creator>
+		<pubDate>Thu, 03 Nov 2016 14:15:15 +0000</pubDate>
+		<guid isPermaLink="false">/?p=651#comment-42</guid>
+		<description><![CDATA[em chưa dám chơi với Viettel :gach: chẳng qua là đang học python cái đoạn download file, file khác  có link thì đơn giản rồi nhưng mà với image được parse ra như này thì chưa biết giải quyết sao nên hỏi thím thôi :gach: Cám ơn thím đã chỉ, em sẽ nghiên cứu translate cái demo của thím sang python :3 
+Yêu thím :beauty:]]></description>
+		<content:encoded><![CDATA[<p>em chưa dám chơi với Viettel :gach: chẳng qua là đang học python cái đoạn download file, file khác  có link thì đơn giản rồi nhưng mà với image được parse ra như này thì chưa biết giải quyết sao nên hỏi thím thôi :gach: Cám ơn thím đã chỉ, em sẽ nghiên cứu translate cái demo của thím sang python :3<br />
+Yêu thím :beauty:</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comment-40</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Wed, 02 Nov 2016 02:16:34 +0000</pubDate>
+		<guid isPermaLink="false">/?p=651#comment-40</guid>
+		<description><![CDATA[Đầu tiên bác request thưòng tới link captcha là
+http://www.vietteltelecom.vn/index.php/captcha
+Trong response sẽ có một đoạn JavaScript như sau
+&lt;code&gt;document.cookie=&quot;D0N=3fa37404f99a1568ed9766df100184d0&quot;+&quot;; path=/&quot;;&lt;/code&gt;
+
+Kèm theo một giá trị cookie có sẵn được set bằng Javascript. Có lẽ server đó sẽ kiểm trả xem đã tồn tại cookie đó thôi. Đuơng nhiên chỉ có brower là hiểu dc JS và thực thi nó. Nên bác fải đọc chuỗi cookie đó, thêm vào header kèm theo header có sẵn lúc đầu là sẽ ra captcha
+Nếu bác sài demo thì mình có demo cho bác
+https://gist.github.com/nlug/f4aba016d5605671bca3e55fcf5fa851
+
+P/S: Bác đòi chơi cả Viteo hả? mạnh thế]]></description>
+		<content:encoded><![CDATA[<p>Đầu tiên bác request thưòng tới link captcha là<br />
+<a href="http://www.vietteltelecom.vn/index.php/captcha" rel="nofollow">http://www.vietteltelecom.vn/index.php/captcha</a><br />
+Trong response sẽ có một đoạn JavaScript như sau<br />
+<code>document.cookie="D0N=3fa37404f99a1568ed9766df100184d0"+"; path=/";</code></p>
+<p>Kèm theo một giá trị cookie có sẵn được set bằng Javascript. Có lẽ server đó sẽ kiểm trả xem đã tồn tại cookie đó thôi. Đuơng nhiên chỉ có brower là hiểu dc JS và thực thi nó. Nên bác fải đọc chuỗi cookie đó, thêm vào header kèm theo header có sẵn lúc đầu là sẽ ra captcha<br />
+Nếu bác sài demo thì mình có demo cho bác<br />
+<a href="https://gist.github.com/nlug/f4aba016d5605671bca3e55fcf5fa851" rel="nofollow">https://gist.github.com/nlug/f4aba016d5605671bca3e55fcf5fa851</a></p>
+<p>P/S: Bác đòi chơi cả Viteo hả? mạnh thế</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Bách Văn Khoa</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comment-39</link>
+		<dc:creator><![CDATA[Bách Văn Khoa]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2016 17:57:49 +0000</pubDate>
+		<guid isPermaLink="false">/?p=651#comment-39</guid>
+		<description><![CDATA[bài viết rất hay :D, tiện đây thím cho em hỏi có cách nào để cho mình là client download được image được parse từ server ra file php không. Ví dụ như cái captcha của viettel này.
+http://www.vietteltelecom.vn/index.php/captcha
+Em gửi request đến trang này nhưng mà content response nó chỉ có vài cái tag html thôi :sosad:, em nghĩ là do request không phải là từ browser nên server nó không trả về hình ảnh, vì thế nên em cố gắng tìm cách set header của requests sao cho server tưởng request đến từ browser nhưng mà không được :sosad:]]></description>
+		<content:encoded><![CDATA[<p>bài viết rất hay :D, tiện đây thím cho em hỏi có cách nào để cho mình là client download được image được parse từ server ra file php không. Ví dụ như cái captcha của viettel này.<br />
+<a href="http://www.vietteltelecom.vn/index.php/captcha" rel="nofollow">http://www.vietteltelecom.vn/index.php/captcha</a><br />
+Em gửi request đến trang này nhưng mà content response nó chỉ có vài cái tag html thôi :sosad:, em nghĩ là do request không phải là từ browser nên server nó không trả về hình ảnh, vì thế nên em cố gắng tìm cách set header của requests sao cho server tưởng request đến từ browser nhưng mà không được :sosad:</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

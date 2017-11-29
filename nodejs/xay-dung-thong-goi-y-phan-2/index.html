@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<title>Xây dựng hệ thống “Gợi ý…” (Phần 2) - Blog của CuThanh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="pingback" href="/xmlrpc.php" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- W3TC-include-js-head -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="/nodejs/xay-dung-thong-goi-y-phan-2" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Xây dựng hệ thống “Gợi ý…” (Phần 2) - Blog của CuThanh" />
+<meta property="og:description" content="Tiếp tục loạt bài nào&#8230; Phần 1: http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1 Demo http://demo.cuthanh.com/professorx-client/ Ý tưởng Đâu tiên phải xem ý tưởng mình gợi ý phòng cho giao sư như thế nào đã. Với hệ thống gợi ý như thế này, thì đâu tiên phải xem những thằng nào giống giống nhau đã. Ví dụ Giáo sư X thích Mystique ..." />
+<meta property="og:url" content="http://cuthanh.com/nodejs/xay-dung-thong-goi-y-phan-2" />
+<meta property="og:site_name" content="Blog của CuThanh" />
+<meta property="article:author" content="https://www.facebook.com/hojjlamthenlug" />
+<meta property="article:tag" content="công thức" />
+<meta property="article:tag" content="gợi ý" />
+<meta property="article:tag" content="hệ thống" />
+<meta property="article:tag" content="thuật toán" />
+<meta property="article:tag" content="xây dựng" />
+<meta property="article:section" content="NodeJS" />
+<meta property="article:published_time" content="2016-08-07T11:29:36+00:00" />
+<meta property="article:modified_time" content="2017-01-06T10:58:49+00:00" />
+<meta property="og:updated_time" content="2017-01-06T10:58:49+00:00" />
+<meta property="og:image" content="http://cuthanh.com/wp-content/uploads/2016/08/batmanalogorithm.jpg" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="641" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Tiếp tục loạt bài nào&#8230; Phần 1: http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1 Demo http://demo.cuthanh.com/professorx-client/ Ý tưởng Đâu tiên phải xem ý tưởng mình gợi ý phòng cho giao sư như thế nào đã. Với hệ thống gợi ý như thế này, thì đâu tiên phải xem những thằng nào giống giống nhau đã. Ví dụ Giáo sư X thích Mystique ..." />
+<meta name="twitter:title" content="Xây dựng hệ thống “Gợi ý…” (Phần 2) - Blog của CuThanh" />
+<meta name="twitter:image" content="http://cuthanh.com/wp-content/uploads/2016/08/batmanalogorithm.jpg" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Blog của CuThanh &raquo;" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Blog của CuThanh &raquo;" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Blog của CuThanh &raquo; Xây dựng hệ thống “Gợi ý…” (Phần 2) Dòng phản hồi" href="/nodejs/xay-dung-thong-goi-y-phan-2/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/cuthanh.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='dw-reaction-style-css'  href='/wp-content/plugins/dw-reactions/assets/css/style.css?ver=120004042016' type='text/css' media='all' />
+<link rel='stylesheet' id='estilo-css'  href='/wp-content/plugins/simple-code-highlighter/estilo.css?ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='readable-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C700&#038;subset=latin%2Cvietnamese&#038;ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='/wp-content/themes/readable/assets/stylesheets/main.css?ver=1.0.0' type='text/css' media='all' />
+<style id='main-inline-css' type='text/css'>
+
+/******************
+Primary theme color
+*******************/
+
+.social__container, .search__container, .search-panel .search-panel__text, .navigation > li.current-menu-item > a, .navigation > li:hover > a, .navigation > li.current-menu-ancestor > a, .widget-contact__title, .navigation .sub-menu > li > a:hover, .error .primary-color {
+	color: #05668d}
+
+.social .social__dropdown, ::selection, .navbar-toggle {
+	background: #05668d}
+
+.wpcf7-submit, .navigation > li > a:after, .btn-primary {
+	background: linear-gradient(to bottom, #05668d, #055c7f)
+}
+
+blockquote, .wpcf7-submit, .btn-primary, .navbar-toggle {
+	border-color: #05668d}
+
+.search__container:hover, .social__container:hover {
+	color: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a {
+		background: #05668d	}
+}
+
+.wpcf7-submit:hover, .btn-primary:hover, .social .social__dropdown li a:hover {
+	background: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a:hover {
+		background: #055c7f	}
+}
+
+.wpcf7-submit:hover, .navigation .sub-menu > li > a, .navigation .sub-menu, .btn-primary:hover, .social .social__dropdown li .social__container {
+	border-color: #055c7f}
+
+/******************
+Text color
+*******************/
+
+blockquote, .post-content, .post-content--narrow, .post-content--narrow span, body .su-tabs-style-default .su-tabs-pane {
+	color: #40454a}
+
+/******************
+Link color
+*******************/
+
+a, .menu li a, .pptwj .pptwj-tabs-wrap .tab-links li a.selected, .pptwj .pptwj-tabs-wrap .tab-links li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected {
+	color: #028090}
+
+.widget_tag_cloud a, .tags a {
+	border-color: #028090}
+
+a:hover, .menu li a:hover {
+	color: #027382}
+
+.widget_tag_cloud a:hover, .tags a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected:after, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover:after {
+	background-color: #028090}
+
+/******************
+Headings dark
+*******************/
+h1, h1 a, .h1 a, .h2, h2, h2 a, .h2 a, h4, h4 a, .h4 a, h5, h5 a, .h5 a, .zem_rp_title {
+	color: #2f343b}
+
+/******************
+Headings light
+*******************/
+h3, h3 a, .h3 a, h6, h6 a, .h6 a, .wp_rp_excerpt {
+	color: #9a9a90}
+
+/******************
+Navbar background
+*******************/
+.header {
+	background-color: #ffffff}
+
+/******************
+Footer background
+*******************/
+.footer, .copyrights {
+	background-color: #ffffff}
+
+/******************
+Navbar text color
+*******************/
+
+.navigation > li > a {
+	color: #9a9a90}
+
+/******************
+Navbar dropdown text color
+*******************/
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a, .navigation .sub-menu > li > a:hover {
+		color: #f3f4f4	}
+}
+
+/* WP Customizer end */
+
+/* User Custom CSS */
+
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=4.5' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var dw_reaction = {"ajax":"http:\/\/cuthanh.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/dw-reactions/assets/js/script.js?ver=120004042016'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.3" />
+<link rel='shortlink' href='/?p=435' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fnodejs%2Fxay-dung-thong-goi-y-phan-2" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fnodejs%2Fxay-dung-thong-goi-y-phan-2&#038;format=xml" />
+			<meta property="fb:pages" content="1230424850325628" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>			<link rel="shortcut icon" href="/wp-content/uploads/2016/07/logo-icon.ico">
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/uploads/2016/07/blurred-home-bg.jpg"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+<link rel="amphtml" href="/nodejs/xay-dung-thong-goi-y-phan-2/amp" /><link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" sizes="32x32" />
+<link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-180x180.png" />
+<meta name="msapplication-TileImage" content="http://cuthanh.com/wp-content/uploads/2016/07/cropped-logo-icon-lg-270x270.png" />
+
+<!-- BEGIN GADWP v4.9.5 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79981031-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hentry .aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+.post-content>p {
+	text-align: justify;
+	text-indent: 1em;
+}			</style>
+			<!-- W3TC-include-css -->
+</head>
+
+<body class="post-template-default single single-post postid-435 single-format-standard custom-background">
+<!-- W3TC-include-js-body-start -->
+
+	<!-- Search - Open panel -->
+	<div class="search-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="/">
+						<input type="text" class="search-panel__form  js--search-panel-text" name="s" placeholder="Begin typing for search">
+						<p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-content-container"><!-- ends in the footer.php -->
+		<!-- header -->
+		<header class="header  push-down-45">
+			<div class="container">
+				<div class="logo  pull-left">
+					<a href="/">
+													<img src="/wp-content/uploads/2016/07/logo-1.png" alt="Blog của CuThanh" />
+											</a>
+				</div>
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="navbar  navbar-default" role="navigation">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+						<ul id="menu-my-menu" class="navigation"><li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="/">Trang chủ</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-710"><a href="/category/technology">Technology</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-711"><a href="/category/react">React</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139"><a href="/category/server">Server</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-140"><a href="/category/nodejs">NodeJS</a></li>
+<li id="menu-item-141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141"><a href="/category/startup">Startup</a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="/about">About</a></li>
+</ul>					</div><!-- /.navbar-collapse -->
+				</nav>
+				<div class="hidden-xs  hidden-sm">
+					<a href="#" class="search__container  js--toggle-search-mode"> <span class="glyphicon  glyphicon-search"></span>  </a>
+										<div class="social">
+						<a href="#" class="social__container  js--blank-link"><span class="glyphicon  glyphicon-heart"></span></a>
+						<ul class="social__dropdown">
+														<li>
+								<a href="http://nlug27@gmail.com/" target="_blank" class="social__container"> <span class="zocial-email"></span></a>
+							</li>
+														<li>
+								<a href="https://www.facebook.com/hojjlamthenlug" target="_blank" class="social__container"> <span class="zocial-facebook"></span></a>
+							</li>
+													</ul>
+					</div>
+									</div>
+			</div>
+		</header>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" role="main">
+
+			
+				<!-- Post with featured image -->
+				<article class="boxed push-down-45 post-435 post type-post status-publish format-standard has-post-thumbnail hentry category-nodejs tag-cong-thuc tag-goi-y tag-he-thong tag-thuat-toan tag-xay-dung">
+
+					<div class="meta">
+
+			<a href="/nodejs/xay-dung-thong-goi-y-phan-2" class="link--no-border"><img width="1000" height="493" src="/wp-content/uploads/2016/08/batmanalogorithm-1000x493.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" /></a>
+	
+	
+			<div class="meta__container  clearfix">
+				<div class="meta__info">
+					<span class="meta__author">
+						<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=30&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=60&amp;d=mm&amp;r=g 2x' class='avatar avatar-30 photo' height='30' width='30' />						<a href="/author/nlug">Minh Thành</a> in <a href="/category/nodejs" rel="category tag">NodeJS</a>
+					</span>
+					<time datetime="2016-08-07T11:29:36+00:00" class="meta__date"><a href="/2016/08/07"><span class="glyphicon  glyphicon-calendar"></span> &nbsp; 07/08/2016</a></time>
+				</div>
+				<div class="meta__comments">
+					<a href="/nodejs/xay-dung-thong-goi-y-phan-2#comments"><span class="glyphicon  glyphicon-comment"></span>  &nbsp; 1 Comment</a>
+				</div>
+			</div>
+
+			
+</div>
+
+
+					<!-- Start of the blogpost -->
+					<div class="row">
+						<div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2">
+
+							<!-- Start of the content -->
+							<div class="post-content">
+								<h1 class="post-content__title">
+									<a href="/nodejs/xay-dung-thong-goi-y-phan-2">Xây dựng hệ thống “Gợi ý…” (Phần 2)</a>
+								</h1>
+								<p>Tiếp tục loạt bài nào&#8230;</p>
+<p>Phần 1: <a href="/nodejs/xay-dung-he-thong-goi-y-phan-1" target="_blank">http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1</a></p>
+<h1>Demo</h1>
+<p style="text-align: center;"><a href="http://demo.cuthanh.com/professorx-client/" target="_blank">http://demo.cuthanh.com/professorx-client/</a></p>
+<h1>Ý tưởng</h1>
+<p>Đâu tiên phải xem ý tưởng mình gợi ý phòng cho giao sư như thế nào đã. Với hệ thống gợi ý như thế này, thì đâu tiên phải xem những thằng nào giống giống nhau đã.</p>
+<p><strong>Ví dụ</strong></p>
+<p><em>Giáo sư X thích Mystique và bác Sói.</em></p>
+<p><em>Jean Gray cũng thích Mystique và Sói, ngoài ra, còn cặp với Scott nữa <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" border="0" hspace="5" /></em></p>
+<p>Theo như tính chất bắc cầu thì&#8230; tính cách của giáo sư X và Jean Gray là khá giống nhau nên suy ra Giáo sư X cũng khá thích anh Scott đấy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aa9d71a4e03ce5ef22cd34781a848aae.png" alt="" border="0" hspace="5" /></p>
+<p><strong>Ví dụ 2</strong></p>
+<p><em>Việc gợi ý này cũng khá giống hệ thống gợi ý kết bạn trên facebook</em></p>
+<p>Bạn và thằng A có khá nhiều bạn chung. Nên facebook sẽ suy nghĩ chắc mấy thằng thằng A quen thì có lẽ bạn cũng quen. Tuy nhiên hệ thống gợi ý của nó cũng có nhiều yếu tố tác động khác như <em>nơi ở, tuổi tác, giới tính,&#8230;</em> nữa.</p>
+<p>Vậy ý tưởng cho hệ thống gợi ý mình muốn nói là: Nó sẽ tìm xem những thằng nào có hành vi, tính cách giống bạn nhất, sau đó sẽ lấy sự khác biệt giữa 2 người rồi gợi ý cho bạn.</p>
+<h1>Thuật toán</h1>
+<p>Có ý tưởng rồi, bây giờ phải truyền đạt cho máy tính đã, nó không khôn tới mức bạn nói lại ý tưởng là nó hiểu được đâu <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3d4972d841d550c8b185c81dca71230b.png" alt="" border="0" hspace="5" />. Vì vậy phải hiện thực lại mô hình của chúng ta cho máy tính hiểu. Em có học môn này trên trường được gọi là Mô hình hóa toán học, thực sự thì em đi học, qua môn cũng chưa thấm nhuần được tí kiến thức nào cả <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" />.</p>
+<p><img class="aligncenter size-full wp-image-445" src="/wp-content/uploads/2016/08/batmanalogorithm.jpg" alt="batmanalogorithm" width="1000" height="641" srcset="/wp-content/uploads/2016/08/batmanalogorithm.jpg 1000w, /wp-content/uploads/2016/08/batmanalogorithm-300x192.jpg 300w, /wp-content/uploads/2016/08/batmanalogorithm-768x492.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<p style="text-align: center;"><em>Quả hình Batman nhằm mục đích gây war</em></p>
+<p>&nbsp;</p>
+<p>Ta sẽ nói đến <strong>toán tập hợp (Sets)</strong> nhé. Cái này học từ lớp 6 rồi.</p>
+<p>Gọi tập hợp những người hợp tính với người thứ 1 là <code>U1</code>, người thứ 2 là <code>U2</code></p>
+<p><strong>Ví dụ</strong></p>
+<p><em>Người thứ 1 là Bác X. Suy ra <code>U1 = {mystique, sói}</code></em></p>
+<p><em>Người thứ 2 là Jean. Suy ra <code>U2 = {mystique, sói, scott}</code></em></p>
+<p>Với kiến thức lớp 6, ta có:</p>
+<p>Những người cả U1 và U2 đều thích sẽ là <code>U1 ∩ U2</code></p>
+<p>Tất cả những người cả 2 đều thích sẽ là <code>U1 ∪ U2</code></p>
+<p><strong>Ví dụ</strong></p>
+<p><em><code>U1 ∩ U2 = {mystique, sói}</code></em></p>
+<p><em><code>U1 ∪ U2 = {mystique, sói, scott}</code></em></p>
+<p>Từ đó ta có công thức tính xem <strong>mức độ giống nhau của <code>U1</code> và <code>U2</code></strong> sẽ là</p>
+<p style="text-align: center;"><code>|U1 ∩ U2| / |U1 ∪ U2|</code></p>
+<p>Nhìn công thức trên thì nó sẽ chạy từ 0 đến 1. Nếu giá trị là 1 thì <code>U1</code> và <code>U2</code> hoàn toàn có sở thích giống nhau. Ngược lại nếu giá trị bằng 0 thì chắc&#8230; 2 thằng này không thể chung sống với nhau được <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" border="0" hspace="5" />. BTW, công thức này được biết tới với tên gọi là &#8220;<em>coefficient de communauté</em>&#8221; của bác Paul Jaccard, không phải của em đâu <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" />.</p>
+<p><strong>Ví dụ</strong></p>
+<p><em>Mức độ thích nhau của Bác X và Jean sẽ là: <code>2 / 3 = 0.6666666666666666666666666666666666666666666666666666...</code> <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" /></em></p>
+<p>Tới đây chắc các bác cũng hình dung chúng ta sẽ  có<strong> công thức gợi ý </strong>áp dùng cho bác X là</p>
+<p style="text-align: center;"><code>U2 \ U1 = {scott}</code> (Phép trừ 2 tập hợp đấy các bác)</p>
+<p>Theo em thì vậy đã Ok rồi. Chũng ta sẽ gợi ý tất cả những người hợp với Thanh niên X nào đấy theo công thức trên và<strong> sắp xếp theo mức độ giống nhau giữa 2 người.</strong></p>
+<p>Tuy nhiên, trong bài viết mình tham khảo nó có cách tính <strong>mức độ Thanh niên X nào đây có thích Thanh niên K</strong> nào không theo công thức</p>
+<p style="text-align: center;"><code>P(X, K) = Z / M</code></p>
+<p>Trong đó <code>P(X, K)</code> là công thức tính mức điểm Thanh niên X có thích Thanh niên K. <strong><code>Z</code></strong> là <strong>tổng điểm giống nhau của X với tất cả mọi người trong đội X-Men cũng &#8220;thả tim&#8221; thằng K</strong>. <strong><code>M</code></strong> là <strong>tổng số người thích K trong đội X-Men</strong>. Và tất nhiên, giá trị của <code>P(X, K)</code> cũng chạy từ 0 tới 1.</p>
+<p><strong>Ví dụ</strong></p>
+<p><em>Tính xem Bác X có hợp với Scott không bằng công thức trên</em></p>
+<p><em>Giả sự có thêm một nhân vật nữa là Storm có <code>U3 = {sói, scott}</code></em></p>
+<p><em>Mức độ giống nhau giữa Bác X và Storm sẽ là </em></p>
+<p style="text-align: center;"><em><code>|U1 ∩ U3| / |U1 ∪ U3| = 1/3 = 0,333333333...</code></em></p>
+<p><em>Và trong ba nhân vật xét đến ở đây có 2 người thích Scott. Nên <code>M = 2</code></em></p>
+<p style="text-align: center;"><em><code>P(bác X, scott) = (0,333 + 0, 666) / 2 = 0.5</code></em></p>
+<p>Em đã nói ở phần 1 là mình vừa đọc tài liệu, vừa xây dựng thử và vừa viết bài cho các bác nên em không biết là cách của bài viết em tham khảo hay cách mà em nhìn thấy được, cái nào tốt hơn <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" border="0" hspace="5" />. Nên em sẽ xây dựng theo cả 2 cách đến cuối cùng để xem cái nào tốt hơn nhé!</p>
+<p>Link tham khảo: <a href="https://www.toptal.com/algorithms/predicting-likes-inside-a-simple-recommendation-engine" target="_blank">https://www.toptal.com/algorithms/predicting-likes-inside-a-simple-recommendation-engine</a></p>
+<h1>Kết luận</h1>
+<p>Nếu đã hiểu thuật toán thì các bạn muốn xây dựng trên ngôn ngữ nào cũng được nên nếu các học ngôn ngữ khác thì thử làm theo thuật toán này xem sao nhé. Cùng xây dựng thử xem kết quá có giống em không.</p>
+<p>Phần 3: <a href="/nodejs/xay-dung-thong-goi-y-phan-3">Xây dựng hệ thống “Gợi ý…” (Phần 3)</a></p>
+		<div class="dw-reactions dw-reactions-post-435" data-type="vote" data-nonce="fe51f46582" data-post="435">
+											<div class="dw-reactions-button">
+					<span class="dw-reactions-main-button">Like</span>
+					<div class="dw-reactions-box">
+						<span class="dw-reaction dw-reaction-like"><strong>Like</strong></span>
+						<span class="dw-reaction dw-reaction-love"><strong>Love</strong></span>
+						<span class="dw-reaction dw-reaction-haha"><strong>Haha</strong></span>
+						<span class="dw-reaction dw-reaction-wow"><strong>Wow</strong></span>
+						<span class="dw-reaction dw-reaction-sad"><strong>Sad</strong></span>
+						<span class="dw-reaction dw-reaction-angry"><strong>Angry</strong></span>
+					</div>
+				</div>
+														<div class="dw-reactions-count">
+					<span class="dw-reaction-count dw-reaction-count-like"><strong>4</strong></span>				</div>
+					</div>
+		
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Có liên quan</em></h3>
+</div>
+															</div>
+							<!-- End of the content -->
+
+							<div class="row">
+								<div class="col-xs-12  col-sm-3">
+									<!-- Start of comments button -->
+									<div class="post-comments">
+										<a class="btn  btn-primary" href="/nodejs/xay-dung-thong-goi-y-phan-2#comments">1 Comment</a>
+									</div>
+									<!-- End of comments button -->
+								</div>
+								<div class="col-xs-12  col-sm-9">
+									<!-- Start of social icons -->
+									<div class="social-icons">
+																			</div>
+									<!-- End of social icons -->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12  push-down-60  col-sm-6">
+									<!-- Start of post author -->
+									<div class="post-author">
+										<h6>Written By</h6>
+										<hr>
+										<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=90&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=180&amp;d=mm&amp;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' />										<h5>
+											<a href="/author/nlug">Minh Thành</a>
+										</h5>
+										<div class="post-author__text">
+											<p>Tác giả bận chơi Dota 2 rồi lười viết cái dòng này lắm</p>
+										</div>
+									</div>
+									<!-- End of post author -->
+								</div>
+
+																<div class="col-xs-12  col-sm-6  push-down-60">
+
+									<!-- Start of post tags -->
+									<div class="tags">
+										<h6>Tags</h6>
+										<hr>
+										<a href="/tag/cong-thuc" rel="tag">công thức</a><a href="/tag/goi-y" rel="tag">gợi ý</a><a href="/tag/he-thong" rel="tag">hệ thống</a><a href="/tag/thuat-toan" rel="tag">thuật toán</a><a href="/tag/xay-dung" rel="tag">xây dựng</a>									</div>
+
+									<!-- End of post tags -->
+								</div>
+								
+							</div>
+
+							<!-- comments start -->
+							
+<div class="comments  push-down-30" id="comments">
+	<h6>Comments</h6>
+	<hr>
+
+	<section class="comments-container">
+		
+						<h3 class="push-down-30">
+				1 Comment			</h3>
+			
+			
+	<div id="comment-53" class="pingback even thread-even depth-1 clearfix">
+		<div class="avatar-container">
+					</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='http://yen.ypworks.vn/2016/10/cac-website-lap-trinh/' rel='external nofollow' class='url'>Các website lập trình | Blog của Yên</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-12-16T09:50:33+00:00">
+					 	16/12/2016 at 9:50 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/nodejs/xay-dung-thong-goi-y-phan-2?replytocom=53#respond' onclick='return addComment.moveForm( "comment-53", "53", "respond", "435" )' aria-label='Phản hồi đến Các website lập trình | Blog của Yên'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>[&#8230;] <a href="/nodejs/xay-dung-thong-goi-y-phan-2" rel="nofollow">http://cuthanh.com/nodejs/xay-dung-thong-goi-y-phan-2</a> [&#8230;]</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+
+					<hr />
+					<h3 class="push-down-25">
+						Leave a Comment					</h3>
+
+
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/nodejs/xay-dung-thong-goi-y-phan-2#respond" style="display:none;">Hủy</a></small></h3>			<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="push-down-15"><label for="message">Message <span class="warning">*</span></label><textarea class="form-control form-control--contact form-control--big" id="comment" name="comment" rows="7" aria-required="true" placeholder="Your Comment goes here." required></textarea></p><p class="push-down-15"><label for="author">Name <span class="warning">*</span><input class="form-control  form-control--contact" id="author" name="author" type="text" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="email">Email <span class="warning">*</span><input class="form-control  form-control--contact" id="email" name="email" type="email" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="url">Website <span class="warning">*</span><input class="form-control  form-control--contact" id="url" name="url" type="text" value="" size="30" /></label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submitWPComment" class="submit" value="Send now" /> <input type='hidden' name='comment_post_ID' value='435' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="be24b25c71" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="230"/></p>			</form>
+			</div><!-- #respond -->
+		</section>
+</div>							<!-- comments end -->
+
+							
+						</div>
+					</div>
+				</article>
+
+			
+	</div>
+
+	
+	</div>
+</div>
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+									</div>
+			</div>
+		</footer>
+		<footer class="copyrights">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12  col-sm-6">
+						Readable WP theme &copy; Copyright 2014					</div>
+					<div class="col-xs-12  col-sm-6">
+						<div class="copyrights--right">
+							Made by <a href="http://www.proteusthemes.com/">ProteusThemes</a>						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div><!-- /.page-content-container -->
+
+<script type='text/javascript' src='/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201748'></script>
+<script type='text/javascript' src='/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ReadableVars = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/readable/assets/js/built.js?ver=1.0.0'></script>
+<script type='text/javascript' src='/wp-includes/js/comment-reply.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201748.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.5',blog:'114130900',post:'435',tz:'7',srv:'cuthanh.com'} ]);
+	_stq.push([ 'clickTrackerInit', '114130900', '435' ]);
+</script>
+<!-- W3TC-include-js-body-end -->
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Event Emitter - X gọi, 500 anh em trả lời - Blog của CuThanh</title>
+		<link rel="canonical" href="/nodejs/event-emitter-x-goi-500-anh-em-tra-loi" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/nodejs\/event-emitter-x-goi-500-anh-em-tra-loi","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Event Emitter &#8211; X g\u1ecdi, 500 anh em tr\u1ea3 l\u1eddi","datePublished":"2016-11-01T17:22:47+00:00","dateModified":"2016-11-01T20:55:36+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/11\/maxresdefault-1.jpg","width":1920,"height":804}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Event Emitter &#8211; X gọi, 500 anh em trả lời</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-11-01T17:22:47+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p>Chào các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>,lâu rồi em không viết bài gì cả, bận quá <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/f7b14908d90b912b3fe5d7fa726df847.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Hôm nay mình tìm hiểu về Javascript tí nhề. Bài này mình sẽ nói về <strong>Event Emitter</strong>.</p>
+<h1>Vậy Event Emitter là gì?</h1>
+<p><strong>Event Emitter</strong> hoạt động kiểu giống như câu mình ghi ở “Tít” – “<em>X gọi, 500 anh em trả lời<strong>“</strong></em>. Tuởng tuợng như vầy nhé</p>
+<p><amp-img class="aligncenter size-large wp-image-657 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/11/maxresdefault-1-1024x429.jpg" alt="maxresdefault-1" width="700" height="293" srcset="/wp-content/uploads/2016/11/maxresdefault-1-1024x429.jpg 1024w, /wp-content/uploads/2016/11/maxresdefault-1-300x126.jpg 300w, /wp-content/uploads/2016/11/maxresdefault-1-768x322.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Halloween vừa dắt gái đi chơi về, bỗng dưng có một bầy thanh niên “Tha thu” đầy nguời nhảy vào đe doạ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, đòi “va chạm” với bạn gái của bạn xíu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Con này thì mới quen, đầu tư chưa lấy lại vốn thì chưa thế tụi nó đụng vào được <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Vì thế bạn nhất quyết không cho thằng nào đụng chạm vào, khổ nỗi tụi nó đông và hung hãn quá, giờ sao <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>??? May quá nhớ ra mấy thằng chiến hữu cũng có máu mặt, giờ này FA chắc đang ngồi nhà DOTO, thế là bạn cầm con điện thoại ra alo tụi nó like a boss <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><em><strong>Thằng A</strong></em></p>
+<p>Alo… Mày đang ở đâu thế, đến 69 đường XXX cứu tao với.</p>
+<p>T đang tiêu chảy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/76e3337135a7b852053b34aadd76ba6d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, đếu kíu được mày đâu. Gọi thằng B coi</p>
+<p><amp-img class="aligncenter size-large wp-image-658 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/11/ngoibo-1024x768.jpg" alt="ngoibo" width="700" height="525" srcset="/wp-content/uploads/2016/11/ngoibo-1024x768.jpg 1024w, /wp-content/uploads/2016/11/ngoibo-300x225.jpg 300w, /wp-content/uploads/2016/11/ngoibo-768x576.jpg 768w, /wp-content/uploads/2016/11/ngoibo.jpg 1600w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p><em><strong>Thằng B</strong></em></p>
+<p>Alo… Mày đang ở đâu thế, đến 69 đường XXX cứu tao với.</p>
+<p>Mày bảo tụi nó đợi tao 5′, để tao gọi 500 anh em ra cứu bạn gái mày <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Đấy <strong>Event Emitter</strong> hoạt động giống như câu chuyện mình nói. Khi một đối tương (Object – là bạn đấy) gặp phải một sự kiện gì đấy thì bạn hét lên một thông điệp (<strong>Emit</strong>). Những thằng nghe đuợc thông điệp của bạn (<strong>Listener</strong>) sẽ nhận thông điệp ấy và xử lý tuỳ từng thằng khác nhau. Như ở trên, khi bạn truyền thông điệp đi “<em><strong>Mày đang đâu thế, đến đuờng 69 đuờng XX cứu tao với</strong></em>” thằng A đang tiêu chảy thì nó lơ bạn luôn, còn thằng B sẽ gọi 500 anh em tới cứu bạn.</p>
+<p>Thế là đã mường tượng được <strong>Event Emitter</strong> là gì rồi nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h1>Code thử xem sao</h1>
+<p>Đầu tiên là tạo class <code>Event Emitter</code></p>
+<pre class="prettyprint">class EventEmitter {
+    constructor() {
+        this.listener = []
+    }
+    addListener(event, listener) {
+        if (this.listener[event]) {
+            this.listener[event].push(listener)
+        } else {
+            this.listener[event] = Array(listener)
+        }
+        console.log ("Added new listener")
+        console.log (this.listener)
+        return {event: event, index: this.listener[event].indexOf(listener)}
+    }
+    removeListener(listenerInfo) {
+        this.listener[listenerInfo.event].splice(listenerInfo.index, 1)
+        console.log ("Removed a listener")
+        console.log (this.listener)
+    }
+    emit(event, arg) {
+        if (this.listener[event]) {
+            this.listener[event].reverse().forEach((x) =&gt; x(arg))
+        }
+        console.log ("Emmitted #{event}")
+    }
+}</pre>
+<p>Trong class <code>EventEmitter</code> của chúng ta có 4 method chính là <code>Constructor</code>, <code>addListener</code>, <code>removeListener</code>, và <code>emit</code></p>
+<h2>Constructor</h2>
+<pre class="prettyprint">constructor() {
+    this.listener = []
+}</pre>
+<p>Thằng này đơn giản, có nhiệm vụ khởi tạo một array chứa danh sách các listener tùy theo event là gì thôi,</p>
+<h2>addListener</h2>
+<pre class="prettyprint">    addListener(event, listener) {
+        if (this.listener[event]) {
+            this.listener[event].push(listener)
+        } else {
+            this.listener[event] = Array(listener)
+        }
+        console.log ("Added new listener")
+        console.log (this.listener)
+        return {event: event, index: this.listener[event].indexOf(listener)}
+    }</pre>
+<p>Thằng này thì thêm một chiến hữu trong 500 anh em của bạn vào danh bạ. Khi nào cần chỉ việc cầm dt lên alo nó</p>
+<h2>removeListener</h2>
+<pre class="prettyprint">    removeListener(listenerInfo) {
+        this.listener[listenerInfo.event].splice(listenerInfo.index, 1)
+        console.log ("Removed a listener")
+        console.log (this.listener)
+    }</pre>
+<p>Có thêm thì phải có xoá thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Con Nokia 1280 chỉ lưu dc 500 số thì các bác phải xoá bớt đi những thằng bê đê dành chỗ cho các anh chuẩn men khác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Input của hàm này là output của hàm <code>addListener</code> mình nói bên trên</p>
+<h2>emit</h2>
+<pre class="prettyprint">    emit(event, arg) {
+        if (this.listener[event]) {
+            this.listener[event].forEach((x) =&gt; x(arg))
+        }
+        console.log ("Emitted "+event)
+    }</pre>
+<p>Cái này là các bác nè, khi gọi hàm này tuơng đương các bác hét lên hoặc nhắn tin với một nhóm trong danh bạ dt. Thằng nào nhận dc tin nhắn của các bác thì nó xử lý ra sao tuỳ tụi nó, các bác không biết được (phần này khác với ví dụ mình nói ở trên một xíu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>)</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">When the EventEmitter object emits an event, all of the functions attached to that specific event are called synchronously. Any values returned by the called listeners are ignored and will be discarded.<span class="su-quote-cite"><a href="https://nodejs.org/api/events.html" target="_blank">Nodejs Document</a></span></div></div>
+<h1>Thử nha</h1>
+<p>Tạo đối tượng là bản thân ta</p>
+<pre class="prettyprint">let cuThanh = new EventEmitter</pre>
+<p>Thêm tụi bạn vào danh bạ</p>
+<pre class="prettyprint">let thangA = cuThanh.addListener("GOI500AE", () =&gt; {
+    console.log ("A: T đang tiêu chảy, đếu kíu được mày đâu. Gọi thằng B coi")
+})
+let thangB = cuThanh.addListener("GOI500AE", () =&gt; {
+    console.log ("B: Mày bảo tụi nó đợi tao 5′, để tao gọi 500 anh em ra cứu bạn gái mày.")
+})</pre>
+<p>Ở trên, ta định nghĩa thông điệp là <strong>GOI500AE</strong>, các <strong>listener</strong> chỉ hoạt động khi nó nghe được đúng thông điệp mà chúng ta hét lên (<strong>emit</strong>). Vậy là có 2 thằng bạn, luôn sẵn sàng trả lời khi <code>cuThanh</code> hét lên <strong>GOI500AE</strong>. Thông điệp thì các bác nên để ngắn gọn, xúc tích xíu nhá.</p>
+<p>Bây giờ hét thử lên nha</p>
+<pre class="prettyprint">cuThanh.emit("GOI500AE")</pre>
+<p>Chúng ta nhận được ngay</p>
+<pre class="prettyprint">"A: T đang tiêu chảy, đếu kíu được mày đâu. Gọi thằng B coi"
+"B: Mày bảo tụi nó đợi tao 5′, để tao gọi 500 anh em ra cứu bạn gái mày."
+Emitted GOI500AE</pre>
+<p>Sau lần gọi đồng đội đầu tiên, thấy thằng A chơi chó quá, bạn bè cần mà lại ngồi trong wc. Bạn quyết định xoá nó khỏi danh bạ, “Tao đéo cần mày nữa, lộn cái bàn, tốn tiền điện thoại của bố” <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><amp-img class="aligncenter size-full wp-image-659 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/11/loncaiban.jpeg" alt="loncaiban" width="225" height="225" srcset="/wp-content/uploads/2016/11/loncaiban.jpeg 225w, /wp-content/uploads/2016/11/loncaiban-150x150.jpeg 150w" sizes="(min-width: 225px) 225px, 100vw"></amp-img></p>
+<pre class="prettyprint">cuThanh.removeListener(thangA)</pre>
+<p>Bây giờ khi bạn hét lên “<strong>GOI500AE</strong>” thì chỉ còn lại thằng B trả lời thôi</p>
+<pre class="prettyprint">"B: Mày bảo tụi nó đợi tao 5′, để tao gọi 500 anh em ra cứu bạn gái mày."
+Emitted GOI500AE
+</pre>
+<p>Đấy, mình đã hiện thực cho các bác cách hiện thực của <strong>Event Emitter</strong>. Thực ra <strong>Event Emitter</strong> không quá xa lạ với các bác đã nhảy vảo Javascript.</p>
+<pre class="prettyprint">$('button').on('click', () =&gt; {
+    alert ("You clicked a button")
+})</pre>
+<p>Quen chưa, rồi cả các sự kiện page <code>onLoad</code>, <code>onUnload</code>, <code>onHover</code>,… nữa. Ngoài ra ở Nodejs nếu dụng package <code>request</code> thì các bác cũng bắt gặp nó ở đâu đó <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h1>Về Event Emitter</h1>
+<p>Cái việc sử dụng <strong>Event Emitter</strong> này giúp các bác lập trình theo kiểu gọi là: Lập trình hướng sự kiện, mình thấy rất là phổ biến ở thế giới Javascript. Có khác biệt là tên gọi của các method thôi nên khiến bạn khó nhận ra. <strong>Vậy lợi hại của việc lập trình theo hướng sự kiên là gì?</strong> Mình cũng méo biết <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, mới tìm hiểu thôi. Tại vì đang tìm hiểu vẻ Redux thấy nó hiện thực một Event Emitter kiểu kiểu như code ở trên của mình.</p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8">P/S</span>: <em>Nếu các bác chỉ cần hiện thực Event Emitter một cách đơn giản thì theo mình code ở trên là đủ rồi. Nó cho phép truyền cả thông số khi emit nữa (sử dụng làm sao thì các bác tự đọc code mò mẫm đi nhá, em luời ví dụ lắm). Còn nếu muốn nhu cầu phức tạp hơn thì nên sử dụng một số thư viện có sẵn (nếu các bác không muốn đào sâu nghiên cứu, chỉ cần down về là chạy thôi). <a href="https://nodejs.org/api/events.html" target="_blank">Nodejs có hỗ trợ sẵn EventEmitter</a>, còn nếu muốn sử dụng ở brower thì các bác search đi nhé, đầy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></em></p>
+<h1>Code của toàn bộ bài viết.</h1>
+<p>Các bác <code>node EventEmitter.js</code> để chạy thử nhé</p>
+
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/nodejs" rel="category tag">NodeJS</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/event-emitter" rel="tag">Event Emitter</a>, <a href="/tag/goi-tra-loi" rel="tag">gọi trả lời</a>, <a href="/tag/hallowean" rel="tag">hallowean</a>, <a href="/tag/javascript" rel="tag">javascript</a>, <a href="/tag/lon-cai-ban" rel="tag">lộn cái bàn</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=651&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

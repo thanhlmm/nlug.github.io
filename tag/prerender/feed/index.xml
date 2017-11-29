@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Prerender &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/prerender/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>Prerender &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>SEO Angular? Ez với prerender.io!</title>
+		<link>/server/seo-angular-ez</link>
+		<comments>/server/seo-angular-ez#comments</comments>
+		<pubDate>Sun, 17 Jul 2016 01:00:19 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Server]]></category>
+		<category><![CDATA[Web App]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[Prerender]]></category>
+		<category><![CDATA[SEO]]></category>
+
+		<guid isPermaLink="false">/?p=44</guid>
+		<description><![CDATA[<p>Vấn đề Hiện nay thì mặc dù thằng Google đã hỗ trợ Crawl Javascript nhưng theo mình thấy thì vẫn chưa ổn định mấy và Internet rộng lớn lắm, có mình mày hỗ trợ thì tao sống không nổi đâu. Vd như Crawler của Facebook. Các bạn truy cập https://developers.facebook.com/tools/debug/sharing/ Paste link website rồi ấn ...</p>
+<p>The post <a rel="nofollow" href="/server/seo-angular-ez">SEO Angular? Ez với prerender.io!</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/server/seo-angular-ez/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">44</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>npm &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/npm/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>npm &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Hello Yarn and good bye NPM</title>
+		<link>/nodejs/hello-yarn-good-bye-npm</link>
+		<comments>/nodejs/hello-yarn-good-bye-npm#respond</comments>
+		<pubDate>Thu, 13 Oct 2016 04:29:22 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[dev]]></category>
+		<category><![CDATA[facebook]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[package manager]]></category>
+		<category><![CDATA[thay đổi]]></category>
+		<category><![CDATA[yarn]]></category>
+
+		<guid isPermaLink="false">/?p=609</guid>
+		<description><![CDATA[<p>Hello world  Bài viết này mình sẽ giới thiệu một package manager mới thay thế cho NPM được cài mặc định với Nodejs. Nếu là một nodejs developer hẳn rằng các bác sẽ thấy nó thực sự mạnh ở&#8230; NPM. Vì sao? vì đa số cái khỉ gì cũng có trên đó cả, bạn cần ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/hello-yarn-good-bye-npm">Hello Yarn and good bye NPM</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/hello-yarn-good-bye-npm/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">609</post-id>	</item>
+	</channel>
+</rss>

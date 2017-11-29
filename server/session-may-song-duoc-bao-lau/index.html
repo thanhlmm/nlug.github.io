@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<title>Session, mày sống được bao lâu? - Blog của CuThanh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="pingback" href="/xmlrpc.php" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- W3TC-include-js-head -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="/server/session-may-song-duoc-bao-lau" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Session, mày sống được bao lâu? - Blog của CuThanh" />
+<meta property="og:description" content="Chào các mẹ , Như bữa trước đã nói trong bài &#8220;hack&#8221; hệ thống captcha của truờng, ta có thể bypass được việc nhập captcha do lỗi của nguời lập trình liên quan đến Session. Mình cũng đã viết một con bot nhỏ nhỏ để lấy data thời khoá biểu về. Mọi việc diễn ra khá ..." />
+<meta property="og:url" content="http://cuthanh.com/server/session-may-song-duoc-bao-lau" />
+<meta property="og:site_name" content="Blog của CuThanh" />
+<meta property="article:author" content="https://www.facebook.com/hojjlamthenlug" />
+<meta property="article:tag" content="garbage collection" />
+<meta property="article:tag" content="php" />
+<meta property="article:tag" content="Session" />
+<meta property="article:tag" content="thời gian sống" />
+<meta property="article:tag" content="thu gom rác" />
+<meta property="article:section" content="Server" />
+<meta property="article:published_time" content="2016-09-29T23:28:31+00:00" />
+<meta property="article:modified_time" content="2016-09-29T23:47:06+00:00" />
+<meta property="og:updated_time" content="2016-09-29T23:47:06+00:00" />
+<meta property="og:image" content="http://cuthanh.com/wp-content/uploads/2016/09/maxresdefault.jpg" />
+<meta property="og:image:width" content="1920" />
+<meta property="og:image:height" content="1080" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Chào các mẹ , Như bữa trước đã nói trong bài &#8220;hack&#8221; hệ thống captcha của truờng, ta có thể bypass được việc nhập captcha do lỗi của nguời lập trình liên quan đến Session. Mình cũng đã viết một con bot nhỏ nhỏ để lấy data thời khoá biểu về. Mọi việc diễn ra khá ..." />
+<meta name="twitter:title" content="Session, mày sống được bao lâu? - Blog của CuThanh" />
+<meta name="twitter:image" content="http://cuthanh.com/wp-content/uploads/2016/09/maxresdefault.jpg" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Blog của CuThanh &raquo;" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Blog của CuThanh &raquo;" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Blog của CuThanh &raquo; Session, mày sống được bao lâu? Dòng phản hồi" href="/server/session-may-song-duoc-bao-lau/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/cuthanh.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='dw-reaction-style-css'  href='/wp-content/plugins/dw-reactions/assets/css/style.css?ver=120004042016' type='text/css' media='all' />
+<link rel='stylesheet' id='estilo-css'  href='/wp-content/plugins/simple-code-highlighter/estilo.css?ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='readable-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C700&#038;subset=latin%2Cvietnamese&#038;ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='/wp-content/themes/readable/assets/stylesheets/main.css?ver=1.0.0' type='text/css' media='all' />
+<style id='main-inline-css' type='text/css'>
+
+/******************
+Primary theme color
+*******************/
+
+.social__container, .search__container, .search-panel .search-panel__text, .navigation > li.current-menu-item > a, .navigation > li:hover > a, .navigation > li.current-menu-ancestor > a, .widget-contact__title, .navigation .sub-menu > li > a:hover, .error .primary-color {
+	color: #05668d}
+
+.social .social__dropdown, ::selection, .navbar-toggle {
+	background: #05668d}
+
+.wpcf7-submit, .navigation > li > a:after, .btn-primary {
+	background: linear-gradient(to bottom, #05668d, #055c7f)
+}
+
+blockquote, .wpcf7-submit, .btn-primary, .navbar-toggle {
+	border-color: #05668d}
+
+.search__container:hover, .social__container:hover {
+	color: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a {
+		background: #05668d	}
+}
+
+.wpcf7-submit:hover, .btn-primary:hover, .social .social__dropdown li a:hover {
+	background: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a:hover {
+		background: #055c7f	}
+}
+
+.wpcf7-submit:hover, .navigation .sub-menu > li > a, .navigation .sub-menu, .btn-primary:hover, .social .social__dropdown li .social__container {
+	border-color: #055c7f}
+
+/******************
+Text color
+*******************/
+
+blockquote, .post-content, .post-content--narrow, .post-content--narrow span, body .su-tabs-style-default .su-tabs-pane {
+	color: #40454a}
+
+/******************
+Link color
+*******************/
+
+a, .menu li a, .pptwj .pptwj-tabs-wrap .tab-links li a.selected, .pptwj .pptwj-tabs-wrap .tab-links li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected {
+	color: #028090}
+
+.widget_tag_cloud a, .tags a {
+	border-color: #028090}
+
+a:hover, .menu li a:hover {
+	color: #027382}
+
+.widget_tag_cloud a:hover, .tags a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected:after, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover:after {
+	background-color: #028090}
+
+/******************
+Headings dark
+*******************/
+h1, h1 a, .h1 a, .h2, h2, h2 a, .h2 a, h4, h4 a, .h4 a, h5, h5 a, .h5 a, .zem_rp_title {
+	color: #2f343b}
+
+/******************
+Headings light
+*******************/
+h3, h3 a, .h3 a, h6, h6 a, .h6 a, .wp_rp_excerpt {
+	color: #9a9a90}
+
+/******************
+Navbar background
+*******************/
+.header {
+	background-color: #ffffff}
+
+/******************
+Footer background
+*******************/
+.footer, .copyrights {
+	background-color: #ffffff}
+
+/******************
+Navbar text color
+*******************/
+
+.navigation > li > a {
+	color: #9a9a90}
+
+/******************
+Navbar dropdown text color
+*******************/
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a, .navigation .sub-menu > li > a:hover {
+		color: #f3f4f4	}
+}
+
+/* WP Customizer end */
+
+/* User Custom CSS */
+
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=4.5' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var dw_reaction = {"ajax":"http:\/\/cuthanh.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/dw-reactions/assets/js/script.js?ver=120004042016'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.3" />
+<link rel='shortlink' href='/?p=591' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fserver%2Fsession-may-song-duoc-bao-lau" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fserver%2Fsession-may-song-duoc-bao-lau&#038;format=xml" />
+			<meta property="fb:pages" content="1230424850325628" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>			<link rel="shortcut icon" href="/wp-content/uploads/2016/07/logo-icon.ico">
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/uploads/2016/07/blurred-home-bg.jpg"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+<link rel="amphtml" href="/server/session-may-song-duoc-bao-lau/amp" /><link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" sizes="32x32" />
+<link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-180x180.png" />
+<meta name="msapplication-TileImage" content="http://cuthanh.com/wp-content/uploads/2016/07/cropped-logo-icon-lg-270x270.png" />
+
+<!-- BEGIN GADWP v4.9.5 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79981031-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hentry .aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+.post-content>p {
+	text-align: justify;
+	text-indent: 1em;
+}			</style>
+			<!-- W3TC-include-css -->
+</head>
+
+<body class="post-template-default single single-post postid-591 single-format-standard custom-background">
+<!-- W3TC-include-js-body-start -->
+
+	<!-- Search - Open panel -->
+	<div class="search-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="/">
+						<input type="text" class="search-panel__form  js--search-panel-text" name="s" placeholder="Begin typing for search">
+						<p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-content-container"><!-- ends in the footer.php -->
+		<!-- header -->
+		<header class="header  push-down-45">
+			<div class="container">
+				<div class="logo  pull-left">
+					<a href="/">
+													<img src="/wp-content/uploads/2016/07/logo-1.png" alt="Blog của CuThanh" />
+											</a>
+				</div>
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="navbar  navbar-default" role="navigation">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+						<ul id="menu-my-menu" class="navigation"><li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="/">Trang chủ</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-710"><a href="/category/technology">Technology</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-711"><a href="/category/react">React</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-139"><a href="/category/server">Server</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-140"><a href="/category/nodejs">NodeJS</a></li>
+<li id="menu-item-141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141"><a href="/category/startup">Startup</a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="/about">About</a></li>
+</ul>					</div><!-- /.navbar-collapse -->
+				</nav>
+				<div class="hidden-xs  hidden-sm">
+					<a href="#" class="search__container  js--toggle-search-mode"> <span class="glyphicon  glyphicon-search"></span>  </a>
+										<div class="social">
+						<a href="#" class="social__container  js--blank-link"><span class="glyphicon  glyphicon-heart"></span></a>
+						<ul class="social__dropdown">
+														<li>
+								<a href="http://nlug27@gmail.com/" target="_blank" class="social__container"> <span class="zocial-email"></span></a>
+							</li>
+														<li>
+								<a href="https://www.facebook.com/hojjlamthenlug" target="_blank" class="social__container"> <span class="zocial-facebook"></span></a>
+							</li>
+													</ul>
+					</div>
+									</div>
+			</div>
+		</header>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" role="main">
+
+			
+				<!-- Post with featured image -->
+				<article class="boxed push-down-45 post-591 post type-post status-publish format-standard has-post-thumbnail hentry category-server tag-garbage-collection tag-php tag-session tag-thoi-gian-song tag-thu-gom-rac">
+
+					<div class="meta">
+
+			<a href="/server/session-may-song-duoc-bao-lau" class="link--no-border"><img width="1138" height="493" src="/wp-content/uploads/2016/09/maxresdefault-1138x493.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" /></a>
+	
+	
+			<div class="meta__container  clearfix">
+				<div class="meta__info">
+					<span class="meta__author">
+						<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=30&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=60&amp;d=mm&amp;r=g 2x' class='avatar avatar-30 photo' height='30' width='30' />						<a href="/author/nlug">Minh Thành</a> in <a href="/category/server" rel="category tag">Server</a>
+					</span>
+					<time datetime="2016-09-29T23:28:31+00:00" class="meta__date"><a href="/2016/09/29"><span class="glyphicon  glyphicon-calendar"></span> &nbsp; 29/09/2016</a></time>
+				</div>
+				<div class="meta__comments">
+					<a href="/server/session-may-song-duoc-bao-lau#comments"><span class="glyphicon  glyphicon-comment"></span>  &nbsp; 11 Comments</a>
+				</div>
+			</div>
+
+			
+</div>
+
+
+					<!-- Start of the blogpost -->
+					<div class="row">
+						<div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2">
+
+							<!-- Start of the content -->
+							<div class="post-content">
+								<h1 class="post-content__title">
+									<a href="/server/session-may-song-duoc-bao-lau">Session, mày sống được bao lâu?</a>
+								</h1>
+								<p>Chào các mẹ <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" />,</p>
+<p>Như bữa trước đã nói trong bài <a href="/technology/hack-thong-captcha-cua-truong" target="_blank">&#8220;hack&#8221; hệ thống captcha của truờng</a>, ta có thể bypass được việc nhập captcha do lỗi của nguời lập trình liên quan đến Session.</p>
+<p>Mình cũng đã viết một con bot nhỏ nhỏ để lấy data thời khoá biểu về. Mọi việc diễn ra khá trơn tru mà không cần đến dầu nhớt <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" border="0" hspace="5" />, tuy nhiên, sau khi ngủ một giấc, chạy lại thì con bot méo get được data. WTF??? <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" border="0" hspace="5" /> Chả lẽ hôm qua chạy đuợc mà hôm nay không chạy được ah</p>
+<p><img class="aligncenter size-full wp-image-596" src="/wp-content/uploads/2016/09/it-ran-last.jpg" alt="it-ran-last" width="600" height="397" srcset="/wp-content/uploads/2016/09/it-ran-last.jpg 600w, /wp-content/uploads/2016/09/it-ran-last-300x199.jpg 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
+<p>Ah, vậy đơn giản</p>
+<p><img class="aligncenter size-full wp-image-595" src="/wp-content/uploads/2016/09/problem-1.jpeg" alt="problem" width="500" height="381" srcset="/wp-content/uploads/2016/09/problem-1.jpeg 500w, /wp-content/uploads/2016/09/problem-1-300x229.jpeg 300w" sizes="(max-width: 500px) 100vw, 500px" /></p>
+<p>Em thử rồi, không đuợc đâu các bác ạ <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" border="0" hspace="5" /></p>
+<p>Sau một hồi mày mò StackOverFlow thì em cũng biết được nguyên nhân của vấn đề đó là <strong>Thời gian sống của session</strong>.</p>
+<p>Nghĩa là sao? Nghĩa là data mà thằng Session lưu cho từng user sẽ chỉ tồn tại trong một khoảng thời gian và sau đó sẽ bị bác gom phế liệu (<strong>garbage collection</strong>) thu dọn đi bán ve chai. Tuỳ vào từng ngôn ngữ khác nhau mà Session sẽ có khoảng thời gian sống mặc định khác nhau. Như trường mình dùng PHP thì mình nghĩ chắc để mặc định là 24 phút, cũng chả có nhiều thằng quan tâm đến cái này mấy đâu <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" border="0" hspace="5" />.</p>
+<pre class="prettyprint">; After this number of seconds, stored data will be seen as 'garbage' and
+; cleaned up by the garbage collection process.
+session.gc_maxlifetime = 1440</pre>
+<p>Các bác có thể thay thế giá trị ấy trong file <code>php.ini</code> để Session của mình có thể sống thọ hơn đuợc một tí.</p>
+<h1>Thử nghiệm</h1>
+<p>Tuy nhiên đấy chưa phải là tất cả? Mình có thử một đoạn test Session như sau</p>
+<p>File <code>setSession.php</code></p>
+<pre class="prettyprint">&lt;?php
+session_start();
+$t = time();
+$_SESSION['cuthanh'] = $t;
+echo "Session cuthanh set with value: ".$t;
+?&gt;</pre>
+<p>File <code>getSession.php</code></p>
+<pre class="prettyprint">&lt;?php
+session_start();
+if (isset($_SESSION['cuthanh'])) {
+    echo "We got session cuthanh contains value :".$_SESSION['cuthanh']." at ".time();
+} else {
+    echo "Sorry, all sessions gone!";
+}
+?&gt;</pre>
+<p>Khá đơn giản nên em không giải thích gì thêm nha. Okey bây giờ test thử nhé</p>
+<ul>
+<li>Chạy thử file <code>setSession.php</code></li>
+<li>Chạy file <code>getSession.php</code> để xem đã nhận Session chưa</li>
+<li>Okey, bây giờ ra Find Match trận Dota hoặc làm tập JAV ngắn ngắn (nói chung làm sao trên 24 phút là được)</li>
+<li>&#8230;</li>
+<li>Bây giờ load thử lại <code>getSession.php</code> xem sao nhé.</li>
+</ul>
+<p>Theo các bác thì kết quả ra sao? &#8220;<em>Sorry, all sessions gone!</em>&#8221; hả? Nếu đúng như vậy thì các bác đi mua vé số, lô đề, chơi Dota thì pick PA hoặc OM đi nhé. Tại vì chỉ có 1% cơ hội các bác ra đuợc kết quá như vậy thôi <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" /></p>
+<p><img class="aligncenter size-large" src="https://i.ytimg.com/vi/h5I5UYxajnQ/maxresdefault.jpg" alt="" width="1920" height="1080" /></p>
+<p>Ủa, sao nãy bảo thời gian sống của nó được có 24 phút thôi mà. Nếu các bác đọc kĩ trong chỗ setting <code>php.ini</code> mà mình nói hồi nãy sẽ có dòng</p>
+<pre class="prettyprint">After this number of seconds, stored data will be seen as 'garbage' and cleaned up by garbage collection proccess</pre>
+<p>Nghĩa là, sau chừng ấy thời gian, Session sẽ được coi như là phế liệu và sẽ bác thu gom phế liệu dọn dẹp.</p>
+<div class="su-quote su-quote-style-default"><div class="su-quote-inner su-clearfix">Vấn đề ở đây là bác thu gom phế liệu bận đi bar rồi <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" border="0" hspace="5" /><img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" border="0" hspace="5" /><img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" border="0" hspace="5" /> nên lâu lâu rảnh rỗi mới qua nhà các bác lấy phế liệu thôi nhé.</div></div>
+<p>Và tỉ lệ này theo mặc định là 1% nhé. Trong <code>php.ini</code> có đề cập đến vấn đề này như sau</p>
+<pre class="prettyprint">; Define the probability that the 'garbage collection' process is started
+; on every session initialization.
+; The probability is calculated by using gc_probability/gc_divisor,
+; e.g. 1/100 means there is a 1% chance that the GC process starts
+; on each request.
+
+session.gc_probability = 1
+session.gc_divisor     = 100</pre>
+<p>Đây chính là lý do mà, sau khi xem tập JAV vào lại <code>getSession.php</code> chỉ có 1% cơ hội là Session sẽ chết, còn lại 99% là nó vẫn còn sống. Vì vậy nếu các bác muốn bác phế liệu chăm chỉ thu gom, không đi quẩy bar bủng các kiểu nữa thì chỉ cần<strong> chỉnh lại 2 thông số trên</strong>.</p>
+<p>Ngoài ra thì các bác có thể <strong>lưu Session ở một folder riêng</strong> không cho bác ve chai nhìn ngó tới. Cách này cũng khá đơn giản, lại không phải chỉnh lại <code>php.ini</code> nên các bác tự search Google hay StackOverFlow đi nha</p>
+<h1>Tại sao hôm nay mình lại nói đến vấn đề này?</h1>
+<p>Tại vì khi code con bot lấy giữ liệu thời khoá biểu của truờng mình thì vấp phải vấn đề thời gian sống của Session khiến cho con bot của mình hôm qua chạy mà hôm nay nó nghỉ. Cho dù mình có chỉnh lại <em>System Time</em> nhưng nó vẫn đình công.</p>
+<p>Và với lượng truy cập của hơn 5k sinh viên bách khoa thì 1% cũng khiến cho Session không thế sống quá thọ đuợc</p>
+<p><img class="aligncenter size-large wp-image-597" src="/wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-1024x642.png" alt="screen-shot-2016-09-29-at-11-26-01-pm" width="700" height="439" srcset="/wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-1024x642.png 1024w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-300x188.png 300w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM-768x482.png 768w, /wp-content/uploads/2016/09/Screen-Shot-2016-09-29-at-11.26.01-PM.png 1290w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+<p style="text-align: center;"><em>Quả hình để cho các bác khỏi nói em chém gió <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" border="0" hspace="5" /></em></p>
+<h1>Làm sao để vuợt qua được</h1>
+<p>Thì nó chết thì kiếm con khác thôi. Ez, huh? Nghĩa là nếu Session cũ của mình chết, mình sẽ xin lại con session mới. Nếu làm như vậy thì cứ sau 24 phút thì mình lại phải &#8220;mồi&#8221; lại captcha một lần. Mà captcha lại phải nguời nhập, cũng chả khá hơn bao nhiêu nhỉ? <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" border="0" hspace="5" /></p>
+<p>Theo các bạn, hướng đi nào để mình có thể tiếp tục viết app xem thời khoá biểu đây? Comment bên duới nhé.</p>
+<p>Mình đã có cách riêng của mình rồi những chưa chắc là tốt ưu nhất, có gì mình sẽ chia sẻ ở bài viết sau nhé. Thân ái!</p>
+		<div class="dw-reactions dw-reactions-post-591" data-type="vote" data-nonce="fe51f46582" data-post="591">
+											<div class="dw-reactions-button">
+					<span class="dw-reactions-main-button">Like</span>
+					<div class="dw-reactions-box">
+						<span class="dw-reaction dw-reaction-like"><strong>Like</strong></span>
+						<span class="dw-reaction dw-reaction-love"><strong>Love</strong></span>
+						<span class="dw-reaction dw-reaction-haha"><strong>Haha</strong></span>
+						<span class="dw-reaction dw-reaction-wow"><strong>Wow</strong></span>
+						<span class="dw-reaction dw-reaction-sad"><strong>Sad</strong></span>
+						<span class="dw-reaction dw-reaction-angry"><strong>Angry</strong></span>
+					</div>
+				</div>
+														<div class="dw-reactions-count">
+					<span class="dw-reaction-count dw-reaction-count-like"><strong>6</strong></span>				</div>
+					</div>
+		
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Có liên quan</em></h3>
+</div>
+															</div>
+							<!-- End of the content -->
+
+							<div class="row">
+								<div class="col-xs-12  col-sm-3">
+									<!-- Start of comments button -->
+									<div class="post-comments">
+										<a class="btn  btn-primary" href="/server/session-may-song-duoc-bao-lau#comments">11 Comments</a>
+									</div>
+									<!-- End of comments button -->
+								</div>
+								<div class="col-xs-12  col-sm-9">
+									<!-- Start of social icons -->
+									<div class="social-icons">
+																			</div>
+									<!-- End of social icons -->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12  push-down-60  col-sm-6">
+									<!-- Start of post author -->
+									<div class="post-author">
+										<h6>Written By</h6>
+										<hr>
+										<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=90&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=180&amp;d=mm&amp;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' />										<h5>
+											<a href="/author/nlug">Minh Thành</a>
+										</h5>
+										<div class="post-author__text">
+											<p>Tác giả bận chơi Dota 2 rồi lười viết cái dòng này lắm</p>
+										</div>
+									</div>
+									<!-- End of post author -->
+								</div>
+
+																<div class="col-xs-12  col-sm-6  push-down-60">
+
+									<!-- Start of post tags -->
+									<div class="tags">
+										<h6>Tags</h6>
+										<hr>
+										<a href="/tag/garbage-collection" rel="tag">garbage collection</a><a href="/tag/php" rel="tag">php</a><a href="/tag/session" rel="tag">Session</a><a href="/tag/thoi-gian-song" rel="tag">thời gian sống</a><a href="/tag/thu-gom-rac" rel="tag">thu gom rác</a>									</div>
+
+									<!-- End of post tags -->
+								</div>
+								
+							</div>
+
+							<!-- comments start -->
+							
+<div class="comments  push-down-30" id="comments">
+	<h6>Comments</h6>
+	<hr>
+
+	<section class="comments-container">
+		
+						<h3 class="push-down-30">
+				11 Comments			</h3>
+			
+			
+	<div id="comment-20" class="comment even thread-even depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://2.gravatar.com/avatar/5275101d5f2c0542ae56558ea83d5ca7?s=74&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/5275101d5f2c0542ae56558ea83d5ca7?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='http://tuyenvv.pro/' rel='external nofollow' class='url'>tuyenvv</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-12T18:06:25+00:00">
+					 	12/10/2016 at 6:06 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=20#respond' onclick='return addComment.moveForm( "comment-20", "20", "respond", "591" )' aria-label='Phản hồi đến tuyenvv'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Theo như mình tìm hiểu thì cái session.gc_maxlifetime = 1440 là sau 1 thời gian nó đánh dấu cái session kia thành có thể xóa, rồi khi ai đó tạo 1 request đến thì nó cũng tính xác xuất là 1% như ví dụ trên để clear session, nếu như ít ng truy cập thì điều này gần như là khó sảy ra nhưng nếu nhiều ng truy cập thì khả năng khá là cao.</p>
+<p>Cách giải quyết của mình là nếu nó ko lấy được thì mình sẽ hiển thị captcha cho người dùng để họ nhập vào rồi chạy tiếp. Coi như là mình đang chống spam trên app của mình.<br />
+🙂<br />
+Phần session life time này config trên server nên mình nghĩ khả năng giữ lại đc session là không khả thi lắm, nếu bạn có cao kiến thì thử đưa lên mọi ng xem.</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-26" class="comment byuser comment-author-nlug bypostauthor odd alt depth-2 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T08:34:54+00:00">
+					 	13/10/2016 at 8:34 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=26#respond' onclick='return addComment.moveForm( "comment-26", "26", "respond", "591" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Bạn hiểu về life time của session đúng rồi đấy ^^. Cách giải quyết của bạn thì y chang mấy trang lừa nạp thẻ game hồi truớc, bây giờ không biết còn không.<br />
+Tuy nhiên mình muốn xây dựng con bot trả về dữ liệu thuần mà không phải quan tâm đến captcha. Mình sẽ viết cách giải quyết của mình ở bài viết sắp tới, cảm ơn bạn đã quan tâm nhé!</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-23" class="comment even thread-odd thread-alt depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://2.gravatar.com/avatar/2cd4efc710d321e64a73574d627eb064?s=74&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/2cd4efc710d321e64a73574d627eb064?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					Mạnh Long				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T01:37:52+00:00">
+					 	13/10/2016 at 1:37 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=23#respond' onclick='return addComment.moveForm( "comment-23", "23", "respond", "591" )' aria-label='Phản hồi đến Mạnh Long'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Chạy cronjob đều đặn để kéo dài session trước khi nó hết hạn được mà bác nhỉ. :v</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-27" class="comment byuser comment-author-nlug bypostauthor odd alt depth-2 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T08:36:08+00:00">
+					 	13/10/2016 at 8:36 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=27#respond' onclick='return addComment.moveForm( "comment-27", "27", "respond", "591" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Để mình test thử xem. Cảm ơn ý kiến của bác</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-30" class="comment even depth-2 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://2.gravatar.com/avatar/5275101d5f2c0542ae56558ea83d5ca7?s=74&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/5275101d5f2c0542ae56558ea83d5ca7?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='http://tuyenvv.pro/' rel='external nofollow' class='url'>tuyenvv</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T13:18:56+00:00">
+					 	13/10/2016 at 1:18 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=30#respond' onclick='return addComment.moveForm( "comment-30", "30", "respond", "591" )' aria-label='Phản hồi đến tuyenvv'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Mình cũng đã nghĩ đến cách này nhưng mà như cái trên sau 1 thời gian x nào đó thì nó sẽ đánh dấu là có thể xóa, mình ko chắc liệu cái life time có bị reset và tính lại từ đầu khi mình vào lại không, theo suy luận của mình chắc là được vì 1 user đăng nhập trên trình duyệt thì ko thể nào đang làm việc lại bị out ra được. Nên mình nghĩ chắc cron là giải pháp dùng được đó.</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-31" class="comment byuser comment-author-nlug bypostauthor odd alt depth-3 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T16:08:00+00:00">
+					 	13/10/2016 at 4:08 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=31#respond' onclick='return addComment.moveForm( "comment-31", "31", "respond", "591" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Để tối nay mình test thử luôn. Mình cũng có nghĩ tới cách này nhưng chưa biết nó chạy được hay không :p</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-28" class="comment even thread-even depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/f33b40ed2787bfc7aa595c2cee8b4a4a?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/f33b40ed2787bfc7aa595c2cee8b4a4a?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					Duc Nguyen				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T11:39:23+00:00">
+					 	13/10/2016 at 11:39 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=28#respond' onclick='return addComment.moveForm( "comment-28", "28", "respond", "591" )' aria-label='Phản hồi đến Duc Nguyen'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Hiện tai minh thấy có 1 cái captcha hiện khá nổi tiếng là cái BotDetect captcha, ơ trang captcha.com, mình cũng đang sư dụng nó trong trang login của mình, không biết nó ngon ko nữa. Hay vọng bạn co bài đánh giá hay hack nó xem thế nào.</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-29" class="comment byuser comment-author-nlug bypostauthor odd alt depth-2 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-13T11:49:11+00:00">
+					 	13/10/2016 at 11:49 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=29#respond' onclick='return addComment.moveForm( "comment-29", "29", "respond", "591" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Trang này khá Ok trừ việc captcha xấu quá :v. Mình khuyên bạn nên sài hàng của Google <a href="https://www.google.com/recaptcha/intro/index.html" rel="nofollow">https://www.google.com/recaptcha/intro/index.html</a>.<br />
+Đối với mình captcha chỉ cần đơn giản 2-3 chữ là để phân biệt giữa người và bot là được rồi. Khi nào dịch vụ của mình lớn lên, nhiều đứa nhòm ngó thì mới cần đầu tư vào captcha.<br />
+Tôn trọng người dùng là tốt nhất.</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-32" class="comment even thread-odd thread-alt depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/95d2dd87027b4ca1a06ea1a18882ea1f?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/95d2dd87027b4ca1a06ea1a18882ea1f?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					foly				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-14T00:38:18+00:00">
+					 	14/10/2016 at 12:38 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=32#respond' onclick='return addComment.moveForm( "comment-32", "32", "respond", "591" )' aria-label='Phản hồi đến foly'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Không nên phí thời gian tìm cách kéo dài session vì captcha này khá dễ đọc, mặc dù cần một chút kiến thức về Image Processing. Anh có viết một PoC bằng python ở đây (<a href="http://pastebin.com/qDfmGsPv" rel="nofollow">http://pastebin.com/qDfmGsPv</a>), tỉ lệ đọc đúng là ~7/10, em có thể tham khảo. Sau khi extract được đoạn captcha thì em có thể kết hợp với lỗ hổng session mà em tìm thấy và chỉ extract lại khi nào session hết hiệu lực.</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-33" class="comment odd alt depth-2 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/95d2dd87027b4ca1a06ea1a18882ea1f?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/95d2dd87027b4ca1a06ea1a18882ea1f?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					foly				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-14T01:09:07+00:00">
+					 	14/10/2016 at 1:09 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=33#respond' onclick='return addComment.moveForm( "comment-33", "33", "respond", "591" )' aria-label='Phản hồi đến foly'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>NB: for educational purposes only 😜</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-34" class="comment byuser comment-author-nlug bypostauthor even depth-3 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2016-10-14T12:07:37+00:00">
+					 	14/10/2016 at 12:07 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/server/session-may-song-duoc-bao-lau?replytocom=34#respond' onclick='return addComment.moveForm( "comment-34", "34", "respond", "591" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Đúng cách mà em đang triển khai.<br />
+Thanksssssssssssssssss a.</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+					<hr />
+					<h3 class="push-down-25">
+						Leave a Comment					</h3>
+
+
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/server/session-may-song-duoc-bao-lau#respond" style="display:none;">Hủy</a></small></h3>			<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="push-down-15"><label for="message">Message <span class="warning">*</span></label><textarea class="form-control form-control--contact form-control--big" id="comment" name="comment" rows="7" aria-required="true" placeholder="Your Comment goes here." required></textarea></p><p class="push-down-15"><label for="author">Name <span class="warning">*</span><input class="form-control  form-control--contact" id="author" name="author" type="text" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="email">Email <span class="warning">*</span><input class="form-control  form-control--contact" id="email" name="email" type="email" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="url">Website <span class="warning">*</span><input class="form-control  form-control--contact" id="url" name="url" type="text" value="" size="30" /></label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submitWPComment" class="submit" value="Send now" /> <input type='hidden' name='comment_post_ID' value='591' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="35856decb2" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="110"/></p>			</form>
+			</div><!-- #respond -->
+		</section>
+</div>							<!-- comments end -->
+
+							
+						</div>
+					</div>
+				</article>
+
+			
+	</div>
+
+	
+	</div>
+</div>
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+									</div>
+			</div>
+		</footer>
+		<footer class="copyrights">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12  col-sm-6">
+						Readable WP theme &copy; Copyright 2014					</div>
+					<div class="col-xs-12  col-sm-6">
+						<div class="copyrights--right">
+							Made by <a href="http://www.proteusthemes.com/">ProteusThemes</a>						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div><!-- /.page-content-container -->
+
+<script type='text/javascript' src='/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<link rel='stylesheet' id='su-box-shortcodes-css'  href='/wp-content/plugins/shortcodes-ultimate/assets/css/box-shortcodes.css?ver=4.9.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201748'></script>
+<script type='text/javascript' src='/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ReadableVars = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/readable/assets/js/built.js?ver=1.0.0'></script>
+<script type='text/javascript' src='/wp-includes/js/comment-reply.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201748.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.5',blog:'114130900',post:'591',tz:'7',srv:'cuthanh.com'} ]);
+	_stq.push([ 'clickTrackerInit', '114130900', '591' ]);
+</script>
+<!-- W3TC-include-js-body-end -->
+</body>
+</html>

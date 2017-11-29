@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Life &#8211; Blog của CuThanh</title>
+	<atom:link href="/category/life/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>Life &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Chúc mừng năm mới</title>
+		<link>/life/chuc-mung-nam-moi</link>
+		<comments>/life/chuc-mung-nam-moi#comments</comments>
+		<pubDate>Sun, 01 Jan 2017 08:10:16 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[coder]]></category>
+		<category><![CDATA[cuthanh]]></category>
+		<category><![CDATA[mục tiêu]]></category>
+		<category><![CDATA[năm mới]]></category>
+
+		<guid isPermaLink="false">/?p=716</guid>
+		<description><![CDATA[<p>Chào các bác , Vậy là em đã viết blog này đuợc hơn 4 tháng (Theo whois thì domain đuợc đăng kí ngày 15/7/2016) với đúng 38 bài viết và 38 lượt bình luận . Khuyết điểm Hệ thống bài viết còn quá lủng củng, không theo một huớng trọng tâm nào cả . Năm ...</p>
+<p>The post <a rel="nofollow" href="/life/chuc-mung-nam-moi">Chúc mừng năm mới</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/chuc-mung-nam-moi/feed</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">716</post-id>	</item>
+		<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 5)</title>
+		<link>/life/xay-dung-thong-goi-y-phan-5</link>
+		<comments>/life/xay-dung-thong-goi-y-phan-5#comments</comments>
+		<pubDate>Thu, 18 Aug 2016 16:41:40 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[big data]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[thuật toán]]></category>
+		<category><![CDATA[tối ưu]]></category>
+		<category><![CDATA[xây dựng]]></category>
+
+		<guid isPermaLink="false">/?p=528</guid>
+		<description><![CDATA[<p>Hế looooooooooooo  Bài này là phần cuối trong series mình viết sẽ nói về thuật toán, kỹ thuật khi xây dựng một hệ thống gợi ý&#8230; Phần 1 Phần 2 Phần 3 Phần 4 Mẹ thằng WordPress sao update xong không thêm Feature Image được  Thuật toán Không biết các bạn nhận ra một điều ...</p>
+<p>The post <a rel="nofollow" href="/life/xay-dung-thong-goi-y-phan-5">Xây dựng hệ thống “Gợi ý…” (Phần 5)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/xay-dung-thong-goi-y-phan-5/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">528</post-id>	</item>
+		<item>
+		<title>#Vicongdong #TOXIC</title>
+		<link>/life/vicongdong-toxic</link>
+		<comments>/life/vicongdong-toxic#respond</comments>
+		<pubDate>Tue, 16 Aug 2016 09:38:06 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[chui]]></category>
+		<category><![CDATA[disband]]></category>
+		<category><![CDATA[dota 2]]></category>
+		<category><![CDATA[pewpew]]></category>
+		<category><![CDATA[van hoa]]></category>
+		<category><![CDATA[vicongdong]]></category>
+
+		<guid isPermaLink="false">/?p=505</guid>
+		<description><![CDATA[<p>Chào bạn, hôm nay không code khỉ gì nữa, bàn luận tí cuộc sống nào. Mình là một Dota player, trước giờ mình chơi cũng kha khá game rồi và chỉ dừng lại ở Dota, gắn bó với Dota cũng được hơn 5 năm. Người ảnh hưởng, khiến mình biết tới Dota 2 là Pew, ...</p>
+<p>The post <a rel="nofollow" href="/life/vicongdong-toxic">#Vicongdong #TOXIC</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/vicongdong-toxic/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">505</post-id>	</item>
+		<item>
+		<title>Sơn Tùng  và khái niệm tình yêu</title>
+		<link>/life/son-tung-va-khai-niem-tinh-yeu</link>
+		<comments>/life/son-tung-va-khai-niem-tinh-yeu#respond</comments>
+		<pubDate>Fri, 05 Aug 2016 04:30:24 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[bản quyền]]></category>
+		<category><![CDATA[đạo nhạc]]></category>
+		<category><![CDATA[khái niệm]]></category>
+		<category><![CDATA[Sơn tùng]]></category>
+		<category><![CDATA[tình yêu]]></category>
+
+		<guid isPermaLink="false">/?p=392</guid>
+		<description><![CDATA[<p>Chào các bạn, Gần đây, khi Sơn Tùng &#8211; MTP ra bài hát mới &#8220;Chúng ta không thuộc về nhau&#8221; thì cộng đồng mạng, rất nhiều, rất nhiều những tranh cãi đã nổi ra về vấn đề &#8220;Sơn Tùng có đạo nhạc hay không&#8221; Bài hát &#8220;Chúng ta không thuộc về nhau&#8221; của ca sĩ ...</p>
+<p>The post <a rel="nofollow" href="/life/son-tung-va-khai-niem-tinh-yeu">Sơn Tùng  và khái niệm tình yêu</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/son-tung-va-khai-niem-tinh-yeu/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">392</post-id>	</item>
+		<item>
+		<title>Work dilemma &#8211; Kỹ sư và nhân viên kinh doanh</title>
+		<link>/life/work-dilemma</link>
+		<comments>/life/work-dilemma#respond</comments>
+		<pubDate>Tue, 02 Aug 2016 01:41:43 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[Startup]]></category>
+		<category><![CDATA[khới nghiệm]]></category>
+		<category><![CDATA[kĩ sư]]></category>
+		<category><![CDATA[kinh doanh]]></category>
+		<category><![CDATA[sale]]></category>
+		<category><![CDATA[Steve Jobs]]></category>
+
+		<guid isPermaLink="false">/?p=358</guid>
+		<description><![CDATA[<p>Hôm nay lười viết bài . Thấy được bài này cực hay trên Kipalog, các bác xem thử nhé . Link gốc: http://kipalog.com/posts/Work-dilemma Nội dung bài viết Mấy hôm nay mình đọc tiểu sử steve jobs, nghĩ đến mối quan hệ cộng sinh giữa woz và jobs những ngày đầu thành lập Apple. Tự dưng lại ...</p>
+<p>The post <a rel="nofollow" href="/life/work-dilemma">Work dilemma &#8211; Kỹ sư và nhân viên kinh doanh</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/work-dilemma/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">358</post-id>	</item>
+		<item>
+		<title>Đích đến của một coder?</title>
+		<link>/life/dich-den-cua-mot-coder</link>
+		<comments>/life/dich-den-cua-mot-coder#comments</comments>
+		<pubDate>Sat, 30 Jul 2016 02:23:40 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[cơ hội]]></category>
+		<category><![CDATA[coder]]></category>
+		<category><![CDATA[hackathon]]></category>
+		<category><![CDATA[lập trình viên]]></category>
+		<category><![CDATA[mục đích]]></category>
+		<category><![CDATA[nắm bắt]]></category>
+
+		<guid isPermaLink="false">/?p=319</guid>
+		<description><![CDATA[<p>Chào các bạn Hôm nay là 30/7/2016 đáng lẽ mình đang ở sự kiện Hackathon của Facebook rồi nhưng mà sự thật lại không được đi. Lý do vì mình đã pass qua vòng sơ khảo, được mời đi vào ngày Hackday (Ngày chính thức Hackathon diễn ra đấy) nhưng lại không để ý check mail. ...</p>
+<p>The post <a rel="nofollow" href="/life/dich-den-cua-mot-coder">Đích đến của một coder?</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/dich-den-cua-mot-coder/feed</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">319</post-id>	</item>
+		<item>
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 1)</title>
+		<link>/life/dung-git-di-khong-hoi-han-suot-doi-day</link>
+		<comments>/life/dung-git-di-khong-hoi-han-suot-doi-day#respond</comments>
+		<pubDate>Wed, 27 Jul 2016 03:16:23 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[Service]]></category>
+		<category><![CDATA[chia sẻ]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[cuộc sống]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[sao lưu]]></category>
+
+		<guid isPermaLink="false">/?p=259</guid>
+		<description><![CDATA[<p>Chào các mẹ , Nay tự nhiên buồn nhớ lại những ngày đầu viết code, bao nhiêu là vui buồn hiện về nên em chia sẻ câu chuyện bi đát giữa em, code và cái máy tính đầu tiên của em. Hồi mới tập tành vào code em thì hay gõ 2-3 kí tự rồi ...</p>
+<p>The post <a rel="nofollow" href="/life/dung-git-di-khong-hoi-han-suot-doi-day">Dùng Git đi không hối hận suốt đời đấy (Phần 1)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/dung-git-di-khong-hoi-han-suot-doi-day/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">259</post-id>	</item>
+	</channel>
+</rss>

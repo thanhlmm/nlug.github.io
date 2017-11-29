@@ -1,0 +1,485 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 2) - Blog của CuThanh</title>
+		<link rel="canonical" href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/service\/dung-git-di-khong-hoi-han-suot-doi-day-phan-2","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"D\u00f9ng Git \u0111i kh\u00f4ng h\u1ed1i h\u1eadn su\u1ed1t \u0111\u1eddi \u0111\u1ea5y (Ph\u1ea7n 2)","datePublished":"2016-07-28T10:19:36+00:00","dateModified":"2016-07-31T12:04:07+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/6-30-12_Git1.jpg","width":1400,"height":660}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}.amp-wp-inline-0786f4623984c46e15421e6979be740d{text-align:left;}.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Dùng Git đi không hối hận suốt đời đấy (Phần 2)</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-28T10:19:36+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="330" src="/wp-content/uploads/2016/07/6-30-12_Git1-1024x483.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/6-30-12_Git1-1024x483.jpg 1024w, /wp-content/uploads/2016/07/6-30-12_Git1-300x141.jpg 300w, /wp-content/uploads/2016/07/6-30-12_Git1-768x362.jpg 768w, /wp-content/uploads/2016/07/6-30-12_Git1.jpg 1400w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Phần 1</strong></span>: <a href="/life/dung-git-di-khong-hoi-han-suot-doi-day" target="_blank">http://cuthanh.com/life/dung-git-di-khong-hoi-han-suot-doi-day</a></p>
+<p>Đọc câu truyện xàm lông của em bữa trước chắc các bác đang chửi thầm “<em>Thằng điên, bố vào đây để xem lý do tại sao phải dùng Git cơ mà</em> <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>“. Câu chuyện bữa trước của mình hoàn toàn có liên quan đấy!.</p>
+<h1>Giới thiệu</h1>
+<p>Nếu đang đọc đến đây, không biết mọi người nếu đã từng là coder có phải vướng vào những rắc rối như trong câu chuyện của mình không? Mình tin chắc là có, rất nhiều là đằng khác. Trừ khi các bác siêu nhân hoặc code cái gì đấy đơn giản kiểu</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Hello World<span class="su-quote-cite">World's 1st lession</span></div></div>
+<p>Vâng, <strong>Git</strong> sinh ra để giải quyết tất cả các vấn đề trên, thâm chí là cả những vấn đề mà em còn chưa gặp phải nữa <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Kiểu như cả team làm chung một bộ source code (trước giờ em toàn solo nên chưa gặp phải, nhưng làm team thì chắc chắn có đấy).</p>
+<p>Các chức năng chính của <strong>Git</strong> (Các vấn đề mà git giúp em giải quyết)</p>
+<ul><li>Theo dõi (<em>watch</em>) thư mục làm việc, tìm ra những thay đổi trong bộ source code của bạn</li>
+<li>Lưu lại những thay đổi (<em>commit</em>) (Đương nhiên là có cho phép ghi chú xem thay đổi ấy là gì)</li>
+<li>Muốn trở lại ở lần thay đổi</li>
+<li>Phân nhánh(<em>branch</em>) bộ source code,</li>
+<li>Gắn nhãn (<em>tag</em>), <em>version</em></li>
+<li>Upload, quản lý source code các bác lên mấy. Gần như không giới hạn nếu như code của các bác là Open Source</li>
+<li>Trộn code (<em>merge</em>) của nhiều người/branch vào thành một bộ source code hoàn chỉnh. Cực kì có ý nghĩa khi code theo team.</li>
+</ul><p>Đảm bảo, sau khi dùng <strong>git</strong> thì chắc chắn các bác không phải gặp những trường hợp dở khóc dở cười như em nữa.</p>
+<h1>Git vs Github</h1>
+<p>Mình viết bài này cho những người mới tìm hiểu <strong>Git</strong>, hoặc code rất bá nhưng chưa một lần sử dụng Git bao giờ nên nếu đọc toàn bộ bài việt của mình tới đấy chắc có lẽ các bác ngợ ngợ sao thằng này cứ nói <strong>Git</strong> nhỉ, phải là <strong>Github</strong> chứ. Thực ra 2 thằng này là khác nhau đấy, và cái các bác cần nhất là <strong>Git</strong> rồi mới tới <strong>Github</strong>.</p>
+<p><amp-img class="aligncenter size-full wp-image-286 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/gitvsgithub.png" alt="gitvsgithub" width="327" height="154" srcset="/wp-content/uploads/2016/07/gitvsgithub.png 327w, /wp-content/uploads/2016/07/gitvsgithub-300x141.png 300w" sizes="(min-width: 327px) 327px, 100vw"></amp-img></p>
+<h2>Git</h2>
+<p>Như đã nói ở trên, <strong>Git</strong> là công cụ cài đặt vào trong máy tính của các bác. Giúp các bác <strong>quản lý bộ source code</strong> triệu $ của mình. <strong>Giải quyết những vấn đề cực kì bullshit</strong> mà toàn bộ lập trình viên trên thế giới gặp phải</p>
+<h2>Github</h2>
+<p>Mình nói một ví dụ nhỏ cho các bác dễ hiểu nhé.</p>
+<p>Git giống như ổ cứng (<em>Hard Drive</em>) của các bác vậy, các bác sao lưu Jav, anime,… là gì thì tùy các bác và bác hoàn toàn sở hữu nó, chả có thằng nào đụng đến ổ cứng của các bác được nếu không được bác cho phép hoặc là Hacker <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Còn <strong>Github</strong> thì như là <a href="https://www.dropbox.com/" target="_blank">Dropbox </a>vậy, nó là “mây”, các bác hoàn toàn có thể đưa những dữ liệu của mình lên”mây”, có thể chia sẻ với nhau qua “mây” được (Chả lẽ các bác tháo ổ cứng ra truyền tay nhau <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>). Và cũng giống như <a href="https://www.dropbox.com/" target="_blank">Dropbox </a>vậy, có rất nhiều dịch vụ tương đương với <a href="https://github.com/" target="_blank">Github </a>như <a href="https://bitbucket.org/" target="_blank">Bitbucket</a>, <a href="https://sourceforge.net/" target="_blank">Sourceforge</a>,… Hoặc các bác cũng có thể tự tạo server riêng tự sài cũng được cho nó ngầu <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Và đương nhiên miễn phí “mây” cho các bác thì hít thở mà sống à. Vì vậy mỗi dịch vụ sẽ có cách tính phí khác nhau. Nhưng mà hầu hết đều free nếu source code của các bác là <strong>Open Source</strong>. <strong>Github</strong> nối tiếng vì nó có rất nhiều người dúng, áp đảo gần hết các thằng còn lại, và các bác cũng hay vào dây download code của người ta nên dễ dẫn đến nhầm lẫn giữa <strong>Git</strong> và <strong>Github</strong>.</p>
+<p> </p>
+<p><amp-img class="aligncenter size-full wp-image-284 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/githubprice.png" alt="githubprice" width="995" height="670" srcset="/wp-content/uploads/2016/07/githubprice.png 995w, /wp-content/uploads/2016/07/githubprice-300x202.png 300w, /wp-content/uploads/2016/07/githubprice-768x517.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Bảng giá của Github. Free cho Open source, tính tiền cho “Private Repositories”</em></p>
+<h1 class="amp-wp-inline-0786f4623984c46e15421e6979be740d">Cài đặt</h1>
+<p class="amp-wp-inline-0786f4623984c46e15421e6979be740d">Okey vậy là mường tượng được <strong>Git</strong>, <strong>Github</strong> là gì rồi chứ. Giờ cài đặt thử nhé. Chưa hiểu thì đọc tiếp các phần sau cũng hiểu ah.</p>
+<h2 class="amp-wp-inline-0786f4623984c46e15421e6979be740d">Windows</h2>
+<p>Vào đây download về <a href="http://git-scm.com/download/win" target="_blank">http://git-scm.com/download/win</a></p>
+<p>Next, Next,… Finish gì đấy. Cứ để mặc định cũng được rồi.</p>
+<p>Lưu ý là nếu các bạn đã đọc bài viết về <a href="/tools/cmder-dem-unix-bash-len-windows" target="_blank">CMDER – Đem *unix bash lên Windows like a Boss</a> rồi thì nên cài <strong>Git</strong> trước rồi mới cài <strong>Cmder</strong> nhé. Mình chưa thử cách ngược lại, lười gỡ ra cài lại lắm <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<h2>Linux</h2>
+<pre class="prettyprint">sudo apt-get install git</pre>
+<p>hoặc</p>
+<pre class="prettyprint">yum install git</pre>
+<h2>MacOS/OSX</h2>
+<p>Vào đây nghiên cứu <a href="http://git-scm.com/download/mac" target="_blank">http://git-scm.com/download/mac</a>. Em không có Mac nên không biết đâu, lập trình viên nghèo <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Thiết lập cá nhân</h1>
+<p>Okey bây giờ là cắm cờ đánh dấu chủ quyền nào <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Việc làm này giúp mỗi repo mà các bác tạo ra sẽ lưu tên và email của các bác ở trong. “<em>Thằng nào có sử dụng code của tao thì nhớ tới thằng viết ra đấy nhé!</em>”</p>
+<p>Mở Cmder lên, hoặc Bash nếu các bác sài Linux hay MacOS</p>
+<pre class="prettyprint">git config --global user.name "Minh Thanh"
+git config --global user.email "nlug27@gmail.com"</pre>
+<p>Thiết lập xong rồi đấy.</p>
+<p> </p>
+<p>Trong bài tiếp theo mình sẽ nói với các bạn về các khái niệm cơ bản của <strong>Git</strong> và <strong>cách áp dụng Git</strong> vào project của mình.</p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Phần 3</strong></span>: <a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3" target="_blank">http://cuthanh.com/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3</a></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/service" rel="category tag">Service</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/cai-dat-git" rel="tag">cài đặt git</a>, <a href="/tag/gioi-thieu" rel="tag">giới thiệu</a>, <a href="/tag/git" rel="tag">git</a>, <a href="/tag/github" rel="tag">github</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=282&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

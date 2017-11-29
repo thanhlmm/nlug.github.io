@@ -1,0 +1,499 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Giới thiệu Microsoft Cognitive Services - AI trong tầm tay - Blog của CuThanh</title>
+		<link rel="canonical" href="/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/service\/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Gi\u1edbi thi\u1ec7u Microsoft Cognitive Services &#8211; AI trong t\u1ea7m tay","datePublished":"2016-07-22T11:11:23+00:00","dateModified":"2016-07-22T12:43:04+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/chaien.jpg","width":640,"height":400}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+			</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Giới thiệu Microsoft Cognitive Services &#8211; AI trong tầm tay</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-22T11:11:23+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p>Bài viết này mình xin giới thiệu với các bạn <strong>Microsoft Cognitive Services</strong></p>
+<blockquote>
+<h4>Put intelligence APIs to work</h4>
+<p>Microsoft Cognitive Services let you build apps with powerful algorithms using just a few lines of code. They work across devices and platforms such as iOS, Android, and Windows, keep improving, and are easy to set up.</p></blockquote>
+<p>Đây là tập hợp những dịch vụ (service) của M$ cung cấp dưới dạng API, mình thấy khá nhiều là về Machine learning/AI. Mình cũng có sử dụng một số vào ứng dụng của mình và thấy khá hay, hiệu quả nên hôm nay giới thiệu với các bác <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Demo</h1>
+<p>Thử vài demo cho các bác khoái đã ha</p>
+<p><amp-img class="aligncenter amp-wp-enforced-sizes" src="https://portalstoragewuprod2.azureedge.net/media/Default/Media/APP%20Gallery/howOld.PNG" width="1132" height="663" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p><a href="http://how-old.net/" target="_blank">http://how-old.net</a> – Ứng dụng đoán tuổi qua bức hình.</p>
+<p><amp-img class="aligncenter amp-wp-enforced-sizes" src="https://portalstoragewuprod2.azureedge.net/media/Default/Media/Apps/Screenshot_captionBot.png" width="1601" height="745" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p><a href="https://www.captionbot.ai/" target="_blank">https://www.captionbot.ai</a> – AI sẽ miêu tả bức ảnh mà bạn gửi lên</p>
+<p>Thần kì chưa <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, nếu dùng các API mà Microsoft cung cấp các bác cũng có thể viết được mấy cái bá đạo như vậy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p>Thêm Demo cho các bác thích <a href="https://www.microsoft.com/cognitive-services/en-us/applications" target="_blank">https://www.microsoft.com/cognitive-services/en-us/applications</a></p>
+<h1>Tìm hiểu</h1>
+<p>Đây là toàn bộ nhứng API mà Microsoft cung cấp cho các bác <a href="https://www.microsoft.com/cognitive-services/en-us/apis" target="_blank">https://www.microsoft.com/cognitive-services/en-us/apis</a></p>
+<p>Đa số là miễn phí x lần gọi api (tầm 5000 lần gọi/tháng nên sài mệt nghỉ mới tính tới lúc trả tiền cho Microsoft đi nhá, yên tâm <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>)</p>
+<p>Nó chia làm 5 nhóm chính, mình sẽ giới thiệu từng nhóm ở dưới:</p>
+<ul><li><strong>Vision</strong></li>
+<li><strong>Speech</strong></li>
+<li><strong>Language</strong></li>
+<li><strong>Knowledge</strong></li>
+<li><strong>Search</strong></li>
+</ul><h1>Vision</h1>
+<p>Cái này giống như con mắt của mấy bà bô lão già già các bác ạ <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, kiểu “<em>Nhìn tướng con kia đi là tao biết nó 1 con rồi</em> <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>“. Nói chung là nó có thể phân tính bức ảnh, video và trả về thông tin mà nó thu thập được. Muốn xem có mặt thằng nào trong bức ảnh – dùng Face API, muốn xem mặt của nó vui hay buồn – dùng Emotion API,..</p>
+<ul><li><a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision-api" target="_blank">Computer Vision API</a> – Lấy các thông tin từ bức ảnh</li>
+<li><a href="https://www.microsoft.com/cognitive-services/en-us/emotion-api" target="_blank">Emotion API</a> – Đoán cảm xúc của khuôn mặt thông qua hình ảnh</li>
+<li><a href="https://www.microsoft.com/cognitive-services/en-us/face-api" target="_blank">Face API</a> – Xem coi trong hình có mẹt thằng nào không <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></li>
+<li><a href="https://www.microsoft.com/cognitive-services/en-us/video-api" target="_blank">Video API</a> – Phân tích, chỉnh sửa Video các kiểu.</li>
+</ul><p>Nếu các bác hay chơi mấy cái ứng dụng <em>đoán tuổi, xem mình giống nhân vật nổi tiếng nào nhất </em>mình tin chắc 90% nó build theo service này của <strong>Microsoft</strong>.</p>
+<h1>Speak</h1>
+<p>Thằng này là tai, nghe được gì thì nó sẽ mô tả cho các bác.</p>
+<ul><li><a href="https://www.microsoft.com/cognitive-services/en-us/speech-api" target="_blank">Bing Speed API</a> – Chuyển ngôn ngữ bạn nói thành text.</li>
+<li>
+<p class="text--light text--lg text--white"><a href="https://www.microsoft.com/cognitive-services/en-us/custom-recognition-intelligent-service-cris" target="_blank">Custom Recognition Intelligent Service (CRIS)</a> – Khá thần kì, phân tích giọng âm, ngữ điệu, phong cách, từ vựng,…</p>
+</li>
+<li><a href="https://www.microsoft.com/cognitive-services/en-us/speaker-recognition-api" target="_blank">Speacker Recognition</a> – Xem coi thằng nào đang phát biểu</li>
+</ul><p>Rất tiếc là vẫn chưa có hỗ trợ tiếng Việt cho các bác <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2295eb38bfeb56ab060aaf8e4bd2315.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Language</h1>
+<p>Thằng này chỉ biết đọc chữ thôi, nó có thể phân tích câu văn, đoạn văn và xác định thằng tác giả ý của nó là như thế nào <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, giống cô giáo dạy văn của các bác đấy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<ul><li>
+<p class="text--md"><a href="https://www.microsoft.com/cognitive-services/en-us/bing-spell-check-api" target="_blank">Bing Spell Check API</a> – Xem coi các bác có sai chính tả không</p>
+</li>
+<li>
+<p class="text--md"><a href="https://www.microsoft.com/cognitive-services/en-us/language-understanding-intelligent-service-luis" target="_blank">Language Understanding Intelligent Service (LUIS)</a> – Hiểu mệnh lệnh của con người. Em đang nghiên cứu thằng này nhưng mà có vẻ khá là hạn chế, em sẽ nói trong một bài viết khác.</p>
+</li>
+<li>
+<p class="text--md"><a href="https://www.microsoft.com/cognitive-services/en-us/linguistic-analysis-api" target="_blank">Linguistic Analysis API</a> – Phân tính mấy câu phức tạp thành đơn giản</p>
+</li>
+<li><a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="_blank">Text Analytics API</a> – Phân tích hàm ý, chủ đề, ngôn ngữ của đoạn text</li>
+<li><a href="https://www.microsoft.com/cognitive-services/en-us/web-language-model-api" target="_blank">Web language Model API</a> – Chuyển đoạn văn lại theo chuẩn</li>
+</ul><blockquote><p><strong>VD Bing Speed Check</strong></p>
+<p>Ha vefun triingf owt theBin gspeller by typying a sentance or clcking teh sampels bellow</p>
+<p>Sẽ thành</p>
+<p>Have fun trying out the Bing speller by typing a sentence or clicking the samples below <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p></blockquote>
+<p>Mấy cái này khá hay phải không nhưng có một nhược điểm cực kì lớn là chỉ hỗ trợ English thôi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Có thằng LUIS là kha khá hiểu được tí tiếng Việt nhưng mà cũng có hạn chế mình khuyên các bác chưa nên sài, nghịch vớ vẩn thôi.</p>
+<h1>Knowledge</h1>
+<p>Mấy thằng này sâu rộng như kiến thức của Albert Einstein vậy nên em cũng chả biết nói sao <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p><amp-img class="aligncenter size-full wp-image-192 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/chaien.jpg" alt="chaien" width="640" height="400" srcset="/wp-content/uploads/2016/07/chaien.jpg 640w, /wp-content/uploads/2016/07/chaien-300x188.jpg 300w" sizes="(min-width: 640px) 640px, 100vw"></amp-img></p>
+<p>Mình chỉ chú ý nhất là thằng <a href="https://www.microsoft.com/cognitive-services/en-us/recommendations-api" target="_blank">Recommendations API</a> – Nó giúp gợi ý cho người dùng. Vd như bác hay coi <em>Maria Ozawa</em> thì nó sẽ gợi ý “<em>Kìa, em Tsubasa Amami cũng ngon không kém </em><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>“.Phê chưa.</p>
+<h1>Search</h1>
+<p>Thằng này thì quá là bình thường rồi. Chằng qua là thay vì bác vào Bing, search nó trả về HTML thì nay trả về JSON dưới dạng API cho các bác, đơn giản.</p>
+<h1>Nhân xét</h1>
+<p>Trong các <strong>API</strong> mà mình giới thiệu bên trên, đang chú ý nhất có lẽ là phần <strong>Vision</strong>, và <strong>Recommendations API</strong> – vì mình thấy chỉ có 2 thằng này là anh em Việt Nam ta có thể áp dụng triệt để. Mấy thằng còn lại cũng rất hay nhưng tiếc là mới chỉ dành cho English hay các ngôn ngữ phổ biến khác. Các bác lo mà gầy dựng đất nước để Việt Nam trở thành cường quốc, Vietnamese sẽ thành ngôn ngữ quốc tế đi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Trong bài sau mình sẽ hướng dẫn các bác áp dụng thử một <strong>API</strong> vào project của mình xem như thế nào, có ngon lành như quảng cảo không.</p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/service" rel="category tag">Service</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/ai" rel="tag">AI</a>, <a href="/tag/bing" rel="tag">Bing</a>, <a href="/tag/machine-learning" rel="tag">Machine Learning</a>, <a href="/tag/microsoft" rel="tag">Microsoft</a>, <a href="/tag/nhan-dien-khuon-mat" rel="tag">nhận diện khuôn mặt</a>, <a href="/tag/tri-tue-nhan-tao" rel="tag">trí tuệ nhân tạo</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=189&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

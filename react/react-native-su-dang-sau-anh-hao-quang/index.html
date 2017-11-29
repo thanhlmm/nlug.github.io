@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<title>React Native - Sự thật đằng sau ánh hào quang - Blog của CuThanh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="pingback" href="/xmlrpc.php" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- W3TC-include-js-head -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="/react/react-native-su-dang-sau-anh-hao-quang" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="React Native - Sự thật đằng sau ánh hào quang - Blog của CuThanh" />
+<meta property="og:description" content="Chào các bác lâu lắm rồi em không viết bài gì vì phải làm bài tập trên lớp với làm project bên ngoài nữa  Như tít, bài này mình sẽ nói về react-native nó thật sự có &#8220;ngon&#8221;, thon thả như Ngọc Trinh không ? Cùng tìm hiểu nhé! Tại sao chọn React Native Mình ..." />
+<meta property="og:url" content="http://cuthanh.com/react/react-native-su-dang-sau-anh-hao-quang" />
+<meta property="og:site_name" content="Blog của CuThanh" />
+<meta property="article:author" content="https://www.facebook.com/hojjlamthenlug" />
+<meta property="article:tag" content="android" />
+<meta property="article:tag" content="app" />
+<meta property="article:tag" content="hybrid" />
+<meta property="article:tag" content="ios" />
+<meta property="article:tag" content="lập trình" />
+<meta property="article:tag" content="React" />
+<meta property="article:tag" content="React Native" />
+<meta property="article:section" content="React" />
+<meta property="article:published_time" content="2016-11-23T12:54:14+00:00" />
+<meta property="article:modified_time" content="2016-11-23T20:29:22+00:00" />
+<meta property="og:updated_time" content="2016-11-23T20:29:22+00:00" />
+<meta property="og:image" content="http://cuthanh.com/wp-content/uploads/2016/11/Cover.png" />
+<meta property="og:image:width" content="811" />
+<meta property="og:image:height" content="373" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Chào các bác lâu lắm rồi em không viết bài gì vì phải làm bài tập trên lớp với làm project bên ngoài nữa  Như tít, bài này mình sẽ nói về react-native nó thật sự có &#8220;ngon&#8221;, thon thả như Ngọc Trinh không ? Cùng tìm hiểu nhé! Tại sao chọn React Native Mình ..." />
+<meta name="twitter:title" content="React Native - Sự thật đằng sau ánh hào quang - Blog của CuThanh" />
+<meta name="twitter:image" content="http://cuthanh.com/wp-content/uploads/2016/11/Cover.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Blog của CuThanh &raquo;" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Blog của CuThanh &raquo;" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Blog của CuThanh &raquo; React Native &#8211; Sự thật đằng sau ánh hào quang Dòng phản hồi" href="/react/react-native-su-dang-sau-anh-hao-quang/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/cuthanh.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='dw-reaction-style-css'  href='/wp-content/plugins/dw-reactions/assets/css/style.css?ver=120004042016' type='text/css' media='all' />
+<link rel='stylesheet' id='estilo-css'  href='/wp-content/plugins/simple-code-highlighter/estilo.css?ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='readable-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C700&#038;subset=latin%2Cvietnamese&#038;ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='/wp-content/themes/readable/assets/stylesheets/main.css?ver=1.0.0' type='text/css' media='all' />
+<style id='main-inline-css' type='text/css'>
+
+/******************
+Primary theme color
+*******************/
+
+.social__container, .search__container, .search-panel .search-panel__text, .navigation > li.current-menu-item > a, .navigation > li:hover > a, .navigation > li.current-menu-ancestor > a, .widget-contact__title, .navigation .sub-menu > li > a:hover, .error .primary-color {
+	color: #05668d}
+
+.social .social__dropdown, ::selection, .navbar-toggle {
+	background: #05668d}
+
+.wpcf7-submit, .navigation > li > a:after, .btn-primary {
+	background: linear-gradient(to bottom, #05668d, #055c7f)
+}
+
+blockquote, .wpcf7-submit, .btn-primary, .navbar-toggle {
+	border-color: #05668d}
+
+.search__container:hover, .social__container:hover {
+	color: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a {
+		background: #05668d	}
+}
+
+.wpcf7-submit:hover, .btn-primary:hover, .social .social__dropdown li a:hover {
+	background: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a:hover {
+		background: #055c7f	}
+}
+
+.wpcf7-submit:hover, .navigation .sub-menu > li > a, .navigation .sub-menu, .btn-primary:hover, .social .social__dropdown li .social__container {
+	border-color: #055c7f}
+
+/******************
+Text color
+*******************/
+
+blockquote, .post-content, .post-content--narrow, .post-content--narrow span, body .su-tabs-style-default .su-tabs-pane {
+	color: #40454a}
+
+/******************
+Link color
+*******************/
+
+a, .menu li a, .pptwj .pptwj-tabs-wrap .tab-links li a.selected, .pptwj .pptwj-tabs-wrap .tab-links li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected {
+	color: #028090}
+
+.widget_tag_cloud a, .tags a {
+	border-color: #028090}
+
+a:hover, .menu li a:hover {
+	color: #027382}
+
+.widget_tag_cloud a:hover, .tags a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected:after, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover:after {
+	background-color: #028090}
+
+/******************
+Headings dark
+*******************/
+h1, h1 a, .h1 a, .h2, h2, h2 a, .h2 a, h4, h4 a, .h4 a, h5, h5 a, .h5 a, .zem_rp_title {
+	color: #2f343b}
+
+/******************
+Headings light
+*******************/
+h3, h3 a, .h3 a, h6, h6 a, .h6 a, .wp_rp_excerpt {
+	color: #9a9a90}
+
+/******************
+Navbar background
+*******************/
+.header {
+	background-color: #ffffff}
+
+/******************
+Footer background
+*******************/
+.footer, .copyrights {
+	background-color: #ffffff}
+
+/******************
+Navbar text color
+*******************/
+
+.navigation > li > a {
+	color: #9a9a90}
+
+/******************
+Navbar dropdown text color
+*******************/
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a, .navigation .sub-menu > li > a:hover {
+		color: #f3f4f4	}
+}
+
+/* WP Customizer end */
+
+/* User Custom CSS */
+
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=4.5' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var dw_reaction = {"ajax":"http:\/\/cuthanh.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/dw-reactions/assets/js/script.js?ver=120004042016'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.3" />
+<link rel='shortlink' href='/?p=673' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Freact%2Freact-native-su-dang-sau-anh-hao-quang" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Freact%2Freact-native-su-dang-sau-anh-hao-quang&#038;format=xml" />
+			<meta property="fb:pages" content="1230424850325628" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>			<link rel="shortcut icon" href="/wp-content/uploads/2016/07/logo-icon.ico">
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/uploads/2016/07/blurred-home-bg.jpg"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+<link rel="amphtml" href="/react/react-native-su-dang-sau-anh-hao-quang/amp" /><link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" sizes="32x32" />
+<link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-180x180.png" />
+<meta name="msapplication-TileImage" content="http://cuthanh.com/wp-content/uploads/2016/07/cropped-logo-icon-lg-270x270.png" />
+
+<!-- BEGIN GADWP v4.9.5 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79981031-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hentry .aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+.post-content>p {
+	text-align: justify;
+	text-indent: 1em;
+}			</style>
+			<!-- W3TC-include-css -->
+</head>
+
+<body class="post-template-default single single-post postid-673 single-format-standard custom-background">
+<!-- W3TC-include-js-body-start -->
+
+	<!-- Search - Open panel -->
+	<div class="search-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="/">
+						<input type="text" class="search-panel__form  js--search-panel-text" name="s" placeholder="Begin typing for search">
+						<p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-content-container"><!-- ends in the footer.php -->
+		<!-- header -->
+		<header class="header  push-down-45">
+			<div class="container">
+				<div class="logo  pull-left">
+					<a href="/">
+													<img src="/wp-content/uploads/2016/07/logo-1.png" alt="Blog của CuThanh" />
+											</a>
+				</div>
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="navbar  navbar-default" role="navigation">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+						<ul id="menu-my-menu" class="navigation"><li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="/">Trang chủ</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-710"><a href="/category/technology">Technology</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-711"><a href="/category/react">React</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139"><a href="/category/server">Server</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-140"><a href="/category/nodejs">NodeJS</a></li>
+<li id="menu-item-141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141"><a href="/category/startup">Startup</a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="/about">About</a></li>
+</ul>					</div><!-- /.navbar-collapse -->
+				</nav>
+				<div class="hidden-xs  hidden-sm">
+					<a href="#" class="search__container  js--toggle-search-mode"> <span class="glyphicon  glyphicon-search"></span>  </a>
+										<div class="social">
+						<a href="#" class="social__container  js--blank-link"><span class="glyphicon  glyphicon-heart"></span></a>
+						<ul class="social__dropdown">
+														<li>
+								<a href="http://nlug27@gmail.com/" target="_blank" class="social__container"> <span class="zocial-email"></span></a>
+							</li>
+														<li>
+								<a href="https://www.facebook.com/hojjlamthenlug" target="_blank" class="social__container"> <span class="zocial-facebook"></span></a>
+							</li>
+													</ul>
+					</div>
+									</div>
+			</div>
+		</header>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" role="main">
+
+			
+				<!-- Post with featured image -->
+				<article class="boxed push-down-45 post-673 post type-post status-publish format-standard has-post-thumbnail hentry category-react tag-android tag-app tag-hybrid tag-ios tag-lap-trinh tag-react tag-react-native">
+
+					<div class="meta">
+
+			<a href="/react/react-native-su-dang-sau-anh-hao-quang" class="link--no-border"><img width="811" height="373" src="/wp-content/uploads/2016/11/Cover.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="/wp-content/uploads/2016/11/Cover.png 811w, /wp-content/uploads/2016/11/Cover-300x138.png 300w, /wp-content/uploads/2016/11/Cover-768x353.png 768w" sizes="(max-width: 811px) 100vw, 811px" /></a>
+	
+	
+			<div class="meta__container  clearfix">
+				<div class="meta__info">
+					<span class="meta__author">
+						<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=30&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=60&amp;d=mm&amp;r=g 2x' class='avatar avatar-30 photo' height='30' width='30' />						<a href="/author/nlug">Minh Thành</a> in <a href="/category/react" rel="category tag">React</a>
+					</span>
+					<time datetime="2016-11-23T12:54:14+00:00" class="meta__date"><a href="/2016/11/23"><span class="glyphicon  glyphicon-calendar"></span> &nbsp; 23/11/2016</a></time>
+				</div>
+				<div class="meta__comments">
+					<a href="/react/react-native-su-dang-sau-anh-hao-quang#comments"><span class="glyphicon  glyphicon-comment"></span>  &nbsp; 7 Comments</a>
+				</div>
+			</div>
+
+			
+</div>
+
+
+					<!-- Start of the blogpost -->
+					<div class="row">
+						<div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2">
+
+							<!-- Start of the content -->
+							<div class="post-content">
+								<h1 class="post-content__title">
+									<a href="/react/react-native-su-dang-sau-anh-hao-quang">React Native &#8211; Sự thật đằng sau ánh hào quang</a>
+								</h1>
+								<p><em>Chào các bác lâu lắm rồi em không viết bài gì vì phải làm bài tập trên lớp với làm project bên ngoài nữa <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/79655ff22c4eb02aba73a3e2728e3b30.png" alt="" border="0" hspace="5" /></em></p>
+<p><em>Như tít, bài này mình sẽ nói về react-native nó thật sự có &#8220;ngon&#8221;, thon thả như Ngọc Trinh không <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" border="0" hspace="5" />? Cùng tìm hiểu nhé!</em></p>
+<h1>Tại sao chọn React Native</h1>
+<p>Mình thì hướng theo Nodejs lâu rồi, cũng rất muốn làm app cho điện thoại nên mình đã tìm kiếm một nền tảng có thể giúp mình viết được app điện thoại với kiến thức NodeJS vốn có mà không phải học các ngôn ngữ native <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" border="0" hspace="5" /> (Mình cực kì, cực kì, cực kì ghét Java <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" border="0" hspace="5" />, đừng bao giờ nói mình viết code java. Ok?)</p>
+<p>Theo như mình tìm hiểu, để viết app cho smartphone có 3 hướng chính</p>
+<h2>Hybrid App</h2>
+<p>Thằng này hoạt động khá đơn giản, nó thực ra chỉ gói một Web App của mình vào, gắn thêm một số api hệ thống vào Javascript của web app đấy là xong. Cái mà bạn tương tác với app này chả khác nào tương tác với một Web App cả <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" /></p>
+<p>Tiêu biểu cho thằng này có <strong>IONIC, AppGyver, Onsen UI,&#8230;</strong></p>
+<p><img class="aligncenter size-full wp-image-679" src="/wp-content/uploads/2016/11/AAEAAQAAAAAAAAY8AAAAJGRiMGI2YmIxLWNiNjYtNGUyZS05YTAwLTEzYjQ5OWIzYTgwNQ.jpg" alt="aaeaaqaaaaaaaay8aaaajgrimgi2ymixlwninjytnguyzs05ytawltezyjq5owizytgwnq" width="400" height="400" srcset="/wp-content/uploads/2016/11/AAEAAQAAAAAAAAY8AAAAJGRiMGI2YmIxLWNiNjYtNGUyZS05YTAwLTEzYjQ5OWIzYTgwNQ.jpg 400w, /wp-content/uploads/2016/11/AAEAAQAAAAAAAAY8AAAAJGRiMGI2YmIxLWNiNjYtNGUyZS05YTAwLTEzYjQ5OWIzYTgwNQ-150x150.jpg 150w, /wp-content/uploads/2016/11/AAEAAQAAAAAAAAY8AAAAJGRiMGI2YmIxLWNiNjYtNGUyZS05YTAwLTEzYjQ5OWIzYTgwNQ-300x300.jpg 300w" sizes="(max-width: 400px) 100vw, 400px" /></p>
+<p>Đây là thằng đâu tiên mình dừng lại và trải nghiệm thử. Đa số các thằng trên đều sử dụng Angular + HTML là các bác có thể xây dựng được bột ứng dụng đa nền tảng kể cả trên Web, Android, iOS, một số thằng thậm chí còn hỗ trợ Windows Phone, hoặc gói nó vào một bộ đóng gói như Electron của Github là các bác có cả app cho Windows, MacOS, Linux,&#8230; Phê chưa <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" border="0" hspace="5" /></p>
+<p>Tuy nhiên. <strong>Nó chỉ là một trang web thôi nên chậm, không mượt mà khiến trải nghiệm người dùng khá là tệ (đối với mình) <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/f7b14908d90b912b3fe5d7fa726df847.png" alt="" border="0" hspace="5" /></strong></p>
+<h2>App mà viết một ngôn ngữ sẽ compile ra chạy được nhiều nền tảng</h2>
+<p>Tiêu biểu cho thằng này có <strong>React Native, Xamarin của Microsoft, NativeScript, SmartFace,&#8230;</strong></p>
+<p><img class="aligncenter size-full wp-image-680" src="/wp-content/uploads/2016/11/mac-hong-quan-1.jpg" alt="mac-hong-quan-1" width="620" height="420" srcset="/wp-content/uploads/2016/11/mac-hong-quan-1.jpg 620w, /wp-content/uploads/2016/11/mac-hong-quan-1-300x203.jpg 300w" sizes="(max-width: 620px) 100vw, 620px" /></p>
+<p>Đối với mình, một ứng dụng phải như một chàng Sở Khanh đấy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" /> (đẹp trai, ngon ngọt, tôn trọng người dùng trong từng trải nghiệm, màn hình và chỉ tập trung vào những chức năng cần thiết nhất <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" border="0" hspace="5" />, không đa năng như soái ca <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" border="0" hspace="5" />)</p>
+<p>Vì vậy mình bỏ Hyprid App mà tìm kiếm một hướng đi khác, giúp trải nghiệm ngừời dùng tốt hơn, thử qua nhiều thằng và chọn React Native vì thằng này có một số thành phần để code khá giống như <code>JSX</code> giống giống với <code>HTML</code>, <code>Style</code> giống giống với <code>CSS</code> luôn, và đặc biệt là được Facebook chống lưng <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" />. Tại vì vào phần Showcase thì nhìn thấy như vầy</p>
+<p><img class="aligncenter size-full wp-image-674" src="/wp-content/uploads/2016/11/Screen-Shot-2016-11-23-at-10.38.15-AM.png" alt="screen-shot-2016-11-23-at-10-38-15-am" width="811" height="385" srcset="/wp-content/uploads/2016/11/Screen-Shot-2016-11-23-at-10.38.15-AM.png 811w, /wp-content/uploads/2016/11/Screen-Shot-2016-11-23-at-10.38.15-AM-300x142.png 300w, /wp-content/uploads/2016/11/Screen-Shot-2016-11-23-at-10.38.15-AM-768x365.png 768w" sizes="(max-width: 811px) 100vw, 811px" /></p>
+<p>Moá, nó viết Facebook, Instagram đủ các kiểu bằng React Native luôn á <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a729827d07c2862258711bdba931e289.png" alt="" border="0" hspace="5" />? Really mother fucker <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" border="0" hspace="5" />????? Các bác dùng Facebook cũng biết độ muợt mà và ổn định của nó rồi đấy! Thế là mình theo React Native <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" /></p>
+<h2>App viết bằng ngôn ngữ native của nền tảng đấy</h2>
+<p>Mình nói rồi, cực kì <strong>Ultra mega super extremely GHÉT</strong> Java và cũng không có xiền mua MacBook nên Option này tạm thời bỏ qua! <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/76e3337135a7b852053b34aadd76ba6d.png" alt="" border="0" hspace="5" /></p>
+<h1>Trải nghiệm cùng React Native</h1>
+<p>Để có thể chiến được React Native, các bác phải có trong bụng <code>React</code> đã. Okey học xong <code>React</code> thì phải nghiên cứu thêm một chút <code>ES6</code> nè, rồi nếu ứng dụng ngày càng phức tạp thì phải xem qua thằng <code>Flux</code>/<code>Redux</code> nè,&#8230; nói chung khá là bội thực <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" border="0" hspace="5" />. Trong project mình đang làm, team mình chọn stack <code>React Native + Redux + GraphQL + Relay</code>.</p>
+<p><img class="aligncenter size-full wp-image-682" src="/wp-content/uploads/2016/11/CUxuKuLVAAAxHFQ.png" alt="cuxukulvaaaxhfq" width="600" height="330" srcset="/wp-content/uploads/2016/11/CUxuKuLVAAAxHFQ.png 600w, /wp-content/uploads/2016/11/CUxuKuLVAAAxHFQ-300x165.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></p>
+<p>Có thể do trình độ em kém nhưng thật sự có thể dung nạp được thằng <code>Relay</code> vào bụng thì khá là gian truân đấy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" border="0" hspace="5" />! Nhưng bù lại khi hiểu được nó rồi thì rất &#8220;sướng&#8221; <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" border="0" hspace="5" /></p>
+<p>Sau hơn 2 tuần nghiên cứu để có thể hình dung thăng React Native là gì? Em bắt đầu lao vào code. Đến với React là đâu tiên phải nhắc tới <code>Component</code>. Các bác cứ tưởng tuợng nó như mấy tag <code>h1</code>, <code>h2</code>, <code>div</code> trong <code>html</code> vậy. Nhưng chức năng, tên của nó là gì thì các bác tự code nhé hoặc các bác tưởng tượng mỗi <code>Component</code> là một <code>function</code> trong đống code của các bác vậy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" border="0" hspace="5" />. Nhờ đó, các bác có thể tận dụng lại bộ code của mình bất cứ khi nào. <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" border="0" hspace="5" /></p>
+<p>Hồi năm nhất có thằng bạn giờ đã học tài năng nói với mình</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Code mà để trùng lại những đoạn đã code thì mày chả khác nào máy tính cả <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" border="0" hspace="5" />. Quăng nó vào thành một function đi.<span class="su-quote-cite">Thằng bạn</span></div></div>
+<p>Mới đầu khá khó khăn vì một vài lỗi cơ bản nhưng dần rồi cũng quen.</p>
+<p>Rồi một ngày mình được giao code phần Dách sách các phần tử xyz (Kiểu như kết quả search đấy)</p>
+<p><img class="aligncenter size-full wp-image-683" src="/wp-content/uploads/2016/11/Concept.png" alt="concept" width="379" height="684" srcset="/wp-content/uploads/2016/11/Concept.png 379w, /wp-content/uploads/2016/11/Concept-166x300.png 166w" sizes="(max-width: 379px) 100vw, 379px" /></p>
+<p style="text-align: center;"><em>Ý tưởng</em></p>
+<p>Vấn đề bắt đầu xuất hiện. Android hỗ trợ Menu Dropdown từ rất rất lâu rồi, trong khi iOS nói rằng:</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Bồ đéo thích thằng Menu Dropdown, okey? <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" border="0" hspace="5" /><span class="su-quote-cite">iOS</span></div></div>
+<p>Thế là mình bắt đầu search từ khoá &#8220;react native menu dropdown&#8221; và tìm được thằng này https://github.com/jaysoo/react-native-menu . May quá, nó hỗ trợ cả Android lẫn iOS <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" border="0" hspace="5" />.</p>
+<p><code>npm install --save react-native-menu</code> về thôi. Vâng, rắc rối vẫn không dừng lại ở đây. Ấn nút để hiện ra menu thì cái menu lại hiện ở chân trời nào đấy&#8230; Haizz. Thế là vào Issues trên github thì thấy vô vàn bác bị như mình rồi và tác giả repo trên vẫn chưa đứng ra nhận trách nhiệm <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" border="0" hspace="5" />. Có một bác đã sửa được bằng cách thay code và tạo pull request rồi nhưng có vẻ author đang bận đi chơi rồi <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" border="0" hspace="5" />. Thế là mình phại fork về sửa lại theo bác kia để fix cãi lỗi sida đấy. Ít ra mình cũng may mắn vì có người biết được vấn đề ở đâu và sửa nó <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" />.</p>
+<p><img class="aligncenter size-full wp-image-684" src="/wp-content/uploads/2016/11/Reallity.png" alt="reallity" width="379" height="684" srcset="/wp-content/uploads/2016/11/Reallity.png 379w, /wp-content/uploads/2016/11/Reallity-166x300.png 166w" sizes="(max-width: 379px) 100vw, 379px" /></p>
+<p style="text-align: center;"><em>Thực tế</em></p>
+<p>Vậy đấy, menu của mình có thể hoạt động ổn định nhưng mình nhận ra là nó chậm quá. Tới đây nghĩ lại tới hybrid app &#8211; À thì ra nó cái Menu của mình chả khác gì hybrid app cả <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" border="0" hspace="5" />. Component trên xây dựng bằng các component của React Native chứ không phải xây dựng bằng cách Native code cho Android và bằng React Native component cho iOS <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" />.</p>
+<h1>Ngôn ngữ thiết kế</h1>
+<p>Vẫn trở lại với trưởng hợp mình nói ở trên. Tại sao thằng Android lại hỗ trợ Dropdown Menu trong native code mà iOS bảo không? Tại vì 2 nền tảng đấy có ngôn ngữ thiết kế khác nhau <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" border="0" hspace="5" />.</p>
+<p><img class="aligncenter size-large wp-image-675" src="/wp-content/uploads/2016/11/iOS-vs-Android-Segmented-Controls@3x-1024x352.png" alt="ios-vs-android-segmented-controls3x" width="700" height="241" srcset="/wp-content/uploads/2016/11/iOS-vs-Android-Segmented-Controls@3x-1024x352.png 1024w, /wp-content/uploads/2016/11/iOS-vs-Android-Segmented-Controls@3x-300x103.png 300w, /wp-content/uploads/2016/11/iOS-vs-Android-Segmented-Controls@3x-768x264.png 768w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+<p><img class="aligncenter size-large wp-image-676" src="/wp-content/uploads/2016/11/iOS-vs.-Android@3x-1024x741.png" alt="ios-vs-android3x" width="700" height="507" srcset="/wp-content/uploads/2016/11/iOS-vs.-Android@3x-1024x741.png 1024w, /wp-content/uploads/2016/11/iOS-vs.-Android@3x-300x217.png 300w, /wp-content/uploads/2016/11/iOS-vs.-Android@3x-768x556.png 768w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+<p>Các bác có thể xem chi tiết tại</p>
+<p>Android: <a href="https://developer.android.com/design/index.html" target="_blank">https://developer.android.com/design/index.html</a></p>
+<p>iOS: <a href="https://developer.apple.com/ios/human-interface-guidelines/overview/design-principles/" target="_blank">https://developer.apple.com/ios/human-interface-guidelines/overview/design-principles/</a></p>
+<p>Vậy đấy, mỗi nền tảng có phong cách thiết kế UI/UX khách nhau, việc này sẽ khiến cho người dùng có trải nghiệm xuyên suốt toàn bộ các ứng dụng trên nền tảng đó. Thử nghĩ bạn đưa ứng dụng Android đặt vào con iPhone xem <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/f7b14908d90b912b3fe5d7fa726df847.png" alt="" border="0" hspace="5" />? YouTube là một ví dụ, mình không đánh giá cao UI/UX của nó trên iOS <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" border="0" hspace="5" /></p>
+<p>Do đó, nếu muốn có một sản phẩm theo chuẩn Sở Khach <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aeabbb614c88c9f1e09869596f736441.png" alt="" border="0" hspace="5" />, bạn cần phải viết component riêng cho từng thằng trong khá nhiều trường hợp. Và để làm điều đó, theo mình phái có kha khá kinh nghiệm cho từng nên tảng riêng (Nghĩa là đã từng viết app bằng native language đấy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" />).</p>
+<p>Dĩ nhiên các bác hoàn toàn có thể xây dựng một component mà chạy ở mọi nơi như cái component mình dùng bên trên. Component như vậy hoặc là các bác mượn của nguời ta hoặc tự code. Nếu tự code thì mình nghĩ rằng, khả năng rất cao sẽ lại xảy ra một vấn đề kiểu như</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Hồi xưa có, tại sao trời đã sinh ra Firefox lại sinh ra IE. Bây giờ là tại sao trời đã sinh ra iOS lại sinh ra Android nữa&#8230;<img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" border="0" hspace="5" /><span class="su-quote-cite">Dev</span></div></div>
+<p>Và việc để làm cho component hoạt động ngon lành ở cả 2 cũng chả phải là điều gì đơn giản. Trình độ hiện tại của mình chưa đủ <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/79655ff22c4eb02aba73a3e2728e3b30.png" alt="" border="0" hspace="5" />. Vâng cuộc sống mà, chả có gì dễ dàng cả, huh?</p>
+<h1>Kết luận</h1>
+<p><img class="aligncenter size-full wp-image-685" src="/wp-content/uploads/2016/11/Cover.png" alt="cover" width="811" height="373" srcset="/wp-content/uploads/2016/11/Cover.png 811w, /wp-content/uploads/2016/11/Cover-300x138.png 300w, /wp-content/uploads/2016/11/Cover-768x353.png 768w" sizes="(max-width: 811px) 100vw, 811px" /></p>
+<p>Sau thời gian 3-4 tuần chơi bời với React Native, mình nhận ra hầu hết chỉ là dối trá <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" border="0" hspace="5" />. Hãy quên đi việc biết một ngôn ngữ mà có thể viết cho nhiều thằng. Nếu muốn xây dựng một ứng dụng đúng chuẩn Sở Khanh, bạn phải hiểu rõ từng nên tảng, phải hiểu ngôn ngữ mà nền tảng đó sử dụng, các api mà nó cung cấp <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" />. React Native chỉ giúp chũng ta tận dụng tối đa nhưng phần có thể giống nhau giữa cả 2, tận dụng cái ngôn ngữ JavaScript đang nối lên như nấm sau mưa thôi <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" />. Nhìn Facebook kìa, mình chắc chắn là chỉ có một phần là React Native thôi <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" border="0" hspace="5" /> chứ không hoàn toàn như mình tưởng tượng lúc đầu.</p>
+<p>Các bác có thể xem thêm ở đây một bác viết về React Native sau 1 năm yêu thương nó: <a href="https://hashnode.com/post/what-we-learned-after-using-react-native-for-a-year-civdr8zv6058l3853wqud7hqp" target="_blank">https://hashnode.com/post/what-we-learned-after-using-react-native-for-a-year-civdr8zv6058l3853wqud7hqp</a></p>
+<p>Còn mình, mình sẽ vẫn tiếp tục cố gắng trinh phục React Native để có thể làm ra một sản phẩm theo đúng chuẩn Sở Khanh của mình <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" />. Tuy nhiên các bạn hãy quên đi tư tưởng học một được nhiều đi nhé <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" border="0" hspace="5" />. Hãy tạo ra một sản phẩm tôn trọng người dùng! <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" border="0" hspace="5" /></p>
+<p>&nbsp;</p>
+		<div class="dw-reactions dw-reactions-post-673" data-type="vote" data-nonce="fe51f46582" data-post="673">
+											<div class="dw-reactions-button">
+					<span class="dw-reactions-main-button">Like</span>
+					<div class="dw-reactions-box">
+						<span class="dw-reaction dw-reaction-like"><strong>Like</strong></span>
+						<span class="dw-reaction dw-reaction-love"><strong>Love</strong></span>
+						<span class="dw-reaction dw-reaction-haha"><strong>Haha</strong></span>
+						<span class="dw-reaction dw-reaction-wow"><strong>Wow</strong></span>
+						<span class="dw-reaction dw-reaction-sad"><strong>Sad</strong></span>
+						<span class="dw-reaction dw-reaction-angry"><strong>Angry</strong></span>
+					</div>
+				</div>
+														<div class="dw-reactions-count">
+					<span class="dw-reaction-count dw-reaction-count-like"><strong>8</strong></span><span class="dw-reaction-count dw-reaction-count-love"><strong>4</strong></span>				</div>
+					</div>
+		
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Có liên quan</em></h3>
+</div>
+															</div>
+							<!-- End of the content -->
+
+							<div class="row">
+								<div class="col-xs-12  col-sm-3">
+									<!-- Start of comments button -->
+									<div class="post-comments">
+										<a class="btn  btn-primary" href="/react/react-native-su-dang-sau-anh-hao-quang#comments">7 Comments</a>
+									</div>
+									<!-- End of comments button -->
+								</div>
+								<div class="col-xs-12  col-sm-9">
+									<!-- Start of social icons -->
+									<div class="social-icons">
+																			</div>
+									<!-- End of social icons -->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12  push-down-60  col-sm-6">
+									<!-- Start of post author -->
+									<div class="post-author">
+										<h6>Written By</h6>
+										<hr>
+										<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=90&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=180&amp;d=mm&amp;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' />										<h5>
+											<a href="/author/nlug">Minh Thành</a>
+										</h5>
+										<div class="post-author__text">
+											<p>Tác giả bận chơi Dota 2 rồi lười viết cái dòng này lắm</p>
+										</div>
+									</div>
+									<!-- End of post author -->
+								</div>
+
+																<div class="col-xs-12  col-sm-6  push-down-60">
+
+									<!-- Start of post tags -->
+									<div class="tags">
+										<h6>Tags</h6>
+										<hr>
+										<a href="/tag/android" rel="tag">android</a><a href="/tag/app" rel="tag">app</a><a href="/tag/hybrid" rel="tag">hybrid</a><a href="/tag/ios" rel="tag">ios</a><a href="/tag/lap-trinh" rel="tag">lập trình</a><a href="/tag/react" rel="tag">React</a><a href="/tag/react-native" rel="tag">React Native</a>									</div>
+
+									<!-- End of post tags -->
+								</div>
+								
+							</div>
+
+							<!-- comments start -->
+							
+<div class="comments  push-down-30" id="comments">
+	<h6>Comments</h6>
+	<hr>
+
+	<section class="comments-container">
+		
+						<h3 class="push-down-30">
+				7 Comments			</h3>
+			
+			
+	<div id="comment-969" class="comment even thread-even depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://1.gravatar.com/avatar/449a6b581d4c11d7d09f9d3247870bb5?s=74&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/449a6b581d4c11d7d09f9d3247870bb5?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					Liêm Phan				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-04-13T09:51:43+00:00">
+					 	13/04/2017 at 9:51 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=969#respond' onclick='return addComment.moveForm( "comment-969", "969", "respond", "673" )' aria-label='Phản hồi đến Liêm Phan'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Cảm ơn bài viết của tác giả, rất bổ ích để mình chuẩn bị đối mặt trong tương lai (từ 1 người chuẩn bị bước chân vào react native) 🙂</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-1383" class="comment byuser comment-author-nlug bypostauthor odd alt depth-2 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-05-13T02:00:13+00:00">
+					 	13/05/2017 at 2:00 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=1383#respond' onclick='return addComment.moveForm( "comment-1383", "1383", "respond", "673" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Good luck bro 😀</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-1684" class="comment even thread-odd thread-alt depth-1 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://2.gravatar.com/avatar/b079f0a98722794db7b4c027ba21f845?s=74&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/b079f0a98722794db7b4c027ba21f845?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='http://facebook.com/d0dung' rel='external nofollow' class='url'>dũng</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-06-12T13:25:38+00:00">
+					 	12/06/2017 at 1:25 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=1684#respond' onclick='return addComment.moveForm( "comment-1684", "1684", "respond", "673" )' aria-label='Phản hồi đến dũng'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>bài viết rất hay, cám ơn thớt đã chia xẻ</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-1685" class="comment odd alt thread-even depth-1 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/6753ad6fbd586dfe69e1f8144436c2a2?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/6753ad6fbd586dfe69e1f8144436c2a2?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='https://www.linkedin.com/in/phamthanhtuan/' rel='external nofollow' class='url'>Tuấn Phạm</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-06-12T15:09:38+00:00">
+					 	12/06/2017 at 3:09 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=1685#respond' onclick='return addComment.moveForm( "comment-1685", "1685", "respond", "673" )' aria-label='Phản hồi đến Tuấn Phạm'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Bài viết rất hữu ích, sử dụng ngôn ngữ thật dí dỏm. Cảm ơn ku Thanh rất nhìu.</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-2218" class="comment even thread-odd thread-alt depth-1 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/0d4640e2cb4d3d3a611888856c69238a?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0d4640e2cb4d3d3a611888856c69238a?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					Quang Tran				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-08-21T11:03:19+00:00">
+					 	21/08/2017 at 11:03 Sáng					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=2218#respond' onclick='return addComment.moveForm( "comment-2218", "2218", "respond", "673" )' aria-label='Phản hồi đến Quang Tran'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Bài viết rất bổ ích cảm ơn chủ thớt</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+
+	<div id="comment-2771" class="comment odd alt thread-even depth-1 clearfix parent">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/609090a9922e357a3a27f4bb400c8588?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/609090a9922e357a3a27f4bb400c8588?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					- a java dev -				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-10-31T16:08:31+00:00">
+					 	31/10/2017 at 4:08 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=2771#respond' onclick='return addComment.moveForm( "comment-2771", "2771", "respond", "673" )' aria-label='Phản hồi đến - a java dev -'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>sao nhiều người ghét java thế nhỉ, e code thấy cx dễ học vs ngon mà</p>
+				</div>
+			</div>
+
+	
+	<div id="comment-2772" class="comment byuser comment-author-nlug bypostauthor even depth-2 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					<a href='/' rel='external nofollow' class='url'>Minh Thành</a>				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-10-31T19:08:27+00:00">
+					 	31/10/2017 at 7:08 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/react/react-native-su-dang-sau-anh-hao-quang?replytocom=2772#respond' onclick='return addComment.moveForm( "comment-2772", "2772", "respond", "673" )' aria-label='Phản hồi đến Minh Thành'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>Có những thằng nhìn thấy nó thở là ghét rồi bác ạ. LOL</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+		</div>
+</div><!-- #comment-## -->
+
+					<hr />
+					<h3 class="push-down-25">
+						Leave a Comment					</h3>
+
+
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/react/react-native-su-dang-sau-anh-hao-quang#respond" style="display:none;">Hủy</a></small></h3>			<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="push-down-15"><label for="message">Message <span class="warning">*</span></label><textarea class="form-control form-control--contact form-control--big" id="comment" name="comment" rows="7" aria-required="true" placeholder="Your Comment goes here." required></textarea></p><p class="push-down-15"><label for="author">Name <span class="warning">*</span><input class="form-control  form-control--contact" id="author" name="author" type="text" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="email">Email <span class="warning">*</span><input class="form-control  form-control--contact" id="email" name="email" type="email" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="url">Website <span class="warning">*</span><input class="form-control  form-control--contact" id="url" name="url" type="text" value="" size="30" /></label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submitWPComment" class="submit" value="Send now" /> <input type='hidden' name='comment_post_ID' value='673' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="919b417e79" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="112"/></p>			</form>
+			</div><!-- #respond -->
+		</section>
+</div>							<!-- comments end -->
+
+							
+						</div>
+					</div>
+				</article>
+
+			
+	</div>
+
+	
+	</div>
+</div>
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+									</div>
+			</div>
+		</footer>
+		<footer class="copyrights">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12  col-sm-6">
+						Readable WP theme &copy; Copyright 2014					</div>
+					<div class="col-xs-12  col-sm-6">
+						<div class="copyrights--right">
+							Made by <a href="http://www.proteusthemes.com/">ProteusThemes</a>						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div><!-- /.page-content-container -->
+
+<script type='text/javascript' src='/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<link rel='stylesheet' id='su-box-shortcodes-css'  href='/wp-content/plugins/shortcodes-ultimate/assets/css/box-shortcodes.css?ver=4.9.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201748'></script>
+<script type='text/javascript' src='/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ReadableVars = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/readable/assets/js/built.js?ver=1.0.0'></script>
+<script type='text/javascript' src='/wp-includes/js/comment-reply.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201748.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.5',blog:'114130900',post:'673',tz:'7',srv:'cuthanh.com'} ]);
+	_stq.push([ 'clickTrackerInit', '114130900', '673' ]);
+</script>
+<!-- W3TC-include-js-body-end -->
+</body>
+</html>

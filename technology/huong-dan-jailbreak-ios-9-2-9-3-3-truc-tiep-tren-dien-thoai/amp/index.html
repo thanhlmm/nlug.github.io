@@ -1,0 +1,472 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Hướng dẫn Jailbreak iOS 9.2 - 9.3.3 trực tiếp trên điện thoại - Blog của CuThanh</title>
+		<link rel="canonical" href="/technology/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai" />
+			<script custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" async></script>
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/technology\/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"H\u01b0\u1edbng d\u1eabn Jailbreak iOS 9.2 &#8211; 9.3.3 tr\u1ef1c ti\u1ebfp tr\u00ean \u0111i\u1ec7n tho\u1ea1i","datePublished":"2016-07-25T10:35:17+00:00","dateModified":"2016-11-06T09:57:59+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/ios9-cydia-sources1.jpg","width":640,"height":400}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}.amp-wp-inline-699673c8bccd8506f85aa16fc9417aaa{background-color:#2D89EF;border-color:#246ebf;color:#FFFFFF;}.amp-wp-inline-b6d5da62e41c7742ac7ece172aae30d6{border-color:#6cacf4;color:#FFFFFF;font-size:17px;line-height:34px;padding:0px 22px;}.amp-wp-inline-f146f9bb819d875bbe5cf83e36368b44{color:#ff0000;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Hướng dẫn Jailbreak iOS 9.2 &#8211; 9.3.3 trực tiếp trên điện thoại</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-25T10:35:17+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="640" height="400" src="/wp-content/uploads/2016/07/ios9-cydia-sources1.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/ios9-cydia-sources1.jpg 640w, /wp-content/uploads/2016/07/ios9-cydia-sources1-300x188.jpg 300w" sizes="(min-width: 640px) 640px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Hello, trong thời gian gần đây thì iFan cực kì vui sướng vì sau bao nhiều thời gian ngóng chờ thì cuối cùng câu hỏi “<em>Liệu có thể Jailbreak iOS 9.3 được không</em>” đã có câu trả lời. <strong>CÓ</strong> <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Mình xin dịch lại bài hướng dẫn Jailbreak trực tiếp cho anh em tiện JB.</p>
+<p>Link gốc <a href="http://blog.lfcameron7.com/how-to-jailbreak-ios-9-2-ios-9-3-3-without-a-computer/" target="_blank">http://blog.lfcameron7.com/how-to-jailbreak-ios-9-2-ios-9-3-3-without-a-computer/</a></p>
+<blockquote><p>Đây là cách <strong>jailbreak</strong> cực kì đơn giản, <strong>không cần máy tính, không cài phải download iTune lằng nhằng</strong>. Chỉ cần <strong>thiết bị sử dụng iOS + kết nối mạng</strong> là đủ <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p></blockquote>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Lưu ý</strong></span>: Việc <strong>jailbreak</strong> chỉ hỗ trợ từ <strong>iPhone 5S trở lên</strong>, chia buồn cùng <strong>5</strong> và<strong> 5c</strong> <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img> (theo một nguồn tin không đáng tin cậy thì Tool jailbreak sẽ hỗ trợ cho thiết bị dùng chip 32bit nên anh em sài 5 hay 5c ráng đợi thêm xíu nữa nha)</p>
+<p><strong><span class="amp-wp-inline-f146f9bb819d875bbe5cf83e36368b44">Lưu ý: Apple đã chặn cách này và không thể jailbreak như vầy được nữa. Nếu muốn Jailbreak cho iOS từ 9.2-9.3.3 mời các bạn ghét thăm <a href="http://en.pangu.io/" target="_blank" class="amp-wp-inline-f146f9bb819d875bbe5cf83e36368b44">http://en.pangu.io</a></span></strong></p>
+<h1>Hướng dẫn</h1>
+<h4>Bước 1:</h4>
+<p><strong>Sao lưu</strong> lại toàn bộ thiết bị bằng <strong>iTunes</strong>, đề phòng có gì đấy không ổn sau này <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. <strong>Khởi động lại</strong> thiết bị.</p>
+<h4>Bước 2:</h4>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><a href="http://www.iclarified.com/jailbreak/pangu-pp/" class="su-button su-button-style-soft amp-wp-inline-699673c8bccd8506f85aa16fc9417aaa" target="_blank"><span class="amp-wp-inline-b6d5da62e41c7742ac7ece172aae30d6"> Download Jailbreak</span></a>
+</p><p><a href="http://www.iclarified.com/jailbreak/pangu-pp/" target="_blank">Ấn vào Link này</a> trên thiết bị sử dụng iOS của bạn, hiện ra trang web mới, bạn ấn nút <strong>Download App…</strong>, cửa sổ popup hiện lên ấn tiếp<strong> Cài đặt</strong></p>
+<p><amp-img class="aligncenter wp-image-226 size-large amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/IMG_0511-577x1024.png" alt="IMG_0511" width="577" height="1024" srcset="/wp-content/uploads/2016/07/IMG_0511-577x1024.png 577w, /wp-content/uploads/2016/07/IMG_0511-169x300.png 169w, /wp-content/uploads/2016/07/IMG_0511.png 640w" sizes="(min-width: 577px) 577px, 100vw"></amp-img></p>
+<h4>Bước 3:</h4>
+<p>Đợi nó cài đặt xong <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h4>Bước 4:</h4>
+<p>Sau khi cài đặt xong, bạn vào <strong>Cài đặt -&gt; Cài đặt chung -&gt; Quản lý Thiết bị</strong></p>
+<p><strong>Tin cậy</strong> vào cái đống chữ Trung Quốc đấy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p><amp-img class="aligncenter size-large wp-image-227 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/IMG_0513-577x1024.png" alt="IMG_0513" width="577" height="1024" srcset="/wp-content/uploads/2016/07/IMG_0513-577x1024.png 577w, /wp-content/uploads/2016/07/IMG_0513-169x300.png 169w, /wp-content/uploads/2016/07/IMG_0513.png 640w" sizes="(min-width: 577px) 577px, 100vw"></amp-img></p>
+<h4>Bước 5:</h4>
+<p>Bây giờ mở ứng dụng ra và ấn nút tròn tròn ở giữa</p>
+<p><amp-img class="aligncenter size-large wp-image-228 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/IMG_0514-577x1024.png" alt="IMG_0514" width="577" height="1024" srcset="/wp-content/uploads/2016/07/IMG_0514-577x1024.png 577w, /wp-content/uploads/2016/07/IMG_0514-169x300.png 169w, /wp-content/uploads/2016/07/IMG_0514.png 640w" sizes="(min-width: 577px) 577px, 100vw"></amp-img></p>
+<h4>Bước 6:</h4>
+<p>Tiếp theo <strong>ấn nút nguồn</strong> cho nó tắt màn hình đi rồi <strong>đợi cho nó khởi động lại</strong>. Cũng phải chờ khá lâu nên anh em ráng kiên nhẫn nhé <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p>Nếu không được thì anh em làm lại từ đầu. Nếu nó báo <em>dung lượng sắp đầy</em> là Sắp thành công rồi đấy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h1>Thành quả</h1>
+<p>Sau khi <strong>Jailbreak</strong> thành công thì nhìn xem, có <strong>Cydia</strong> rồi kìaaaaaaaaaaaaa</p>
+<p><amp-img class="aligncenter amp-wp-enforced-sizes" src="http://i.imgur.com/3Wu7gR0.jpg" width="640" height="1136" sizes="(min-width: 640px) 640px, 100vw"></amp-img></p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Lưu ý</strong></span> bản này là <em>semi-tethered</em>, nghĩa là sẽ bị mất <strong>jailbreak</strong> sau khi máy khởi động lại và sau đó cần phải <strong>jailbreak</strong> lại lần nữa nếu muốn tiếp tục.</p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Lưu ý 2</strong></span> Vì mới được <strong>jailbreak</strong> nên đa số <strong>tweat chưa thể ổn định</strong> được trên iOS 9.3 mình khuyên anh em chỉ nên JB để sửa lỗi iPhone lock rồi sau đó xóa đi (Mình thật sự không tin tưởng các anh Trung Quốc nhiều lắm <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>). Nếu cài thì nhớ Xóa ứng dụng trong <strong>Cài đặt -&gt; Cài đặt chung -&gt; Quản lý Thiết bị nhé</strong></p>
+<h2>Bài hướng dẫn sửa lỗi iPhone lock</h2>
+<div class="su-youtube su-responsive-media-yes"><amp-iframe width="600" height="400" src="https://www.youtube.com/embed/_AP2-jUIcQE" frameborder="0" allowfullscreen="" sandbox="allow-scripts allow-same-origin" sizes="(min-width: 600px) 600px, 100vw" class="amp-wp-enforced-sizes"><div placeholder="" class="amp-wp-iframe-placeholder"></div></amp-iframe></div>
+<p><em>Sau khi sửa lỗi xong bạn xóa Jailbreak đi hay restart lại máy thì fix vẫn còn nhé. Yên tâm </em><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/technology" rel="category tag">Technology</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/cydia" rel="tag">cydia</a>, <a href="/tag/ios" rel="tag">ios</a>, <a href="/tag/ios-9-3" rel="tag">ios 9.3</a>, <a href="/tag/iphone-lock" rel="tag">iphone lock</a>, <a href="/tag/jailbreak" rel="tag">jailbreak</a>, <a href="/tag/truc-tiep" rel="tag">trực tiếp</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/technology/huong-dan-jailbreak-ios-9-2-9-3-3-truc-tiep-tren-dien-thoai#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=225&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

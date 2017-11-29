@@ -1,0 +1,513 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Graph - Em là ai? - Blog của CuThanh</title>
+		<link rel="canonical" href="/technology/graph-em-la-ai" />
+			<script custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" async></script>
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/technology\/graph-em-la-ai","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Graph &#8211; Em l\u00e0 ai?","datePublished":"2016-12-14T17:20:30+00:00","dateModified":"2016-12-20T14:56:39+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/12\/download-1.png","width":1920,"height":800}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-014cc0e912c700f1e5e6d44cbcff15a0{border:none;overflow:hidden;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Graph &#8211; Em là ai?</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-12-14T17:20:30+00:00">
+		12 tháng ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="292" src="/wp-content/uploads/2016/12/download-1-1024x427.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/12/download-1-1024x427.png 1024w, /wp-content/uploads/2016/12/download-1-300x125.png 300w, /wp-content/uploads/2016/12/download-1-768x320.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Chào các mẹ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, kì này thấy những kiến thức hồi năm nhất khá hay nền em tìm hiểu để viết bài cho các bác (thực ra là vì nó liên quan tới mấy cái em đang nghiên cứu, không cũng chia tay lâu rồi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>).</p>
+<h1>Graph là gì?</h1>
+<p>Đầu tiên theo nghỉa tiếng việt Graph gọi là đồ thị. Mà đồ thị thì phải biểu diễn bằng hình vẽ đúng không các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> và mục đích chính mà Graph ra đời là biểu thị mối quan hệ giữa các thực thể (Object/Entity).</p>
+<p><em>Tưởng mỗi người chúng ta là một thực thể (Object) – giống như cách mà các bác hình dung ở OOP. Cuộc sống thì phức tạp, các bác không thể không quen biết, không liên hệ, không kết nối với ai được <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, do đó Graph sinh ra để miêu tả mối quan hệ giữa các thực thể (Object). VD có Bác (Object A) và ông già của bác (Object B) cả 2 liên hệ với nhau qua sợi dây (cha – con) <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Sau này bạn cưới 1 em về (Object C) thì quan hệ giữa Object A và Object C là vợ chồng <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, Obj B và Obj C là bố vợ – con dâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Graph là sợi dây miêu tả mối quan hệ giữa các thành viên trong gia đình các bác.</em></p>
+<p><amp-img class="size-full wp-image-697 alignleft amp-wp-enforced-sizes" src="/wp-content/uploads/2016/12/graph.png" alt="" width="333" height="220" srcset="/wp-content/uploads/2016/12/graph.png 333w, /wp-content/uploads/2016/12/graph-300x198.png 300w" sizes="(min-width: 333px) 333px, 100vw"></amp-img></p>
+<p>Hình trên là một Graph. Các bác có thể để ý nó có 2 thành phần chính là</p>
+<ul><li><strong>Vertice (Node)</strong> – Tiếng Việt gọi là Đỉnh: Là mấy cái vòng tròn có số bên trong ở cái hình bên trái đấy các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+<li><strong>Edge (Connection)</strong> – Tiếng Việt gọi là Cạnh: Là mấy cái đường thẳng nối giũa các cục tròn tròn Node đấy.</li>
+</ul><p>Một Graph có thể là <strong>Directed</strong> (có hướng) hay <strong>Undirected</strong> (vô hướng). Ở Graph bên trên là vô hướng, các bác muốn nó có hướng thì thêm mũi tên vào mấy cái Edge (cạnh) là được (Mũi tên 1 hướng thôi nha các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>).</p>
+<h3>Thế có hướng và vô hướng để làm gì?</h3>
+<ul><li><strong>Vô hướng</strong>: Thằng X là bạn của các bác thì dĩ nhiên bác cũng là bạn của thằng X. Đó là mối quan hệ 2 chiều, vì vậy không cần vẽ mũi tên 2 chiều làm gì, tốn mực <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</li>
+<li><strong>Có hướng</strong>: Các bác thích con Y đang là hoa khôi ở trường, áp dụng bao nhiêu nhiêu sách vở lý thuyết tán gái vẫn không làm nó thích mình được, nó chỉ coi các bác là anh trai tốt/bạn tốt thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Đây là quan hệ 1 chiều, bác thích nó nhưng nó chỉ coi bác như anh trai. Do đó phải có mũi tên chỉ ra là bác thích con Y nhưng nó thì không <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ul><amp-iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fanhdadenhaihuoc%2Fvideos%2F1183375765032349%2F&amp;show_text=0&amp;width=400" width="400" height="800" frameborder="0" allowfullscreen="" class="amp-wp-inline-014cc0e912c700f1e5e6d44cbcff15a0 amp-wp-enforced-sizes" sandbox="allow-scripts allow-same-origin" sizes="(min-width: 400px) 400px, 100vw"><div placeholder="" class="amp-wp-iframe-placeholder"></div></amp-iframe>
+<p>Trên thực tể thì một Graph chắc chắn phải có cả 2 trường hợp Directed và Undirected sảy ra trên cũng một Graph, mình cũng chả biết làm sao mà họ tách 2 cái để riêng. Chắc vậy cho dễ học <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h1>Ví dụ Graph trong thực tế</h1>
+<p>Đang là hàng tá ví dụ của thằng Neo4j, anh em tham khảo nhé</p>
+<p><a href="https://neo4j.com/graphgists/" target="_blank">https://neo4j.com/graphgists/</a></p>
+<h1>Biết Graph được gì</h1>
+<p>Mình bắt đầu đụng vào code từ năm lớp 6, tới giờ mình đang học năm 3 về ngành Khoa học máy tính. Trong suốt quãng thời gian từ lúc biết viết code tới tật khi nộp đơn vào Truờng Bách Khoa HCM (hối hận vl) thì mình chả biết Graph là gì cả mà vẫn code bình thường. Năm lớp 11 mình có code được một website thương mại điện tử/forum (không dùng Framework) và cũng chả cần biết Graph là gì cả. Thực sự tới giờ mình cũng không tin mình có thể code được một project như vậy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/f7b14908d90b912b3fe5d7fa726df847.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Vậy đấy, theo mình, biết Graph hay không cũng không ảnh hưởng gì nhiều tới việc trở thành một lập trình viên cả. Nhưng nếu biết nó sẽ khiến các bác trở nên vĩ đại hơn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, thông minh hơn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, sang chảnh hơn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aeabbb614c88c9f1e09869596f736441.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>,…</p>
+<h2>Ứng dụng khi biết Graph</h2>
+<ul><li>Biểu diễn mỗi quan hệ trong một mạng xã hội (Social Network)</li>
+<li>Biểu diễn bản đổ, tìm đường đi ngắn nhất giữa các điểm trên biểu đồ,…</li>
+<li>Khiến bạn trở nên sang chảnh hơn khi đi Phỏng vấn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ul><p>Ngoài ra, theo mình hiện tại Graph chưa đặt được dấu ấn của mình nhiều trong công nghiệp lập trình nhưng mọi thứ luôn phát triển, sau này, có lẽ Graph sẽ có một chỗ đứng vững chắc cho riêng mình <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Nhìn Facebook xem <a href="https://www.facebook.com/notes/facebook-engineering/tao-the-power-of-the-graph/10151525983993920/" target="_blank">https://www.facebook.com/notes/facebook-engineering/tao-the-power-of-the-graph/10151525983993920/</a></p>
+<p>Nhìn nguời ta đang chuyển từ REST API sang Graph</p>
+<p><a class="m-story" href="https://medium.com/chute-engineering/graphql-in-the-age-of-rest-apis-b10f2bf09bba#.emvrjg5zx" target="_blank" data-width="700" data-border="1" data-collapsed="">View story at Medium.com</a></p>
+<p>https://0x2a.sh/from-rest-to-graphql-b4e95e94c26b#.qsq1ksosf</p>
+<p><a href="https://dev.to/reactiveconf/why-i-believe-graphql-will-come-to-replace-rest" target="_blank">https://dev.to/reactiveconf/why-i-believe-graphql-will-come-to-replace-rest</a></p>
+<p>Lưu một Database duới dạng Graph chứ không phải theo bảng/cột cũ rích nữa? <a href="https://neo4j.com/" target="_blank">https://neo4j.com</a></p>
+<p><amp-img class="aligncenter size-large wp-image-705 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/12/Screen-Shot-2016-12-14-at-6.28.02-PM-1024x312.png" alt="" width="700" height="213" srcset="/wp-content/uploads/2016/12/Screen-Shot-2016-12-14-at-6.28.02-PM-1024x312.png 1024w, /wp-content/uploads/2016/12/Screen-Shot-2016-12-14-at-6.28.02-PM-300x91.png 300w, /wp-content/uploads/2016/12/Screen-Shot-2016-12-14-at-6.28.02-PM-768x234.png 768w, /wp-content/uploads/2016/12/Screen-Shot-2016-12-14-at-6.28.02-PM.png 1510w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Nó giống như hồi xưa chỉ cần Function Programing là đủ để đáp ứng nhưng nó dần trở nên sida <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, OOP ra đời để thay thế nó <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Nếu như văn học phản ánh đúng xã hội khi nó được viết thì code cũng vậy. OOP đang phản ánh đúng xã hội mà loài người đang tồn tại.<span class="su-quote-cite">Bịa ra</span></div></div>
+<h1>Xây dựng một Graph</h1>
+<p>Thực ra mình có xây dựng một <strong>Directed Graph</strong> trong Series <a href="/nodejs/xay-dung-he-thong-goi-y-phan-1" target="_blank">http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1</a> và lưu nó trên MongoDB. Sau này có thể mình sẽ thử trên <strong>Neo4j</strong> xem sao nhỉ, nếu các bác hứng thú?</p>
+<p>…hoặc một cách triển khai khác</p>
+<pre class="prettyprint">let MakeGraph = () =&gt; { 
+  let graph = {};
+  graph.contains = (node)=&gt; {
+    return !!graph[node];
+  }
+  graph.addVertex = (node) =&gt; {  
+    if(!graph.contains(node)){
+      graph[node] = {edges:{}};
+    }
+  }
+  graph.removeVertex = (node) =&gt; {
+    if(graph.contains(node)) {
+      for(let connectedNode in graph[node].edges) {
+        graph.removeEdge(node, connectedNode);
+      }
+      delete graph[node];
+    }
+  }
+  graph.addEdge = (startNode, endNode) =&gt; {
+    if(graph.contains(startNode) &amp;&amp; graph.contains(endNode)){
+      graph[startNode].edges[endNode] = true;
+      graph[endNode].edges[startNode] = true;
+    }
+  }
+  
+  graph.removeEdge = (startNode, endNode) =&gt; {
+    if(graph.contains(startNode) &amp;&amp; graph.contains(endNode)){
+      delete graph[startNode].edges[endNode]
+      delete graph[endNode].edges[startNode]
+    }
+  }
+  return graph;
+}</pre>
+<p>Các bác xem qua đi nhé, em lười nói chi tiết quá! <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p> </p>
+<p><em>Hy vọng mọi người có cái nhìn với Graph một cách tốt hơn (giống như mình đã từng chả coi Graph ra gì cả <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>) và ứng dụng Graph vào những project sau này của mình nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></em></p>
+<p> </p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/technology" rel="category tag">Technology</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/do-thi" rel="tag">dồ thị</a>, <a href="/tag/graph" rel="tag">Graph</a>, <a href="/tag/neo4j" rel="tag">neo4j</a>, <a href="/tag/node" rel="tag">node</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/technology/graph-em-la-ai#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=696&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

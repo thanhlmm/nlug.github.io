@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: Cách sài GraphQL &#8211; Góc nhìn Frontend</title>
+	<atom:link href="/frontend/cach-sai-graphql-goc-nhin-frontend/feed" rel="self" type="application/rss+xml" />
+	<link>/frontend/cach-sai-graphql-goc-nhin-frontend</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/frontend/cach-sai-graphql-goc-nhin-frontend#comment-508</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Sat, 04 Mar 2017 03:30:43 +0000</pubDate>
+		<guid isPermaLink="false">/?p=753#comment-508</guid>
+		<description><![CDATA[Tiếng miên đấy con ơi =]]]]></description>
+		<content:encoded><![CDATA[<p>Tiếng miên đấy con ơi =]]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: con của tía</title>
+		<link>/frontend/cach-sai-graphql-goc-nhin-frontend#comment-507</link>
+		<dc:creator><![CDATA[con của tía]]></dc:creator>
+		<pubDate>Sat, 04 Mar 2017 02:15:15 +0000</pubDate>
+		<guid isPermaLink="false">/?p=753#comment-507</guid>
+		<description><![CDATA[đọc xong méo hiểu cái mẹ gì luôn tía à]]></description>
+		<content:encoded><![CDATA[<p>đọc xong méo hiểu cái mẹ gì luôn tía à</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

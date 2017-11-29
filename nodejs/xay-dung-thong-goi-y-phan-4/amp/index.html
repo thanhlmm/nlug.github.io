@@ -1,0 +1,625 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 4) - Blog của CuThanh</title>
+		<link rel="canonical" href="/nodejs/xay-dung-thong-goi-y-phan-4" />
+			<script custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js" async></script>
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/nodejs\/xay-dung-thong-goi-y-phan-4","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"X\u00e2y d\u1ef1ng h\u1ec7 th\u1ed1ng \u201cG\u1ee3i \u00fd\u2026\u201d (Ph\u1ea7n 4)","datePublished":"2016-08-15T09:17:47+00:00","dateModified":"2016-08-19T00:09:46+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/08\/xmenfeature.jpg","width":1002,"height":579}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Xây dựng hệ thống “Gợi ý…” (Phần 4)</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-08-15T09:17:47+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="404" src="/wp-content/uploads/2016/08/xmenfeature.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/08/xmenfeature.jpg 1002w, /wp-content/uploads/2016/08/xmenfeature-300x173.jpg 300w, /wp-content/uploads/2016/08/xmenfeature-768x444.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Hế looooooo. Bài này chúng ta cùng nhau xây dựng client nhé</p>
+<p>Phần 1: <a href="/nodejs/xay-dung-he-thong-goi-y-phan-1" target="_blank">http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1</a></p>
+<p>Phần 2: <a href="/nodejs/xay-dung-thong-goi-y-phan-2" target="_blank">http://cuthanh.com/nodejs/xay-dung-thong-goi-y-phan-2</a></p>
+<p>Phần 3: <a href="/nodejs/xay-dung-thong-goi-y-phan-3" target="_blank">http://cuthanh.com/nodejs/xay-dung-thong-goi-y-phan-3</a></p>
+<h1>Demo</h1>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><a href="http://demo.cuthanh.com/professorx-client/" target="_blank">http://demo.cuthanh.com/professorx-client/</a></p>
+<h1>Chuẩn bị</h1>
+<p>Chúng ta sẽ xây dựng web app sử dụng framework Angular nhé. Thực tế là có api thì mình có thể áp dụng cho cái gì cũng được. Viết app cho Windows dùng C#, viết cho iOS dùng Switf, Object C, …</p>
+<p>Một vài kĩ năng HTML và CSS. Đẹp hay xấu là ở cái này đấy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Để bắt đầu thì các bạn chỉ cần có tí xíu căn bản về Angular là được rồi. Ah, nhớ đọc qua bài giới thiệu Angular Generator bữa trước của mình để dev cho nhanh nhé</p>
+<p>Một vài bức hình Xmen <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aa9d71a4e03ce5ef22cd34781a848aae.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<amp-carousel width="600" height="480" type="slides" layout="responsive"><amp-img src="/wp-content/uploads/2016/08/magneto.jpg" width="150" height="150" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/wolverine.jpg" width="158" height="158" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/quicksilver.jpg" width="281" height="281" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/professorx.jpg" width="212" height="212" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/mystique.jpg" width="256" height="256" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/kitty.jpg" width="355" height="355" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/jeangray.jpg" width="481" height="480" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/cyclop.jpg" width="480" height="480" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/blink.jpg" width="480" height="480" layout="responsive"></amp-img><amp-img src="/wp-content/uploads/2016/08/beast.jpg" width="308" height="309" layout="responsive"></amp-img></amp-carousel><h1>Chiến thuật</h1>
+<p>Chúng ta sẽ xây dựng 2 route là</p>
+<ol><li><code>/homepage</code> chỗ này là trang chủ giúp ta có thể thêm một Xmen nào đấy vào đội hình, hiện danh sách đội Xmen</li>
+<li><code>/xmen/:id</code> đây là thông tin cá nhân của xmen, tại đây có thể xem những người đã “thả tim”, lấy gợi ý những người có thể có… tình cảm <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ol><h1>Code</h1>
+<p>Tạo folder Client</p>
+<pre class="prettyprint">mkdir client
+
+cd client</pre>
+<p>Áp dụng Angular generator</p>
+<pre class="prettyprint">yo angular ProjectX</pre>
+<p>Ráng đợi xíu cho nó cài đặt nha, hơi lâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Mặc định sau khi cài xong thì nó có sẵn 2 route mặc định cho các bác là <code>homepage</code> và <code>about</code>. Ngon, sài luôn, rename cái <code>about</code> lại thành <code>xmen</code> (nhớ rename lại trong <code>index.html</code>, <code>app.js</code> nữa đấy nhá <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>).</p>
+<h2>Homepage</h2>
+<p>Mình thì thường làm html một trang mẫu đã xem nó Ok chưa, không đụng tí gì đến js nhé. File <code>./view/main.html</code></p>
+<pre class="prettyprint">&lt;div class="row"&gt;
+  &lt;div class="col-sm-12 text-center"&gt;
+    &lt;h1 class="title"&gt;Project X&lt;/h1&gt;
+    &lt;br&gt;
+  &lt;/div&gt;
+  &lt;div class="col-sm-7 text-center row"&gt;
+    &lt;h1&gt;Get suggest for...&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;div class="col-sm-4"&gt;
+      &lt;a href="#/xmen/1"&gt;&lt;img src="image/jeangray.jpg" alt="Jean Gray" class="img-thumbnail img-circle avatar"&gt;&lt;/a&gt;
+      Jean Gray
+    &lt;/div&gt;
+    &lt;div class="col-sm-4"&gt;
+      &lt;a href="#/xmen/1"&gt;&lt;img src="image/jeangray.jpg" alt="Jean Gray" class="img-thumbnail img-circle avatar"&gt;&lt;/a&gt;
+      Jean Gray
+    &lt;/div&gt;
+    &lt;div class="col-sm-4"&gt;
+      &lt;a href="#/xmen/1"&gt;&lt;img src="image/jeangray.jpg" alt="Jean Gray" class="img-thumbnail img-circle avatar"&gt;&lt;/a&gt;
+      Jean Gray
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-sm-4 col-sm-offset-1 text-center box"&gt;
+    &lt;h1&gt;Add Xmen&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;form class="text-left" ng-init="newXmen"&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label for="exampleInputEmail1"&gt;Name&lt;/label&gt;
+        &lt;input type="text" class="form-control" ng-model="newXmen.name" placeholder="Wolverine"&gt;
+      &lt;/div&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label for="exampleInputPassword1"&gt;Avatar&lt;/label&gt;
+        &lt;input type="text" class="form-control" ng-model="newXmen.avatar" placeholder="http://wolverine.com/avatar.png"&gt;
+      &lt;/div&gt;
+      &lt;button type="submit" class="btn btn-xmen" ng-click="add()"&gt;Submit&lt;/button&gt; {{message}}
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>Đấy, chưa có tí gì gọi là Angular hay JavaScript gì trong đấy đâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Tiếp theo nhẩy vào <code>controller</code> lấy danh sách Xmen về show ra nhé.</p>
+<p>File <code>./scripts/controllers/main.js</code></p>
+<pre class="prettyprint">'use strict';
+
+/**
+ * @ngdoc function
+ * @name projectxApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the projectxApp
+ */
+angular.module('projectxApp')
+  .controller('MainCtrl', function ($http, $scope) {
+    // Load xmen
+    $http.get(apiUrl+'/xmen').then(function (response) {
+      $scope.xmens = response.data;
+    });
+    $scope.add = function () {
+      $http.post(apiUrl+'/xmen', $scope.newXmen).then(function (response) {
+        $scope.message = response.data;
+      });
+    }
+  });
+</pre>
+<p>Chạy thử</p>
+<pre class="prettyprint">grunt serve</pre>
+<p>Lưu ý là đang chạy thử rồi sửa đổi file thì nó cập nhật lại luôn nhé, không cần phải chạy lại lệnh trên đâu. Mình khoái nhất cái này <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p>Mở Firebug ra (bác nào sài Chrome dev thì nó là F12 đấy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>). Xem xem nó request được những info gì, cấu trúc làm thao.</p>
+<p><amp-img class="aligncenter size-large wp-image-499 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/08/xmenjson-1024x309.png" alt="xmenjson" width="700" height="211" srcset="/wp-content/uploads/2016/08/xmenjson-1024x309.png 1024w, /wp-content/uploads/2016/08/xmenjson-300x91.png 300w, /wp-content/uploads/2016/08/xmenjson-768x232.png 768w, /wp-content/uploads/2016/08/xmenjson.png 1122w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Của em</em></p>
+<p>Bây giờ sửa lại <code>./view/main.html</code> thôi. Bước này cần tí kĩ năng AngularJS đấy</p>
+<pre class="prettyprint">    &lt;div class="col-sm-4" ng-repeat="xmen in xmens"&gt;
+      &lt;a href="#/xmen/{{xmen.UID}}"&gt;&lt;img src="{{xmen.avatar}}" alt="{{xmen.name}}" class="img-thumbnail img-circle avatar"&gt;&lt;/a&gt;
+      {{xmen.name}}
+    &lt;/div&gt;</pre>
+<p>Hehe, thực ra là xóa 3 cái icon kia, thay lại bằng <code>ng-repeat</code> rồi thả info vô thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Còn cài form thì dễ rồi, các bác tự nghiên cứu nhé. Em chỉ hướng dẫn theo các bước mà em hay làm khi dev thôi, hy vọng giúp ích được cho các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h2>Trang cá nhân Xmen</h2>
+<p>Cũng tương tự như cách dev với <code>homepage</code>, chúng ta được <code>./view/xmen.html</code></p>
+<pre class="prettyprint">&lt;div class="container"&gt;
+    &lt;a href="#/"&gt;&lt;span class="glyphicon glyphicon-menu-left"&gt;&lt;/span&gt; Back to Homepage&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="text-center"&gt;
+    &lt;h1 class="title"&gt;{{curXmen.name}}'s friends list &lt;/h1&gt;
+    &lt;br&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-sm-2 avt-wraper" ng-repeat="xmen in xmens" ng-show="curXmen.like.indexOf(xmen.UID) &gt;= 0 &amp;&amp; xmen.UID !== curXmen.UID"&gt;
+            &lt;img src="{{xmen.avatar}}" alt="{{xmen.name}}" ng-click="like(xmen.UID)" class="img-thumbnail img-circle avatar"&gt;
+            {{xmen.name}}
+            &lt;a href="" class="action"&gt;&lt;span class="glyphicon glyphicon-heart"&gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div ng-if="curXmen.like.length &lt;= 0"&gt;&lt;h2&gt;Opps... This one so selfish! Let's fall in love below&lt;/h2&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;h1 class="title"&gt;&lt;span class="glyphicon glyphicon-heart"&gt;&lt;/span&gt; if you love them&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-sm-2" ng-repeat="xmen in xmens" ng-show="curXmen.like.indexOf(xmen.UID) &lt; 0 &amp;&amp; xmen.UID !== curXmen.UID"&gt;
+            &lt;img src="{{xmen.avatar}}" alt="{{xmen.name}}" ng-click="like(xmen.UID)" class="img-thumbnail img-circle avatar"&gt;
+            {{xmen.name}}
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;h1 class="title"&gt;Maybe you love...&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-sm-2" ng-repeat="xmen in suggests" ng-if="curXmen.like.length &gt; 0"&gt;
+            &lt;img src="{{xmen.avatar}}" alt="{{xmen.name}}" ng-click="like(xmen.UID)" class="img-thumbnail img-circle avatar"&gt;
+            &lt;p&gt;{{xmen.name}}&lt;/p&gt;
+            &lt;p class="number"&gt;{{xmen.score*100 | number:2}}% {{xmen.suggestScore | number:2}}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div ng-if="curXmen.like.length &lt;= 0"&gt;&lt;h2&gt;Opps... Love someone to get suggesting&lt;/h2&gt;&lt;/div&gt;
+        &lt;div ng-if="suggests.length &lt;= 0"&gt;&lt;h2&gt;Opps... We can not find anyone you want to live with&lt;/h2&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>và <code>./scripts/controllers/xmen.js</code></p>
+<pre class="prettyprint">'use strict';
+
+/**
+ * @ngdoc function
+ * @name projectxApp.controller:XmenCtrl
+ * @description
+ * # XmenCtrl
+ * Controller of the projectxApp
+ */
+angular.module('projectxApp')
+  .controller('XmenCtrl', function ($http, $scope, $routeParams, $route) {
+    var init = function () {
+      $http.get(apiUrl+'/'+$routeParams.uid).then(function (response) {
+        $scope.curXmen = response.data;
+        $http.get(apiUrl+'/xmen').then(function (response) {
+          $scope.xmens = response.data;
+        });
+      });
+      $http.get(apiUrl+'/'+$routeParams.uid+'/suggest').then(function (response) {
+        $scope.suggests = response.data;
+      });
+    }
+    init();
+    $scope.like = function (uid) {
+      $http.post(apiUrl+'/'+$routeParams.uid+'/like', {uid: uid}).then(function (response) {
+        $route.reload();
+      });
+      return false;
+    }
+    
+  });
+</pre>
+<p>Phần controller thì có vẻ dễ hiểu rồi ha. Mình sẽ giải thích sơ qua về chiến lược, và thực hiện ở <code>xmen.html</code> thôi nhé</p>
+<ol><li>Lấy thông tin của xmen đang xét tới, sau đó lấy danh sách xmen</li>
+<li>Hiện thực 3 section
+<ul><li>Những người đã Like</li>
+<li>Những người chưa Like</li>
+<li>Danh sách gợi ý</li>
+</ul></li>
+</ol><p>Nhìn lên trên thì bạn sẽ thấy mấy cái <code>ng-show</code>. Mấy cái này để lọc ra danh sách đã/chưa like</p>
+<p>Mấy cái <code>ng-if</code> sẽ hiển thị thông báo nếu thằng này chưa like thằng nào cả, hãy là “<em>xin lỗi, em chả tìm được thằng nào hợp với anh </em><amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>”</p>
+<p>Đấy. vậy là hoàn thành xong project cho bác X. Chắc bác sẽ rất biết ơn các bác vì đã chung tay bảo vệ trái đất.</p>
+<h1><div class="su-quote su-quote-style-default"><div class="su-quote-inner su-clearfix">Ai nói lập trình viên không cứu được thế giới nào <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></div></div></h1>
+<p>Thêm quả loadingbar mà em<a href="/web-app/thanh-loading-o-dau-trang-nhu-youtube" target="_blank"> giới thiệu trước đây</a> cho các bác nhìn cho chuyên nghiệp <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<hr/><p>Series này vẫn chưa xong đây <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a729827d07c2862258711bdba931e289.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Bài tiếp theo mình sẽ đưa ra một vài nhận xét, bình luận về thuật toán, cách xây dựng một ứng dụng. Mong các bác tiếp tục ủng hộ vì theo mình, phần kết luận lúc nào cũng bổ ích nhất <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Đón đọc nhé!</p>
+<p>À quên repo cho các bác chạy thử không lại nói em chém gió. Nhớ đọc code rồi nghiên cứu nhé, đừng chạy xong rồi để đấy!</p>
+<p><a href="https://github.com/nlug/Professor-X-client" target="_blank">https://github.com/nlug/Professor-X-client</a></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/nodejs" rel="category tag">NodeJS</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/angularjs" rel="tag">AngularJS</a>, <a href="/tag/api" rel="tag">api</a>, <a href="/tag/code" rel="tag">code</a>, <a href="/tag/goi-y" rel="tag">gợi ý</a>, <a href="/tag/web-app" rel="tag">Web app</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/nodejs/xay-dung-thong-goi-y-phan-4#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=487&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

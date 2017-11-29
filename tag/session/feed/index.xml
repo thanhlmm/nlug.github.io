@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Session &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/session/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>Session &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Session, mày sống được bao lâu?</title>
+		<link>/server/session-may-song-duoc-bao-lau</link>
+		<comments>/server/session-may-song-duoc-bao-lau#comments</comments>
+		<pubDate>Thu, 29 Sep 2016 16:28:31 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Server]]></category>
+		<category><![CDATA[garbage collection]]></category>
+		<category><![CDATA[php]]></category>
+		<category><![CDATA[Session]]></category>
+		<category><![CDATA[thời gian sống]]></category>
+		<category><![CDATA[thu gom rác]]></category>
+
+		<guid isPermaLink="false">/?p=591</guid>
+		<description><![CDATA[<p>Chào các mẹ , Như bữa trước đã nói trong bài &#8220;hack&#8221; hệ thống captcha của truờng, ta có thể bypass được việc nhập captcha do lỗi của nguời lập trình liên quan đến Session. Mình cũng đã viết một con bot nhỏ nhỏ để lấy data thời khoá biểu về. Mọi việc diễn ra khá ...</p>
+<p>The post <a rel="nofollow" href="/server/session-may-song-duoc-bao-lau">Session, mày sống được bao lâu?</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/server/session-may-song-duoc-bao-lau/feed</wfw:commentRss>
+		<slash:comments>11</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">591</post-id>	</item>
+	</channel>
+</rss>

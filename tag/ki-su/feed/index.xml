@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>kĩ sư &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/ki-su/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>kĩ sư &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Work dilemma &#8211; Kỹ sư và nhân viên kinh doanh</title>
+		<link>/life/work-dilemma</link>
+		<comments>/life/work-dilemma#respond</comments>
+		<pubDate>Tue, 02 Aug 2016 01:41:43 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[Startup]]></category>
+		<category><![CDATA[khới nghiệm]]></category>
+		<category><![CDATA[kĩ sư]]></category>
+		<category><![CDATA[kinh doanh]]></category>
+		<category><![CDATA[sale]]></category>
+		<category><![CDATA[Steve Jobs]]></category>
+
+		<guid isPermaLink="false">/?p=358</guid>
+		<description><![CDATA[<p>Hôm nay lười viết bài . Thấy được bài này cực hay trên Kipalog, các bác xem thử nhé . Link gốc: http://kipalog.com/posts/Work-dilemma Nội dung bài viết Mấy hôm nay mình đọc tiểu sử steve jobs, nghĩ đến mối quan hệ cộng sinh giữa woz và jobs những ngày đầu thành lập Apple. Tự dưng lại ...</p>
+<p>The post <a rel="nofollow" href="/life/work-dilemma">Work dilemma &#8211; Kỹ sư và nhân viên kinh doanh</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/work-dilemma/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">358</post-id>	</item>
+	</channel>
+</rss>

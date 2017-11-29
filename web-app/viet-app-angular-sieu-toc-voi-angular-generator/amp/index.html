@@ -1,0 +1,511 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Viết app Angular siêu tốc với Angular generator - Blog của CuThanh</title>
+		<link rel="canonical" href="/web-app/viet-app-angular-sieu-toc-voi-angular-generator" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/web-app\/viet-app-angular-sieu-toc-voi-angular-generator","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Vi\u1ebft app Angular si\u00eau t\u1ed1c v\u1edbi Angular generator","datePublished":"2016-07-19T09:36:35+00:00","dateModified":"2016-07-19T10:29:42+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/flashgenerator.png","width":800,"height":500}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Viết app Angular siêu tốc với Angular generator</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-19T09:36:35+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="438" src="/wp-content/uploads/2016/07/flashgenerator.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/flashgenerator.png 800w, /wp-content/uploads/2016/07/flashgenerator-300x188.png 300w, /wp-content/uploads/2016/07/flashgenerator-768x480.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Các bác dev Angular thì bắt đầu như thế nào. Em thì hồi trước phải :</p>
+<ol><li>Download Angular</li>
+<li>Thêm vào <code>index.html</code></li>
+<li>Tạo file <code>app.js</code>, thêm vào <code>index.html</code></li>
+<li><code>angular.module('myApp', ['bla', 'balo']);</code></li>
+<li>Download thêm các <code>package</code>, rồi lại inject vào</li>
+<li>Tạo file <code>controller</code>, <code>view</code>, <code>service</code>, <code>filter</code>  vân vân và mây mây <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></li>
+</ol><p>Cực quá ha các bác, vậy mà em vẫn cứ làm như vậy đấy cho tới một ngày được làm chung project, PM thiết lập sẵn angular generator rồi giao cho team dev. Em còn ngu ngu không biết gì mở file bower.json lên Google search từng cái về rồi thêm vào <code>index.html</code> <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Mãi sau mới thỉnh giáo được cách sài. Sau khi biết tới Angular genarator thì công việc nhanh lên đáng kể, không phải đau đầu tìm kiếm các <code>package</code> rồi thêm thêm vô nữa.</p>
+<p>Vì vậy, em viết bài này muốn hướng dẫn các bác sử dụng <strong>Angular generator</strong> để dev Angular nhanh tới chóng mặt – (feeling like Flash <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>)</p>
+<h1>Giới thiệu</h1>
+<h2>Yeoman.io</h2>
+<p><amp-img class="aligncenter size-large wp-image-124 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/yeomant-1024x405.png" alt="yeomant" width="700" height="277" srcset="/wp-content/uploads/2016/07/yeomant-1024x405.png 1024w, /wp-content/uploads/2016/07/yeomant-300x119.png 300w, /wp-content/uploads/2016/07/yeomant-768x304.png 768w, /wp-content/uploads/2016/07/yeomant.png 1379w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<blockquote>
+<h4>What’s Yeoman?</h4>
+<p>Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive.</p></blockquote>
+<p>Trang chủ <a href="http://yeoman.io/" target="_blank">http://yeoman.io</a></p>
+<p>Bác này là công cụ giúp dev có thể tìm trên công động những “genarator” để sử dụng cho project của mình hoặc có bác nào bá đạo cũng có thể viết generator để chia sẻ cho cộng đồng lấy điểm danh vọng <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Lý do mình giới thiệu thằng này làm gì, đang nói tới <strong>Angular generator</strong> cơ mà. Thực ra thằng này là ổng tổ của rất nhiều thằng generator, <strong>Angular generator</strong> mà mình nói đến bên trên cũng chỉ là một đứa cháu thôi. Muốn sài <strong>Angular generator</strong> thì phải có <strong>yeoman</strong> trong máy đã.</p>
+<h2>Cài đặt <strong>Yeoman</strong></h2>
+<pre class="prettyprint">npm install -g yo</pre>
+<p>Xong! Vậy là có Yeoman rồi.</p>
+<h2>AngularJS generator</h2>
+<p>Nhân vật chính đây rồi. Tẹt ten <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/47c5e4b08a47d4ad47589f9f615cea5d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Github <a href="https://github.com/yeoman/generator-angular" target="_blank">https://github.com/yeoman/generator-angular</a></p>
+<p>Cài đặt thôi</p>
+<pre class="prettyprint">npm install -g grunt-cli bower yo generator-karma generator-angular</pre>
+<p>Vậy là đã có <strong>Angular generator</strong> trong máy rồi đấy. Giờ chiến thôi.</p>
+<h1>Cách sử dụng</h1>
+<h2>Bắt đầu</h2>
+<p>Mở <a href="/tools/cmder-dem-unix-bash-len-windows" target="_blank">CMDER</a> lên rồi chiến nào anh em.</p>
+<p>Tạo thư mục cho project rồi di chuyển đến folder đấy</p>
+<pre class="prettyprint">mkdir my-new-project &amp;&amp; cd my-new-project</pre>
+<p>Generate angular ra thôi nào.</p>
+<pre class="prettyprint">yo angular [app-name]</pre>
+<p>Nó sẽ hỏi các bác vài lựa chọn. Di chuyển lên xuống và ấn nút <code>Space</code> để chọn/bỏ chọn rồi <code>Enter</code> để sang bước tiếp theo.</p>
+<p>Okey xong rồi đấy, nhanh chưa. Giờ chạy thử nha</p>
+<pre class="prettyprint">grunt serve</pre>
+<p>Nó sẽ tự mở trình duyệt truy cập vào địa chỉ local mà đang chạy app angular mà bác đang dev. Phê chưa.</p>
+<p><amp-img class="aligncenter size-full wp-image-144 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/generator.png" alt="generator" width="910" height="667" srcset="/wp-content/uploads/2016/07/generator.png 910w, /wp-content/uploads/2016/07/generator-300x220.png 300w, /wp-content/uploads/2016/07/generator-768x563.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Giao diện khi chạy thử</em></p>
+<p>Chưa hết, <strong>Angular generator</strong> còn hỗ trợ bạn tạo file <code>controller</code>, <code>view</code>, <code>service</code>,… rồi tự thêm vào <code>index.html</code> luôn. Công việc của các bác là code trên các file được sinh ra thôi.</p>
+<h2>Tạo route</h2>
+<p>Sinh ra file <code>controller</code>, <code>view</code>, và <code>config</code> lại route để kết nối đến mấy thắng vừa tạo.</p>
+<pre class="prettyprint">yo angular:route myroute</pre>
+<h2>Tạo controller</h2>
+<p>Lệnh dưới đây sẽ tạo ra controller <code>flash</code></p>
+<pre class="prettyprint">yo angular:controller flash</pre>
+<h2>Directive</h2>
+<pre class="prettyprint">yo angular:directive myDirective</pre>
+<h2>Filter</h2>
+<pre class="prettyprint">yo angular:filter myFilter</pre>
+<h2>View</h2>
+<pre class="prettyprint">yo angular:view flash</pre>
+<h2>Service</h2>
+<pre class="prettyprint">yo angular:service myService</pre>
+<p>Ngoài ra nếu các bác code bằng <em>CoffeeScript</em> hoặc <em>TypeScript</em></p>
+<p>Thêm <code>--coffee</code> hoặc <code>--typescript</code> vào cuối lệnh.</p>
+<p>Ví dụ.</p>
+<pre class="prettyprint">yo angular:controller quicksilver --coffee</pre>
+<h2>Lệnh quan trọng nhất</h2>
+<pre class="prettyprint">grunt build</pre>
+<p>Lệnh này sẽ <code>build project</code> mà các thành product. Nghĩa là nó sẽ gom tất cả lại, minimize code, tối ưu lại cho gọn nhẹ nhất. Chạy lệnh trên xong thì toàn bộ code product của các bác nằm trong folder <code>dist</code> đấy.</p>
+<h1>Cài đặt thêm package.</h1>
+<p>Theo mặc định <strong>Angular generator</strong> sử dụng <strong>Bower</strong> và <strong>NPM</strong>.</p>
+<p>NPM hoàn toàn có thể thể thay thế được <strong>bower</strong> nhưng mình khuyên các bác cứ nên sử dụng <strong>bower</strong>. <strong>NPM</strong> dành cho <strong>nodejs</strong> (<em>server side</em>) và <strong>bower</strong> dành cho <em>client side</em>. Chắc vậy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3d4972d841d550c8b185c81dca71230b.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Ví dụ các bác muốn cài <a href="/web-app/thanh-loading-o-dau-trang-nhu-youtube" target="_blank">Package loading bar giống bữa trước mà em giới thiệu nha</a>.</p>
+<ol><li>Truy cập Github của Package bữa em nói <a href="https://github.com/chieffancypants/angular-loading-bar" target="_blank">https://github.com/chieffancypants/angular-loading-bar</a></li>
+<li>Thấy có dòng nó chỉ cho cài kìa <code>bower install angular-loading-bar</code></li>
+<li>Copy bỏ vào cmder, <code>ENTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR</code></li>
+</ol><p>Xong, vậy là có package ngon lành, tự include vào <code>index.html</code> cho các bác luôn. Nhiệm vụ của các bác là inject vào angular trong file <code>app.js</code> thôi.</p>
+<p><strong>Bower</strong> chứa vô vàn <code>package</code> cho các bác nghiên cứu, tìm tòi, thấy cái nào cứ thêm hết vô, đảm bảo một lúc sau cái app của các bác như… hội chợ luôn <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<h1>Kết bài</h1>
+<p>Với việc xã hội ngày càng tiến bộ, văn minh thì việc code cũng trở nên dễ dàng hơn, hỗ trợ tận răng cho các bác. Việc của các bác là lên <a href="http://stackoverflow.com/" target="_blank">Stackoverflow </a>copy thả vào là xong. Ez life <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Cách code nhanh nhất là méo code cái gì cả!<span class="su-quote-cite">Tri thức trẻ</span></div></div>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/web-app" rel="category tag">Web App</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/angular" rel="tag">angular</a>, <a href="/tag/angular-generator" rel="tag">angular generator</a>, <a href="/tag/bower" rel="tag">bower</a>, <a href="/tag/yeoman" rel="tag">yeoman</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/web-app/viet-app-angular-sieu-toc-voi-angular-generator#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=121&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

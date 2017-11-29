@@ -1,0 +1,614 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 3) - Blog của CuThanh</title>
+		<link rel="canonical" href="/nodejs/xay-dung-thong-goi-y-phan-3" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/nodejs\/xay-dung-thong-goi-y-phan-3","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"X\u00e2y d\u1ef1ng h\u1ec7 th\u1ed1ng \u201cG\u1ee3i \u00fd\u2026\u201d (Ph\u1ea7n 3)","datePublished":"2016-08-12T08:19:21+00:00","dateModified":"2016-08-18T23:59:27+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/08\/code-1076536_960_720.jpg","width":960,"height":539}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Xây dựng hệ thống “Gợi ý…” (Phần 3)</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-08-12T08:19:21+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="393" src="/wp-content/uploads/2016/08/code-1076536_960_720.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/08/code-1076536_960_720.jpg 960w, /wp-content/uploads/2016/08/code-1076536_960_720-300x168.jpg 300w, /wp-content/uploads/2016/08/code-1076536_960_720-768x431.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Chào các mẹ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, tiếp nối bài hôm trước. Hôm nay chúng ta sẽ viết server api nhé.</p>
+<p>Phần 1: <a href="/nodejs/xay-dung-he-thong-goi-y-phan-1">http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1</a></p>
+<p>Phần 2: <a href="/nodejs/xay-dung-thong-goi-y-phan-2">http://cuthanh.com/nodejs/xay-dung-thong-goi-y-phan-2</a></p>
+<h1>Demo</h1>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><a href="http://demo.cuthanh.com/professorx-client/" target="_blank">http://demo.cuthanh.com/professorx-client/</a></p>
+<h1>Tổng thể</h1>
+<p>Các bước để em phát triển bất kì một ứng dụng gì</p>
+<ol><li>Liệt kê những yêu cầu của bài toán</li>
+<li>Vẽ ra sơ đồ theo hành vi của người dùng, dòng chảy của dữ liệu (data-flow),… em có vẽ mà để ở nhà rồi, không chụp lên cho các bác coi được <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+<li>Vẽ ra cấu trúc modal</li>
+<li>Clone repo boilerplate của em sang</li>
+<li>Code</li>
+<li>Debug (cái khỉ này lâu nhất Mother fucker <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>)</li>
+<li>Commit</li>
+<li>Xong!</li>
+</ol><p>Có thể đối với các bác thấy 3 bước đầu của em hơi xàm thì theo kinh nghiệm của em thì nó là quan trọng nhất đấy. Rất nhiều coder cứ thấy yêu cầu là cắm đầu vào code mà không biết trời đất là gì, rồi sau một hồi mân mê chả biết mình đang làm cái vẹo gì <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Như mình đã nói trước đây</p>
+<h2><div class="su-quote su-quote-style-default"><div class="su-quote-inner su-clearfix">Cách code nhanh nhất là méo code cái gì cả</div></div></h2>
+<p>Khi bạn liệt kê yêu cầu, vẽ sơ đồ ra thì bài toán sẽ trở nên cực kì dễ hiểu. Đối với mình, một coder cũng rất rất cần bút và giấy không khác gì họa sĩ vậy. Chỉ có bút, giấy mới dễ dàng thể hiện ý tưởng của mình một cách nhanh nhất, tự do nhất thôi (Em không có tiền mua M$ Surface đâu nha, mấy bác đừng góp ý <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>)</p>
+<h2>Yêu cầu bài toán</h2>
+<ul><li>Chức năng thêm, lấy danh sách, xóa Xmen.</li>
+<li>Mỗi Xmen có quyền “thả tim” Xmen khác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+<li>Lấy gợi ý “suggest” cho một Xmen bất kì,… (yêu cầu quan trọng nhất)</li>
+</ul><h2>Vẽ sơ đồ</h2>
+<h2>Cấu trúc modal</h2>
+<p>Modal thì chỉ cần một cái để quản lý Xmen, lưu thông tin, “người yêu” các kiểu là được rồi.</p>
+<p>File <code>./models/Xmen.coffee</code></p>
+<pre class="prettyprint">mongoose = require 'mongoose'
+AutoIncrement = require 'mongoose-sequence'
+Schema = mongoose.Schema
+
+xMen = new mongoose.Schema {
+    UID: Number
+    name: String
+    avatar: String
+    like: Array #Luu UID nhung nguoi "tha tim"
+    date:
+        type: Date
+        default: Date.now
+}
+xMen.plugin AutoIncrement, {inc_field: 'UID'}
+module.exports = mongoose.model('Xmen', xMen)</pre>
+<h2>Clone repo boilerplate</h2>
+<p>Như bác Bill đã dạy rồi, chọn cách ngắn nhất mà làm thôi các bác ạ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Em có sẵn một bolderplate cho việc xây dựng API server của mình, các bác có thể tìm trên mạng hoặc tự làm riêng cho mình một cái. Khi nào cần thì <code>Git clone ...</code> là xong</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Tôi chọn người lười biếng để làm những việc khó khăn. Bởi một người lười biếng sẽ tìm ra cách dễ dàng để làm việc đó<span class="su-quote-cite">Bill Gate - Sama</span></div></div>
+<p>Bolderplate của em <a href="https://github.com/nlug/mt-bolderplate" target="_blank">https://github.com/nlug/mt-bolderplate</a> nếu các bác muốn sử dụng. Nhớ Star cho em  nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h2>Code</h2>
+<h2>Xử lý các Xmen</h2>
+<p><code>POST /xmen</code> sẽ thêm một Xmen vào đội hình</p>
+<pre class="prettyprint">app.get '/xmen', (req, res) -&gt;
+    Xmen.find().exec (error, data) -&gt;
+        res.json data</pre>
+<p><code>GET /xmen</code> sẽ lấy danh sách tất cả các Xmen</p>
+<pre class="prettyprint">app.post '/xmen', (req, res) -&gt;
+    if !req.body.name || !req.body.avatar
+        res.end "Need more information"
+    else 
+        newXmen = new Xmen 
+            name: req.body.name
+            avatar: req.body.avatar
+
+        newXmen.save (error) -&gt;
+            throw error if error
+            res.status(201).json id: newXmen.UID</pre>
+<p>và <code>GET /:UID</code> là lấy thông tin Xmen có UID là 123 gì đấy</p>
+<pre class="prettyprint">app.get '/:id', (req, res) -&gt;
+    Xmen.findOne({UID: req.params.id}).exec (error, data) -&gt;
+        if data
+            res.json data
+        else
+            res.status(404).end();</pre>
+<h2>Xử lý hành động “thả tim”</h2>
+<p>Route sẽ là <code>POST /:UID-cua-Xmen/Like</code> và <code>body.uid</code> của <code>request</code> sẽ lưu UID của người được thích</p>
+<pre class="prettyprint">app.post '/:id/like', (req, res) -&gt;
+    Xmen.findOne({UID: req.params.id}).exec (error, data) -&gt;
+        if !data || error
+            res.status(404)
+        else
+            checker = data.like.indexOf req.body.uid
+            if (checker &lt; 0)
+                # Chua tha tim
+                data.like.push req.body.uid
+            else 
+                # Doi lai tim
+                data.like.splice checker, 1
+            data.markModified 'like'
+            data.save()
+            
+            res.status(201).end('OK');</pre>
+<h2>Xây dựng Logic cho route Suggest</h2>
+<p>Vâng, cái này là mục đích chính của chúng ta, nên cũng là bước khó nhất. Như đã nói ở phần 2, mình có đề xuất ra hai mô hình để lấy  danh sách và xếp hạng các Xmen được gợi ý.</p>
+<p><amp-img class="aligncenter size-full wp-image-480 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/08/toptal-blog-image-1423052526266.jpg" alt="toptal-blog-image-1423052526266" width="620" height="620" srcset="/wp-content/uploads/2016/08/toptal-blog-image-1423052526266.jpg 620w, /wp-content/uploads/2016/08/toptal-blog-image-1423052526266-150x150.jpg 150w, /wp-content/uploads/2016/08/toptal-blog-image-1423052526266-300x300.jpg 300w" sizes="(min-width: 620px) 620px, 100vw"></amp-img></p>
+<p>Cả hai thuật toán đều cần một hàm tính sự tương đồng của hai nhân vật. Do đó mình quăng nó vào một hàm</p>
+<pre class="prettyprint">getSameScore = (a, b) -&gt;
+    sum = _.union a, b
+    return 0 if sum.length == 0
+    intersection = _.intersection a, b
+    return intersection.length/sum.length</pre>
+<p>Route cho việc lấy danh sách Gợi ý… của Xmen có UID sẽ là <code>GET /:UID/suggest</code></p>
+<p><strong>Thuật toán thứ 1</strong> mà mình đưa ra</p>
+<pre class="prettyprint">app.get '/:id/suggest', (req, res) -&gt;
+    Xmen.findOne({UID: req.params.id}).exec (error, curXmen) -&gt;
+        if !curXmen || error
+            res.status(404)
+        else 
+            Xmen.find({UID: $ne: req.params.id}).lean().exec (error, others) -&gt;
+                # tinh diem giong nhau
+                returnArray = []
+                for xmen in others
+                    xmen.score = getSameScore(curXmen.like, xmen.like)
+                    console.log "#{xmen.name} got score #{xmen.score}"
+                    xmen.suggestScore = 0 if !xmen.suggestScore
+                    if xmen.score &gt; 0.2 # Diem toi thieu giong nhau de co the dua ra goi y
+                        listSuggest = _.difference xmen.like, curXmen.like
+                        console.log "#{xmen.name} like differ list", listSuggest
+                        for people in listSuggest
+                            if people != curXmen.UID &amp;&amp; curXmen.like.indexOf(people) # Loai bo nhung thang da thich ra
+                                index = _.findIndex(others, {UID: people})
+                                console.log "Calculate score for #{people.name} index at #{index}"
+                                if (others[index].suggestScore) 
+                                    others[index].suggestScore += xmen.score;
+                                else
+                                    others[index].suggestScore = xmen.score;
+                                console.log "#{xmen.name} suggest #{others[index].name} for #{others[index].suggestScore}"
+                # Sap xep theo diem
+                sorted = _.sortBy others, ['suggestScore','score'] # sap xep theo suggestScore roi toi score
+                sorted = _.reverse sorted # mac dinh no sap tu be den lon, minh doi nguoc lai
+                # Loc ket qua
+                sorted = _.reject sorted, (xmen) -&gt;
+                    return (xmen.suggestScore == xmen.score == 0) || curXmen.like.indexOf(xmen.UID) &gt;= 0
+                
+                res.json sorted</pre>
+<p>Mình sẽ giải thích đống code trên cho các bác</p>
+<ol><li>Đầu tiên là phải lấy thông tin nhân vật Xmen đang xét tới rồi – <code>curXmen</code>.</li>
+<li>Tiếp theo lấy danh sách các bác dị nhân còn lại</li>
+<li>Tính điểm giống nhau của từng người trong danh sách với nhân vật <code>curXmen</code></li>
+<li>Nếu nhân vật <code>Xmen</code> này có điểm giống nhau với <code>curXmen</code> &gt; 0.2 (Tùy các bác thiết lập) thì sẽ lấy danh sách những thằng <code>Xmen</code> like mà thằng <code>curXmen</code> không</li>
+<li>Lưu điểm “Gợi ý – <code>xmen.suggestScore</code>“</li>
+<li>Sắp xếp theo điểm “Gợi ý – <code>xmen.suggestScore</code>“, nếu trung nhau thì sắp xếp theo điểm “Giống nhau – <code>xmen.score</code></li>
+</ol><p>Lưu ý ở trên là điểm Gợi ý – <code>suggestScore</code> là cộng dồn của điểm Giống nhau – <code>score</code> mà mỗi người gợi ý. Nói vầy cho dể hiểu nhé: A gợi ý B với 0.69 điểm. C cũng gợi ý B với số điểm 0.96 điểm. Vậy số điểm gợi ý mà B nhận được là 1.65.</p>
+<p><strong>Thuật toán thứ 2</strong> mà mình tham khảo</p>
+<pre class="prettyprint">app.get '/:id/suggest2', (req, res) -&gt;
+    Xmen.findOne({UID: req.params.id}).exec (error, curXmen) -&gt;
+        if !curXmen || error
+            res.status(404)
+        else 
+            Xmen.find({UID: $ne: req.params.id}).lean().exec (error, others) -&gt;
+                # tinh diem giong nhau
+                returnArray = []
+                for xmen in others
+                    xmen.totalScore = 0;
+                    xmen.totalLike = 0;
+                    if _.indexOf(curXmen.like, xmen.UID) &lt; 0 # Da thich roi thi khong tinh diem cho thang nay nua
+                        console.log "Okey let check #{xmen.name}"
+                        for people in others
+                            if people.UID != xmen.UID &amp;&amp; _.indexOf(people.like, xmen.UID) &gt;= 0
+                                console.log "check #{xmen.name} with #{people.name}"
+                                xmen.totalScore += getSameScore(curXmen.like, people.like)
+                                console.log "#{xmen.name} got totalscore #{xmen.totalScore}"
+                                xmen.totalLike += 1;
+                        #if xmen.totalLike == 0 #ignore if no one like this men
+                        if (xmen.totalLike &gt; 0)
+                            xmen.score = xmen.totalScore/xmen.totalLike
+                            console.log "#{xmen.name} got score #{xmen.score}"
+                            returnArray.push (xmen);
+                # Sap xep theo diem
+                sorted = _.sortBy(returnArray, ['score','totalLike']) # sap xep theo score
+                sorted = _.reverse(sorted) # mac dinh no sap tu be den lon, minh doi nguoc lai
+                res.json sorted</pre>
+<p>Giải thích</p>
+<ol><li>Đầu tiên là phải lấy thông tin nhân vật Xmen đang xét tới rồi.</li>
+<li>Tiếp theo lấy danh sách các bác dị nhân còn lại</li>
+<li>Vì công thức tính điểm gợi ý cho thanh niễn A sẽ là <code>Tổng điểm giống nhau của các nhân vật thích A / Tổng nhân vật thích A</code>. Nên ta cần tính được các dữ kiện yêu cầu</li>
+<li>Đọc code nghiên cứu đi, em lười giải thích rồi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ol><p><amp-img class="aligncenter size-full wp-image-481 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/08/toptal-blog-image-1423052594582.jpg" alt="toptal-blog-image-1423052594582" width="620" height="620" srcset="/wp-content/uploads/2016/08/toptal-blog-image-1423052594582.jpg 620w, /wp-content/uploads/2016/08/toptal-blog-image-1423052594582-150x150.jpg 150w, /wp-content/uploads/2016/08/toptal-blog-image-1423052594582-300x300.jpg 300w" sizes="(min-width: 620px) 620px, 100vw"></amp-img></p>
+<p>Bộ source Api server của mình <a href="https://github.com/nlug/Professor-x" target="_blank">https://github.com/nlug/Professor-x</a></p>
+<p>Okey vậy là xong 2 thuật toán khó nhất. Đố các bác phát hiện ra điều gì kì lạ trong 2 thuật toán đấy đấy. Bài tiếp theo mình sẽ xây dựng Web App để ứng dụng các API mình đã viết hôm nay.</p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/nodejs" rel="category tag">NodeJS</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/code" rel="tag">code</a>, <a href="/tag/goi-y" rel="tag">gợi ý</a>, <a href="/tag/phan-3" rel="tag">phần 3</a>, <a href="/tag/thuat-toan" rel="tag">thuật toán</a>, <a href="/tag/xay-dung" rel="tag">xây dựng</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/nodejs/xay-dung-thong-goi-y-phan-3#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=459&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

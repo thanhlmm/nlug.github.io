@@ -1,0 +1,547 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>SEO Angular? Ez với prerender.io! - Blog của CuThanh</title>
+		<link rel="canonical" href="/server/seo-angular-ez" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/server\/seo-angular-ez","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"SEO Angular? Ez v\u1edbi prerender.io!","datePublished":"2016-07-17T08:00:19+00:00","dateModified":"2016-07-19T12:53:33+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/seoangularfeature.png","width":1130,"height":539}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">SEO Angular? Ez với prerender.io!</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-17T08:00:19+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="334" src="/wp-content/uploads/2016/07/seoangularfeature-1024x488.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2016/07/seoangularfeature-1024x488.png 1024w, /wp-content/uploads/2016/07/seoangularfeature-300x143.png 300w, /wp-content/uploads/2016/07/seoangularfeature-768x366.png 768w, /wp-content/uploads/2016/07/seoangularfeature.png 1130w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<h1>Vấn đề</h1>
+<p>Hiện nay thì mặc dù thằng Google đã hỗ trợ Crawl Javascript nhưng theo mình thấy thì vẫn chưa ổn định mấy và Internet rộng lớn lắm, có mình mày hỗ trợ thì tao sống không nổi đâu. Vd như Crawler của Facebook.</p>
+<blockquote><p>Các bạn truy cập <a href="https://developers.facebook.com/tools/debug/sharing/" target="_blank">https://developers.facebook.com/tools/debug/sharing/</a></p>
+<p>Paste link website rồi ấn Debug xem coi thằng Facebook nó nhìn web của bạn như thế nào nhé.</p></blockquote>
+<p>Theo mình thì SEO quyết định rất rất lớn đến vấn đề của một website nói chung hay web app nói riêng. Vì vậy việc SEO cho webapp bằng Angular thật sự là cực kì cần thiết.</p>
+<p>Search vòng vèo trên mạng thì có thể thấy có khá nhiều giải pháp, nhiều quá mính chưa thử nhưng toàn thấy chữ “3 years ago” nghĩ chắc sida rồi không sài được nữa.</p>
+<p><amp-img class="aligncenter wp-image-47 size-full amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/seoangulargit.png" alt="seoangulargit" width="990" height="451" srcset="/wp-content/uploads/2016/07/seoangulargit.png 990w, /wp-content/uploads/2016/07/seoangulargit-300x137.png 300w, /wp-content/uploads/2016/07/seoangulargit-768x350.png 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Vd như thằng này https://github.com/hackfanatic/angular-seo</em></p>
+<p>Mình sẽ giới thiệu các bạn cấu hình lại app angular của bạn sử dụng <a href="https://prerender.io/" target="_blank">Prerender.io</a> để render html cho tụi crawler</p>
+<p><strong>Demo</strong> mà mình đã áp dụng thành công: <a href="http://inboxtui.com/" target="_blank">http://inboxtui.com</a></p>
+<h1>Về Prerender.io</h1>
+<blockquote><p>Allows your Javascript website to be crawled perfectly by search engines.</p></blockquote>
+<p>Nếu bạn tự cài vào VPS của mình thì miễn phí, còn sài qua của nó thì tính phí, mình thấy cũng khả cao. Nên bài này mình hướng dẫn cài trên VPS của chính các bác.</p>
+<p>Thằng này thực chất dùng <a href="http://phantomjs.org/" target="_blank">Phantomjs </a>để giả lập trình duyệt web, truy cập vào app angular của chúng ta, đợi nó load xong, lưu lại cây HTML hiện tại rồi trả về cho thằng Crawer.</p>
+<p>Vậy sao không sài bà nó thằng <a href="http://phantomjs.org/" target="_blank">Phantomjs </a>cho rồi? Mình check qua thì có vể thằng <a href="https://prerender.io/" target="_blank">Prerender.io</a> này tối ưu hơn cho mấy cái nhu cầu kiều vầy và quan trong hơn là dễ cài đặt :p, tội gì đụng vào Phantomjs làm gì cho mệt đúng không các bác, bác Bill căn dặn vậy rồi mà <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Tôi chọn người lười biếng để làm những việc khó khăn. Bởi một người lười biếng sẽ tìm ra cách dễ dàng để làm việc đó<span class="su-quote-cite">Bill Gate - Sama</span></div></div>
+<h1>Cài đặt</h1>
+<p>Mình sẽ hướng dẫn các bạn cái trên vps <strong>ubuntu 14.04</strong> dùng <strong>nginx</strong> làm webserver. Các thằng còn lại cũng tương tự, mình sẽ cung cấp tài liệu.</p>
+<p>Okey. Mở <a href="/tools/cmder-dem-unix-bash-len-windows" target="_blank">Cmder</a> lên rồi quẩy thôi nào <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<h3>Bước 1: Cài đặt <a href="https://prerender.io/" target="_blank">prerender.io</a></h3>
+<p>Đầu tiên là chắc chắn bạn đã cài Nodejs và NPM nhé</p>
+<pre class="prettyprint">sudo apt-get update
+sudo apt-get install nodejs npm
+ln -s /usr/bin/nodejs /usr/bin/node</pre>
+<p>Chạy <code>node -v</code> test thử xem đã cài được chưa nhé.</p>
+<p>Clone repo của prerender.io</p>
+<pre class="prettyprint">git clone https://github.com/prerender/prerender.git
+cd prerender
+npm install</pre>
+<p>Chạy thử</p>
+<pre class="prettyprint">node server.js</pre>
+<p>Mặc định prerender.io sẽ chạy trên port 3000. Các bác thử vào <code>http://ip_vps:3000/http://dia_chi_app_angular</code> . Check source code thấy toàn html là Ok rồi đấy. Ez đúng không <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Ah cái này để chạy tạm thơi test thử thôi. Để server render của mình chạy lâu dài thì các bác sử dụng <code>pm2</code> hay <code>forever</code> nhá.</p>
+<h3>Bước 2: Cấu hình lại Angular.</h3>
+<p>Thêm đoạn mã sau <strong>ngay đầu tiên trong thẻ head</strong> <code>&lt;base href=”/”&gt;</code> (Trong trước hợp các bác chạy ở ngay đường đẫn gốc, không thì sửa lại cho phù hợp).</p>
+<p>Tiếp theo thêm <code>&lt;meta name="fragment" content="!"&gt;</code> vào trong thẻ <strong>head</strong></p>
+<p>Thêm dòng này vào angular config <code>$locationProvider.hashPrefix('!');</code></p>
+<p>Nếu sài chế độ <code>html5</code>.</p>
+<p>Nhớ bật HTML5 mode trong chỗ config angular nhé <code>$locationProvider.html5Mode(true);</code></p>
+<p>Nếu sài chế độ mặc định thì thôi để im vậy. Mình khuyên dùng HTML5 Mode, cái này nhìn khá đẹp ^^.</p>
+<p>Trong một số trường hợp nếu muốn chắc chắn là render server bắt đụng trạng thái html của app thì các bác nên thiết lập như sau:</p>
+<p>Thêm đoạn này vào <code>&lt;script&gt; window.prerenderReady = false; &lt;/script&gt;</code></p>
+<p>Sau đó khi nào chắc chắn app đã load xong thì set nó lại thành true <code>window.prerenderReady = true;</code></p>
+<h3>Bước 3: Cấu hình nginx để biết đâu là crawler, đâu là người.</h3>
+<pre class="prettyprint"># Change YOUR_TOKEN to your prerender token and uncomment that line if you want to cache urls and view crawl stats
+# Change example.com (server_name) to your website url
+# Change /path/to/your/root to the correct value
+
+server {
+    listen 80;
+    server_name example.com;
+ 
+    root   /path/to/your/root;
+    index  index.html;
+
+    location / {
+        try_files $uri @prerender;
+    }
+ 
+    location @prerender {
+        #proxy_set_header X-Prerender-Token YOUR_TOKEN;
+        
+        set $prerender 0;
+        if ($http_user_agent ~* "baiduspider|twitterbot|facebookexternalhit|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator") {
+            set $prerender 1;
+        }
+        if ($args ~ "_escaped_fragment_") {
+            set $prerender 1;
+        }
+        if ($http_user_agent ~ "Prerender") {
+            set $prerender 0;
+        }
+        if ($uri ~* "\.(js|css|xml|less|png|jpg|jpeg|gif|pdf|doc|txt|ico|rss|zip|mp3|rar|exe|wmv|doc|avi|ppt|mpg|mpeg|tif|wav|mov|psd|ai|xls|mp4|m4a|swf|dat|dmg|iso|flv|m4v|torrent|ttf|woff|svg|eot)") {
+            set $prerender 0;
+        }
+        
+        #resolve using Google's DNS server to force DNS resolution and prevent caching of IPs
+        resolver 8.8.8.8;
+ 
+        if ($prerender = 1) {
+            
+            #setting prerender as a variable forces DNS resolution since nginx caches IPs and doesnt play well with load balancing
+            set $prerender "127.0.0.1:3000"; #Server prerender của các bác 
+            rewrite .* /$scheme://$host$request_uri? break;
+            proxy_pass http://$prerender;
+        }
+        if ($prerender = 0) {
+            rewrite .* /index.html break;
+        }
+    }
+}</pre>
+<p>Nếu sử dụng Apache thì cấu hình theo file sau: <a href="https://gist.github.com/thoop/8072354" target="_blank">https://gist.github.com/thoop/8072354</a></p>
+<p>Ruby <a href="https://github.com/prerender/prerender_rails" target="_blank">https://github.com/prerender/prerender_rails</a></p>
+<p>Nodejs sử dụng Express <a href="https://github.com/prerender/prerender_rails">https://github.com/prerender/prerender-node</a></p>
+<p>Restart lại nginx server xem nào <code>sudo service nginx restart</code></p>
+<p>Thành quả</p>
+<p>Ok xong hết rồi đấy. Giớ test xem thế nào nhé</p>
+<p><strong>Nếu sài HTML5 Mode</strong></p>
+<div class="lato">Link bình thường của các bác <code>http://www.example.com/user/1</code></div>
+<div class="lato">Link test <code>http://www.example.com/user/1?_escaped_fragment_=</code></div>
+<p><strong>Sài chế độ mặc định của Angular</strong></p>
+<p>Link bình thường <code>http://www.example.com/#!/user/1</code></p>
+<p>Link test <code>http://www.example.com/?_escaped_fragment_=/user/1</code></p>
+<p>Nếu thấy view source code thấy toàn là html thì ngon rồi đấy ^^.</p>
+<h1>Nhược điểm</h1>
+<p>Cách này có nhược điểm là nó render html khá lâu (Phải giả lập trình duyệt truy cập vào app angular của các bác mà). <a href="http://phantomjs.org/" target="_blank">Phantomjs </a>lâu lâu bị crash (mẹ y chang thằng chrome) <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Giải pháp là áp dụng cache vào server prerender.io. Các bác có thể tham khảo ở repo <a href="https://github.com/prerender/prerender" target="_blank">https://github.com/prerender/prerender</a> nó có đề cập tới đấy.</p>
+<h1>Nói thêm</h1>
+<p>Vì mình chỉ mới biết tới angular thôi nên không thể hướng dẫn các bạn áp dụng cho cái framework như <em>meteor</em> hay <em>stack của react</em>,… các bác có thể thiết lập tùy theo.</p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/server" rel="category tag">Server</a>, <a href="/category/web-app" rel="category tag">Web App</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/angular" rel="tag">angular</a>, <a href="/tag/nginx" rel="tag">nginx</a>, <a href="/tag/prerender" rel="tag">Prerender</a>, <a href="/tag/seo" rel="tag">SEO</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/server/seo-angular-ez#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=44&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<title>Xây dựng hệ thống &quot;Gợi ý...&quot; (Phần 1) - Blog của CuThanh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="pingback" href="/xmlrpc.php" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- W3TC-include-js-head -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="/nodejs/xay-dung-he-thong-goi-y-phan-1" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Xây dựng hệ thống &quot;Gợi ý...&quot; (Phần 1) - Blog của CuThanh" />
+<meta property="og:description" content="Chào các bác. Hôm nay mình sẽ việt một bài mang tính chuyên môn một tí nha, các bác ủng hộ  Demo http://demo.cuthanh.com/professorx-client/ Giới thiệu Hệ thống, hay là chức năng gợi ý &#8211; mình cũng chả biết nói làm sao nữa. Đại loại là như vầy nè. Các bác sử dụng Facebook nó sẽ ..." />
+<meta property="og:url" content="http://cuthanh.com/nodejs/xay-dung-he-thong-goi-y-phan-1" />
+<meta property="og:site_name" content="Blog của CuThanh" />
+<meta property="article:author" content="https://www.facebook.com/hojjlamthenlug" />
+<meta property="article:section" content="NodeJS" />
+<meta property="article:published_time" content="2016-08-06T11:01:20+00:00" />
+<meta property="article:modified_time" content="2016-08-18T23:57:48+00:00" />
+<meta property="og:updated_time" content="2016-08-18T23:57:48+00:00" />
+<meta property="og:image" content="http://cuthanh.com/wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2.jpg" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="450" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Chào các bác. Hôm nay mình sẽ việt một bài mang tính chuyên môn một tí nha, các bác ủng hộ  Demo http://demo.cuthanh.com/professorx-client/ Giới thiệu Hệ thống, hay là chức năng gợi ý &#8211; mình cũng chả biết nói làm sao nữa. Đại loại là như vầy nè. Các bác sử dụng Facebook nó sẽ ..." />
+<meta name="twitter:title" content="Xây dựng hệ thống &quot;Gợi ý...&quot; (Phần 1) - Blog của CuThanh" />
+<meta name="twitter:image" content="http://cuthanh.com/wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2.jpg" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Blog của CuThanh &raquo;" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Blog của CuThanh &raquo;" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Blog của CuThanh &raquo; Xây dựng hệ thống &#8220;Gợi ý&#8230;&#8221; (Phần 1) Dòng phản hồi" href="/nodejs/xay-dung-he-thong-goi-y-phan-1/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/cuthanh.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='dw-reaction-style-css'  href='/wp-content/plugins/dw-reactions/assets/css/style.css?ver=120004042016' type='text/css' media='all' />
+<link rel='stylesheet' id='estilo-css'  href='/wp-content/plugins/simple-code-highlighter/estilo.css?ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='readable-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C700&#038;subset=latin%2Cvietnamese&#038;ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='/wp-content/themes/readable/assets/stylesheets/main.css?ver=1.0.0' type='text/css' media='all' />
+<style id='main-inline-css' type='text/css'>
+
+/******************
+Primary theme color
+*******************/
+
+.social__container, .search__container, .search-panel .search-panel__text, .navigation > li.current-menu-item > a, .navigation > li:hover > a, .navigation > li.current-menu-ancestor > a, .widget-contact__title, .navigation .sub-menu > li > a:hover, .error .primary-color {
+	color: #05668d}
+
+.social .social__dropdown, ::selection, .navbar-toggle {
+	background: #05668d}
+
+.wpcf7-submit, .navigation > li > a:after, .btn-primary {
+	background: linear-gradient(to bottom, #05668d, #055c7f)
+}
+
+blockquote, .wpcf7-submit, .btn-primary, .navbar-toggle {
+	border-color: #05668d}
+
+.search__container:hover, .social__container:hover {
+	color: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a {
+		background: #05668d	}
+}
+
+.wpcf7-submit:hover, .btn-primary:hover, .social .social__dropdown li a:hover {
+	background: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a:hover {
+		background: #055c7f	}
+}
+
+.wpcf7-submit:hover, .navigation .sub-menu > li > a, .navigation .sub-menu, .btn-primary:hover, .social .social__dropdown li .social__container {
+	border-color: #055c7f}
+
+/******************
+Text color
+*******************/
+
+blockquote, .post-content, .post-content--narrow, .post-content--narrow span, body .su-tabs-style-default .su-tabs-pane {
+	color: #40454a}
+
+/******************
+Link color
+*******************/
+
+a, .menu li a, .pptwj .pptwj-tabs-wrap .tab-links li a.selected, .pptwj .pptwj-tabs-wrap .tab-links li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected {
+	color: #028090}
+
+.widget_tag_cloud a, .tags a {
+	border-color: #028090}
+
+a:hover, .menu li a:hover {
+	color: #027382}
+
+.widget_tag_cloud a:hover, .tags a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected:after, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover:after {
+	background-color: #028090}
+
+/******************
+Headings dark
+*******************/
+h1, h1 a, .h1 a, .h2, h2, h2 a, .h2 a, h4, h4 a, .h4 a, h5, h5 a, .h5 a, .zem_rp_title {
+	color: #2f343b}
+
+/******************
+Headings light
+*******************/
+h3, h3 a, .h3 a, h6, h6 a, .h6 a, .wp_rp_excerpt {
+	color: #9a9a90}
+
+/******************
+Navbar background
+*******************/
+.header {
+	background-color: #ffffff}
+
+/******************
+Footer background
+*******************/
+.footer, .copyrights {
+	background-color: #ffffff}
+
+/******************
+Navbar text color
+*******************/
+
+.navigation > li > a {
+	color: #9a9a90}
+
+/******************
+Navbar dropdown text color
+*******************/
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a, .navigation .sub-menu > li > a:hover {
+		color: #f3f4f4	}
+}
+
+/* WP Customizer end */
+
+/* User Custom CSS */
+
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=4.5' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var dw_reaction = {"ajax":"http:\/\/cuthanh.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/dw-reactions/assets/js/script.js?ver=120004042016'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.3" />
+<link rel='shortlink' href='/?p=421' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fnodejs%2Fxay-dung-he-thong-goi-y-phan-1" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fnodejs%2Fxay-dung-he-thong-goi-y-phan-1&#038;format=xml" />
+			<meta property="fb:pages" content="1230424850325628" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>			<link rel="shortcut icon" href="/wp-content/uploads/2016/07/logo-icon.ico">
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/uploads/2016/07/blurred-home-bg.jpg"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+<link rel="amphtml" href="/nodejs/xay-dung-he-thong-goi-y-phan-1/amp" /><link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" sizes="32x32" />
+<link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-180x180.png" />
+<meta name="msapplication-TileImage" content="http://cuthanh.com/wp-content/uploads/2016/07/cropped-logo-icon-lg-270x270.png" />
+
+<!-- BEGIN GADWP v4.9.5 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79981031-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hentry .aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+.post-content>p {
+	text-align: justify;
+	text-indent: 1em;
+}			</style>
+			<!-- W3TC-include-css -->
+</head>
+
+<body class="post-template-default single single-post postid-421 single-format-standard custom-background">
+<!-- W3TC-include-js-body-start -->
+
+	<!-- Search - Open panel -->
+	<div class="search-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="/">
+						<input type="text" class="search-panel__form  js--search-panel-text" name="s" placeholder="Begin typing for search">
+						<p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-content-container"><!-- ends in the footer.php -->
+		<!-- header -->
+		<header class="header  push-down-45">
+			<div class="container">
+				<div class="logo  pull-left">
+					<a href="/">
+													<img src="/wp-content/uploads/2016/07/logo-1.png" alt="Blog của CuThanh" />
+											</a>
+				</div>
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="navbar  navbar-default" role="navigation">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+						<ul id="menu-my-menu" class="navigation"><li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="/">Trang chủ</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-710"><a href="/category/technology">Technology</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-711"><a href="/category/react">React</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139"><a href="/category/server">Server</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-140"><a href="/category/nodejs">NodeJS</a></li>
+<li id="menu-item-141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141"><a href="/category/startup">Startup</a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="/about">About</a></li>
+</ul>					</div><!-- /.navbar-collapse -->
+				</nav>
+				<div class="hidden-xs  hidden-sm">
+					<a href="#" class="search__container  js--toggle-search-mode"> <span class="glyphicon  glyphicon-search"></span>  </a>
+										<div class="social">
+						<a href="#" class="social__container  js--blank-link"><span class="glyphicon  glyphicon-heart"></span></a>
+						<ul class="social__dropdown">
+														<li>
+								<a href="http://nlug27@gmail.com/" target="_blank" class="social__container"> <span class="zocial-email"></span></a>
+							</li>
+														<li>
+								<a href="https://www.facebook.com/hojjlamthenlug" target="_blank" class="social__container"> <span class="zocial-facebook"></span></a>
+							</li>
+													</ul>
+					</div>
+									</div>
+			</div>
+		</header>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" role="main">
+
+			
+				<!-- Post with featured image -->
+				<article class="boxed push-down-45 post-421 post type-post status-publish format-standard has-post-thumbnail hentry category-nodejs">
+
+					<div class="meta">
+
+			<a href="/nodejs/xay-dung-he-thong-goi-y-phan-1" class="link--no-border"><img width="800" height="450" src="/wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="/wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2.jpg 800w, /wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2-300x169.jpg 300w, /wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2-768x432.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" /></a>
+	
+	
+			<div class="meta__container  clearfix">
+				<div class="meta__info">
+					<span class="meta__author">
+						<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=30&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=60&amp;d=mm&amp;r=g 2x' class='avatar avatar-30 photo' height='30' width='30' />						<a href="/author/nlug">Minh Thành</a> in <a href="/category/nodejs" rel="category tag">NodeJS</a>
+					</span>
+					<time datetime="2016-08-06T11:01:20+00:00" class="meta__date"><a href="/2016/08/06"><span class="glyphicon  glyphicon-calendar"></span> &nbsp; 06/08/2016</a></time>
+				</div>
+				<div class="meta__comments">
+					<a href="/nodejs/xay-dung-he-thong-goi-y-phan-1#respond"><span class="glyphicon  glyphicon-comment"></span>  &nbsp; 0 Comments</a>
+				</div>
+			</div>
+
+			
+</div>
+
+
+					<!-- Start of the blogpost -->
+					<div class="row">
+						<div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2">
+
+							<!-- Start of the content -->
+							<div class="post-content">
+								<h1 class="post-content__title">
+									<a href="/nodejs/xay-dung-he-thong-goi-y-phan-1">Xây dựng hệ thống &#8220;Gợi ý&#8230;&#8221; (Phần 1)</a>
+								</h1>
+								<p>Chào các bác. Hôm nay mình sẽ việt một bài mang tính chuyên môn một tí nha, các bác ủng hộ <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" border="0" hspace="5" /></p>
+<h1>Demo</h1>
+<p style="text-align: center;"><a href="http://demo.cuthanh.com/professorx-client/" target="_blank">http://demo.cuthanh.com/professorx-client/</a></p>
+<h1>Giới thiệu</h1>
+<p>Hệ thống, hay là chức năng gợi ý &#8211; mình cũng chả biết nói làm sao nữa. Đại loại là như vầy nè. Các bác sử dụng Facebook nó sẽ gợi ý kết bạn cho các bác. Đảm bảo lúc này các bác đang nghĩ &#8220;<em>mẹ thằng facebook này ăn gì khôn thế, sao biết mình quen thằng này mà giới thiệu ta</em> <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" border="0" hspace="5" />&#8220;. Hay như ngay dưới bài viết này, các bác sẽ thấy mục bài viết có liên quan, cái này máy tính nó tự tìm đó, không phải random mà cũng không phải em phải tự tìm bài liên quan chèn vào dưới cho các bác đâu <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" border="0" hspace="5" />, lười lắm.</p>
+<p>Đấy là <strong>hệ thống gợi ý (Suggest system/service).</strong> Về ứng dụng thực tế thì rất là cao rồi, nó có thể gợi ý cho các bác nên xem film gì, gợi ý cho khách hàng xem có muốn mua sản phầm này không,&#8230; Mới đầu em nhìn thấy thì nghĩ rằng &#8220;<em>mấy cái này chắc khó lắm, mấy thằng to to đầu trâu mặt ngựa mới làm được thôi <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" /></em>&#8220;. Thực ra thì nó cũng không khó đến như vậy đâu, nên hôm nay mình sẽ hướng dẫn xây dựng một hệ thống gợi ý đơn giản.</p>
+<p><em>P/S: Thực tế là mình vừa đọc tại liệu vừa viết lại cho các bác đấy, chứ em cũng chưa xây dựng thành công đâu <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" border="0" hspace="5" />.</em></p>
+<h1>Dự án (Project)</h1>
+<p>Mình sẽ bắt đầu với bước khó nhất nhé &#8211; đặt tên dự án <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" />. Sau một hồi đắn đo, uống hết ly cafe của bố mình pha thì mình quyết định đặt tên project này là <strong>Professor x</strong>.</p>
+<h2>Cốt truyện</h2>
+<p>Cốt truyện là giáo sư x, đang trên con đường tập hợp các dị nhân (x-men) lại để tạo đội đi quẩy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" border="0" hspace="5" />. Tuy nhiên thì mỗi thằng có một tích cách khác nhau như Wolverine chỉ thích chơi với Jean (Phoenix) thôi, bác X và cả Mangeto thì đều muốn &#8220;tâm sự&#8221; với Mystique (em xinh đẹp bữa trước mình giới thiệu trong bài <a href="/startup/khoi-nghiep-xem-film-nay-di" target="_blank">Startup xem film gì</a> đấy),&#8230; Công việc của chúng ta là sắp xếp các dị nhân đấy vào ở với nhau, tuy nhiên kinh tế thì khó khăn, đất ở Q7 mắc quá nên bác X chỉ thuê được nhà bé bé thôi. Người thì ít mà đít thì đông <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" border="0" hspace="5" />. Phải làm sao đây???</p>
+<p><img class="aligncenter size-full wp-image-426" src="/wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2.jpg" alt="Review-phim-X-men-Apocalypse-2" width="800" height="450" srcset="/wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2.jpg 800w, /wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2-300x169.jpg 300w, /wp-content/uploads/2016/08/Review-phim-X-men-Apocalypse-2-768x432.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" /></p>
+<p>Bác X quyết định sẽ xắp xếp các dị nhân có thể &#8220;hợp hợp&#8221; nhau lại ở chung với nhau. Và bạn là người bác X nhờ vả. Nếu các bác xếp sida thì nó đánh nhau banh trường thì coi như thế giới diệt vòng. Vận mệnh nằm trong tay các bác đấy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" border="0" hspace="5" /></p>
+<h2><div class="su-quote su-quote-style-default"><div class="su-quote-inner su-clearfix">Suit Up and Save the world!</div></div></h2>
+<h2>Ngôn ngữ</h2>
+<p>Trong dự án này thì mình sẽ sử dụng ngôn ngữ <code>Nodejs</code>, framework <code>Express</code> nhé, có thể có tí <code>Coffeescript</code> nữa cho tỉnh táo các bác ạ. Đương nhiên là không thể thiếu bộ đôi <code>HTML</code>, <code>CSS</code> rồi.</p>
+<p>Quản lý dự án thì đương nhiên là dùng git rồi, cho khỏi phải <a href="/life/dung-git-di-khong-hoi-han-suot-doi-day" target="_blank">hối hận</a></p>
+<h2>Tạo lập dự án</h2>
+<p>Open CMDER. Tạo folder <strong>projectx</strong></p>
+<pre class="prettyprint">mkdir projectx</pre>
+<p>Hoàn toàn chạy được lệnh linux cơ bản trên Windows nếu các bác sài<a href="/tools/cmder-dem-unix-bash-len-windows" target="_blank"> Cmder mà em đã giới thiệu trước đây nhé</a>. Okey giờ khởi tạo git và npm thôi</p>
+<pre class="prettyprint">cd projectx
+git init
+npm init</pre>
+<p>Các bác nhập các thông tin mà nó hỏi rồi cứ Enter thôi. Đây là của em</p>
+<p><img class="aligncenter size-full wp-image-424" src="/wp-content/uploads/2016/08/projectx.png" alt="projectx" width="874" height="489" srcset="/wp-content/uploads/2016/08/projectx.png 874w, /wp-content/uploads/2016/08/projectx-300x168.png 300w, /wp-content/uploads/2016/08/projectx-768x430.png 768w" sizes="(max-width: 874px) 100vw, 874px" /></p>
+<p>Vậy là xong phần thiết lập cơ bản. Bài hôm nay kết thúc nhé. Em đói quá, hẹn các bác ở phần sau vậy <img class="emoticons" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" border="0" hspace="5" /></p>
+<p>Phần 2: <a href="/nodejs/xay-dung-thong-goi-y-phan-2" target="_blank">http://cuthanh.com/nodejs/xay-dung-thong-goi-y-phan-2</a></p>
+		<div class="dw-reactions dw-reactions-post-421" data-type="vote" data-nonce="fe51f46582" data-post="421">
+											<div class="dw-reactions-button">
+					<span class="dw-reactions-main-button">Like</span>
+					<div class="dw-reactions-box">
+						<span class="dw-reaction dw-reaction-like"><strong>Like</strong></span>
+						<span class="dw-reaction dw-reaction-love"><strong>Love</strong></span>
+						<span class="dw-reaction dw-reaction-haha"><strong>Haha</strong></span>
+						<span class="dw-reaction dw-reaction-wow"><strong>Wow</strong></span>
+						<span class="dw-reaction dw-reaction-sad"><strong>Sad</strong></span>
+						<span class="dw-reaction dw-reaction-angry"><strong>Angry</strong></span>
+					</div>
+				</div>
+														<div class="dw-reactions-count">
+					<span class="dw-reaction-count dw-reaction-count-like"><strong>2</strong></span>				</div>
+					</div>
+		
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Có liên quan</em></h3>
+</div>
+															</div>
+							<!-- End of the content -->
+
+							<div class="row">
+								<div class="col-xs-12  col-sm-3">
+									<!-- Start of comments button -->
+									<div class="post-comments">
+										<a class="btn  btn-primary" href="/nodejs/xay-dung-he-thong-goi-y-phan-1#respond">0 Comments</a>
+									</div>
+									<!-- End of comments button -->
+								</div>
+								<div class="col-xs-12  col-sm-9">
+									<!-- Start of social icons -->
+									<div class="social-icons">
+																			</div>
+									<!-- End of social icons -->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12  push-down-60">
+									<!-- Start of post author -->
+									<div class="post-author">
+										<h6>Written By</h6>
+										<hr>
+										<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=90&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=180&amp;d=mm&amp;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' />										<h5>
+											<a href="/author/nlug">Minh Thành</a>
+										</h5>
+										<div class="post-author__text">
+											<p>Tác giả bận chơi Dota 2 rồi lười viết cái dòng này lắm</p>
+										</div>
+									</div>
+									<!-- End of post author -->
+								</div>
+
+								
+							</div>
+
+							<!-- comments start -->
+							
+<div class="comments  push-down-30" id="comments">
+	<h6>Comments</h6>
+	<hr>
+
+	<section class="comments-container">
+		
+			
+			
+					
+					<h3 class="push-down-25">
+						Leave a Comment					</h3>
+
+
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/nodejs/xay-dung-he-thong-goi-y-phan-1#respond" style="display:none;">Hủy</a></small></h3>			<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="push-down-15"><label for="message">Message <span class="warning">*</span></label><textarea class="form-control form-control--contact form-control--big" id="comment" name="comment" rows="7" aria-required="true" placeholder="Your Comment goes here." required></textarea></p><p class="push-down-15"><label for="author">Name <span class="warning">*</span><input class="form-control  form-control--contact" id="author" name="author" type="text" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="email">Email <span class="warning">*</span><input class="form-control  form-control--contact" id="email" name="email" type="email" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="url">Website <span class="warning">*</span><input class="form-control  form-control--contact" id="url" name="url" type="text" value="" size="30" /></label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submitWPComment" class="submit" value="Send now" /> <input type='hidden' name='comment_post_ID' value='421' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="35ecc2950b" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="3"/></p>			</form>
+			</div><!-- #respond -->
+		</section>
+</div>							<!-- comments end -->
+
+							
+						</div>
+					</div>
+				</article>
+
+			
+	</div>
+
+	
+	</div>
+</div>
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+									</div>
+			</div>
+		</footer>
+		<footer class="copyrights">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12  col-sm-6">
+						Readable WP theme &copy; Copyright 2014					</div>
+					<div class="col-xs-12  col-sm-6">
+						<div class="copyrights--right">
+							Made by <a href="http://www.proteusthemes.com/">ProteusThemes</a>						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div><!-- /.page-content-container -->
+
+<script type='text/javascript' src='/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<link rel='stylesheet' id='su-box-shortcodes-css'  href='/wp-content/plugins/shortcodes-ultimate/assets/css/box-shortcodes.css?ver=4.9.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201748'></script>
+<script type='text/javascript' src='/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ReadableVars = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/readable/assets/js/built.js?ver=1.0.0'></script>
+<script type='text/javascript' src='/wp-includes/js/comment-reply.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201748.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.5',blog:'114130900',post:'421',tz:'7',srv:'cuthanh.com'} ]);
+	_stq.push([ 'clickTrackerInit', '114130900', '421' ]);
+</script>
+<!-- W3TC-include-js-body-end -->
+</body>
+</html>

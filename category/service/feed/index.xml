@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Service &#8211; Blog của CuThanh</title>
+	<atom:link href="/category/service/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>Service &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 4)</title>
+		<link>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-4</link>
+		<comments>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-4#respond</comments>
+		<pubDate>Thu, 04 Aug 2016 03:28:47 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Service]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[github]]></category>
+		<category><![CDATA[hướng dẫn]]></category>
+
+		<guid isPermaLink="false">/?p=383</guid>
+		<description><![CDATA[<p>Chào các bạn, kì này đang cứt cáp nên mình cũng chả thể viết bài hay làm gì được. Đây làn phần cuối của series Dùng Git đi không hối hận suốt đời đấy. Mục đích của mình trong series này là muốn khuyên các bác dùng Git, nói cho các bác biết những bất tiện ...</p>
+<p>The post <a rel="nofollow" href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-4">Dùng Git đi không hối hận suốt đời đấy (Phần 4)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-4/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">383</post-id>	</item>
+		<item>
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 3)</title>
+		<link>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3</link>
+		<comments>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3#respond</comments>
+		<pubDate>Sun, 31 Jul 2016 04:52:29 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Service]]></category>
+		<category><![CDATA[commit]]></category>
+		<category><![CDATA[conflict]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[khái niệm]]></category>
+		<category><![CDATA[merge]]></category>
+		<category><![CDATA[repository]]></category>
+
+		<guid isPermaLink="false">/?p=333</guid>
+		<description><![CDATA[<p>Phần 1: /life/dung-git-di-khong-hoi-han-suot-doi-day Phần 2: /service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2 Hôm nay mình sẽ nói về các khái niệm cơ bản của git Repository Một repository (còn hay gọi là repo cho nhanh) bao gồm tất cả cả những commit, branch nữa (mình sẽ giải thích bên dưới). Người ta chế vậy ra nghe cho nó màu. Vậy công thức của ...</p>
+<p>The post <a rel="nofollow" href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3">Dùng Git đi không hối hận suốt đời đấy (Phần 3)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">333</post-id>	</item>
+		<item>
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 2)</title>
+		<link>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2</link>
+		<comments>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2#respond</comments>
+		<pubDate>Thu, 28 Jul 2016 03:19:36 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Service]]></category>
+		<category><![CDATA[cài đặt git]]></category>
+		<category><![CDATA[giới thiệu]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[github]]></category>
+
+		<guid isPermaLink="false">/?p=282</guid>
+		<description><![CDATA[<p>Phần 1: /life/dung-git-di-khong-hoi-han-suot-doi-day Đọc câu truyện xàm lông của em bữa trước chắc các bác đang chửi thầm &#8220;Thằng điên, bố vào đây để xem lý do tại sao phải dùng Git cơ mà &#8220;. Câu chuyện bữa trước của mình hoàn toàn có liên quan đấy!. Giới thiệu Nếu đang đọc đến đây, không biết ...</p>
+<p>The post <a rel="nofollow" href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2">Dùng Git đi không hối hận suốt đời đấy (Phần 2)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">282</post-id>	</item>
+		<item>
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 1)</title>
+		<link>/life/dung-git-di-khong-hoi-han-suot-doi-day</link>
+		<comments>/life/dung-git-di-khong-hoi-han-suot-doi-day#respond</comments>
+		<pubDate>Wed, 27 Jul 2016 03:16:23 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[Service]]></category>
+		<category><![CDATA[chia sẻ]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[cuộc sống]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[sao lưu]]></category>
+
+		<guid isPermaLink="false">/?p=259</guid>
+		<description><![CDATA[<p>Chào các mẹ , Nay tự nhiên buồn nhớ lại những ngày đầu viết code, bao nhiêu là vui buồn hiện về nên em chia sẻ câu chuyện bi đát giữa em, code và cái máy tính đầu tiên của em. Hồi mới tập tành vào code em thì hay gõ 2-3 kí tự rồi ...</p>
+<p>The post <a rel="nofollow" href="/life/dung-git-di-khong-hoi-han-suot-doi-day">Dùng Git đi không hối hận suốt đời đấy (Phần 1)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/dung-git-di-khong-hoi-han-suot-doi-day/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">259</post-id>	</item>
+		<item>
+		<title>Giới thiệu Microsoft Cognitive Services &#8211; AI trong tầm tay</title>
+		<link>/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay</link>
+		<comments>/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay#respond</comments>
+		<pubDate>Fri, 22 Jul 2016 04:11:23 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Service]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[Bing]]></category>
+		<category><![CDATA[Machine Learning]]></category>
+		<category><![CDATA[Microsoft]]></category>
+		<category><![CDATA[nhận diện khuôn mặt]]></category>
+		<category><![CDATA[trí tuệ nhân tạo]]></category>
+
+		<guid isPermaLink="false">/?p=189</guid>
+		<description><![CDATA[<p>Bài viết này mình xin giới thiệu với các bạn Microsoft Cognitive Services Put intelligence APIs to work Microsoft Cognitive Services let you build apps with powerful algorithms using just a few lines of code. They work across devices and platforms such as iOS, Android, and Windows, keep improving, and are easy to set up. Đây ...</p>
+<p>The post <a rel="nofollow" href="/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay">Giới thiệu Microsoft Cognitive Services &#8211; AI trong tầm tay</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/service/gioi-thieu-microsoft-cognitive-services-ai-trong-tam-tay/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">189</post-id>	</item>
+	</channel>
+</rss>

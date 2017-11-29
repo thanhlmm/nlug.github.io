@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>thất bại &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/that-bai/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>thất bại &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>STARTUP đã tự &#8220;giết&#8221; mình như thế nào?</title>
+		<link>/startup/startup-da-tu-giet-minh-nhu-nao</link>
+		<comments>/startup/startup-da-tu-giet-minh-nhu-nao#respond</comments>
+		<pubDate>Wed, 28 Sep 2016 04:06:37 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Startup]]></category>
+		<category><![CDATA[cố gắng]]></category>
+		<category><![CDATA[lý do]]></category>
+		<category><![CDATA[startup]]></category>
+		<category><![CDATA[thất bại]]></category>
+
+		<guid isPermaLink="false">/?p=586</guid>
+		<description><![CDATA[<p>90% các doanh nghiệp khởi nghiệp thất bại trong năm đầu tiên! Chính vì vậy nên việc xây dựng thành công 1 startup giống như việc bạn muốn xếp thẳng hàng các hành tinh vậy. Một số doanh nghiệp cố gắng làm tất cả một mình, một số lại không tìm được tiếng nói chung ...</p>
+<p>The post <a rel="nofollow" href="/startup/startup-da-tu-giet-minh-nhu-nao">STARTUP đã tự &#8220;giết&#8221; mình như thế nào?</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/startup/startup-da-tu-giet-minh-nhu-nao/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">586</post-id>	</item>
+	</channel>
+</rss>

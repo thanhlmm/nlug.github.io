@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: Giới thiệu dịch vụ chat với người lạ InboxTui</title>
+	<atom:link href="/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui/feed" rel="self" type="application/rss+xml" />
+	<link>/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+	<item>
+		<title>Bởi: Tuấn Anh</title>
+		<link>/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui#comment-402</link>
+		<dc:creator><![CDATA[Tuấn Anh]]></dc:creator>
+		<pubDate>Fri, 17 Feb 2017 01:41:44 +0000</pubDate>
+		<guid isPermaLink="false">/?p=94#comment-402</guid>
+		<description><![CDATA[Đã opensource chưa bạn ơi? Hóng quá]]></description>
+		<content:encoded><![CDATA[<p>Đã opensource chưa bạn ơi? Hóng quá</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui#comment-24</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 01:27:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=94#comment-24</guid>
+		<description><![CDATA[Mình không có khả năng duy trì tiếp bạn à :/ . Thực sự rất buồn. Có lẽ thời gian tới mình sẽ open source nó]]></description>
+		<content:encoded><![CDATA[<p>Mình không có khả năng duy trì tiếp bạn à :/ . Thực sự rất buồn. Có lẽ thời gian tới mình sẽ open source nó</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: thongtranit</title>
+		<link>/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui#comment-22</link>
+		<dc:creator><![CDATA[thongtranit]]></dc:creator>
+		<pubDate>Wed, 12 Oct 2016 15:46:02 +0000</pubDate>
+		<guid isPermaLink="false">/?p=94#comment-22</guid>
+		<description><![CDATA[Website, fanpage đều không vào được. Đóng rồi hả bác]]></description>
+		<content:encoded><![CDATA[<p>Website, fanpage đều không vào được. Đóng rồi hả bác</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui#comment-9</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Sat, 06 Aug 2016 02:35:03 +0000</pubDate>
+		<guid isPermaLink="false">/?p=94#comment-9</guid>
+		<description><![CDATA[Cho mình xin fanpage của trường bạn được không?]]></description>
+		<content:encoded><![CDATA[<p>Cho mình xin fanpage của trường bạn được không?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: chào bạn,không biết bạn có thể chia sẻ cách kết nối người lạ được không, mình cũng đang muốn làm 1 cái cho trường</title>
+		<link>/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui#comment-8</link>
+		<dc:creator><![CDATA[chào bạn,không biết bạn có thể chia sẻ cách kết nối người lạ được không, mình cũng đang muốn làm 1 cái cho trường]]></dc:creator>
+		<pubDate>Fri, 05 Aug 2016 19:45:07 +0000</pubDate>
+		<guid isPermaLink="false">/?p=94#comment-8</guid>
+		<description><![CDATA[chào bạn,không biết bạn có thể chia sẻ cách kết nối người lạ được không, mình cũng đang muốn làm 1 cái cho trường]]></description>
+		<content:encoded><![CDATA[<p>chào bạn,không biết bạn có thể chia sẻ cách kết nối người lạ được không, mình cũng đang muốn làm 1 cái cho trường</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

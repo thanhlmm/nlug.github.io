@@ -1,0 +1,451 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 1) - Blog của CuThanh</title>
+		<link rel="canonical" href="/life/dung-git-di-khong-hoi-han-suot-doi-day" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/life\/dung-git-di-khong-hoi-han-suot-doi-day","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"D\u00f9ng Git \u0111i kh\u00f4ng h\u1ed1i h\u1eadn su\u1ed1t \u0111\u1eddi \u0111\u1ea5y (Ph\u1ea7n 1)","datePublished":"2016-07-27T10:16:23+00:00","dateModified":"2016-08-03T10:08:25+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/thor.jpg","width":1200,"height":800}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-934605138b205d4a9871e64b928b79b8{text-decoration:underline;}.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Dùng Git đi không hối hận suốt đời đấy (Phần 1)</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-27T10:16:23+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p>Chào các mẹ <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>,</p>
+<p>Nay tự nhiên buồn nhớ lại những ngày đầu viết code, bao nhiêu là vui buồn hiện về nên em chia sẻ câu chuyện bi đát giữa em, code và cái máy tính đầu tiên của em.</p>
+<p>Hồi mới tập tành vào code em thì hay gõ 2-3 kí tự rồi combo <code>Ctrl + S</code> thôi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, cúp điện quen rồi mà, ngon mày cúp nữa tao cũng chẳng sợ. Có một hôm đang làm cái kiểu như <a href="http://addnick.com/" target="_blank">addnick.com</a> (mẹ bao nhiêu năm tháng rồi mà nó chưa sập, của em chạy được 6 tháng là tèo <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2295eb38bfeb56ab060aaf8e4bd2315.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>), hôm đấy trời mưa to, sấm chớp ầm ầm. BTW, lúc đấy em mới học lớp 7 thôi. Chả nhớ làm sao mình cãi nhau với mẹ <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, bực quá không làm được gì nên bật máy tính ngồi Code <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Vừa bật lên, đang viết mã SQL query danh sách nick chat thì…<strong>BÙMMMMMMMMMMMMMMMMMMMMMMMMMM</strong><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img><amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. <strong>WTF, Mother Fucker, kimochi, yamate</strong>……… Các bác biết rồi đấy, đấy là lần cuối cùng em nhìn thấy cái máy tính gắn bó từ lớp 3 và cũng là lần cuối cùng nhìn đống code viết trong 3 tháng.</p>
+<p><amp-img class="aligncenter wp-image-264 size-full amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/thor.jpg" alt="thor" width="1200" height="800" srcset="/wp-content/uploads/2016/07/thor.jpg 1200w, /wp-content/uploads/2016/07/thor-300x200.jpg 300w, /wp-content/uploads/2016/07/thor-768x512.jpg 768w, /wp-content/uploads/2016/07/thor-1024x683.jpg 1024w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Sau thảm kịch đấy, em được cách ly khỏi máy tính gần 1 năm. Nhà nghèo làm gì có tiền mà mua máy mới với còn phải nghe chửi chán chê tội ngu đã <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Đối với cuộc đợi 8h/ngày ngồi máy tính như em thì đúng là khoảng thời gian ấy dài đằng đẵng các bác ạ. Cuộc sống không mục đích, không mục tiêu, không hy vọng,… Bạn bè em cũng không chơi nhiều nên đa số toàn ở nhà ngồi làm bạn với máy vi tính thôi mà giờ nó cũng bỏ em đi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Nhận thấy thằng con đang ngày càng tụt HP, mẹ em đã cố gắng mua cho em một con máy tính mới (Màn hình thùng  của máy cũ chưa hư nên chỉ được mua cái thùng máy mới thôi, ah kể cả bộ gear Mitsumi P/S2 và con chuột bi huyền thoại nữa). Kệ có máy là ngon rồi, chiến tiếp thôi.</p>
+<p>Mất hết code cũ nên em phải làm lại hoàn toàn từ đầu, vẫn nhớ code cũ nên bây giờ code lại cũng nhanh. Rút kinh nghiệm mỗi ngày em sẽ tạo một bản sao lưu, quẳng nó vào một góc. Sau bao nhiều ngày tháng try hard cuối cùng em cũng hoàn thành, khi đó folder <code>Backup</code> của em cũng có hơn 60 folder con, nặng ~5Gb <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Thực ra dù có làm vậy hay không đi chăng nữa, nếu  bác Thor ghé thăm nhà em thì cũng đi hết thôi nhưng em vẫn làm vậy vì đôi khi hôm nay mình debug một hồi lại nhiều cmn hơn cũ <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3d4972d841d550c8b185c81dca71230b.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img> nên lấy cái hôm qua thả vào debug lại vậy.</p>
+<p><amp-img class="aligncenter size-full wp-image-266 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/meo-duoi-gian-2.jpg" alt="meo-duoi-gian-2" width="520" height="396" srcset="/wp-content/uploads/2016/07/meo-duoi-gian-2.jpg 520w, /wp-content/uploads/2016/07/meo-duoi-gian-2-300x228.jpg 300w" sizes="(min-width: 520px) 520px, 100vw"></amp-img></p>
+<p>Hồi đấy <em>Dropbox</em> nổi lên, còn chưa có <em>Google Drive</em> hay <em>OneDrive</em> như bây giờ đâu, giới hạn dung lượng mỗi người chỉ được 2Gb nên em phải chắt lọc cái nào thực sự quan trong để “đưa lên mây”. Bây giờ thằng Thor ra đây, gọi cả bố mày nữa ngon mà đánh máy tính tao nữa đi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p><amp-img class="aligncenter size-large wp-image-265 amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/spartan300-1024x540.jpg" alt="spartan300" width="700" height="369" srcset="/wp-content/uploads/2016/07/spartan300.jpg 1024w, /wp-content/uploads/2016/07/spartan300-300x158.jpg 300w, /wp-content/uploads/2016/07/spartan300-768x405.jpg 768w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Làm như cách của em cũng khá hay đấy nhưng khổ nỗi có một hôm tự nhiên con bug ở đâu chui ra và em cũng không biết nó trốn ở đấy từ khi nào. Rõ ràng là mấy tuần trước làm khỉ gì có <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Thế là lại phải lục lại trong Folder <code>backup</code>, trong đấy em lưu mỗi folder con là ngày tháng em sao lưu. Giờ mới thấy mình ngu, biết mẹ gì hôm đó code tính năng gì, debug gì mà tìm lại bây giờ. Vất vả gần bằng code lại các bác ạ <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>, vừa click chuột vừa chửi. Rút kinh nghiệm lần trước bây giờ tên folder của em sẽ là</p>
+<h4 class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628">Tên folder = ngày tháng lưu + tính năng thay đổi.</h4>
+<p>Vì giới hạn tên folder cũng với lại nếu dài quá Win sẽ hiện … ở cuối nên em phải trăn trở suy nghĩ mỗi lần sao lưu làm sao cho thật xúc tích, cô đọng, hàm ý hết mức có thể <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<p>Vậy đấy! Con người em máu Startup lắm, và đương nhiên là project hồi đấy thất bại rồi, không thì em cũng chả ngồi đây è cố viết Blog cho các bác đọc. Nhưng không nản em làm hết project này tới project khác hy vong có ngày mình bằng 1/10 Bill gate hay Steve Jobs thôi cũng hãnh diện với bà con lành xóng, anh em họ hàng lắm rồi. Project tìm bạn chat đấy là project đầu tiên của em, lớp 8, tới giờ em đã học xong năm 2 đại học đang triển khai project tiếp theo trong series thất bại của mình là <a href="/startup/gioi-thieu-dich-vu-chat-voi-nguoi-la-inboxtui" target="_blank">InboxTui – Chat với người lạ</a>, trải qua hơn chục project khác nhau, thành quả em nhận được chỉ hơn con số 0 một tí. </p><div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Cố gắng, tâm huyết để cuối cũng nhận ra mình còn quá non kém, thiếu sót và cả hiếu thắng nữa. Nhưng thôi đam mê mọi người ạ, hãy sống chết vì nó, sau này già còn nghĩ lại “Mẹ, hồi đấy ăn xyz gì mà ngu thế <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>” .<span class="su-quote-cite">Minh Thành</span></div></div>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Phần 2</strong></span>: <a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2" target="_blank">http://cuthanh.com/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-2</a></p>
+<p><span class="amp-wp-inline-934605138b205d4a9871e64b928b79b8"><strong>Phần 3</strong></span>: <a href="/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3" target="_blank">http://cuthanh.com/service/dung-git-di-khong-hoi-han-suot-doi-day-phan-3</a></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/life" rel="category tag">Life</a>, <a href="/category/service" rel="category tag">Service</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/chia-se" rel="tag">chia sẻ</a>, <a href="/tag/code" rel="tag">code</a>, <a href="/tag/cuoc-song" rel="tag">cuộc sống</a>, <a href="/tag/git" rel="tag">git</a>, <a href="/tag/sao-luu" rel="tag">sao lưu</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/life/dung-git-di-khong-hoi-han-suot-doi-day#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=259&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

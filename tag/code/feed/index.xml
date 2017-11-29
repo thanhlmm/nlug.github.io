@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>code &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/code/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>code &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 4)</title>
+		<link>/nodejs/xay-dung-thong-goi-y-phan-4</link>
+		<comments>/nodejs/xay-dung-thong-goi-y-phan-4#respond</comments>
+		<pubDate>Mon, 15 Aug 2016 02:17:47 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[AngularJS]]></category>
+		<category><![CDATA[api]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[Web app]]></category>
+
+		<guid isPermaLink="false">/?p=487</guid>
+		<description><![CDATA[<p>Hế looooooo. Bài này chúng ta cùng nhau xây dựng client nhé Phần 1: /nodejs/xay-dung-he-thong-goi-y-phan-1 Phần 2: /nodejs/xay-dung-thong-goi-y-phan-2 Phần 3: /nodejs/xay-dung-thong-goi-y-phan-3 Demo http://demo.cuthanh.com/professorx-client/ Chuẩn bị Chúng ta sẽ xây dựng web app sử dụng framework Angular nhé. Thực tế là có api thì mình có thể áp dụng cho cái gì cũng được. Viết app cho Windows ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/xay-dung-thong-goi-y-phan-4">Xây dựng hệ thống “Gợi ý…” (Phần 4)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/xay-dung-thong-goi-y-phan-4/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">487</post-id>	</item>
+		<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 3)</title>
+		<link>/nodejs/xay-dung-thong-goi-y-phan-3</link>
+		<comments>/nodejs/xay-dung-thong-goi-y-phan-3#respond</comments>
+		<pubDate>Fri, 12 Aug 2016 01:19:21 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[phần 3]]></category>
+		<category><![CDATA[thuật toán]]></category>
+		<category><![CDATA[xây dựng]]></category>
+
+		<guid isPermaLink="false">/?p=459</guid>
+		<description><![CDATA[<p>Chào các mẹ , tiếp nối bài hôm trước. Hôm nay chúng ta sẽ viết server api nhé. Phần 1: /nodejs/xay-dung-he-thong-goi-y-phan-1 Phần 2: /nodejs/xay-dung-thong-goi-y-phan-2 Demo http://demo.cuthanh.com/professorx-client/ Tổng thể Các bước để em phát triển bất kì một ứng dụng gì Liệt kê những yêu cầu của bài toán Vẽ ra sơ đồ theo hành vi của người ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/xay-dung-thong-goi-y-phan-3">Xây dựng hệ thống “Gợi ý…” (Phần 3)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/xay-dung-thong-goi-y-phan-3/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">459</post-id>	</item>
+		<item>
+		<title>Dùng Git đi không hối hận suốt đời đấy (Phần 1)</title>
+		<link>/life/dung-git-di-khong-hoi-han-suot-doi-day</link>
+		<comments>/life/dung-git-di-khong-hoi-han-suot-doi-day#respond</comments>
+		<pubDate>Wed, 27 Jul 2016 03:16:23 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Life]]></category>
+		<category><![CDATA[Service]]></category>
+		<category><![CDATA[chia sẻ]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[cuộc sống]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[sao lưu]]></category>
+
+		<guid isPermaLink="false">/?p=259</guid>
+		<description><![CDATA[<p>Chào các mẹ , Nay tự nhiên buồn nhớ lại những ngày đầu viết code, bao nhiêu là vui buồn hiện về nên em chia sẻ câu chuyện bi đát giữa em, code và cái máy tính đầu tiên của em. Hồi mới tập tành vào code em thì hay gõ 2-3 kí tự rồi ...</p>
+<p>The post <a rel="nofollow" href="/life/dung-git-di-khong-hoi-han-suot-doi-day">Dùng Git đi không hối hận suốt đời đấy (Phần 1)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/life/dung-git-di-khong-hoi-han-suot-doi-day/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">259</post-id>	</item>
+	</channel>
+</rss>

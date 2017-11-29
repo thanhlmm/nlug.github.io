@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<title>Express và Sails? Cái nào tốt hơn (Phần 1) - Blog của CuThanh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="pingback" href="/xmlrpc.php" />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- W3TC-include-js-head -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Express và Sails? Cái nào tốt hơn (Phần 1) - Blog của CuThanh" />
+<meta property="og:description" content="Xin chào các bạn , hôm nay mình sẽ giới thiệu đến các bạn 2 framework khá phố biến của Nodejs là Express và Sails. Thằng nào ngon hơn , nên sài thằng nào bây giờ? Express Thằng này thì quá kinh điển rồi, nếu đã tìm hiểu đến Nodejs hẳn các bác cũng đã từng ..." />
+<meta property="og:url" content="http://cuthanh.com/nodejs/express-va-sails-cai-nao-tot-hon-phan-1" />
+<meta property="og:site_name" content="Blog của CuThanh" />
+<meta property="article:author" content="https://www.facebook.com/hojjlamthenlug" />
+<meta property="article:tag" content="express" />
+<meta property="article:tag" content="Nodejs" />
+<meta property="article:tag" content="sails" />
+<meta property="article:tag" content="so sánh" />
+<meta property="article:section" content="NodeJS" />
+<meta property="article:published_time" content="2016-07-18T10:19:25+00:00" />
+<meta property="article:modified_time" content="2016-07-20T10:27:18+00:00" />
+<meta property="og:updated_time" content="2016-07-20T10:27:18+00:00" />
+<meta property="og:image" content="http://cuthanh.com/wp-content/uploads/2016/07/expressvssails.png" />
+<meta property="og:image:width" content="1517" />
+<meta property="og:image:height" content="626" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Xin chào các bạn , hôm nay mình sẽ giới thiệu đến các bạn 2 framework khá phố biến của Nodejs là Express và Sails. Thằng nào ngon hơn , nên sài thằng nào bây giờ? Express Thằng này thì quá kinh điển rồi, nếu đã tìm hiểu đến Nodejs hẳn các bác cũng đã từng ..." />
+<meta name="twitter:title" content="Express và Sails? Cái nào tốt hơn (Phần 1) - Blog của CuThanh" />
+<meta name="twitter:image" content="http://cuthanh.com/wp-content/uploads/2016/07/expressvssails.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Blog của CuThanh &raquo;" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Blog của CuThanh &raquo;" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Blog của CuThanh &raquo; Express và Sails? Cái nào tốt hơn (Phần 1) Dòng phản hồi" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/cuthanh.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='dw-reaction-style-css'  href='/wp-content/plugins/dw-reactions/assets/css/style.css?ver=120004042016' type='text/css' media='all' />
+<link rel='stylesheet' id='estilo-css'  href='/wp-content/plugins/simple-code-highlighter/estilo.css?ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='readable-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C700&#038;subset=latin%2Cvietnamese&#038;ver=4.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='/wp-content/themes/readable/assets/stylesheets/main.css?ver=1.0.0' type='text/css' media='all' />
+<style id='main-inline-css' type='text/css'>
+
+/******************
+Primary theme color
+*******************/
+
+.social__container, .search__container, .search-panel .search-panel__text, .navigation > li.current-menu-item > a, .navigation > li:hover > a, .navigation > li.current-menu-ancestor > a, .widget-contact__title, .navigation .sub-menu > li > a:hover, .error .primary-color {
+	color: #05668d}
+
+.social .social__dropdown, ::selection, .navbar-toggle {
+	background: #05668d}
+
+.wpcf7-submit, .navigation > li > a:after, .btn-primary {
+	background: linear-gradient(to bottom, #05668d, #055c7f)
+}
+
+blockquote, .wpcf7-submit, .btn-primary, .navbar-toggle {
+	border-color: #05668d}
+
+.search__container:hover, .social__container:hover {
+	color: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a {
+		background: #05668d	}
+}
+
+.wpcf7-submit:hover, .btn-primary:hover, .social .social__dropdown li a:hover {
+	background: #055c7f}
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a:hover {
+		background: #055c7f	}
+}
+
+.wpcf7-submit:hover, .navigation .sub-menu > li > a, .navigation .sub-menu, .btn-primary:hover, .social .social__dropdown li .social__container {
+	border-color: #055c7f}
+
+/******************
+Text color
+*******************/
+
+blockquote, .post-content, .post-content--narrow, .post-content--narrow span, body .su-tabs-style-default .su-tabs-pane {
+	color: #40454a}
+
+/******************
+Link color
+*******************/
+
+a, .menu li a, .pptwj .pptwj-tabs-wrap .tab-links li a.selected, .pptwj .pptwj-tabs-wrap .tab-links li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected {
+	color: #028090}
+
+.widget_tag_cloud a, .tags a {
+	border-color: #028090}
+
+a:hover, .menu li a:hover {
+	color: #027382}
+
+.widget_tag_cloud a:hover, .tags a:hover, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a.selected:after, .pptwj .pptwj-tabs-wrap .boxes ul.tab-filter-list li a:hover:after {
+	background-color: #028090}
+
+/******************
+Headings dark
+*******************/
+h1, h1 a, .h1 a, .h2, h2, h2 a, .h2 a, h4, h4 a, .h4 a, h5, h5 a, .h5 a, .zem_rp_title {
+	color: #2f343b}
+
+/******************
+Headings light
+*******************/
+h3, h3 a, .h3 a, h6, h6 a, .h6 a, .wp_rp_excerpt {
+	color: #9a9a90}
+
+/******************
+Navbar background
+*******************/
+.header {
+	background-color: #ffffff}
+
+/******************
+Footer background
+*******************/
+.footer, .copyrights {
+	background-color: #ffffff}
+
+/******************
+Navbar text color
+*******************/
+
+.navigation > li > a {
+	color: #9a9a90}
+
+/******************
+Navbar dropdown text color
+*******************/
+
+@media (min-width: 992px) {
+	.navigation .sub-menu > li > a, .navigation .sub-menu > li > a:hover {
+		color: #f3f4f4	}
+}
+
+/* WP Customizer end */
+
+/* User Custom CSS */
+
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='/wp-content/plugins/jetpack/css/jetpack.css?ver=4.5' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var dw_reaction = {"ajax":"http:\/\/cuthanh.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/dw-reactions/assets/js/script.js?ver=120004042016'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.3" />
+<link rel='shortlink' href='/?p=80' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fnodejs%2Fexpress-va-sails-cai-nao-tot-hon-phan-1" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fnodejs%2Fexpress-va-sails-cai-nao-tot-hon-phan-1&#038;format=xml" />
+			<meta property="fb:pages" content="1230424850325628" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>			<link rel="shortcut icon" href="/wp-content/uploads/2016/07/logo-icon.ico">
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/uploads/2016/07/blurred-home-bg.jpg"); background-position: center top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
+</style>
+<link rel="amphtml" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1/amp" /><link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" sizes="32x32" />
+<link rel="icon" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2016/07/cropped-logo-icon-lg-180x180.png" />
+<meta name="msapplication-TileImage" content="http://cuthanh.com/wp-content/uploads/2016/07/cropped-logo-icon-lg-270x270.png" />
+
+<!-- BEGIN GADWP v4.9.5 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79981031-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hentry .aligncenter {
+	margin: 0 auto;
+	display: block;
+}
+
+.post-content>p {
+	text-align: justify;
+	text-indent: 1em;
+}			</style>
+			<!-- W3TC-include-css -->
+</head>
+
+<body class="post-template-default single single-post postid-80 single-format-standard custom-background">
+<!-- W3TC-include-js-body-start -->
+
+	<!-- Search - Open panel -->
+	<div class="search-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<form action="/">
+						<input type="text" class="search-panel__form  js--search-panel-text" name="s" placeholder="Begin typing for search">
+						<p class="search-panel__text">Press enter to see results or esc to cancel.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-content-container"><!-- ends in the footer.php -->
+		<!-- header -->
+		<header class="header  push-down-45">
+			<div class="container">
+				<div class="logo  pull-left">
+					<a href="/">
+													<img src="/wp-content/uploads/2016/07/logo-1.png" alt="Blog của CuThanh" />
+											</a>
+				</div>
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<nav class="navbar  navbar-default" role="navigation">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+						<ul id="menu-my-menu" class="navigation"><li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="/">Trang chủ</a></li>
+<li id="menu-item-710" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-710"><a href="/category/technology">Technology</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-711"><a href="/category/react">React</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139"><a href="/category/server">Server</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-140"><a href="/category/nodejs">NodeJS</a></li>
+<li id="menu-item-141" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141"><a href="/category/startup">Startup</a></li>
+<li id="menu-item-136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-136"><a href="/about">About</a></li>
+</ul>					</div><!-- /.navbar-collapse -->
+				</nav>
+				<div class="hidden-xs  hidden-sm">
+					<a href="#" class="search__container  js--toggle-search-mode"> <span class="glyphicon  glyphicon-search"></span>  </a>
+										<div class="social">
+						<a href="#" class="social__container  js--blank-link"><span class="glyphicon  glyphicon-heart"></span></a>
+						<ul class="social__dropdown">
+														<li>
+								<a href="http://nlug27@gmail.com/" target="_blank" class="social__container"> <span class="zocial-email"></span></a>
+							</li>
+														<li>
+								<a href="https://www.facebook.com/hojjlamthenlug" target="_blank" class="social__container"> <span class="zocial-facebook"></span></a>
+							</li>
+													</ul>
+					</div>
+									</div>
+			</div>
+		</header>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12" role="main">
+
+			
+				<!-- Post with featured image -->
+				<article class="boxed push-down-45 post-80 post type-post status-publish format-standard has-post-thumbnail hentry category-nodejs tag-express tag-nodejs tag-sails tag-so-sanh">
+
+					<div class="meta">
+
+			<a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1" class="link--no-border"><img width="1138" height="493" src="/wp-content/uploads/2016/07/expressvssails-1138x493.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" /></a>
+	
+	
+			<div class="meta__container  clearfix">
+				<div class="meta__info">
+					<span class="meta__author">
+						<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=30&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=60&amp;d=mm&amp;r=g 2x' class='avatar avatar-30 photo' height='30' width='30' />						<a href="/author/nlug">Minh Thành</a> in <a href="/category/nodejs" rel="category tag">NodeJS</a>
+					</span>
+					<time datetime="2016-07-18T10:19:25+00:00" class="meta__date"><a href="/2016/07/18"><span class="glyphicon  glyphicon-calendar"></span> &nbsp; 18/07/2016</a></time>
+				</div>
+				<div class="meta__comments">
+					<a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1#comments"><span class="glyphicon  glyphicon-comment"></span>  &nbsp; 1 Comment</a>
+				</div>
+			</div>
+
+			
+</div>
+
+
+					<!-- Start of the blogpost -->
+					<div class="row">
+						<div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2">
+
+							<!-- Start of the content -->
+							<div class="post-content">
+								<h1 class="post-content__title">
+									<a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1">Express và Sails? Cái nào tốt hơn (Phần 1)</a>
+								</h1>
+								<p>Xin chào các bạn <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" />, hôm nay mình sẽ giới thiệu đến các bạn 2 framework khá phố biến của <strong>Nodejs</strong> là <strong>Express</strong> và <strong>Sails</strong>. Thằng nào ngon hơn <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aa9d71a4e03ce5ef22cd34781a848aae.png" alt="" border="0" hspace="5" />, nên sài thằng nào bây giờ?</p>
+<h1>Express</h1>
+<p>Thằng này thì quá kinh điển rồi, nếu đã tìm hiểu đến Nodejs hẳn các bác cũng đã từng nghe qua <strong>Express</strong>. Thằng này là framework của node giúp ta dễ dàng xây dựng một Restful server, hoặc giống như một web application (Mình chả biết giải thích sau nhưng theo mình hiểu là xây dựng một cái giống với WordPress, bác nào thử code coi <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" border="0" hspace="5" />)</p>
+<blockquote>
+<h2>Express</h2>
+<p>Fast, unopinionated, minimalist web framework for <a href="https://nodejs.org/en/">Node.js</a></p></blockquote>
+<p>Nói cách khác thì thằng này là như là ổng tổ của các framework khác <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" /> bao gồm cả <strong>Sails</strong> mà mình đã đề cập ở tít.</p>
+<p>Một số framework build giựa trên <strong>Express</strong></p>
+<ul>
+<li><strong><a href="http://feathersjs.com/">Feathers</a></strong>: Build prototypes in minutes and production ready real-time apps in days.</li>
+<li><strong><a href="https://www.itemsapi.com/">ItemsAPI</a></strong>: Search backend for web and mobile applications built on Express and Elasticsearch.</li>
+<li><strong><a href="http://keystonejs.com/">KeystoneJS</a></strong>: Website and API Application Framework / CMS with an auto-generated React.js Admin UI.</li>
+<li><strong><a href="http://krakenjs.com/">Kraken</a></strong>: Secure and scalable layer that extends Express by providing structure and convention.</li>
+<li><strong><a href="http://lean-stack.io/">LEAN-STACK</a></strong>: The Pure JavaScript Stack.</li>
+<li><strong><a href="http://loopback.io/">LoopBack</a></strong>: Highly-extensible, open-source Node.js framework for quickly creating dynamic end-to-end REST APIs.</li>
+<li><strong><a href="http://mean.io/">MEAN</a></strong>: Opinionated fullstack JavaScript framework that simplifies and accelerates web application development.</li>
+<li><strong><a href="http://sailsjs.org/">Sails</a></strong>: MVC framework for Node.js for building practical, production-ready apps.</li>
+</ul>
+<p>Trang chủ <a href="http://expressjs.com/" target="_blank">http://expressjs.com</a></p>
+<h1>Sails</h1>
+<blockquote>
+<h2>What Is Sails.js?</h2>
+<p>Sails makes it easy to build custom, enterprise-grade Node.js apps. It is designed to emulate the familiar MVC pattern of frameworks like Ruby on Rails, but with support for the requirements of modern apps: data-driven APIs with a scalable, service-oriented architecture. It&#8217;s especially good for building chat, realtime dashboards, or multiplayer games; but you can use it for any web application project &#8211; top to bottom.</p></blockquote>
+<p>Như đã nói ở trên, thằng này được xây dựng theo Express. Nghĩa là</p>
+<p><strong>Sails</strong> = <strong>Express</strong> + thêm một cục chức năng mới + thêm cách tổ chức file = Framework mới <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aeabbb614c88c9f1e09869596f736441.png" alt="" border="0" hspace="5" /></p>
+<p>Vậy không sài bà nó <strong>Sails</strong> cho rồi, vừa đẹp trai như <strong>Express</strong> mà lại giàu có nữa (soái ca <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" border="0" hspace="5" />)</p>
+<p>Trang chủ <a href="http://sailsjs.org/" target="_blank">http://sailsjs.org</a></p>
+<p><em>Sau đây mình sẽ so sánh mốt số khả năng làm việc của hai thằng này để các bác hình dung nên dùng thằng nào nhé.</em></p>
+<h2>RESTful server</h2>
+<blockquote><p>RESTful</p>
+<p>REST định nghĩa các quy tắc kiến trúc để bạn thiết kế Web services chú trọng vào tài nguyên hệ thống, bao gồm các trạng thái tài nguyên được định dạng như thế nào và được chuyển tải qua <code>HTTP</code> thông qua số lượng lớn người dùng và được viết bởi những ngôn ngữ khác nhau. Em copy trên mạng đấy, khó hiểu vl các bác đừng đọc <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" border="0" hspace="5" /></p></blockquote>
+<p>Theo em thì đơn giản là nó quy chuẩn trạng thái và định nghịa của một API server. VD khi bác lấy thông tin thì dùng method <code>GET</code>, tạo mới là <code>POST</code>, sửa là <code>PUT</code> và xóa là <code>DELETE</code>. Kết quả gửi đi gửi về thường là <strong>JSON</strong>. Thôi kệ nó đi nó muốn là gì kệ nó</p>
+<p>Đối với <strong>Express</strong>, nếu muốn xây dựng một <strong>RESTful</strong> server thì thường em làm các bước sau.</p>
+<ol>
+<li>Thiết kế model (thường sài <code>mongoose</code>)</li>
+<li>Viết từng controller nếu nhu cầu phức tạp, không thì em thả vào app.js luôn <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" border="0" hspace="5" /></li>
+<li>Require các cái ở trên vào <code>app.js</code></li>
+<li>Cài đặt mấy cái middleware, kết nối với <code>mongodb</code></li>
+<li><code>node app.js</code></li>
+<li>Error <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" border="0" hspace="5" /></li>
+</ol>
+<p>Nhìn có vẻ khá mệt hả các bác</p>
+<p>Còn nếu sài <strong>Sails</strong> thì dễ dàng hơn nhiều</p>
+<ol>
+<li><code>sails generate api flash</code></li>
+<li>Xong</li>
+</ol>
+<p>Với việc có chức năng gọi là &#8220;Blueprints&#8221;, nó khiến cho công việc còn lại cực kì dễ dàng, <strong>Sails</strong> cũng hỗ trợ lưu data dạng file ngay lúc đầu thiết lập nên các bác cũng không phải mệt mỏi thiết lập kết nối với db server mà nếu có cũng nhanh hơn <strong>express</strong> nhiều. Đảm bảo <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" border="0" hspace="5" /></p>
+<p>Tuy nhiên mình thích <strong>Express</strong> hơn và khuyên các bác nên dùng <strong>Express</strong> cùng với em. Ơ điên à <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" border="0" hspace="5" />, rõ ràng sài <strong>Sails</strong> ngon hơn nhiều mà, nhanh chóng y như lời bác Bill-san căn dặn.</p>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Tôi chọn người lười biếng để làm những việc khó khăn. Bởi một người lười biếng sẽ tìm ra cách dễ dàng để làm việc đó<span class="su-quote-cite">Bill Gate - San</span></div></div>
+<p>Khác biệt ở chỗ này này các bác.</p>
+<p>Các bác tử chạy <code>node app.js</code> với Express và <code>sails lift</code> với Sails thử xem.</p>
+<p><img class="alignnone wp-image-83 size-full" src="/wp-content/uploads/2016/07/expressvssails.png" alt="expressvssails" width="1517" height="626" srcset="/wp-content/uploads/2016/07/expressvssails.png 1517w, /wp-content/uploads/2016/07/expressvssails-300x124.png 300w, /wp-content/uploads/2016/07/expressvssails-768x317.png 768w, /wp-content/uploads/2016/07/expressvssails-1024x423.png 1024w" sizes="(max-width: 1517px) 100vw, 1517px" /></p>
+<p><strong>Express</strong> khởi động nhanh hơn! Đơn giản vì <strong>Express</strong> là framework cực kì gọn nhẹ, các bác thích có chức năng gì thì tự đi mà thêm vào <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" border="0" hspace="5" /> trong khi đó <strong>Sails</strong> lại ôm đồm quá nhiều chức năng mà có khi bạn chưa sử dụng tới, nó khiến cho <strong>sails</strong> trở nên nặng nề. Và mình cũng hay có thói quen Combo <code>sửa vài ba kí tự</code>, <code>Ctrl + S</code>, <code>node app.js</code>, <code>F5</code>, <code>vẫn lỗi</code>, <code>quay lại bước đầu</code> <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/0dd17a12d85d368fd9f09090b1a961a7.png" alt="" border="0" hspace="5" />. Nên dù chênh lệnh nhau không quá lớn cũng khiến cho mình cảm thấy khó chịu. Nhưng mà xây dựng trên <strong>Express</strong> lằng nhằng lắm, tới tận 6 bước cơ mà. Thực sự nhìn to lớn vậy thôi chứ nhanh lắm.</p>
+<p>Thiết kế model (<code>./model/User.js</code>)</p>
+<pre class="prettyprint">var AutoIncrement, Schema, mongoose, shopSchema;
+
+mongoose = require('mongoose');
+
+AutoIncrement = require('mongoose-sequence');
+
+Schema = mongoose.Schema;
+
+shopSchema = new mongoose.Schema({
+  _id: Number,
+  name: {
+    type: String,
+    require: [true, "Missing Shop's name"]
+  },
+  fb: String,
+  fbToken: String,
+  ship: Array,
+  setting: Schema.Types.Mixed,
+  active: Boolean,
+  user: {
+    type: Number,
+    ref: 'User'
+  },
+  date: {
+    type: Date,
+    "default": Date.now
+  }
+}, {
+  _id: false
+});
+
+shopSchema.plugin(AutoIncrement, {
+  id: 'shopID'
+});
+
+module.exports = mongoose.model('Shop', shopSchema);
+</pre>
+<p>Viết controller (<code>./controllers/user.js</code>)</p>
+<pre class="prettyprint">var Shop;
+
+Shop = require('../models/Shop');
+
+module.exports = {
+  shopsGET: function(req, res) {
+    return Shop.find().exec(function(error, shops) {
+      return res.ok(shops);
+    });
+  },
+  shopGET: function(req, res) {
+    return Shop.findOne({
+      _id: req.params.id
+    }).exec(function(error, shops) {
+      if (error) {
+        return res.error(error);
+      } else if (shops == null) {
+        return res.notfound();
+      } else {
+        return res.ok(shops);
+      }
+    });
+  },
+  shopPOST: function(req, res) {
+    var shop;
+    shop = new Shop(req.body.data);
+    return shop.save(function(error, data) {
+      if (error) {
+        return res.error(error);
+      } else {
+        return res.created();
+      }
+    });
+  },
+  shopPUT: function(req, res) {
+    if (req.params.id != null) {
+      delete req.body.data._id;
+      return Shop.findOneAndUpdate({
+        _id: req.params.id
+      }, req.body.data).exec(function(error, shop) {
+        if (error) {
+          return res.error(error);
+        } else if (shop == null) {
+          return res.notfound();
+        } else {
+          return res.ok();
+        }
+      });
+    } else {
+      return res.error('Missing shopID');
+    }
+  },
+  shopDEL: function(req, res) {
+    if (req.params.id != null) {
+      return Shop.findOneAndRemove({
+        _id: req.params.id
+      }).exec(function(error, shop) {
+        if (error) {
+          return res.error(error);
+        } else if (shop == null) {
+          return res.notfound();
+        } else {
+          return res.ok();
+        }
+      });
+    } else {
+      return res.error('Missing shopID');
+    }
+  }
+};
+</pre>
+<p>Sao dài thế. Thực ra nó chỉ dài hơn <strong>Sails</strong> ở đoạn model 4-5 dòng thôi. Không có của <code>sails generate api flash</code> là chạy luôn đâu, tin người vl <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" border="0" hspace="5" />. Thực ra cũng chạy được nhưng áp dụng vào thực tế chắc chắn các bạn phải sửa lại từ model đến controller cho phù hợp thôi.</p>
+<p>Vậy có thể thấy khi viết bằng <strong>Express</strong> thì các bác chỉ dài hơn <strong>Sails</strong> khoảng</p>
+<ul>
+<li>4-5 dòng ở Model</li>
+<li>4-5 dòng dể require Model và Controller vào app.js</li>
+<li>10-15 dòng thêm middlewarve, kết nối db, thiết lập http server</li>
+</ul>
+<p>Tổng cộng lại 25 dòng, các bác hoàn toàn có thể lưu lại file app.js để dành, coi như là framework riêng của các bác đấy, upload nên Github rồi nổi tiếng thôi <img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" border="0" hspace="5" />. Sau này chỉ cần sửa lại 4-5 dòng là áp dụng cho project khác được rồi đúng không. Vừa có framework riêng, vừa chạy nhanh gọn lẹ. Vì vậy nếu xây dựng RESTful server thì các bác nên dùng Express giống em đi.</p>
+<p>&nbsp;</p>
+<p>Mời các bạn đọc tiếp phần 2 <a href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-2" target="_blank">Express và Sails? Cái nào tốt hơn (Phần 2)</a></p>
+		<div class="dw-reactions dw-reactions-post-80" data-type="vote" data-nonce="fe51f46582" data-post="80">
+											<div class="dw-reactions-button">
+					<span class="dw-reactions-main-button">Like</span>
+					<div class="dw-reactions-box">
+						<span class="dw-reaction dw-reaction-like"><strong>Like</strong></span>
+						<span class="dw-reaction dw-reaction-love"><strong>Love</strong></span>
+						<span class="dw-reaction dw-reaction-haha"><strong>Haha</strong></span>
+						<span class="dw-reaction dw-reaction-wow"><strong>Wow</strong></span>
+						<span class="dw-reaction dw-reaction-sad"><strong>Sad</strong></span>
+						<span class="dw-reaction dw-reaction-angry"><strong>Angry</strong></span>
+					</div>
+				</div>
+														<div class="dw-reactions-count">
+									</div>
+					</div>
+		
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Có liên quan</em></h3>
+</div>
+															</div>
+							<!-- End of the content -->
+
+							<div class="row">
+								<div class="col-xs-12  col-sm-3">
+									<!-- Start of comments button -->
+									<div class="post-comments">
+										<a class="btn  btn-primary" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1#comments">1 Comment</a>
+									</div>
+									<!-- End of comments button -->
+								</div>
+								<div class="col-xs-12  col-sm-9">
+									<!-- Start of social icons -->
+									<div class="social-icons">
+																			</div>
+									<!-- End of social icons -->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12  push-down-60  col-sm-6">
+									<!-- Start of post author -->
+									<div class="post-author">
+										<h6>Written By</h6>
+										<hr>
+										<img alt='' src='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=90&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=180&amp;d=mm&amp;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' />										<h5>
+											<a href="/author/nlug">Minh Thành</a>
+										</h5>
+										<div class="post-author__text">
+											<p>Tác giả bận chơi Dota 2 rồi lười viết cái dòng này lắm</p>
+										</div>
+									</div>
+									<!-- End of post author -->
+								</div>
+
+																<div class="col-xs-12  col-sm-6  push-down-60">
+
+									<!-- Start of post tags -->
+									<div class="tags">
+										<h6>Tags</h6>
+										<hr>
+										<a href="/tag/express" rel="tag">express</a><a href="/tag/nodejs" rel="tag">Nodejs</a><a href="/tag/sails" rel="tag">sails</a><a href="/tag/so-sanh" rel="tag">so sánh</a>									</div>
+
+									<!-- End of post tags -->
+								</div>
+								
+							</div>
+
+							<!-- comments start -->
+							
+<div class="comments  push-down-30" id="comments">
+	<h6>Comments</h6>
+	<hr>
+
+	<section class="comments-container">
+		
+						<h3 class="push-down-30">
+				1 Comment			</h3>
+			
+			
+	<div id="comment-143" class="comment even thread-even depth-1 clearfix">
+		<div class="avatar-container">
+			<img alt='' src='http://0.gravatar.com/avatar/05fb33eb2e0fcef634950c9909137540?s=74&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/05fb33eb2e0fcef634950c9909137540?s=148&amp;d=mm&amp;r=g 2x' class='avatar avatar-74 photo' height='74' width='74' />		</div>
+		<div class="comment-content">
+			<div class="comment-inner">
+				<cite class="comment-author vcard">
+					Trung				</cite>
+				<div class="comment-metadata">
+					<time datetime="2017-01-12T15:11:47+00:00">
+					 	12/01/2017 at 3:11 Chiều					</time>
+					 / <a rel='nofollow' class='comment-reply-link' href='/nodejs/express-va-sails-cai-nao-tot-hon-phan-1?replytocom=143#respond' onclick='return addComment.moveForm( "comment-143", "143", "respond", "80" )' aria-label='Phản hồi đến Trung'>Trả lời</a>									</div>
+				<div class="comment-text">
+					
+					<p>hay hay lắm dmm 🙂</p>
+				</div>
+			</div>
+
+			</div>
+</div><!-- #comment-## -->
+
+					<hr />
+					<h3 class="push-down-25">
+						Leave a Comment					</h3>
+
+
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1#respond" style="display:none;">Hủy</a></small></h3>			<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="push-down-15"><label for="message">Message <span class="warning">*</span></label><textarea class="form-control form-control--contact form-control--big" id="comment" name="comment" rows="7" aria-required="true" placeholder="Your Comment goes here." required></textarea></p><p class="push-down-15"><label for="author">Name <span class="warning">*</span><input class="form-control  form-control--contact" id="author" name="author" type="text" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="email">Email <span class="warning">*</span><input class="form-control  form-control--contact" id="email" name="email" type="email" value="" size="30" aria-required='true' required /></label></p>
+<p class="push-down-15"><label for="url">Website <span class="warning">*</span><input class="form-control  form-control--contact" id="url" name="url" type="text" value="" size="30" /></label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submitWPComment" class="submit" value="Send now" /> <input type='hidden' name='comment_post_ID' value='80' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="1714e396fe" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="46"/></p>			</form>
+			</div><!-- #respond -->
+		</section>
+</div>							<!-- comments end -->
+
+							
+						</div>
+					</div>
+				</article>
+
+			
+	</div>
+
+	
+	</div>
+</div>
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+									</div>
+			</div>
+		</footer>
+		<footer class="copyrights">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12  col-sm-6">
+						Readable WP theme &copy; Copyright 2014					</div>
+					<div class="col-xs-12  col-sm-6">
+						<div class="copyrights--right">
+							Made by <a href="http://www.proteusthemes.com/">ProteusThemes</a>						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div><!-- /.page-content-container -->
+
+<script type='text/javascript' src='/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<link rel='stylesheet' id='su-box-shortcodes-css'  href='/wp-content/plugins/shortcodes-ultimate/assets/css/box-shortcodes.css?ver=4.9.9' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201748'></script>
+<script type='text/javascript' src='/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ReadableVars = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/wp-content/themes/readable/assets/js/built.js?ver=1.0.0'></script>
+<script type='text/javascript' src='/wp-includes/js/comment-reply.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201748.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.5',blog:'114130900',post:'80',tz:'7',srv:'cuthanh.com'} ]);
+	_stq.push([ 'clickTrackerInit', '114130900', '80' ]);
+</script>
+<!-- W3TC-include-js-body-end -->
+</body>
+</html>

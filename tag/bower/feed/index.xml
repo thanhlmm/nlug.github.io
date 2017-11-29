@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>bower &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/bower/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>bower &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Viết app Angular siêu tốc với Angular generator</title>
+		<link>/web-app/viet-app-angular-sieu-toc-voi-angular-generator</link>
+		<comments>/web-app/viet-app-angular-sieu-toc-voi-angular-generator#respond</comments>
+		<pubDate>Tue, 19 Jul 2016 02:36:35 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Web App]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[angular generator]]></category>
+		<category><![CDATA[bower]]></category>
+		<category><![CDATA[yeoman]]></category>
+
+		<guid isPermaLink="false">/?p=121</guid>
+		<description><![CDATA[<p>Các bác dev Angular thì bắt đầu như thế nào. Em thì hồi trước phải : Download Angular Thêm vào index.html Tạo file app.js, thêm vào index.html angular.module('myApp', ['bla', 'balo']); Download thêm các package, rồi lại inject vào Tạo file controller, view, service, filter  vân vân và mây mây  Cực quá ha các bác, vậy ...</p>
+<p>The post <a rel="nofollow" href="/web-app/viet-app-angular-sieu-toc-voi-angular-generator">Viết app Angular siêu tốc với Angular generator</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/web-app/viet-app-angular-sieu-toc-voi-angular-generator/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">121</post-id>	</item>
+	</channel>
+</rss>

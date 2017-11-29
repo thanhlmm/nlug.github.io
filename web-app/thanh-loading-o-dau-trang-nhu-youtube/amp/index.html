@@ -1,0 +1,519 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Thêm thanh loading ở đầu trang như YouTube cho Angular - Blog của CuThanh</title>
+		<link rel="canonical" href="/web-app/thanh-loading-o-dau-trang-nhu-youtube" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/web-app\/thanh-loading-o-dau-trang-nhu-youtube","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Th\u00eam thanh loading \u1edf \u0111\u1ea7u trang nh\u01b0 YouTube cho Angular","datePublished":"2016-07-17T16:47:01+00:00","dateModified":"2016-07-17T16:54:42+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/loadingbar.png","width":1600,"height":860}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+			</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Thêm thanh loading ở đầu trang như YouTube cho Angular</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-07-17T16:47:01+00:00">
+		1 năm ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p>He nhô…. <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+<p>Bài viết này mình sẽ hướng dẫn các bác thêm thanh loading ở đầu trang giống YouTube.</p>
+<h1>Giới Thiệu</h1>
+<p><amp-img class="aligncenter wp-image-70 size-large amp-wp-enforced-sizes" src="/wp-content/uploads/2016/07/loadingbar-1024x550.png" alt="loadingbar" width="700" height="376" srcset="/wp-content/uploads/2016/07/loadingbar-1024x550.png 1024w, /wp-content/uploads/2016/07/loadingbar-300x161.png 300w, /wp-content/uploads/2016/07/loadingbar-768x413.png 768w, /wp-content/uploads/2016/07/loadingbar.png 1600w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Hiện nay thì phong trao làm webapp đang lên cao, có rất rất nhiều công cụ hỗ trợ mình thêm các chức năng cool cool vào webapp. Một trong các cái mình thích nhất là <a href="http://chieffancypants.github.io/angular-loading-bar/" target="_blank">http://chieffancypants.github.io/angular-loading-bar/</a> . Thấy cái này đẹp mà dễ cài quá, kiểu như tương lai bất cứ cái nào làm bằng angular mình cũng thêm nó vô hết <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>.</p>
+<blockquote>
+<h1>Angular Loading Bar</h1>
+<p>An automatic loading bar using angular interceptors. It works automatically, so simply include it as a dependency and it will automatically display the progress of your <code>$http</code> requests.</p></blockquote>
+<p>Có rất nhiều project như vầy rồi nhưng đa số chả có cái nào tự động cả, phải cài đặt lằng nhằng nên bác <strong>chieffancypants</strong> làm ra repo này cho các bác chỉ down về thêm vài ba dòng là xong rồi. Nó sẽ tự động chạy khi các bác load dữ liệu qua XHR (kiểu load Ajax đấy, chắc vậy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>)</p>
+<p>Link GitHub <a href="https://github.com/chieffancypants/angular-loading-bar" target="_blank">https://github.com/chieffancypants/angular-loading-bar</a></p>
+<h1>Cài đặt</h1>
+<p>Download qua npm hoặc bower</p>
+<pre class="prettyprint">$ npm install --save angular-loading-bar
+$ bower install --save angular-loading-bar</pre>
+<p>Thêm vào app của các bác</p>
+<pre class="prettyprint">angular.module('myApp', ['angular-loading-bar'])
+</pre>
+<p>Include code vào project.</p>
+<pre class="prettyprint">&lt;link rel='stylesheet' href='build/loading-bar.min.css' type='text/css' media='all' /&gt;
+&lt;script type='text/javascript' src='build/loading-bar.min.js'&gt;&lt;/script&gt;</pre>
+<p>Okey xong rồi đấy <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Mẹ bài gì mà ngắn thế <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/7a77f3bca77f8126d0cb4608460a3a0d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Thôi viết thêm phần tùy chỉnh nữa vậy.</p>
+<h1>Tùy chỉnh</h1>
+<p>Bật tắt cài vòng tròn xoay xoay góc trên bên trái</p>
+<pre class="prettyprint">angular.module('myApp', ['angular-loading-bar'])
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+  }])</pre>
+<p>Bật tắt thanh chạy ngang (Bố mày đọc bài này để cài cái thanh này mà mày bắt tắt <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>)</p>
+<pre class="prettyprint">angular.module('myApp', ['angular-loading-bar'])
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeBar = false;
+  }])</pre>
+<p>Thay đổi màu</p>
+<pre class="prettyprint">/* Style của cái thanh
+  Thay #F0F3BD bằng màu các bác thích */
+#loading-bar .bar {
+    background: #F0F3BD;  
+}
+#loading-bar .peg {
+  -moz-box-shadow: #F0F3BD 1px 0 6px 1px;
+  -ms-box-shadow: #F0F3BD 1px 0 6px 1px;
+  -webkit-box-shadow: #F0F3BD 1px 0 6px 1px;
+  box-shadow: #F0F3BD 1px 0 6px 1px;
+}
+/* Style của cái vòng tròn
+  Thay #F0F3BD bằng màu các bác thích */
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #F0F3BD;
+  border-left-color: #F0F3BD;
+}</pre>
+<p>Thay đổi vị trí của cái thanh</p>
+<pre class="prettyprint">angular.module('myApp', ['angular-loading-bar'])
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.parentSelector = '#loading-bar-container'; // Cây DOM mà sẽ chưa cái thanh chạy
+    cfpLoadingBarProvider.spinnerTemplate = '&lt;div&gt;&lt;span class="fa fa-spinner"&gt;Custom Loading Message...&lt;/div&gt;'; // HTML của cái cục tròn tròn
+  }])</pre>
+<p>Thiết lập thời gian tối thiểu đệ hiện Loading bar</p>
+<p><em>Bình thường thì request nào lâu hơn 100ms mới hiện cái thanh này</em></p>
+<pre class="prettyprint">angular.module('myApp', ['angular-loading-bar'])
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.latencyThreshold = 500; // Thiết lập thời gian tối thiểu
+  }])</pre>
+<p>Bỏ qua không hiện Loading nữa.</p>
+<pre class="prettyprint">// ignore a particular $http GET:
+$http.get('/status', {
+  ignoreLoadingBar: true
+});
+
+// ignore a particular $http POST.  Note: POST and GET have different
+// method signatures:
+$http.post('/save', data, {
+  ignoreLoadingBar: true
+});</pre>
+<h1>Service</h1>
+<p>Ngoài việc để cho nó chạy tự động thì các bác chỉnh tay cũng được. Inject nó vào controller set giá trị là xong.</p>
+<pre class="prettyprint">angular.module('myApp').controller('myCtrl', function (cfp.loadingBar) {
+  cfpLoadingBar.start(); // Thêm cây Loading vào page, hiện 1%
+  cfpLoadingBar.inc(); // Chay thêm random %
+  cfpLoadingBar.set(0.3); // 30% cho bố
+  cfpLoadingBar.status(); // Trả về 0.3
+  cfpLoadingBar.complete(); // Cây chạy đến 100% rồi biến mất
+});</pre>
+<h1>Kết luận</h1>
+<p>Theo mình thấy để mặc định rồi chỉnh lại màu là ngon lắm rồi <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img>. Cảm ơn các bạn đã đọc bài viết này. Nếu cần chi tiết hơn thì comment hoặc đọc document ở repo đi nhé <amp-img src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw" class="amp-wp-enforced-sizes"></amp-img></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/web-app" rel="category tag">Web App</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/angular" rel="tag">angular</a>, <a href="/tag/loading-bar" rel="tag">Loading bar</a>, <a href="/tag/youtube" rel="tag">YouTube</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/web-app/thanh-loading-o-dau-trang-nhu-youtube#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=67&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

@@ -1,0 +1,647 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Cách sài GraphQL - Góc nhìn Frontend - Blog của CuThanh</title>
+		<link rel="canonical" href="/frontend/cach-sai-graphql-goc-nhin-frontend" />
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/frontend\/cach-sai-graphql-goc-nhin-frontend","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"C\u00e1ch s\u00e0i GraphQL &#8211; G\u00f3c nh\u00ecn Frontend","datePublished":"2017-01-14T10:46:06+00:00","dateModified":"2017-01-14T10:46:06+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2017\/01\/post-1.1-2773657236.png","width":1044,"height":543}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Cách sài GraphQL &#8211; Góc nhìn Frontend</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2017-01-14T10:46:06+00:00">
+		11 tháng ago	</time>
+</div>
+	</header>
+
+	<figure class="amp-wp-article-featured-image wp-caption">
+	<amp-img width="700" height="364" src="/wp-content/uploads/2017/01/post-1.1-2773657236-1024x533.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes" alt="" srcset="/wp-content/uploads/2017/01/post-1.1-2773657236-1024x533.png 1024w, /wp-content/uploads/2017/01/post-1.1-2773657236-300x156.png 300w, /wp-content/uploads/2017/01/post-1.1-2773657236-768x399.png 768w, /wp-content/uploads/2017/01/post-1.1-2773657236.png 1044w" sizes="(min-width: 700px) 700px, 100vw"></amp-img>	</figure>
+
+	<div class="amp-wp-article-content">
+		<p>Chào các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>,</p>
+<p>Như đã nói, em sẽ tập trung vào GraphQL trong mây bài gần đây. Trong bài viết ngắn ngủi này, em muốn giới thiệu tới các bác về cách sử dụng GraphQL duới góc nhìn của một dev frontend – GraphQL sử dụng làm sao, khác khỉ gì so với thằng Restful quen thuộc <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/b5832fef30eaf55643c1756ec601702d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>? Cùng tìm hiểu nhé.</p>
+<h1>Demo – Playground</h1>
+<p>Ok bắt đầu vào câu chuyện nhé</p>
+<p>Frontend: Anh ơi, gửi em URL API đê em làm Frontend nhanh không sếp chửi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Backend: Nè chú API: <a href=":2700/graphql" target="_blank">http://cuthanh.com:2700/graphql</a> Document: <a href=":2700/graphiql" target="_blank">http://cuthanh.com:2700/graphiql</a> <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Thế là các bác mò mẫm vào Document xem nó như thế nào</p>
+<p><amp-img class="aligncenter size-large wp-image-754 amp-wp-enforced-sizes" src="/wp-content/uploads/2017/01/Screen-Shot-2017-01-13-at-11.23.32-PM-1024x474.png" alt="" width="700" height="324" srcset="/wp-content/uploads/2017/01/Screen-Shot-2017-01-13-at-11.23.32-PM-1024x474.png 1024w, /wp-content/uploads/2017/01/Screen-Shot-2017-01-13-at-11.23.32-PM-300x139.png 300w, /wp-content/uploads/2017/01/Screen-Shot-2017-01-13-at-11.23.32-PM-768x356.png 768w, /wp-content/uploads/2017/01/Screen-Shot-2017-01-13-at-11.23.32-PM.png 1600w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<p>Em đã xây dựng một GraphQL API sẵn cho các bác chơi bời. GraphQL này xây dựng để thay thế cho Restful api mà mình đã nói cách xây dựng trọng loạt bài <a href="/nodejs/xay-dung-he-thong-goi-y-phan-1" target="_blank">Xây dựng hệ thống gợi ý</a></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><a href=":2700/graphiql" target="_blank">http://cuthanh.com:2700/graphiql</a></p>
+<p>Các bác vào để xem document luôn nhé</p>
+<p>GraphQL sẽ chia thành 2 phần chính</p>
+<ol><li><strong>Query</strong> Các câu lệnh lấy dữ liệu (tương tự method GET trong RestFul API)</li>
+<li><strong>Mutation</strong> Các câu lệnh để thêm/sửa dữ liệu (tuơng tự method POST/PUT/DELETE trong RestFul API)</li>
+<li><strong>Subscription</strong> (Ơ dm thằng này không biết đếm à <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>) Thực ra cái này có chức năng <a href="/nodejs/event-emitter-x-goi-500-anh-em-tra-loi" target="_blank">kiểu như Emitter</a> như bài viết bữa trước em đã nói. Client nói với Server rằng “này khi nào có thêm thăng Xmen mới thì báo cho tao nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>“. Vậy là Client đang lắng nghe server với sự kiện <em>Thêm Xmen mới</em>, do đó, mỗi khi có Xmen mới được thêm vào thì Server sẽ gửi Data cho Client. Bá đạo chưa, Restful làm gì có chức năng như vầy đúng không các bác. Tuy nhiên chức năng này mới chỉ đang thai nghén, và chưa được hỗ trợ chính thức <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Do đó các bác ráng  đợi nhé<amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ol><h1>Query</h1>
+<p>Như trong document, query có 2 lệnh là</p>
+<ol><li><code>Xmens</code> – lấy toàn bộ danh sách các Xmen</li>
+<li><code>Xmen(UID: Int)</code> – lấy thông tin của một Xmen cụ thể</li>
+</ol><p>Ok theo ứng dụng của chúng ta, mới vào chúng ta cần danh sách Xmen để show off ra homepage. Mà việc show off thì chỉ cần Avatar đỉnh + một cái tên cool ngầu là được (Công thức tán gái trên facebook <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>)</p>
+<h2>Query đơn giản</h2>
+<p>Viết query</p>
+<pre class="prettyprint">{
+  Xmens {
+    name
+    avatar
+  }
+}</pre>
+<p>Ok, giờ ấn nút “Play” để “Chơi” thứ nó nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<pre class="prettyprint">{
+  "data": {
+    "Xmens": [
+      {
+        "name": "Wolverine",
+        "avatar": "images/wolverine.jpg"
+      },
+      {
+        "name": "Magneto",
+        "avatar": "images/magneto.jpg"
+      },
+      {
+        "name": "Mystique",
+        "avatar": "images/mystique.jpg"
+      },
+      {
+        "name": "Professor X",
+        "avatar": "images/professorx.jpg"
+      },
+      {
+        "name": "Quick Silver",
+        "avatar": "images/quicksilver.jpg"
+      }
+    ]
+  }
+}</pre>
+<p>Kiểu vậy. Má data của em các bác làm nhoặng trong đấy nên em chỉ lấy một ít thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Thấy phê chưa, query thì dễ nhìn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Result trả về thì gần như y chang query ngoài việc gắn thêm data vào <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p><amp-img class="aligncenter size-full wp-image-756 amp-wp-enforced-sizes" src="/wp-content/uploads/2017/01/15941197_1229854860415048_1940074249517835867_n.jpg" alt="" width="720" height="734" srcset="/wp-content/uploads/2017/01/15941197_1229854860415048_1940074249517835867_n.jpg 720w, /wp-content/uploads/2017/01/15941197_1229854860415048_1940074249517835867_n-294x300.jpg 294w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></p>
+<h2>Query với tham số (argument)</h2>
+<p>Ok, bây giờ giả sử User sẽ click vào một Xmen nào đó, chúng ta sẽ phải router tới trang cá nhân của user đó và đương nhiên, phải fetch data của user đó về rồi</p>
+<p>Vậy ta sẽ sử dụng thằng query thứ 2 <code>Xmen(UID: Int): Xmen</code></p>
+<p>Một lệnh Query viết ở Document sẽ ở dạng prototype như sau: <code>Tên_Query(Tên_argument1: Kiểu_argument1, Tên_argument2: Kiểu_argument2):Kiểu trả về</code></p>
+<p>Với document cho thằng <code>Xmen(UID: Int): Xmen</code> chúng ta thấy được tên query là <code>Xmen</code>, <code>Argument</code> chúng ta cần truyền vào là <code>UID</code>, ở kiểu <code>Int</code>. Thằng này sẽ trả về một kiểu gọi là kiểu <code>Xmen</code>. Còn kiểu <code>Xmen</code> như thế nào các bác ấn vào ở Document mà tự nghiền ngẫm đi nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<pre class="prettyprint">{
+  Xmen(UID:1) {
+    name
+    avatar
+    like {
+      name
+      avatar
+    }
+  }
+}</pre>
+<p>Các bác chạy thử xem Kết quả làm sao nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h2>Query trong query</h2>
+<p>Có một điểm đáng chú ý ở đây là field <code>like</code> sẽ trả về <code>array(Xmen)</code>, nghĩa là thằng <code>like</code> này lưu giữ toàn bộ thông tin những Xmen mà nhân vật Wolverine của chúng ta yêu thích. Kiểu trả về của nó sẽ y chang như kiểu mà <code>Xmen(UID: 1)</code> trả về. Mẹ thằng này nói khó hiểu vl <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, ví dụ thử coi</p>
+<pre class="prettyprint">{
+  Xmen(UID:1) {
+    name
+    avatar
+    like {
+      name
+      like {
+        name
+        avatar
+        like {
+          name
+        }
+      }
+    }
+  }
+}</pre>
+<p>Câu lệnh trên nghĩa là sao các bác.</p>
+<ul><li>Nghĩa là nó sẽ lấy thông tin <code>(name, avatar, like)</code> của Xmen có UID bằng 1 (Thằng Wolverine đấy)</li>
+<li>Tiếp theo ta sẽ lấy thông tin <code>(nam, like)</code> của tất cả những thằng Xmen được Wolverine yêu thích  <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/08c695086534a2344954042d153ad8fd.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>(VD có n thằng trả về)</li>
+<li>Tiếp nữa, chúng ta lại lấy thông tin <code>(name, avatar, like)</code> của tất cả những thằng được Xmen được Wolverine yêu thích yêu thích <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1806c3404f8f66e0435009954ee1379e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> (Vd có m thằng trả về)</li>
+<li>Cuối cúng, chúng ta lấy thông tin <code>(name)</code> của tất cả những thằng Xmen được Wolverine yêu thích yêu thích yêu thích. <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> (Vd có k thằng trả về)</li>
+<li>Done! (response) trả về gì các bác tự xem nhé. <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/47c5e4b08a47d4ad47589f9f615cea5d.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+</ul><p><amp-img class="aligncenter size-full wp-image-757 amp-wp-enforced-sizes" src="/wp-content/uploads/2017/01/15977056_2170178143207889_2856696580677427832_n.jpg" alt="" width="431" height="431" srcset="/wp-content/uploads/2017/01/15977056_2170178143207889_2856696580677427832_n.jpg 431w, /wp-content/uploads/2017/01/15977056_2170178143207889_2856696580677427832_n-150x150.jpg 150w, /wp-content/uploads/2017/01/15977056_2170178143207889_2856696580677427832_n-300x300.jpg 300w" sizes="(min-width: 431px) 431px, 100vw"></amp-img></p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><em>Haha fuck your mind =))</em></p>
+<p>Thử tượng tượng xem, nếu chúng ta dùng Rest thì phải làm sao. Chúng ta query <code>/1</code>. Đợi <code>response</code> trả về, lấy field <code>like</code> query tiếp n thằng nữa. Ứng với mỗi n ta sẽ query m lần nữa. Cuối cùng, ứng với mỗi m ta phải query k lần nữa.</p>
+<p class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628"><strong>Vậy là tổng cộng 1 + n*m*k lần phải query</strong>.</p>
+<p>Đặc biệt hơn nữa, các bác phải đợi thằng trước trả kết quả rồi mới có thể query thằng sau. Trong khi với GraphQL, fortunately, chúng ta chỉ cần query <strong>đúng 1 lần</strong>. Thêm nữa, với Restful, mỗi lần query sẽ trả về full field của một xmen <code>(_id, UID, name, avatar, date, like, _v)</code>. Với GraphQL chúng ta chỉ cần lấy field nào chúng ta cần. Ez <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Tới đây bạn đã thấy thằng GraphQL này bá đạo cỡ nào chưa <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Với ví dụ trên thôi, theo mình GraphQL đã chạy nhanh hơn Restful API mấy trăm lần rồi.</p>
+<h2>Batch Request</h2>
+<p>Chưa hết, GraphQL còn hỗ trợ <strong>Batch Request</strong> (cái này chúng bên Restful chúng ta cũng làm được nhưng mệt mỏi lắm, do đó các bác sẽ rất ít được gặp nó)</p>
+<p><strong>Batch Request</strong> là gì, nghĩa là request nhiều query cúng một lúc. Ví dụ trong ứng dụng của chúng ta, có một trang cần cả thông tin của 1 Xmen cụ thể, cần cả thông tin của danh sách Xmen nữa, giờ sao? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<pre class="prettyprint">{
+  Xmens {
+    name
+    avatar
+  }
+  Xmen(UID:1) {
+    name
+    avatar
+    like {
+      name
+    }
+  }
+}</pre>
+<h2>Aliases</h2>
+<p>Vâng, với việc hỗ trợ <strong>Batch Request</strong> luôn thì chúng ta lại nảy sinh một vài vấn đề nữa (Cái này gọi là nợ mẹ đẻ nợ con <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a729827d07c2862258711bdba931e289.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>)</p>
+<p>Nếu chúng ta cần Query lấy thông tin của Xmen có <code>UID 1</code> và Xmen có <code>UID là 2</code> thì sao</p>
+<pre class="prettyprint">{
+  Xmen(UID:1) {
+    name
+    avatar
+    like {
+      name
+    }
+  }
+  Xmen(UID:2) {
+    name
+    avatar
+    like {
+      name
+    }
+  }
+}</pre>
+<p>Các bác thử copy rồi ấn nút “Chơi” thử coi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p><amp-img class="aligncenter size-full wp-image-758 amp-wp-enforced-sizes" src="/wp-content/uploads/2017/01/16106003_536065013252262_1977917222532016662_n.jpg" alt="" width="539" height="553" srcset="/wp-content/uploads/2017/01/16106003_536065013252262_1977917222532016662_n.jpg 539w, /wp-content/uploads/2017/01/16106003_536065013252262_1977917222532016662_n-292x300.jpg 292w" sizes="(min-width: 539px) 539px, 100vw"></amp-img></p>
+<p>Lỗi đúng không. Hehe <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Vì khi trả data về, server tương đương lắp data vào những field chúng ta query. Nhưng trong câu Query trên, có 2 field Xmen ở cùng cấp nên nó đị conflict (mâu thuẫn với nhau), làm sao có 2 field trong cùng một object (Javascript) được, đúng không các bác <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Dù sao, các bác cũng query câu trên thử đi, server sẽ ném vào mặt các bác câu lỗi <code>Fields \"Xmen\" conflict because they have differing arguments.</code></p>
+<p><code>Use different aliases on the fields to fetch both if this was intentional.</code></p>
+<p>Nghĩa là chúng ta nên đặt tên khác/bí danh (<strong>aliases</strong>) để giải quyết vấn đề. Đặt <strong>aliases</strong> làm sao? Xem bên dưới</p>
+<pre class="prettyprint">{
+  ThangA: Xmen(UID:1) {
+    name
+    avatar
+    like {
+      name
+    }
+  }
+  ThangB: Xmen(UID:2) {
+    name
+    avatar
+    like {
+      name
+    }
+  }
+}</pre>
+<p>Đấy, vậy là lại có Response ngon lành <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, chả lỗi lầm khỉ gì cả.</p>
+<h2>Nâng cao – Operation Name, Directive, Variable</h2>
+<p>Ok, giờ nâng cao thêm xíu nữa nhể.</p>
+<pre class="prettyprint">query getXmen($input:Int!, $getLike: Boolean!) {
+  Xmen(UID:$input) {
+    name
+    like @include(if: $getLike) {
+      UID
+      name
+      avatar
+      date
+    }
+  }
+}</pre>
+<pre class="prettyprint">{
+  "input": 1,
+  "getLike": false
+}</pre>
+<p>Đầu tiên, ta thấy được dòng <code>query getXmen($input:Int!, $getLike: Boolean!)</code> khá lạ huh <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>? Cái này là định nghĩa một function các mẹ ạ (hay đại loại kiểu vậy), thằng GraphQL gọi nó là Operation, em thích gọi là Function <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4496791ae48b92a081a170ec56c63f89.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Okey, function thì phải có input – các argument. Và argument bắt đầu bằng kí hiệu $ (giống định nghĩa variable trong PHP nhỉ).</p>
+<p>Mục đính viết function vào đấy làm gì? <strong>Reusable</strong>. Function giúp chúng ta chạy một đống câu lệnh bên trong mà mỗi lần sử dụng không phải viết lại từng câu lệnh và đối với GraphQL cùng để là dễ Debug nữa (Document của GraphQL viết vậy, em vẫn méo thấy dễ chỗ nào cả vì cũng chưa gặp Bug). <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/071f21ef208c6035f370d855d4767207.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Ta định nghĩa Query ở trên, giá trị variable ở một nơi khác. Nó giống như định nghĩa một function, còn mỗi khi gọi nó ta lại pass argument khác nhau tuỳ trường hợp vậy. Giúp code của các bác dễ quản lý hơn.</p>
+<p>Điều đặc biệt thứ 2 là đoạn <code>like @include(if: $getLike)</code> Đoạn này có nghĩa là chỉ Get field <code>like</code> nếu giá trị <code>$getLike</code> là <code>true</code>. Khá hay phải không? Và ngược lại với @<code>include</code> chúng ta có <code>@skip(if: $variable_in_bool_type)</code>, thằng <code>@skip</code> này hoạt động ngược lại với thằng <code>@include</code>. Nói chung chỉ cần biết một thằng thôi là đủ rồi, nhẹ não <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p>Ngoài các kiểu Query mà mình đã nói bên trên, còn một số định nghĩa khác về <strong>Fragments, Meta Type</strong> nữa. Mình sẽ đề cập vào lần sau tại vì 2 thằng này chỉ thực sự phát huy công dụng tốt khi chúng ta làm việc với React/ReactNative và định nghĩa Type trong GraphQL phức tạp thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p>Tạm thời vậy đã.</p>
+<h1>Mutation</h1>
+<p>Một ứng dụng, trong thực tế, sẽ không chỉ có việc Fetch data từ server về. Nó cần phải có những thay đổi, thêm bớt và gửi lên server nữa. Để làm việc này, GraphQL tách ra thành nhánh <strong>Mutation</strong>.</p>
+<p>Có một điều quan trọng em phải nhắc các bác trước. <strong>Mutation luôn luôn phải đặt trong một function.</strong></p>
+<pre class="prettyprint">mutation addAXmen($input: XmenInput!) {
+  addXmen(input:$input) {
+    name
+    avatar
+  }
+}</pre>
+<pre class="prettyprint">{
+  "input": {
+    "name": "Cu's Thanh's",
+    "avatar": "https://graph.facebook.com/100003217152910/picture?type=large"
+  }
+}</pre>
+<p>Cách để thêm một <strong>Xmen Cu’s Thanh’s</strong> vào data của chúng ta. <strong>Các bác chú ý một điều nữa là nếu mutation nào chúng ta sử dụng mà cần argument not null (Có dấu <code>!</code> ở đằng sau đấy), thì khi định nghĩa function, chúng ta cũng phải cần thêm dấu <code>!</code> vào định nghĩa kiểu của variable nhé</strong>. Một dấu <code>!</code> thôi mà cũng em điên đầu mấy tiếng đấy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Một mutation thì có thể trả về kết quả. Còn kết quả kiểu gì thì các bác tự đọc document đi nhá. Của em là kiểu Xmen, do đó, chúng ta cũng thể nói với GraphQL là, “<em>bố chỉ cần những field x, field y thôi nhé con trai… <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></em>”</p>
+<h1>Subcription</h1>
+<p>Phần này em chưa code, và GraphQL cũng chưa có phương án giải quyết chính thức cho thằng này <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Vì thế các bác đợi bài sau nhé.</p>
+<h1>Kết bài</h1>
+<p>Qua đây, dưới góc nhìn của Frontend thì thấy sao các bác. Đối với em thì thấy sướng quá, query cực kì thích, trực quan. Lại còn không phải xây dựng một đống query lằng nhằng, thằng này đợi thằng kia nữa chứ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Document thì khá là phê (em đánh giá là 8/10).</p>
+<p>Về phần Mutation thì đúng thực là hơi nhằng hơn so với Restful một xíu, nhưng không sao, vẫn ngon lành ha <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p>Từ đấy, thấy rằng GraphQL thực sự là một bước tiến so với Restful. Nó cực kì tiết kiệm thời gian cho frontend, và cả tài nguyên cho User nữa (không phải vêu mồm chờ response <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/f7b14908d90b912b3fe5d7fa726df847.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>).</p>
+<p><amp-img class="aligncenter size-full wp-image-759 amp-wp-enforced-sizes" src="/wp-content/uploads/2017/01/15965546_536065016585595_2682968590436066881_n.jpg" alt="" width="538" height="546" srcset="/wp-content/uploads/2017/01/15965546_536065016585595_2682968590436066881_n.jpg 538w, /wp-content/uploads/2017/01/15965546_536065016585595_2682968590436066881_n-296x300.jpg 296w" sizes="(min-width: 538px) 538px, 100vw"></amp-img></p>
+<p>Còn các bác, các bác thấy GraphQL có thực sự nuột như em nói không, còn chỗ nào sida? Comment bên dưới nhé!</p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/frontend" rel="category tag">Frontend</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/build" rel="tag">build</a>, <a href="/tag/frontend" rel="tag">frontend</a>, <a href="/tag/graphql" rel="tag">GraphQL</a>, <a href="/tag/mutation" rel="tag">Mutation</a>, <a href="/tag/query" rel="tag">Query</a>, <a href="/tag/subcription" rel="tag">Subcription</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/frontend/cach-sai-graphql-goc-nhin-frontend#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=753&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>NodeJS &#8211; Blog của CuThanh</title>
+	<atom:link href="/category/nodejs/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>NodeJS &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>NodeJS – Hiểu Asynchronous Event-Driven Nonblocking I/O</title>
+		<link>/nodejs/nodejs-hieu-asynchronous-event-driven-nonblocking-io</link>
+		<comments>/nodejs/nodejs-hieu-asynchronous-event-driven-nonblocking-io#respond</comments>
+		<pubDate>Wed, 09 Nov 2016 10:56:06 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[async]]></category>
+		<category><![CDATA[blocking]]></category>
+		<category><![CDATA[event-drive]]></category>
+		<category><![CDATA[io]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[Nodejs]]></category>
+		<category><![CDATA[nongblocking]]></category>
+
+		<guid isPermaLink="false">/?p=667</guid>
+		<description><![CDATA[<p>Một bài viết rất dài mình xin đuợc phép lấy nguồn từ http://sotatek.com/nodejs-hieu-asynchronous-event-drivent-nonblocking-io/ . Cam đoan với các bác đây là bài viết cực kì chất lượng giúp hiểu thêm/ôn lại kiến thức về hệ điều hành cũng như hiểu rõ hơn về NodeJS Ta thường được nghe nói NodeJS là một JavaScript runtime built trên ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/nodejs-hieu-asynchronous-event-driven-nonblocking-io">NodeJS – Hiểu Asynchronous Event-Driven Nonblocking I/O</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/nodejs-hieu-asynchronous-event-driven-nonblocking-io/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">667</post-id>	</item>
+		<item>
+		<title>Event Emitter &#8211; X gọi, 500 anh em trả lời</title>
+		<link>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi</link>
+		<comments>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi#comments</comments>
+		<pubDate>Tue, 01 Nov 2016 10:22:47 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[Event Emitter]]></category>
+		<category><![CDATA[gọi trả lời]]></category>
+		<category><![CDATA[hallowean]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[lộn cái bàn]]></category>
+
+		<guid isPermaLink="false">/?p=651</guid>
+		<description><![CDATA[<p>Chào các bác ,lâu rồi em không viết bài gì cả, bận quá  Hôm nay mình tìm hiểu về Javascript tí nhề. Bài này mình sẽ nói về Event Emitter. Vậy Event Emitter là gì? Event Emitter hoạt động kiểu giống như câu mình ghi ở &#8220;Tít&#8221; &#8211; &#8220;X gọi, 500 anh em trả lời&#8220;. Tuởng ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/event-emitter-x-goi-500-anh-em-tra-loi">Event Emitter &#8211; X gọi, 500 anh em trả lời</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/event-emitter-x-goi-500-anh-em-tra-loi/feed</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">651</post-id>	</item>
+		<item>
+		<title>Hello Yarn and good bye NPM</title>
+		<link>/nodejs/hello-yarn-good-bye-npm</link>
+		<comments>/nodejs/hello-yarn-good-bye-npm#respond</comments>
+		<pubDate>Thu, 13 Oct 2016 04:29:22 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[dev]]></category>
+		<category><![CDATA[facebook]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[package manager]]></category>
+		<category><![CDATA[thay đổi]]></category>
+		<category><![CDATA[yarn]]></category>
+
+		<guid isPermaLink="false">/?p=609</guid>
+		<description><![CDATA[<p>Hello world  Bài viết này mình sẽ giới thiệu một package manager mới thay thế cho NPM được cài mặc định với Nodejs. Nếu là một nodejs developer hẳn rằng các bác sẽ thấy nó thực sự mạnh ở&#8230; NPM. Vì sao? vì đa số cái khỉ gì cũng có trên đó cả, bạn cần ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/hello-yarn-good-bye-npm">Hello Yarn and good bye NPM</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/hello-yarn-good-bye-npm/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">609</post-id>	</item>
+		<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 4)</title>
+		<link>/nodejs/xay-dung-thong-goi-y-phan-4</link>
+		<comments>/nodejs/xay-dung-thong-goi-y-phan-4#respond</comments>
+		<pubDate>Mon, 15 Aug 2016 02:17:47 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[AngularJS]]></category>
+		<category><![CDATA[api]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[Web app]]></category>
+
+		<guid isPermaLink="false">/?p=487</guid>
+		<description><![CDATA[<p>Hế looooooo. Bài này chúng ta cùng nhau xây dựng client nhé Phần 1: /nodejs/xay-dung-he-thong-goi-y-phan-1 Phần 2: /nodejs/xay-dung-thong-goi-y-phan-2 Phần 3: /nodejs/xay-dung-thong-goi-y-phan-3 Demo http://demo.cuthanh.com/professorx-client/ Chuẩn bị Chúng ta sẽ xây dựng web app sử dụng framework Angular nhé. Thực tế là có api thì mình có thể áp dụng cho cái gì cũng được. Viết app cho Windows ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/xay-dung-thong-goi-y-phan-4">Xây dựng hệ thống “Gợi ý…” (Phần 4)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/xay-dung-thong-goi-y-phan-4/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">487</post-id>	</item>
+		<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 3)</title>
+		<link>/nodejs/xay-dung-thong-goi-y-phan-3</link>
+		<comments>/nodejs/xay-dung-thong-goi-y-phan-3#respond</comments>
+		<pubDate>Fri, 12 Aug 2016 01:19:21 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[phần 3]]></category>
+		<category><![CDATA[thuật toán]]></category>
+		<category><![CDATA[xây dựng]]></category>
+
+		<guid isPermaLink="false">/?p=459</guid>
+		<description><![CDATA[<p>Chào các mẹ , tiếp nối bài hôm trước. Hôm nay chúng ta sẽ viết server api nhé. Phần 1: /nodejs/xay-dung-he-thong-goi-y-phan-1 Phần 2: /nodejs/xay-dung-thong-goi-y-phan-2 Demo http://demo.cuthanh.com/professorx-client/ Tổng thể Các bước để em phát triển bất kì một ứng dụng gì Liệt kê những yêu cầu của bài toán Vẽ ra sơ đồ theo hành vi của người ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/xay-dung-thong-goi-y-phan-3">Xây dựng hệ thống “Gợi ý…” (Phần 3)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/xay-dung-thong-goi-y-phan-3/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">459</post-id>	</item>
+		<item>
+		<title>Xây dựng hệ thống “Gợi ý…” (Phần 2)</title>
+		<link>/nodejs/xay-dung-thong-goi-y-phan-2</link>
+		<comments>/nodejs/xay-dung-thong-goi-y-phan-2#comments</comments>
+		<pubDate>Sun, 07 Aug 2016 04:29:36 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[công thức]]></category>
+		<category><![CDATA[gợi ý]]></category>
+		<category><![CDATA[hệ thống]]></category>
+		<category><![CDATA[thuật toán]]></category>
+		<category><![CDATA[xây dựng]]></category>
+
+		<guid isPermaLink="false">/?p=435</guid>
+		<description><![CDATA[<p>Tiếp tục loạt bài nào&#8230; Phần 1: /nodejs/xay-dung-he-thong-goi-y-phan-1 Demo http://demo.cuthanh.com/professorx-client/ Ý tưởng Đâu tiên phải xem ý tưởng mình gợi ý phòng cho giao sư như thế nào đã. Với hệ thống gợi ý như thế này, thì đâu tiên phải xem những thằng nào giống giống nhau đã. Ví dụ Giáo sư X thích Mystique ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/xay-dung-thong-goi-y-phan-2">Xây dựng hệ thống “Gợi ý…” (Phần 2)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/xay-dung-thong-goi-y-phan-2/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">435</post-id>	</item>
+		<item>
+		<title>Xây dựng hệ thống &#8220;Gợi ý&#8230;&#8221; (Phần 1)</title>
+		<link>/nodejs/xay-dung-he-thong-goi-y-phan-1</link>
+		<comments>/nodejs/xay-dung-he-thong-goi-y-phan-1#respond</comments>
+		<pubDate>Sat, 06 Aug 2016 04:01:20 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+
+		<guid isPermaLink="false">/?p=421</guid>
+		<description><![CDATA[<p>Chào các bác. Hôm nay mình sẽ việt một bài mang tính chuyên môn một tí nha, các bác ủng hộ  Demo http://demo.cuthanh.com/professorx-client/ Giới thiệu Hệ thống, hay là chức năng gợi ý &#8211; mình cũng chả biết nói làm sao nữa. Đại loại là như vầy nè. Các bác sử dụng Facebook nó sẽ ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/xay-dung-he-thong-goi-y-phan-1">Xây dựng hệ thống &#8220;Gợi ý&#8230;&#8221; (Phần 1)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/xay-dung-he-thong-goi-y-phan-1/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">421</post-id>	</item>
+		<item>
+		<title>Express và Sails? Cái nào tốt hơn (Phần 2)</title>
+		<link>/nodejs/express-va-sails-cai-nao-tot-hon-phan-2</link>
+		<comments>/nodejs/express-va-sails-cai-nao-tot-hon-phan-2#respond</comments>
+		<pubDate>Wed, 20 Jul 2016 03:10:45 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[express]]></category>
+		<category><![CDATA[sails]]></category>
+		<category><![CDATA[socket.io]]></category>
+		<category><![CDATA[webapp]]></category>
+
+		<guid isPermaLink="false">/?p=151</guid>
+		<description><![CDATA[<p>Phần 1: Express và sails? Cài nào tốt hơn (Phần 1) Chào mừng các bạn tới với phần 2. Trong phần này mình sẽ so sánh về xây dựng một Web App chung trong một source code. Webapp chung trong một bộ source code Trong bài viết hôm trước, mình đã chứng minh cho các bác ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-2">Express và Sails? Cái nào tốt hơn (Phần 2)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/express-va-sails-cai-nao-tot-hon-phan-2/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">151</post-id>	</item>
+		<item>
+		<title>Express và Sails? Cái nào tốt hơn (Phần 1)</title>
+		<link>/nodejs/express-va-sails-cai-nao-tot-hon-phan-1</link>
+		<comments>/nodejs/express-va-sails-cai-nao-tot-hon-phan-1#comments</comments>
+		<pubDate>Mon, 18 Jul 2016 03:19:25 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[NodeJS]]></category>
+		<category><![CDATA[express]]></category>
+		<category><![CDATA[Nodejs]]></category>
+		<category><![CDATA[sails]]></category>
+		<category><![CDATA[so sánh]]></category>
+
+		<guid isPermaLink="false">/?p=80</guid>
+		<description><![CDATA[<p>Xin chào các bạn , hôm nay mình sẽ giới thiệu đến các bạn 2 framework khá phố biến của Nodejs là Express và Sails. Thằng nào ngon hơn , nên sài thằng nào bây giờ? Express Thằng này thì quá kinh điển rồi, nếu đã tìm hiểu đến Nodejs hẳn các bác cũng đã từng ...</p>
+<p>The post <a rel="nofollow" href="/nodejs/express-va-sails-cai-nao-tot-hon-phan-1">Express và Sails? Cái nào tốt hơn (Phần 1)</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/nodejs/express-va-sails-cai-nao-tot-hon-phan-1/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">80</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,501 @@
+<!doctype html>
+<html amp lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>Giới thiệu về GraphQL - Blog của CuThanh</title>
+		<link rel="canonical" href="/server/gioi-thieu-ve-graphql" />
+			<script custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js" async></script>
+		<script src="https://cdn.ampproject.org/v0.js" async></script>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":"http:\/\/cuthanh.com\/server\/gioi-thieu-ve-graphql","publisher":{"@type":"Organization","name":"Blog c\u1ee7a CuThanh","logo":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2016\/07\/cropped-logo-icon-lg-32x32.png","height":32,"width":32}},"headline":"Gi\u1edbi thi\u1ec7u v\u1ec1 GraphQL","datePublished":"2017-01-06T12:47:55+00:00","dateModified":"2017-01-11T14:10:13+00:00","author":{"@type":"Person","name":"Minh Th\u00e0nh"},"image":{"@type":"ImageObject","url":"http:\/\/cuthanh.com\/wp-content\/uploads\/2017\/01\/Screen-Shot-2017-01-06-at-12.29.46-PM.png","width":1088,"height":373}}</script>
+		<style amp-custom>
+		/* Generic WP styling */
+
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.amp-wp-enforced-sizes {
+	/** Our sizes fallback is 100vw, and we have a padding on the container; the max-width here prevents the element from overflowing. **/
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.amp-wp-unknown-size img {
+	/** Worst case scenario when we can't figure out dimensions for an image. **/
+	/** Force the image into a box of fixed dimensions and use object-fit to scale. **/
+	object-fit: contain;
+}
+
+/* Template Styles */
+
+.amp-wp-content,
+.amp-wp-title-bar div {
+		margin: 0 auto;
+	max-width: 700px;
+	}
+
+html {
+	background: #0a89c0;
+}
+
+body {
+	background: #fff;
+	color: #353535;
+	font-family: 'Merriweather', 'Times New Roman', Times, Serif;
+	font-weight: 300;
+	line-height: 1.75em;
+}
+
+p,
+ol,
+ul,
+figure {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+a,
+a:visited {
+	color: #0a89c0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: #353535;
+}
+
+/* Quotes */
+
+blockquote {
+	color: #353535;
+	background: rgba(127,127,127,.125);
+	border-left: 2px solid #0a89c0;
+	margin: 8px 0 24px 0;
+	padding: 16px;
+}
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* UI Fonts */
+
+.amp-wp-meta,
+.amp-wp-header div,
+.amp-wp-title,
+.wp-caption-text,
+.amp-wp-tax-category,
+.amp-wp-tax-tag,
+.amp-wp-comments-link,
+.amp-wp-footer p,
+.back-to-top {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
+
+/* Header */
+
+.amp-wp-header {
+	background-color: #0a89c0;
+}
+
+.amp-wp-header div {
+	color: #fff;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: .875em 16px;
+	position: relative;
+}
+
+.amp-wp-header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Site Icon */
+
+.amp-wp-header .amp-wp-site-icon {
+	/** site icon is 32px **/
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	right: 18px;
+	top: 10px;
+}
+
+/* Article */
+
+.amp-wp-article {
+	color: #353535;
+	font-weight: 400;
+	margin: 1.5em auto;
+	max-width: 840px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* Article Header */
+
+.amp-wp-article-header {
+	align-items: center;
+	align-content: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 1.5em 16px 1.5em;
+}
+
+.amp-wp-title {
+	color: #353535;
+	display: block;
+	flex: 1 0 100%;
+	font-weight: 900;
+	margin: 0 0 .625em;
+	width: 100%;
+}
+
+/* Article Meta */
+
+.amp-wp-meta {
+	color: #696969;
+	display: inline-block;
+	flex: 2 1 50%;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+.amp-wp-article-header .amp-wp-meta:last-of-type {
+	text-align: right;
+}
+
+.amp-wp-article-header .amp-wp-meta:first-of-type {
+	text-align: left;
+}
+
+.amp-wp-byline amp-img,
+.amp-wp-byline .amp-wp-author {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.amp-wp-byline amp-img {
+	border: 1px solid #0a89c0;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 6px;
+}
+
+.amp-wp-posted-on {
+	text-align: right;
+}
+
+/* Featured image */
+
+.amp-wp-article-featured-image {
+	margin: 0 0 1em;
+}
+.amp-wp-article-featured-image amp-img {
+	margin: 0 auto;
+}
+.amp-wp-article-featured-image.wp-caption .wp-caption-text {
+	margin: 0 18px;
+}
+
+/* Article Content */
+
+.amp-wp-article-content {
+	margin: 0 16px;
+}
+
+.amp-wp-article-content ul,
+.amp-wp-article-content ol {
+	margin-left: 1em;
+}
+
+.amp-wp-article-content amp-img {
+	margin: 0 auto;
+}
+
+.amp-wp-article-content amp-img.alignright {
+	margin: 0 0 1em 16px;
+}
+
+.amp-wp-article-content amp-img.alignleft {
+	margin: 0 16px 1em 0;
+}
+
+/* Captions */
+
+.wp-caption {
+	padding: 0;
+}
+
+.wp-caption.alignleft {
+	margin-right: 16px;
+}
+
+.wp-caption.alignright {
+	margin-left: 16px;
+}
+
+.wp-caption .wp-caption-text {
+	border-bottom: 1px solid #c2c2c2;
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: .66em 10px .75em;
+}
+
+/* AMP Media */
+
+amp-carousel {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+amp-iframe,
+amp-youtube,
+amp-instagram,
+amp-vine {
+	background: #c2c2c2;
+	margin: 0 -16px 1.5em;
+}
+
+.amp-wp-article-content amp-carousel amp-img {
+	border: none;
+}
+
+amp-carousel > amp-img > img {
+	object-fit: contain;
+}
+
+.amp-wp-iframe-placeholder {
+	background: #c2c2c2 url( /wp-content/plugins/amp/assets/images/placeholder-icon.png) no-repeat center 40%;
+	background-size: 48px 48px;
+	min-height: 48px;
+}
+
+/* Article Footer Meta */
+
+.amp-wp-article-footer .amp-wp-meta {
+	display: block;
+}
+
+.amp-wp-tax-category,
+.amp-wp-tax-tag {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	margin: 1.5em 16px;
+}
+
+.amp-wp-comments-link {
+	color: #696969;
+	font-size: .875em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 2.25em 0 1.5em;
+}
+
+.amp-wp-comments-link a {
+	border-style: solid;
+	border-color: #c2c2c2;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	background-color: transparent;
+	color: #0a89c0;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 11px 16px;
+	text-decoration: none;
+	width: 50%;
+	-webkit-transition: background-color 0.2s ease;
+			transition: background-color 0.2s ease;
+}
+
+/* AMP Footer */
+
+.amp-wp-footer {
+	border-top: 1px solid #c2c2c2;
+	margin: calc(1.5em - 1px) 0 0;
+}
+
+.amp-wp-footer div {
+	margin: 0 auto;
+	max-width: calc(840px - 32px);
+	padding: 1.25em 16px 1.25em;
+	position: relative;
+}
+
+.amp-wp-footer h2 {
+	font-size: 1em;
+	line-height: 1.375em;
+	margin: 0 0 .5em;
+}
+
+.amp-wp-footer p {
+	color: #696969;
+	font-size: .8em;
+	line-height: 1.5em;
+	margin: 0 85px 0 0;
+}
+
+.amp-wp-footer a {
+	text-decoration: none;
+}
+
+.back-to-top {
+	bottom: 1.275em;
+	font-size: .8em;
+	font-weight: 600;
+	line-height: 2em;
+	position: absolute;
+	right: 16px;
+}
+		/* Inline styles */
+.amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628{text-align:center;}	</style>
+</head>
+
+<body class="">
+
+<header id="#top" class="amp-wp-header">
+	<div>
+		<a href="/">
+							<amp-img src="/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png" width="32" height="32" class="amp-wp-site-icon"></amp-img>
+						Blog của CuThanh		</a>
+	</div>
+</header>
+
+<article class="amp-wp-article">
+
+	<header class="amp-wp-article-header">
+		<h1 class="amp-wp-title">Giới thiệu về GraphQL</h1>
+				<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="http://0.gravatar.com/avatar/92d8de5bc1aae1250a02b1f37b92751b?s=24&#038;d=mm&#038;r=g" width="24" height="24" layout="fixed"></amp-img>
+				<span class="amp-wp-author author vcard">Minh Thành</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2017-01-06T12:47:55+00:00">
+		11 tháng ago	</time>
+</div>
+	</header>
+
+	
+	<div class="amp-wp-article-content">
+		<p>Hế nhô các đồng dâm <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>,</p>
+<p>Kì này đang làm GraphQL thấy nó cũng khá thú vị nên mình viết bài này để giới thiệu GraphQL tới các bác, một phần cũng để minh chứng rằng Graph đang trên đà phát triển của nó mà <a href="/technology/graph-em-la-ai">bài viết trước</a> mình có nói tới.</p>
+<h1>GraphQL là gì</h1>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix"><strong>A query language for your API</strong>
+<p>GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools. <span class="su-quote-cite"><a href="http://graphql.org/" target="_blank">Homepage http://graphql.org</a></span></p></div></div>
+<p><a href="http://graphql.org/"><amp-img class="aligncenter size-large wp-image-739 amp-wp-enforced-sizes" src="/wp-content/uploads/2017/01/Screen-Shot-2017-01-06-at-12.29.46-PM-1024x351.png" alt="" width="700" height="240" srcset="/wp-content/uploads/2017/01/Screen-Shot-2017-01-06-at-12.29.46-PM-1024x351.png 1024w, /wp-content/uploads/2017/01/Screen-Shot-2017-01-06-at-12.29.46-PM-300x103.png 300w, /wp-content/uploads/2017/01/Screen-Shot-2017-01-06-at-12.29.46-PM-768x263.png 768w, /wp-content/uploads/2017/01/Screen-Shot-2017-01-06-at-12.29.46-PM.png 1088w" sizes="(min-width: 700px) 700px, 100vw"></amp-img></a></p>
+<p>Theo em hiểu là “Một chuẩn chung (ngôn ngữ) chung để xây dựng API cho ứng dụng của các bác” <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Để tương tác với API thì có nhiều chuẩn khác nhau, và phổ biến nhất hiện nay là Restful.</p>
+<p>Vd một API Restful mà mình đã xây dựng: <a href="/nodejs/xay-dung-thong-goi-y-phan-3">Xây dựng hệ thống “Gợi ý…” (Phần 3)</a></p>
+<p>Chi tiết</p>
+<div class="su-table">
+<table><tbody><tr><td>Mục đích</td>
+<td>Cách hiện thực</td>
+</tr><tr><td>Lấy danh sách Xmen</td>
+<td><strong>GET /xmen</strong></td>
+</tr><tr><td>Thêm Xmen</td>
+<td><strong>POST /xmen</strong></td>
+</tr><tr><td>Xem thông tin 1 Xmen cụ thể</td>
+<td><strong>GET /:UID</strong></td>
+</tr><tr><td>“Thả tim”</td>
+<td><strong>POST /:UID-cua-Xmen/Like</strong> và trong body.request phải có UID của user được thả tim</td>
+</tr></tbody></table></div>
+<p>Qua bảng trên thì các bác cũng thấy là nếu xây dựng một ứng dụng thông qua Restful API ở trên thì phải <code>request</code> khá là mệt mỏi nhỉ <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<ol><li>Đầu tiền là Lấy danh sách Xmen</li>
+<li>Nếu User xem thông tin 1 Xmen thì lại request một lần nữa để xem thông tin chi tiết của 1 thằng đấy</li>
+<li>Okey, nếu tiếp theo muốn “thả tim” ai đó thì phải request đến server để “thả tim”</li>
+</ol><p>Có một điểm hạn chế cực kì to của Restful đó là mỗi <code>request</code> nó sẽ trả về <code>response</code> cứng. VD bác request <code>GET /:UID</code> thì nó luôn luôn trả về <code>response</code> dạng</p>
+<pre class="prettyprint">{
+  "_id":"57dff5a80eae7636015f3387",
+  "UID":7,"name":"Magneto",
+  "avatar":"images/magneto.jpg",
+  "__v":17,
+  "date":"2016-09-19T14:26:48.069Z",
+  "like":[9,4,15,8,24,10,1]
+}</pre>
+<p>Như các bác thấy bên trên, nó luôn trả về những field cứng như <code>_id, UID, avatar, __v, data, like</code> . Ủa trong đấy có mấy field mình đâu sài bao giờ đâu <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a729827d07c2862258711bdba931e289.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> (như <code>_id</code>, <code>_v</code>) thì lấy nó về làm gì, nó làm nặng <code>response</code> đồng nghĩa với tốn thời gian của người dùng, tốn tài nguyên server <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6f80ebee4d029216826f7c9af17e0a24.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Thực ra 2 thằng đấy chả bao giờ dùng nên đáng lẽ thằng nào làm ra cái API này phải bỏ đi chứ nhỉ? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/4e8a1167e4ebd4920705549439e77db2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> Tại lúc làm em lười bỏ đi đấy <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img><amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Ngoài ra ta xem field <code>date</code>, thằng này thì chắc cũng sẽ có ngày hữu ích nhưng mà trong <a href="/nodejs/xay-dung-he-thong-goi-y-phan-1">app gợi ý</a> của em thì không cần tới nhỉ? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<p>Vấn đề nảy xinh ra khi: Có những yêu cầu cần field <code>date</code> và những yêu cầu không cần field <code>date</code> thì sao? Viết ra thành 2 route thì sẽ gây mệt mỏi và ức chế cao độ cho dev <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/e773a3d2ab3e30301da6f0ecd8153a76.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Để chung một cái và trả về tất cả thì sẽ gây lãng phí tài nguyên cho cả server và client, tốn tiền quá sếp chửi thì sao? <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/ab0f23d06fc786b40bb95a014604743f.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h2>GraphQL sinh ra và định nghĩa lại cách lấy thông tin từ Server về</h2>
+<p>GraphQL xây dựng một ngôn ngữ chung để giao tiếp với API mà nó sẽ gửi lên những field mà Client muốn và Server sẽ xem qua và trả lại chính xác những gì Client yêu cầu.</p>
+<p>Như ví dụ trên, nếu sài GraphQL các bác chỉ cần request</p>
+<pre class="prettyprint">{
+  xmen(uid: 1) {
+    UID
+    name
+    avatar
+    like
+  }
+}</pre>
+<p>Đấy, mình bảo với Server rằng “<em>Này mày lấy thông tin <code>UID, name, avatar, like</code> của thằng Xmen số báo danh 1 cho tao nha <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></em>” sau đó server sẽ trả lời lại đúng những thông tin cần thiết.</p>
+<p><amp-anim class="aligncenter size-full wp-image-745 amp-wp-enforced-sizes" src="http://cuthanh.com/wp-content/uploads/2017/01/GraphQL1-1.gif" alt="" width="640" height="234" sizes="(min-width: 640px) 640px, 100vw"></amp-anim></p>
+<p>Ủa, bên Restful cũng làm được vậy kìa như thằng Facebook</p>
+<pre class="prettyprint">https://graph.facebook.com/v2.8/me?fields=id,name,about&amp;access_token=696969696</pre>
+<p>Thằng API này là sẽ trả về thông tin của User mà có <code>token 696969696</code> đang <code>request</code>. Thường thì sẽ trả về một đống field về thông tin của user đấy, nhưng chúng ta bảo với nó rằng “bố chỉ cần field <code>id, name, about</code> thôi nghe con <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/65f51c6b41112ac007ace7cf9f66e15e.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>” thế là thằng Facebook phải đọc request và trả về field <code>id</code>, <code>name</code> và <code>about</code> thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/6ef225eb223b6df4166606abf92bde83.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+<h2 class="amp-wp-inline-2f0158eb062d1ac553a7edcb8a744628">Định mệnh GraphQL lừa đảo à !!! Thậm chỉ Request mà nó gửi lên server cũng nặng hơn.</h2>
+<div class="su-quote su-quote-style-default su-quote-has-cite"><div class="su-quote-inner su-clearfix">Thực ra trong việc xây dựng một ứng dụng người ta phải cân nhắc giữa hai bên của cán cân. Một bên là độ tiện lợi cho dev, một bên là hiệu năng cho người dùng. Dễ dev thì chạy chậm, khó dev thì chạy nhanh vậy thôi <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Điều này tồn tại từ rất lâu rồi và vấn tiếp tục tồn tại. Các bác thử so sánh bất kì ngôn ngữ bậc cao nào như Java, C# so với ứng dụng viết bằng C, Assembly xem <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/111e40af5c869c33eec3a6a746831cbc.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. <span class="su-quote-cite">CuThanh</span></div></div>
+<h1>Vậy tại sao lại GraphQL</h1>
+<p>Trở lại với GraphQL, việc giảm nhẹ tài nguyên cho hệ thống là dối trá <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/080861c0c12b3c87e3cb77a2d91754b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> (tạm thời là vậy), nó có thế ưu điểm hơn so với Restful trong một số trường hợp, số còn lại thì không <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/78903d5af243d9b72ea6bfe3446fcee9.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Tuy nhiên, tới với GraphQL bạn sẽ nhận được một cấu trúc giao tiếp với API trong sáng hơn, ngôn tình hơn <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>. Hơn thế nữa, nó còn có hơi hướng OOP, Graph, miêu tả các đối tượng dữ liệu như những thức thể sống chứ không giống kiểu như lấy từ table xong quăng thẳng vào mặt Client như Restful đang làm <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/299e9352fa1be8323aba0ef9c0bdfab5.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>.</p>
+<p>Chính việc này khiến cho GraphQL kết hợp cực kì, cực kì tốt với ứng dụng phía Client.</p>
+<ul><li>Nó hỗ trợ cho bên frontend biết rằng trong <code>response</code> có nhưng field gì để mà còn lọc ra.</li>
+<li>Hỗ trợ vừa code vừa viết document (việc này khá mệt mỏi khi sử dụng Restful). Việc này đồng nghĩa với việc thằng backend chỉ cần viết code xong quăng thằng cái url GraphQL vào mặt thằng frontend <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/d3499e4f2e48782da8f765fb4ad538c2.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img> mà không cần phải trao đổi, hợp tác lằng nhằng nữa (Nếu frontend là nữ thì các bác đừng nên viết document nha <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/9ea612b30dc12f06939a01c96f151dc3.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>) .</li>
+<li>Ngoài ra với ứng dụng ngày càng phức tạp, truy vấn theo nhiều lớp thì GraphQL sẽ thể hiện rõ ràng hơn ưu điểm của mình qua phương pháp duyệt cây. Mỗi node chỉ cần duyệt qua một lần là có thể sử dụng ở mọi nơi rồi (Chi tiết em sẽ nói ở bài viết sau khi hiện thực GraphQL kết hợp với Frontend)</li>
+<li>Và nhiều nhiều nữa mà em chưa nghĩ ra…<amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/1a5e76df614241c5f0257f9bb3d73b19.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></li>
+<li>Chi tiết hơn các bác xem tại <a href="https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html" target="_blank">https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html</a></li>
+</ul><p>Nói chung tại sao dùng GraphQL? Tại vì em thấy thế giới đang chuyển dần sang dùng GraphQL rồi các bác ạ. Và nó được Facebook chống lưng <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/aeabbb614c88c9f1e09869596f736441.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, đồng thời cộng đồng GraphQL cũng đang phát triển khá mạnh. Đối với em, là một trải nghiệm mới nữa <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/3182d42b9326c68c9a456df369ea9898.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img>, thế thôi. Sài hay không tuỳ các bác, biết đâu mai mốt ra cái gì ngon hơn thì sao!</p>
+<p>P/S: Bài tiếp theo mình sẽ nói về cách sử dụng GraphQL, cách xây dựng một API theo chuẩn GraphQL, các bác đón đọc nhé <amp-img class="emoticons amp-wp-enforced-sizes" src="/wp-content/uploads/lm-easy-emoticons/emoticons-custom/a2b20fedb8f910c6d52ffeb6a30af1b8.png" alt="" width="32" height="32" sizes="(min-width: 32px) 32px, 100vw"></amp-img></p>
+	</div>
+
+	<footer class="amp-wp-article-footer">
+			<div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="/category/server" rel="category tag">Server</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="/tag/api" rel="tag">api</a>, <a href="/tag/facebook" rel="tag">facebook</a>, <a href="/tag/graph" rel="tag">Graph</a>, <a href="/tag/graphql" rel="tag">GraphQL</a>, <a href="/tag/tree" rel="tag">tree</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="/server/gioi-thieu-ve-graphql#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer>
+
+</article>
+
+<footer class="amp-wp-footer">
+	<div>
+		<h2>Blog của CuThanh</h2>
+		<p>
+			<a href="https://wordpress.org/">Powered by WordPress</a>
+		</p>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer>
+
+	<amp-pixel src="https://pixel.wp.com/g.gif?v=ext&#038;j=1%3A4.5&#038;blog=114130900&#038;post=735&#038;tz=7&#038;srv=cuthanh.com&#038;host=cuthanh.com&#038;rand=RANDOM&#038;ref=DOCUMENT_REFERRER"></amp-pixel>
+	
+</body>
+</html>

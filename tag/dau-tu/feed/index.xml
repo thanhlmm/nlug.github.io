@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>đầu tư &#8211; Blog của CuThanh</title>
+	<atom:link href="/tag/dau-tu/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Sat, 14 Jan 2017 03:46:06 +0000</lastBuildDate>
+	<language>vi</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+
+<image>
+	<url>/wp-content/uploads/2016/07/cropped-logo-icon-lg-32x32.png</url>
+	<title>đầu tư &#8211; Blog của CuThanh</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">114130900</site>	<item>
+		<title>Tương lai về Facebook Video và Start Up</title>
+		<link>/startup/tuong-lai-ve-facebook-video-va-start</link>
+		<comments>/startup/tuong-lai-ve-facebook-video-va-start#comments</comments>
+		<pubDate>Sat, 15 Oct 2016 14:42:17 +0000</pubDate>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+				<category><![CDATA[Startup]]></category>
+		<category><![CDATA[audience network]]></category>
+		<category><![CDATA[đầu tư]]></category>
+		<category><![CDATA[facebook]]></category>
+		<category><![CDATA[kiếm tiền]]></category>
+		<category><![CDATA[startup]]></category>
+		<category><![CDATA[Tương lai]]></category>
+		<category><![CDATA[Video]]></category>
+
+		<guid isPermaLink="false">/?p=625</guid>
+		<description><![CDATA[<p>Chào các chị em, chú bác, chào từ nam ra bắc từ&#8230;. Kì này thấy thằng Facebook đi lên mạnh quá nên mình viết bài viết này nói lên cái nhìn của mình về tương lai của Facebook. Thực ra mình ghét Facebook lắm nhưng nó mạnh quá phải theo thôi . Hail Facebook!  Những năm ...</p>
+<p>The post <a rel="nofollow" href="/startup/tuong-lai-ve-facebook-video-va-start">Tương lai về Facebook Video và Start Up</a> appeared first on <a rel="nofollow" href="/">Blog của CuThanh</a>.</p>
+]]></description>
+		<wfw:commentRss>/startup/tuong-lai-ve-facebook-video-va-start/feed</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">625</post-id>	</item>
+	</channel>
+</rss>

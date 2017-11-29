@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Các phản hồi luận về: Session, mày sống được bao lâu?</title>
+	<atom:link href="/server/session-may-song-duoc-bao-lau/feed" rel="self" type="application/rss+xml" />
+	<link>/server/session-may-song-duoc-bao-lau</link>
+	<description>Blog chia sẻ về công nghệ, coding của Cu Thành</description>
+	<lastBuildDate>Fri, 24 Nov 2017 06:44:05 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.8.3</generator>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-34</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Fri, 14 Oct 2016 05:07:37 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-34</guid>
+		<description><![CDATA[Đúng cách mà em đang triển khai.
+Thanksssssssssssssssss a.]]></description>
+		<content:encoded><![CDATA[<p>Đúng cách mà em đang triển khai.<br />
+Thanksssssssssssssssss a.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: foly</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-33</link>
+		<dc:creator><![CDATA[foly]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 18:09:07 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-33</guid>
+		<description><![CDATA[NB: for educational purposes only <img src="https://s.w.org/images/core/emoji/2.3/72x72/1f61c.png" alt="😜" class="wp-smiley" style="height: 1em; max-height: 1em;" />]]></description>
+		<content:encoded><![CDATA[<p>NB: for educational purposes only 😜</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: foly</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-32</link>
+		<dc:creator><![CDATA[foly]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 17:38:18 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-32</guid>
+		<description><![CDATA[Không nên phí thời gian tìm cách kéo dài session vì captcha này khá dễ đọc, mặc dù cần một chút kiến thức về Image Processing. Anh có viết một PoC bằng python ở đây (http://pastebin.com/qDfmGsPv), tỉ lệ đọc đúng là ~7/10, em có thể tham khảo. Sau khi extract được đoạn captcha thì em có thể kết hợp với lỗ hổng session mà em tìm thấy và chỉ extract lại khi nào session hết hiệu lực.]]></description>
+		<content:encoded><![CDATA[<p>Không nên phí thời gian tìm cách kéo dài session vì captcha này khá dễ đọc, mặc dù cần một chút kiến thức về Image Processing. Anh có viết một PoC bằng python ở đây (<a href="http://pastebin.com/qDfmGsPv" rel="nofollow">http://pastebin.com/qDfmGsPv</a>), tỉ lệ đọc đúng là ~7/10, em có thể tham khảo. Sau khi extract được đoạn captcha thì em có thể kết hợp với lỗ hổng session mà em tìm thấy và chỉ extract lại khi nào session hết hiệu lực.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-31</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 09:08:00 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-31</guid>
+		<description><![CDATA[Để tối nay mình test thử luôn. Mình cũng có nghĩ tới cách này nhưng chưa biết nó chạy được hay không :p]]></description>
+		<content:encoded><![CDATA[<p>Để tối nay mình test thử luôn. Mình cũng có nghĩ tới cách này nhưng chưa biết nó chạy được hay không :p</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: tuyenvv</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-30</link>
+		<dc:creator><![CDATA[tuyenvv]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 06:18:56 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-30</guid>
+		<description><![CDATA[Mình cũng đã nghĩ đến cách này nhưng mà như cái trên sau 1 thời gian x nào đó thì nó sẽ đánh dấu là có thể xóa, mình ko chắc liệu cái life time có bị reset và tính lại từ đầu khi mình vào lại không, theo suy luận của mình chắc là được vì 1 user đăng nhập trên trình duyệt thì ko thể nào đang làm việc lại bị out ra được. Nên mình nghĩ chắc cron là giải pháp dùng được đó.]]></description>
+		<content:encoded><![CDATA[<p>Mình cũng đã nghĩ đến cách này nhưng mà như cái trên sau 1 thời gian x nào đó thì nó sẽ đánh dấu là có thể xóa, mình ko chắc liệu cái life time có bị reset và tính lại từ đầu khi mình vào lại không, theo suy luận của mình chắc là được vì 1 user đăng nhập trên trình duyệt thì ko thể nào đang làm việc lại bị out ra được. Nên mình nghĩ chắc cron là giải pháp dùng được đó.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-29</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 04:49:11 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-29</guid>
+		<description><![CDATA[Trang này khá Ok trừ việc captcha xấu quá :v. Mình khuyên bạn nên sài hàng của Google https://www.google.com/recaptcha/intro/index.html.
+Đối với mình captcha chỉ cần đơn giản 2-3 chữ là để phân biệt giữa người và bot là được rồi. Khi nào dịch vụ của mình lớn lên, nhiều đứa nhòm ngó thì mới cần đầu tư vào captcha.
+Tôn trọng người dùng là tốt nhất.]]></description>
+		<content:encoded><![CDATA[<p>Trang này khá Ok trừ việc captcha xấu quá :v. Mình khuyên bạn nên sài hàng của Google <a href="https://www.google.com/recaptcha/intro/index.html" rel="nofollow">https://www.google.com/recaptcha/intro/index.html</a>.<br />
+Đối với mình captcha chỉ cần đơn giản 2-3 chữ là để phân biệt giữa người và bot là được rồi. Khi nào dịch vụ của mình lớn lên, nhiều đứa nhòm ngó thì mới cần đầu tư vào captcha.<br />
+Tôn trọng người dùng là tốt nhất.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Duc Nguyen</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-28</link>
+		<dc:creator><![CDATA[Duc Nguyen]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 04:39:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-28</guid>
+		<description><![CDATA[Hiện tai minh thấy có 1 cái captcha hiện khá nổi tiếng là cái BotDetect captcha, ơ trang captcha.com, mình cũng đang sư dụng nó trong trang login của mình, không biết nó ngon ko nữa. Hay vọng bạn co bài đánh giá hay hack nó xem thế nào.]]></description>
+		<content:encoded><![CDATA[<p>Hiện tai minh thấy có 1 cái captcha hiện khá nổi tiếng là cái BotDetect captcha, ơ trang captcha.com, mình cũng đang sư dụng nó trong trang login của mình, không biết nó ngon ko nữa. Hay vọng bạn co bài đánh giá hay hack nó xem thế nào.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-27</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 01:36:08 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-27</guid>
+		<description><![CDATA[Để mình test thử xem. Cảm ơn ý kiến của bác]]></description>
+		<content:encoded><![CDATA[<p>Để mình test thử xem. Cảm ơn ý kiến của bác</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Minh Thành</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-26</link>
+		<dc:creator><![CDATA[Minh Thành]]></dc:creator>
+		<pubDate>Thu, 13 Oct 2016 01:34:54 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-26</guid>
+		<description><![CDATA[Bạn hiểu về life time của session đúng rồi đấy ^^. Cách giải quyết của bạn thì y chang mấy trang lừa nạp thẻ game hồi truớc, bây giờ không biết còn không.
+Tuy nhiên mình muốn xây dựng con bot trả về dữ liệu thuần mà không phải quan tâm đến captcha. Mình sẽ viết cách giải quyết của mình ở bài viết sắp tới, cảm ơn bạn đã quan tâm nhé!]]></description>
+		<content:encoded><![CDATA[<p>Bạn hiểu về life time của session đúng rồi đấy ^^. Cách giải quyết của bạn thì y chang mấy trang lừa nạp thẻ game hồi truớc, bây giờ không biết còn không.<br />
+Tuy nhiên mình muốn xây dựng con bot trả về dữ liệu thuần mà không phải quan tâm đến captcha. Mình sẽ viết cách giải quyết của mình ở bài viết sắp tới, cảm ơn bạn đã quan tâm nhé!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Bởi: Mạnh Long</title>
+		<link>/server/session-may-song-duoc-bao-lau#comment-23</link>
+		<dc:creator><![CDATA[Mạnh Long]]></dc:creator>
+		<pubDate>Wed, 12 Oct 2016 18:37:52 +0000</pubDate>
+		<guid isPermaLink="false">/?p=591#comment-23</guid>
+		<description><![CDATA[Chạy cronjob đều đặn để kéo dài session trước khi nó hết hạn được mà bác nhỉ. :v]]></description>
+		<content:encoded><![CDATA[<p>Chạy cronjob đều đặn để kéo dài session trước khi nó hết hạn được mà bác nhỉ. :v</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
